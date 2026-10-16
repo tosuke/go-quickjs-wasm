@@ -40,29 +40,31 @@ RUN --mount=type=cache,target=/go/pkg/mod \
 
 COPY internal/generate/shim.c internal/generate/freestanding.c internal/generate/exports.txt ./generate/
 RUN awk '{print "--export=" $0}' generate/exports.txt > .build/exports.txt
+# Compile and link separately: Clang's wasm link driver invokes wasm-opt without
+# -g, which discards names/DWARF before our explicitly configured optimizer runs.
 RUN src=".build/quickjs-${QUICKJS_VERSION}" \
     && clang --target=wasm32-unknown-unknown -ffreestanding -nostdlib -mbulk-memory \
-        -O2 -fno-strict-aliasing -ffunction-sections -fdata-sections \
+        -Os -g -c -fno-strict-aliasing -ffunction-sections -fdata-sections \
         -I.build/libc -I"$src" -DCONFIG_VERSION=\"${QUICKJS_VERSION}\" \
-        -fuse-ld=lld \
         "$src/quickjs.c" "$src/dtoa.c" "$src/libregexp.c" \
         "$src/libunicode.c" "$src/cutils.c" \
         generate/shim.c generate/freestanding.c \
-        -Wl,--no-entry -Wl,--allow-undefined -Wl,--export-memory \
-        -Wl,-z,stack-size=2097152 \
-        -Wl,--export-table -Wl,@.build/exports.txt \
+    && wasm-ld --no-entry --allow-undefined --export-memory \
+        -z stack-size=2097152 --export-table @.build/exports.txt \
+        quickjs.o dtoa.o libregexp.o libunicode.o cutils.o shim.o freestanding.o \
         -o .build/quickjs-unoptimized.wasm
 
-# Match go-sqlite3-wasm's optimization pipeline before Go translation.
 RUN wasm-opt -g .build/quickjs-unoptimized.wasm -o .build/quickjs.wasm \
+        --converge \
         --gufa-optimizing --generate-global-effects \
-        --low-memory-unused --converge -O4 \
+        --low-memory-unused \
+        --flatten --rereloop --const-hoisting -O4 \
         --enable-mutable-globals --enable-multivalue \
         --enable-nontrapping-float-to-int --enable-sign-ext \
         --enable-reference-types --enable-bulk-memory \
         --enable-extended-const --enable-tail-call \
         --enable-wide-arithmetic \
-        --strip --strip-producers
+        --strip-producers --strip-dwarf
 
 RUN --mount=type=cache,target=/go/pkg/mod \
     --mount=type=cache,target=/root/.cache/go-build \
