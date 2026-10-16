@@ -1,0 +1,18 @@
+--- a/quickjs.c
++++ b/quickjs.c
+@@ -24,5 +24,6 @@
+  */
+ #include <stdlib.h>
++#include <malloc.h>
+ #include <stdio.h>
+ #include <stdarg.h>
+ #include <inttypes.h>
+@@ -69,7 +70,7 @@
+ /* define to include Atomics.* operations which depend on the OS
+    threads */
+ #if !defined(__EMSCRIPTEN__)
+-#define CONFIG_ATOMICS
++/* no OS threads */
+ #endif
+ 
+ #if !defined(__EMSCRIPTEN__)
