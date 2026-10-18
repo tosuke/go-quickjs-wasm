@@ -43,7 +43,9 @@ RUN awk '{print "--export=" $0}' generate/exports.txt > .build/exports.txt
 # Compile and link separately: Clang's wasm link driver invokes wasm-opt without
 # -g, which discards names/DWARF before our explicitly configured optimizer runs.
 RUN src=".build/quickjs-${QUICKJS_VERSION}" \
-    && clang --target=wasm32-unknown-unknown -ffreestanding -nostdlib -mbulk-memory \
+    && clang --target=wasm32-unknown-unknown -ffreestanding -nostdlib \
+        -mmutable-globals -mbulk-memory -mreference-types \
+        -mnontrapping-fptoint -msign-ext -mextended-const -mtail-call -matomics \
         -mmultivalue -Xclang -target-abi -Xclang experimental-mv \
         -Os -g -c -fno-strict-aliasing -ffunction-sections -fdata-sections \
         -I.build/libc -I"$src" -DCONFIG_VERSION=\"${QUICKJS_VERSION}\" \
@@ -64,7 +66,7 @@ RUN wasm-opt -g .build/quickjs-unoptimized.wasm -o .build/quickjs.wasm \
         --enable-nontrapping-float-to-int --enable-sign-ext \
         --enable-reference-types --enable-bulk-memory \
         --enable-extended-const --enable-tail-call \
-        --enable-wide-arithmetic \
+        --enable-wide-arithmetic --enable-threads \
         --strip-producers --strip-dwarf
 
 RUN --mount=type=cache,target=/go/pkg/mod \
