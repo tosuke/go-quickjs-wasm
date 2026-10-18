@@ -75,8 +75,6 @@ JS_ThrowReferenceError
 JS_ThrowRangeError
 JS_ThrowInternalError
 JS_ThrowOutOfMemory
-__JS_FreeValue
-__JS_FreeValueRT
 JS_StrictEq
 JS_SameValue
 JS_SameValueZero

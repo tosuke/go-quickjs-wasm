@@ -12,14 +12,10 @@ _Static_assert(sizeof(JSPrintValueOptions) == 16, "update abi.go for this QuickJ
 
 __attribute__((export_name("JS_VALUE_GET_FLOAT64")))
 double qjs_api_JS_VALUE_GET_FLOAT64(JSValue a0) { return JS_VALUE_GET_FLOAT64(a0); }
-__attribute__((export_name("__JS_NewFloat64")))
-JSValue qjs_api___JS_NewFloat64(JSContext * a0, double a1) { return __JS_NewFloat64(a0, a1); }
 __attribute__((export_name("JS_VALUE_GET_NORM_TAG")))
 int qjs_api_JS_VALUE_GET_NORM_TAG(JSValue a0) { return JS_VALUE_GET_NORM_TAG(a0); }
 __attribute__((export_name("JS_VALUE_IS_NAN")))
 int qjs_api_JS_VALUE_IS_NAN(JSValue a0) { return JS_VALUE_IS_NAN(a0); }
-__attribute__((export_name("__JS_NewShortBigInt")))
-JSValue qjs_api___JS_NewShortBigInt(JSContext * a0, int32_t a1) { return __JS_NewShortBigInt(a0, a1); }
 __attribute__((export_name("JS_AtomToCString")))
 const char * qjs_api_JS_AtomToCString(JSContext * a0, JSAtom a1) { return JS_AtomToCString(a0, a1); }
 __attribute__((export_name("JS_NewBool")))
@@ -54,8 +50,6 @@ __attribute__((export_name("JS_IsSymbol")))
 int qjs_api_JS_IsSymbol(JSValue a0) { return JS_IsSymbol(a0); }
 __attribute__((export_name("JS_IsObject")))
 int qjs_api_JS_IsObject(JSValue a0) { return JS_IsObject(a0); }
-__attribute__((export_name("__js_rc")))
-JSRefCountHeader * qjs_api___js_rc(void * a0) { return __js_rc(a0); }
 __attribute__((export_name("JS_FreeValue")))
 void qjs_api_JS_FreeValue(JSContext * a0, JSValue a1) { JS_FreeValue(a0, a1); }
 __attribute__((export_name("JS_FreeValueRT")))

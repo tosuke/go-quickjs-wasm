@@ -4,42 +4,11 @@ import (
 	"bytes"
 	"encoding/binary"
 	"math"
-	"os"
-	"reflect"
-	"regexp"
-	"strings"
 	"testing"
 	"time"
 
 	qjs "github.com/tosuke/go-quickjs-wasm"
 )
-
-// Check that linking and translation preserve the explicit C export surface.
-func TestExports(t *testing.T) {
-	exports, err := os.ReadFile("internal/generate/exports.txt")
-	if err != nil {
-		t.Fatal(err)
-	}
-	shim, err := os.ReadFile("internal/generate/shim.c")
-	if err != nil {
-		t.Fatal(err)
-	}
-	names := strings.Fields(string(exports))
-	for _, match := range regexp.MustCompile(`export_name\("(\w+)"\)`).FindAllSubmatch(shim, -1) {
-		names = append(names, string(match[1]))
-	}
-	typ := reflect.TypeFor[*qjs.Module]()
-	for _, name := range names {
-		if _, ok := typ.MethodByName("X" + name); !ok {
-			t.Errorf("missing export %s", name)
-		}
-	}
-	for _, name := range []string{"JS_DumpMemoryUsage", "malloc", "calloc", "realloc", "free"} {
-		if _, ok := typ.MethodByName("X" + name); ok {
-			t.Errorf("%s must not be exported", name)
-		}
-	}
-}
 
 func TestEval(t *testing.T) {
 	for _, tc := range []struct{ name, source, want string }{

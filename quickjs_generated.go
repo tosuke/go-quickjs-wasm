@@ -1118,7 +1118,7 @@ func (m *Module) _js_generator_function_call(v0 int32, v1, v2 int64, v3, v4, v5 
 									goto l0
 								}
 								t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t5, v2)
+								m.___JS_FreeValueRT(t5, v2)
 							}
 						l0:
 						}
@@ -1175,7 +1175,7 @@ func (m *Module) XJS_FreeRuntime(v0 int32) {
 			if v1 > i32(1) {
 				goto l0
 			}
-			m.X__JS_FreeValueRT(v0, v9)
+			m.___JS_FreeValueRT(v0, v9)
 		}
 	l0:
 	}
@@ -1205,7 +1205,7 @@ func (m *Module) XJS_FreeRuntime(v0 int32) {
 							if v7 > i32(1) {
 								goto l1
 							}
-							m.X__JS_FreeValueRT(v0, v9)
+							m.___JS_FreeValueRT(v0, v9)
 						}
 					l1:
 					}
@@ -1468,7 +1468,7 @@ func (m *Module) _js_create_iterator_result(v0 int32, v1 int64, v2 int32) int64 
 			}
 		}
 		t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t10, v1)
+		m.___JS_FreeValueRT(t10, v1)
 	}
 l0:
 	return i64(0x600000000)
@@ -1560,7 +1560,7 @@ func (m *Module) _JS_CallConstructorInternal(v0 int32, v1, v2 int64, v3, v4, v5 
 								goto l2
 							}
 							t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t15, v6)
+							m.___JS_FreeValueRT(t15, v6)
 						}
 					l2:
 					}
@@ -1579,7 +1579,7 @@ func (m *Module) _JS_CallConstructorInternal(v0 int32, v1, v2 int64, v3, v4, v5 
 				goto l0
 			}
 			t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t17, v7)
+			m.___JS_FreeValueRT(t17, v7)
 			return v6
 		}
 	l1:
@@ -1889,7 +1889,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 									goto l13
 								}
 								t68 := int32(load32(m.memory, uint64(uint32(v19))+8))
-								m.X__JS_FreeValueRT(t68, v7)
+								m.___JS_FreeValueRT(t68, v7)
 							}
 						l13:
 						}
@@ -1918,7 +1918,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 										goto l15
 									}
 									t71 := int32(load32(m.memory, uint64(uint32(v19))+8))
-									m.X__JS_FreeValueRT(t71, v7)
+									m.___JS_FreeValueRT(t71, v7)
 								}
 							l15:
 							}
@@ -2090,7 +2090,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l239
 																			}
 																			t89 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t89, v7)
+																			m.___JS_FreeValueRT(t89, v7)
 																		}
 																	l239:
 																	}
@@ -2114,7 +2114,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l240
 																			}
 																			t94 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t94, v7)
+																			m.___JS_FreeValueRT(t94, v7)
 																		}
 																	l240:
 																	}
@@ -2138,7 +2138,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l241
 																			}
 																			t99 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t99, v7)
+																			m.___JS_FreeValueRT(t99, v7)
 																		}
 																	l241:
 																	}
@@ -2162,7 +2162,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l242
 																			}
 																			t104 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t104, v7)
+																			m.___JS_FreeValueRT(t104, v7)
 																		}
 																	l242:
 																	}
@@ -2190,7 +2190,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l243
 																			}
 																			t109 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t109, v7)
+																			m.___JS_FreeValueRT(t109, v7)
 																		}
 																	l243:
 																	}
@@ -2218,7 +2218,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l244
 																			}
 																			t114 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t114, v7)
+																			m.___JS_FreeValueRT(t114, v7)
 																		}
 																	l244:
 																	}
@@ -2246,7 +2246,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l245
 																			}
 																			t119 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t119, v7)
+																			m.___JS_FreeValueRT(t119, v7)
 																		}
 																	l245:
 																	}
@@ -2274,7 +2274,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l246
 																			}
 																			t124 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t124, v7)
+																			m.___JS_FreeValueRT(t124, v7)
 																		}
 																	l246:
 																	}
@@ -2350,7 +2350,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l247
 																			}
 																			t137 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t137, v7)
+																			m.___JS_FreeValueRT(t137, v7)
 																		}
 																	l247:
 																	}
@@ -2374,7 +2374,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l248
 																			}
 																			t142 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t142, v7)
+																			m.___JS_FreeValueRT(t142, v7)
 																		}
 																	l248:
 																	}
@@ -2398,7 +2398,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l249
 																			}
 																			t147 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t147, v7)
+																			m.___JS_FreeValueRT(t147, v7)
 																		}
 																	l249:
 																	}
@@ -2422,7 +2422,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l250
 																			}
 																			t152 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t152, v7)
+																			m.___JS_FreeValueRT(t152, v7)
 																		}
 																	l250:
 																	}
@@ -2450,7 +2450,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l251
 																			}
 																			t157 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t157, v7)
+																			m.___JS_FreeValueRT(t157, v7)
 																		}
 																	l251:
 																	}
@@ -2478,7 +2478,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l252
 																			}
 																			t162 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t162, v7)
+																			m.___JS_FreeValueRT(t162, v7)
 																		}
 																	l252:
 																	}
@@ -2506,7 +2506,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l253
 																			}
 																			t167 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t167, v7)
+																			m.___JS_FreeValueRT(t167, v7)
 																		}
 																	l253:
 																	}
@@ -2534,7 +2534,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l254
 																			}
 																			t172 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t172, v7)
+																			m.___JS_FreeValueRT(t172, v7)
 																		}
 																	l254:
 																	}
@@ -2621,7 +2621,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l255
 																			}
 																			t195 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t195, v7)
+																			m.___JS_FreeValueRT(t195, v7)
 																		}
 																	l255:
 																	}
@@ -2648,7 +2648,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l256
 																			}
 																			t202 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t202, v7)
+																			m.___JS_FreeValueRT(t202, v7)
 																		}
 																	l256:
 																	}
@@ -2675,7 +2675,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l257
 																			}
 																			t209 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t209, v7)
+																			m.___JS_FreeValueRT(t209, v7)
 																		}
 																	l257:
 																	}
@@ -2702,7 +2702,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l258
 																			}
 																			t216 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t216, v7)
+																			m.___JS_FreeValueRT(t216, v7)
 																		}
 																	l258:
 																	}
@@ -2733,7 +2733,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l259
 																			}
 																			t223 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t223, v7)
+																			m.___JS_FreeValueRT(t223, v7)
 																		}
 																	l259:
 																	}
@@ -2764,7 +2764,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l260
 																			}
 																			t230 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t230, v7)
+																			m.___JS_FreeValueRT(t230, v7)
 																		}
 																	l260:
 																	}
@@ -2795,7 +2795,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l261
 																			}
 																			t237 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t237, v7)
+																			m.___JS_FreeValueRT(t237, v7)
 																		}
 																	l261:
 																	}
@@ -2826,7 +2826,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l262
 																			}
 																			t244 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t244, v7)
+																			m.___JS_FreeValueRT(t244, v7)
 																		}
 																	l262:
 																	}
@@ -2870,7 +2870,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l263
 																			}
 																			t257 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t257, v7)
+																			m.___JS_FreeValueRT(t257, v7)
 																		}
 																	l263:
 																	}
@@ -2902,7 +2902,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l264
 																			}
 																			t265 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t265, v7)
+																			m.___JS_FreeValueRT(t265, v7)
 																		}
 																	l264:
 																	}
@@ -2963,7 +2963,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l267
 																			}
 																			t280 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t280, v7)
+																			m.___JS_FreeValueRT(t280, v7)
 																		}
 																	l267:
 																	}
@@ -3006,7 +3006,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l269
 																			}
 																			t291 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t291, v7)
+																			m.___JS_FreeValueRT(t291, v7)
 																		}
 																	l269:
 																	}
@@ -3112,7 +3112,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l273
 																			}
 																			t306 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t306, v7)
+																			m.___JS_FreeValueRT(t306, v7)
 																		}
 																	l273:
 																	}
@@ -3161,7 +3161,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l275
 																			}
 																			t314 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t314, v7)
+																			m.___JS_FreeValueRT(t314, v7)
 																		}
 																	l275:
 																	}
@@ -3571,7 +3571,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																			goto l287
 																		}
 																		t416 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																		m.X__JS_FreeValueRT(t416, v7)
+																		m.___JS_FreeValueRT(t416, v7)
 																	}
 																l287:
 																	t417 := m.Xjs_malloc(v19, i32(24))
@@ -3809,7 +3809,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																									goto l302
 																								}
 																								t461 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																								m.X__JS_FreeValueRT(t461, v7)
+																								m.___JS_FreeValueRT(t461, v7)
 																							}
 																						l302:
 																						}
@@ -3903,7 +3903,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l294
 																			}
 																			t487 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t487, v7)
+																			m.___JS_FreeValueRT(t487, v7)
 																		}
 																	l294:
 																	}
@@ -3965,7 +3965,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																						goto l306
 																					}
 																					t497 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																					m.X__JS_FreeValueRT(t497, v9)
+																					m.___JS_FreeValueRT(t497, v9)
 																				}
 																			l306:
 																			}
@@ -3983,7 +3983,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																						goto l307
 																					}
 																					t499 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																					m.X__JS_FreeValueRT(t499, v7)
+																					m.___JS_FreeValueRT(t499, v7)
 																				}
 																			l307:
 																			}
@@ -4042,7 +4042,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																	store32(m.memory, uint32(v20), uint32(v6-i32(1)))
 																	if v6 <= i32(1) {
 																		t507 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																		m.X__JS_FreeValueRT(t507, v7)
+																		m.___JS_FreeValueRT(t507, v7)
 																	}
 																	store64(m.memory, uint32(v17), uint64(v8))
 																	store64(m.memory, uint32(v16-i32(16)), uint64(i64(0x500000000)))
@@ -4080,7 +4080,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l310
 																			}
 																			t514 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t514, v7)
+																			m.___JS_FreeValueRT(t514, v7)
 																		}
 																	l310:
 																	}
@@ -4108,7 +4108,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l312
 																			}
 																			t520 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t520, v7)
+																			m.___JS_FreeValueRT(t520, v7)
 																		}
 																	l312:
 																	}
@@ -4139,7 +4139,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																						goto l314
 																					}
 																					t524 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																					m.X__JS_FreeValueRT(t524, v8)
+																					m.___JS_FreeValueRT(t524, v8)
 																				}
 																			l314:
 																			}
@@ -4166,7 +4166,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																			goto l295
 																		}
 																		t2031 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																		m.X__JS_FreeValueRT(t2031, v7)
+																		m.___JS_FreeValueRT(t2031, v7)
 																		goto l295
 																	}
 																	store64(m.memory, uint32(v16-i32(8)), uint64(v7))
@@ -4196,7 +4196,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l317
 																			}
 																			t532 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t532, v7)
+																			m.___JS_FreeValueRT(t532, v7)
 																		}
 																	l317:
 																	}
@@ -4263,7 +4263,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																					goto l318
 																				}
 																				t550 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																				m.X__JS_FreeValueRT(t550, v8)
+																				m.___JS_FreeValueRT(t550, v8)
 																			}
 																		l318:
 																		}
@@ -4390,7 +4390,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l326
 																			}
 																			t575 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t575, v8)
+																			m.___JS_FreeValueRT(t575, v8)
 																		}
 																	l326:
 																	}
@@ -4564,7 +4564,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l341
 																			}
 																			t609 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t609, v8)
+																			m.___JS_FreeValueRT(t609, v8)
 																		}
 																	l341:
 																	}
@@ -4623,7 +4623,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																									goto l345
 																								}
 																								t623 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																								m.X__JS_FreeValueRT(t623, v8)
+																								m.___JS_FreeValueRT(t623, v8)
 																							}
 																						l345:
 																						}
@@ -4635,7 +4635,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																							goto l346
 																						}
 																						t625 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																						m.X__JS_FreeValueRT(t625, v7)
+																						m.___JS_FreeValueRT(t625, v7)
 																						goto l346
 																					}
 																					v21 = v21 & i32(0x3ffffff)
@@ -4660,7 +4660,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																					goto l347
 																				}
 																				t629 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																				m.X__JS_FreeValueRT(t629, v7)
+																				m.___JS_FreeValueRT(t629, v7)
 																			}
 																		l347:
 																		}
@@ -4765,7 +4765,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l352
 																			}
 																			t653 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t653, v8)
+																			m.___JS_FreeValueRT(t653, v8)
 																		}
 																	l352:
 																	}
@@ -4781,7 +4781,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l353
 																			}
 																			t656 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t656, v8)
+																			m.___JS_FreeValueRT(t656, v8)
 																		}
 																	l353:
 																	}
@@ -4888,7 +4888,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																		}
 																	l358:
 																		t678 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																		m.X__JS_FreeValueRT(t678, v7)
+																		m.___JS_FreeValueRT(t678, v7)
 																	}
 																l357:
 																	t679 := int64(load64(m.memory, uint32(v16)))
@@ -4903,7 +4903,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l359
 																			}
 																			t681 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t681, v7)
+																			m.___JS_FreeValueRT(t681, v7)
 																		}
 																	l359:
 																	}
@@ -4919,7 +4919,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l360
 																			}
 																			t684 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t684, v7)
+																			m.___JS_FreeValueRT(t684, v7)
 																		}
 																	l360:
 																	}
@@ -5009,7 +5009,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																			goto l364
 																		}
 																		t704 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																		m.X__JS_FreeValueRT(t704, v7)
+																		m.___JS_FreeValueRT(t704, v7)
 																	}
 																l364:
 																	t705 := int64(load64(m.memory, uint32(v16)))
@@ -5024,7 +5024,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l365
 																			}
 																			t707 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t707, v7)
+																			m.___JS_FreeValueRT(t707, v7)
 																		}
 																	l365:
 																	}
@@ -5097,7 +5097,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l366
 																			}
 																			t725 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t725, v7)
+																			m.___JS_FreeValueRT(t725, v7)
 																		}
 																	l366:
 																	}
@@ -5195,7 +5195,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l372
 																			}
 																			t743 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t743, v7)
+																			m.___JS_FreeValueRT(t743, v7)
 																		}
 																	l372:
 																	}
@@ -5217,7 +5217,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l373
 																			}
 																			t746 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t746, v7)
+																			m.___JS_FreeValueRT(t746, v7)
 																		}
 																	l373:
 																	}
@@ -5376,7 +5376,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l381
 																			}
 																			t777 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t777, v12)
+																			m.___JS_FreeValueRT(t777, v12)
 																		}
 																	l381:
 																	}
@@ -5390,7 +5390,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l382
 																			}
 																			t779 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t779, v8)
+																			m.___JS_FreeValueRT(t779, v8)
 																		}
 																	l382:
 																	}
@@ -5455,7 +5455,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																			goto l385
 																		}
 																		t789 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																		m.X__JS_FreeValueRT(t789, v8)
+																		m.___JS_FreeValueRT(t789, v8)
 																	}
 																l385:
 																	store64(m.memory, uint32(v17), uint64(v7))
@@ -5579,7 +5579,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																						goto l392
 																					}
 																					t811 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																					m.X__JS_FreeValueRT(t811, v7)
+																					m.___JS_FreeValueRT(t811, v7)
 																				}
 																			l392:
 																			}
@@ -5687,7 +5687,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l395
 																			}
 																			t836 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t836, v8)
+																			m.___JS_FreeValueRT(t836, v8)
 																		}
 																	l395:
 																	}
@@ -5703,7 +5703,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l396
 																			}
 																			t839 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t839, v8)
+																			m.___JS_FreeValueRT(t839, v8)
 																		}
 																	l396:
 																	}
@@ -5719,7 +5719,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l397
 																			}
 																			t842 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t842, v8)
+																			m.___JS_FreeValueRT(t842, v8)
 																		}
 																	l397:
 																	}
@@ -5768,7 +5768,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																							goto l399
 																						}
 																						t852 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																						m.X__JS_FreeValueRT(t852, v7)
+																						m.___JS_FreeValueRT(t852, v7)
 																					}
 																				l399:
 																				} else {
@@ -5827,7 +5827,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																					goto l400
 																				}
 																				t866 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																				m.X__JS_FreeValueRT(t866, v7)
+																				m.___JS_FreeValueRT(t866, v7)
 																				goto l400
 																			}
 																		l398:
@@ -5849,7 +5849,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																					goto l401
 																				}
 																				t873 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																				m.X__JS_FreeValueRT(t873, v7)
+																				m.___JS_FreeValueRT(t873, v7)
 																			}
 																		l401:
 																		}
@@ -5933,7 +5933,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l406
 																			}
 																			t893 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t893, v7)
+																			m.___JS_FreeValueRT(t893, v7)
 																		}
 																	l406:
 																	}
@@ -5949,7 +5949,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l407
 																			}
 																			t896 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t896, v7)
+																			m.___JS_FreeValueRT(t896, v7)
 																		}
 																	l407:
 																	}
@@ -5997,7 +5997,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l410
 																			}
 																			t909 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t909, v7)
+																			m.___JS_FreeValueRT(t909, v7)
 																		}
 																	l410:
 																	}
@@ -6013,7 +6013,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l411
 																			}
 																			t912 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t912, v7)
+																			m.___JS_FreeValueRT(t912, v7)
 																		}
 																	l411:
 																	}
@@ -6029,7 +6029,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l412
 																			}
 																			t915 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t915, v7)
+																			m.___JS_FreeValueRT(t915, v7)
 																		}
 																	l412:
 																	}
@@ -6115,7 +6115,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																			goto l414
 																		}
 																		t933 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																		m.X__JS_FreeValueRT(t933, v7)
+																		m.___JS_FreeValueRT(t933, v7)
 																	}
 																l414:
 																	t934 := int64(load64(m.memory, uint32(v20)))
@@ -6138,7 +6138,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																			goto l295
 																		}
 																		t2038 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																		m.X__JS_FreeValueRT(t2038, v8)
+																		m.___JS_FreeValueRT(t2038, v8)
 																		goto l295
 																	}
 																	v6 = int32(v10)
@@ -6280,7 +6280,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l422
 																			}
 																			t964 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t964, v8)
+																			m.___JS_FreeValueRT(t964, v8)
 																		}
 																	l422:
 																	}
@@ -6294,7 +6294,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l423
 																			}
 																			t966 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t966, v9)
+																			m.___JS_FreeValueRT(t966, v9)
 																		}
 																	l423:
 																	}
@@ -6310,7 +6310,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l424
 																			}
 																			t969 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t969, v7)
+																			m.___JS_FreeValueRT(t969, v7)
 																		}
 																	l424:
 																	}
@@ -6510,7 +6510,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																					goto l429
 																				}
 																				t1007 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																				m.X__JS_FreeValueRT(t1007, v7)
+																				m.___JS_FreeValueRT(t1007, v7)
 																				goto l429
 																			}
 																			t1008 := int64(load64(m.memory, uint32(v17)))
@@ -7001,7 +7001,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l436
 																			}
 																			t1091 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1091, v7)
+																			m.___JS_FreeValueRT(t1091, v7)
 																		}
 																	l436:
 																	}
@@ -7053,7 +7053,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l437
 																			}
 																			t1102 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1102, v7)
+																			m.___JS_FreeValueRT(t1102, v7)
 																		}
 																	l437:
 																	}
@@ -7105,7 +7105,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																								goto l440
 																							}
 																							t1113 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																							m.X__JS_FreeValueRT(t1113, v7)
+																							m.___JS_FreeValueRT(t1113, v7)
 																						}
 																					l440:
 																					}
@@ -7250,7 +7250,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																									goto l445
 																								}
 																								t1142 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																								m.X__JS_FreeValueRT(t1142, v8)
+																								m.___JS_FreeValueRT(t1142, v8)
 																							}
 																						l445:
 																						}
@@ -7279,7 +7279,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																					}
 																				}
 																				t1145 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																				m.X__JS_FreeValueRT(t1145, v7)
+																				m.___JS_FreeValueRT(t1145, v7)
 																			}
 																		l441:
 																			store64(m.memory, uint32(v17), uint64(i64(0x300000000)))
@@ -7629,7 +7629,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l447
 																			}
 																			t1216 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1216, v8)
+																			m.___JS_FreeValueRT(t1216, v8)
 																		}
 																	l447:
 																	}
@@ -7639,7 +7639,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																	store32(m.memory, uint32(v17), uint32(v16-i32(1)))
 																	if v16 <= i32(1) {
 																		t1218 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																		m.X__JS_FreeValueRT(t1218, v7)
+																		m.___JS_FreeValueRT(t1218, v7)
 																	}
 																	t1219 := v21
 																	var p1220 int32
@@ -7719,7 +7719,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																	store32(m.memory, uint32(v17), uint32(v16-i32(1)))
 																	if v16 <= i32(1) {
 																		t1233 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																		m.X__JS_FreeValueRT(t1233, v8)
+																		m.___JS_FreeValueRT(t1233, v8)
 																	}
 																	if uint64(v7) >= uint64(i64(-0x900000000)) {
 																		{
@@ -7731,7 +7731,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l451
 																			}
 																			t1235 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1235, v7)
+																			m.___JS_FreeValueRT(t1235, v7)
 																		}
 																	l451:
 																	}
@@ -7770,7 +7770,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l452
 																			}
 																			t1244 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1244, v7)
+																			m.___JS_FreeValueRT(t1244, v7)
 																		}
 																	l452:
 																	}
@@ -7784,7 +7784,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l453
 																			}
 																			t1246 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1246, v8)
+																			m.___JS_FreeValueRT(t1246, v8)
 																		}
 																	l453:
 																	}
@@ -7815,7 +7815,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l454
 																			}
 																			t1253 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1253, v7)
+																			m.___JS_FreeValueRT(t1253, v7)
 																		}
 																	l454:
 																	}
@@ -7854,7 +7854,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l455
 																			}
 																			t1261 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1261, v7)
+																			m.___JS_FreeValueRT(t1261, v7)
 																		}
 																	l455:
 																	}
@@ -7868,7 +7868,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l456
 																			}
 																			t1263 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1263, v8)
+																			m.___JS_FreeValueRT(t1263, v8)
 																		}
 																	l456:
 																	}
@@ -7967,7 +7967,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																					goto l460
 																				}
 																				t1286 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																				m.X__JS_FreeValueRT(t1286, v7)
+																				m.___JS_FreeValueRT(t1286, v7)
 																			}
 																		l460:
 																		}
@@ -8008,7 +8008,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																					goto l461
 																				}
 																				t1294 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																				m.X__JS_FreeValueRT(t1294, v7)
+																				m.___JS_FreeValueRT(t1294, v7)
 																			}
 																		l461:
 																		}
@@ -8061,7 +8061,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																					store32(m.memory, uint32(v26), uint32(v21-i32(1)))
 																					if v21 <= i32(1) {
 																						t1306 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																						m.X__JS_FreeValueRT(t1306, v8)
+																						m.___JS_FreeValueRT(t1306, v8)
 																					}
 																					if v22 < i32(0) {
 																						goto l284
@@ -8144,7 +8144,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																							goto l473
 																						}
 																						t1323 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																						m.X__JS_FreeValueRT(t1323, v7)
+																						m.___JS_FreeValueRT(t1323, v7)
 																					}
 																				l473:
 																				}
@@ -8170,7 +8170,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																							goto l474
 																						}
 																						t1327 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																						m.X__JS_FreeValueRT(t1327, v7)
+																						m.___JS_FreeValueRT(t1327, v7)
 																					}
 																				l474:
 																				}
@@ -8221,7 +8221,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																					goto l476
 																				}
 																				t1335 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																				m.X__JS_FreeValueRT(t1335, v7)
+																				m.___JS_FreeValueRT(t1335, v7)
 																			}
 																		l476:
 																		}
@@ -8512,7 +8512,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																							goto l491
 																						}
 																						t1982 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																						m.X__JS_FreeValueRT(t1982, v8)
+																						m.___JS_FreeValueRT(t1982, v8)
 																						goto l491
 																					}
 																					v17 = i32(0)
@@ -8763,7 +8763,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l507
 																			}
 																			t1427 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1427, v7)
+																			m.___JS_FreeValueRT(t1427, v7)
 																		}
 																	l507:
 																	}
@@ -8784,7 +8784,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l508
 																			}
 																			t1430 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1430, v7)
+																			m.___JS_FreeValueRT(t1430, v7)
 																		}
 																	l508:
 																	}
@@ -8809,7 +8809,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l509
 																			}
 																			t1435 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1435, v7)
+																			m.___JS_FreeValueRT(t1435, v7)
 																		}
 																	l509:
 																	}
@@ -9195,7 +9195,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																					goto l511
 																				}
 																				t1535 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																				m.X__JS_FreeValueRT(t1535, v7)
+																				m.___JS_FreeValueRT(t1535, v7)
 																			}
 																		l511:
 																		}
@@ -9245,7 +9245,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																					goto l513
 																				}
 																				t1545 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																				m.X__JS_FreeValueRT(t1545, v8)
+																				m.___JS_FreeValueRT(t1545, v8)
 																			}
 																		l513:
 																		}
@@ -9296,7 +9296,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																					goto l630
 																				}
 																				t1984 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																				m.X__JS_FreeValueRT(t1984, v7)
+																				m.___JS_FreeValueRT(t1984, v7)
 																				goto l630
 																			}
 																			v9 = int64(uint32(v22))
@@ -9329,7 +9329,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l518
 																			}
 																			t1559 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1559, v8)
+																			m.___JS_FreeValueRT(t1559, v8)
 																		}
 																	l518:
 																	}
@@ -9365,7 +9365,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l519
 																			}
 																			t1568 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1568, v7)
+																			m.___JS_FreeValueRT(t1568, v7)
 																		}
 																	l519:
 																	}
@@ -9381,7 +9381,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l520
 																			}
 																			t1571 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1571, v7)
+																			m.___JS_FreeValueRT(t1571, v7)
 																		}
 																	l520:
 																	}
@@ -9397,7 +9397,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l521
 																			}
 																			t1574 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1574, v7)
+																			m.___JS_FreeValueRT(t1574, v7)
 																		}
 																	l521:
 																	}
@@ -9453,7 +9453,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l524
 																			}
 																			t1581 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1581, v7)
+																			m.___JS_FreeValueRT(t1581, v7)
 																		}
 																	l524:
 																	}
@@ -9550,7 +9550,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l295
 																			}
 																			t1988 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1988, v7)
+																			m.___JS_FreeValueRT(t1988, v7)
 																			goto l295
 																		}
 																		if uint64(v7) >= uint64(i64(-0x900000000)) {
@@ -9614,7 +9614,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l533
 																			}
 																			t1610 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1610, v7)
+																			m.___JS_FreeValueRT(t1610, v7)
 																		}
 																	l533:
 																	}
@@ -9630,7 +9630,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l534
 																			}
 																			t1613 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1613, v7)
+																			m.___JS_FreeValueRT(t1613, v7)
 																		}
 																	l534:
 																	}
@@ -9690,7 +9690,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																					goto l535
 																				}
 																				t1630 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																				m.X__JS_FreeValueRT(t1630, v8)
+																				m.___JS_FreeValueRT(t1630, v8)
 																			}
 																		l535:
 																		}
@@ -9762,7 +9762,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l537
 																			}
 																			t1653 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1653, v8)
+																			m.___JS_FreeValueRT(t1653, v8)
 																		}
 																	l537:
 																	}
@@ -9778,7 +9778,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l538
 																			}
 																			t1656 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1656, v8)
+																			m.___JS_FreeValueRT(t1656, v8)
 																		}
 																	l538:
 																	}
@@ -9840,7 +9840,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l541
 																			}
 																			t1667 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1667, v7)
+																			m.___JS_FreeValueRT(t1667, v7)
 																		}
 																	l541:
 																	}
@@ -9882,7 +9882,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																			goto l295
 																		}
 																		t1991 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																		m.X__JS_FreeValueRT(t1991, v8)
+																		m.___JS_FreeValueRT(t1991, v8)
 																		goto l295
 																	}
 																	{
@@ -9963,7 +9963,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																													goto l550
 																												}
 																												t1692 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																												m.X__JS_FreeValueRT(t1692, v9)
+																												m.___JS_FreeValueRT(t1692, v9)
 																											}
 																										l550:
 																										}
@@ -9999,7 +9999,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																									goto l544
 																								}
 																								t1702 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																								m.X__JS_FreeValueRT(t1702, v10)
+																								m.___JS_FreeValueRT(t1702, v10)
 																								goto l544
 																							}
 																						l545:
@@ -10015,7 +10015,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																							goto l543
 																						}
 																						t1704 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																						m.X__JS_FreeValueRT(t1704, v10)
+																						m.___JS_FreeValueRT(t1704, v10)
 																						goto l543
 																					}
 																				l544:
@@ -10051,7 +10051,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																					goto l552
 																				}
 																				t1713 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																				m.X__JS_FreeValueRT(t1713, v9)
+																				m.___JS_FreeValueRT(t1713, v9)
 																			}
 																		l552:
 																		}
@@ -10068,7 +10068,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																			goto l551
 																		}
 																		t1716 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																		m.X__JS_FreeValueRT(t1716, v9)
+																		m.___JS_FreeValueRT(t1716, v9)
 																	}
 																l551:
 																	if uint64(v8) >= uint64(i64(-0x900000000)) {
@@ -10081,7 +10081,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l553
 																			}
 																			t1718 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1718, v8)
+																			m.___JS_FreeValueRT(t1718, v8)
 																		}
 																	l553:
 																	}
@@ -10097,7 +10097,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l554
 																			}
 																			t1721 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1721, v8)
+																			m.___JS_FreeValueRT(t1721, v8)
 																		}
 																	l554:
 																	}
@@ -10113,7 +10113,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l555
 																			}
 																			t1724 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1724, v8)
+																			m.___JS_FreeValueRT(t1724, v8)
 																		}
 																	l555:
 																	}
@@ -10127,7 +10127,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l556
 																			}
 																			t1726 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1726, v11)
+																			m.___JS_FreeValueRT(t1726, v11)
 																		}
 																	l556:
 																	}
@@ -10141,7 +10141,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l557
 																			}
 																			t1728 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1728, v7)
+																			m.___JS_FreeValueRT(t1728, v7)
 																		}
 																	l557:
 																	}
@@ -10157,7 +10157,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l558
 																			}
 																			t1731 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1731, v7)
+																			m.___JS_FreeValueRT(t1731, v7)
 																		}
 																	l558:
 																	}
@@ -10173,7 +10173,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l559
 																			}
 																			t1734 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1734, v7)
+																			m.___JS_FreeValueRT(t1734, v7)
 																		}
 																	l559:
 																	}
@@ -10310,7 +10310,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																			goto l564
 																		}
 																		t1771 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																		m.X__JS_FreeValueRT(t1771, v7)
+																		m.___JS_FreeValueRT(t1771, v7)
 																	}
 																l564:
 																	v18 = v18 + i32(3)
@@ -10348,7 +10348,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l565
 																			}
 																			t1780 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1780, v7)
+																			m.___JS_FreeValueRT(t1780, v7)
 																		}
 																	l565:
 																	}
@@ -10379,7 +10379,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l566
 																			}
 																			t1786 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1786, v7)
+																			m.___JS_FreeValueRT(t1786, v7)
 																		}
 																	l566:
 																	}
@@ -10419,7 +10419,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l567
 																			}
 																			t1795 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1795, v7)
+																			m.___JS_FreeValueRT(t1795, v7)
 																		}
 																	l567:
 																	}
@@ -10450,7 +10450,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l568
 																			}
 																			t1801 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1801, v7)
+																			m.___JS_FreeValueRT(t1801, v7)
 																		}
 																	l568:
 																	}
@@ -10490,7 +10490,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l569
 																			}
 																			t1810 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1810, v7)
+																			m.___JS_FreeValueRT(t1810, v7)
 																		}
 																	l569:
 																	}
@@ -10521,7 +10521,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l570
 																			}
 																			t1816 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1816, v7)
+																			m.___JS_FreeValueRT(t1816, v7)
 																		}
 																	l570:
 																	}
@@ -10562,7 +10562,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																		goto l571
 																	}
 																	t1822 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																	m.X__JS_FreeValueRT(t1822, v7)
+																	m.___JS_FreeValueRT(t1822, v7)
 																}
 															l571:
 															}
@@ -10583,7 +10583,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 															goto l478
 														}
 														t1824 := int32(load32(m.memory, uint64(uint32(v19))+8))
-														m.X__JS_FreeValueRT(t1824, v7)
+														m.___JS_FreeValueRT(t1824, v7)
 														goto l478
 													}
 												l191:
@@ -10991,7 +10991,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				}
 																			}
 																			t1891 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1891, v9)
+																			m.___JS_FreeValueRT(t1891, v9)
 																			goto l580
 																		}
 																	}
@@ -11194,7 +11194,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l610
 																			}
 																			t1925 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1925, v8)
+																			m.___JS_FreeValueRT(t1925, v8)
 																		}
 																	l610:
 																	}
@@ -11208,7 +11208,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				goto l611
 																			}
 																			t1927 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																			m.X__JS_FreeValueRT(t1927, v9)
+																			m.___JS_FreeValueRT(t1927, v9)
 																		}
 																	l611:
 																	}
@@ -11331,7 +11331,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																	goto l620
 																}
 																t1956 := int32(load32(m.memory, uint64(uint32(v19))+8))
-																m.X__JS_FreeValueRT(t1956, v8)
+																m.___JS_FreeValueRT(t1956, v8)
 															}
 														l620:
 														}
@@ -11365,7 +11365,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 												goto l295
 											}
 											t1958 := int32(load32(m.memory, uint64(uint32(v19))+8))
-											m.X__JS_FreeValueRT(t1958, v7)
+											m.___JS_FreeValueRT(t1958, v7)
 											goto l295
 										}
 									l523:
@@ -11395,7 +11395,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 													goto l623
 												}
 												t1962 := int32(load32(m.memory, uint64(uint32(v19))+8))
-												m.X__JS_FreeValueRT(t1962, v8)
+												m.___JS_FreeValueRT(t1962, v8)
 											}
 										l623:
 										}
@@ -11410,7 +11410,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 											goto l295
 										}
 										t1964 := int32(load32(m.memory, uint64(uint32(v19))+8))
-										m.X__JS_FreeValueRT(t1964, v9)
+										m.___JS_FreeValueRT(t1964, v9)
 										goto l295
 									}
 								l471:
@@ -11489,7 +11489,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 												goto l638
 											}
 											t2047 := int32(load32(m.memory, uint64(uint32(v19))+8))
-											m.X__JS_FreeValueRT(t2047, v7)
+											m.___JS_FreeValueRT(t2047, v7)
 										}
 									l638:
 									}
@@ -11509,12 +11509,12 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 									goto l632
 								}
 								t2049 := int32(load32(m.memory, uint64(uint32(v19))+8))
-								m.X__JS_FreeValueRT(t2049, v7)
+								m.___JS_FreeValueRT(t2049, v7)
 								goto l632
 							}
 						l634:
 							t2050 := int32(load32(m.memory, uint64(uint32(v19))+8))
-							m.X__JS_FreeValueRT(t2050, v8)
+							m.___JS_FreeValueRT(t2050, v8)
 							goto l633
 						}
 					l377:
@@ -11533,7 +11533,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 							goto l495
 						}
 						t2052 := int32(load32(m.memory, uint64(uint32(v19))+8))
-						m.X__JS_FreeValueRT(t2052, v8)
+						m.___JS_FreeValueRT(t2052, v8)
 						goto l495
 					}
 				l637:
@@ -11545,7 +11545,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 						goto l636
 					}
 					t2054 := int32(load32(m.memory, uint64(uint32(v19))+8))
-					m.X__JS_FreeValueRT(t2054, v8)
+					m.___JS_FreeValueRT(t2054, v8)
 					goto l636
 				}
 			l631:
@@ -11562,7 +11562,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 							goto l640
 						}
 						t2056 := int32(load32(m.memory, uint64(uint32(v19))+8))
-						m.X__JS_FreeValueRT(t2056, v8)
+						m.___JS_FreeValueRT(t2056, v8)
 					}
 				l640:
 				}
@@ -11590,7 +11590,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 							goto l641
 						}
 						t2058 := int32(load32(m.memory, uint64(uint32(v19))+8))
-						m.X__JS_FreeValueRT(t2058, v12)
+						m.___JS_FreeValueRT(t2058, v12)
 					}
 				l641:
 				}
@@ -11604,7 +11604,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 							goto l642
 						}
 						t2060 := int32(load32(m.memory, uint64(uint32(v19))+8))
-						m.X__JS_FreeValueRT(t2060, v10)
+						m.___JS_FreeValueRT(t2060, v10)
 					}
 				l642:
 				}
@@ -11618,7 +11618,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 							goto l643
 						}
 						t2062 := int32(load32(m.memory, uint64(uint32(v19))+8))
-						m.X__JS_FreeValueRT(t2062, v9)
+						m.___JS_FreeValueRT(t2062, v9)
 					}
 				l643:
 				}
@@ -11632,7 +11632,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 							goto l644
 						}
 						t2064 := int32(load32(m.memory, uint64(uint32(v19))+8))
-						m.X__JS_FreeValueRT(t2064, v7)
+						m.___JS_FreeValueRT(t2064, v7)
 					}
 				l644:
 				}
@@ -11671,7 +11671,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 							goto l647
 						}
 						t2070 := int32(load32(m.memory, uint64(uint32(v19))+8))
-						m.X__JS_FreeValueRT(t2070, v1)
+						m.___JS_FreeValueRT(t2070, v1)
 					}
 				l647:
 				}
@@ -11875,7 +11875,7 @@ l0:
 	m.___stack_pointer = v3
 	return v5
 }
-func (m *Module) X__JS_FreeValueRT(v0 int32, v1 int64) {
+func (m *Module) ___JS_FreeValueRT(v0 int32, v1 int64) {
 	var v2, v3, v4 int32
 	switch int32(int64(uint64(v1)>>32)) + i32(9) {
 	case 0:
@@ -11907,7 +11907,7 @@ func (m *Module) X__JS_FreeValueRT(v0 int32, v1 int64) {
 				if v3 > i32(1) {
 					goto l7
 				}
-				m.X__JS_FreeValueRT(v0, v1)
+				m.___JS_FreeValueRT(v0, v1)
 			}
 		l7:
 		}
@@ -11922,7 +11922,7 @@ func (m *Module) X__JS_FreeValueRT(v0 int32, v1 int64) {
 				if v3 > i32(1) {
 					goto l8
 				}
-				m.X__JS_FreeValueRT(v0, v1)
+				m.___JS_FreeValueRT(v0, v1)
 			}
 		l8:
 		}
@@ -11985,7 +11985,7 @@ func (m *Module) _js_create_from_ctor(v0 int32, v1 int64, v2 int32) int64 {
 							goto l1
 						}
 						t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t2, v3)
+						m.___JS_FreeValueRT(t2, v3)
 					}
 				l1:
 				}
@@ -12025,7 +12025,7 @@ l0:
 	store32(m.memory, uint32(v4), uint32(v2-i32(1)))
 	if v2 <= i32(1) {
 		t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t12, v3)
+		m.___JS_FreeValueRT(t12, v3)
 	}
 	return t10
 }
@@ -12106,7 +12106,7 @@ func (m *Module) XJS_FreeContext(v0 int32) {
 					goto l0
 				}
 				t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t4, v6)
+				m.___JS_FreeValueRT(t4, v6)
 			}
 		l0:
 		}
@@ -12122,7 +12122,7 @@ func (m *Module) XJS_FreeContext(v0 int32) {
 					goto l1
 				}
 				t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t7, v6)
+				m.___JS_FreeValueRT(t7, v6)
 			}
 		l1:
 		}
@@ -12138,7 +12138,7 @@ func (m *Module) XJS_FreeContext(v0 int32) {
 					goto l2
 				}
 				t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t10, v6)
+				m.___JS_FreeValueRT(t10, v6)
 			}
 		l2:
 		}
@@ -12154,7 +12154,7 @@ func (m *Module) XJS_FreeContext(v0 int32) {
 					goto l3
 				}
 				t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t13, v6)
+				m.___JS_FreeValueRT(t13, v6)
 			}
 		l3:
 		}
@@ -12170,7 +12170,7 @@ func (m *Module) XJS_FreeContext(v0 int32) {
 					goto l4
 				}
 				t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t16, v6)
+				m.___JS_FreeValueRT(t16, v6)
 			}
 		l4:
 		}
@@ -12189,7 +12189,7 @@ func (m *Module) XJS_FreeContext(v0 int32) {
 						goto l5
 					}
 					t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t19, v6)
+					m.___JS_FreeValueRT(t19, v6)
 				}
 			l5:
 			}
@@ -12217,7 +12217,7 @@ func (m *Module) XJS_FreeContext(v0 int32) {
 							goto l7
 						}
 						t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t24, v6)
+						m.___JS_FreeValueRT(t24, v6)
 					}
 				l7:
 				}
@@ -12243,7 +12243,7 @@ func (m *Module) XJS_FreeContext(v0 int32) {
 					goto l9
 				}
 				t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t29, v6)
+				m.___JS_FreeValueRT(t29, v6)
 			}
 		l9:
 		}
@@ -12259,7 +12259,7 @@ func (m *Module) XJS_FreeContext(v0 int32) {
 					goto l10
 				}
 				t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t32, v6)
+				m.___JS_FreeValueRT(t32, v6)
 			}
 		l10:
 		}
@@ -12275,7 +12275,7 @@ func (m *Module) XJS_FreeContext(v0 int32) {
 					goto l11
 				}
 				t35 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t35, v6)
+				m.___JS_FreeValueRT(t35, v6)
 			}
 		l11:
 		}
@@ -12291,7 +12291,7 @@ func (m *Module) XJS_FreeContext(v0 int32) {
 					goto l12
 				}
 				t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t38, v6)
+				m.___JS_FreeValueRT(t38, v6)
 			}
 		l12:
 		}
@@ -12307,7 +12307,7 @@ func (m *Module) XJS_FreeContext(v0 int32) {
 					goto l13
 				}
 				t41 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t41, v6)
+				m.___JS_FreeValueRT(t41, v6)
 			}
 		l13:
 		}
@@ -12323,7 +12323,7 @@ func (m *Module) XJS_FreeContext(v0 int32) {
 					goto l14
 				}
 				t44 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t44, v6)
+				m.___JS_FreeValueRT(t44, v6)
 			}
 		l14:
 		}
@@ -12339,7 +12339,7 @@ func (m *Module) XJS_FreeContext(v0 int32) {
 					goto l15
 				}
 				t47 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t47, v6)
+				m.___JS_FreeValueRT(t47, v6)
 			}
 		l15:
 		}
@@ -12593,7 +12593,7 @@ func (m *Module) _JS_RunGCInternal(v0, v1 int32) {
 											if v3 > i32(1) {
 												goto l10
 											}
-											m.X__JS_FreeValueRT(v0, v12)
+											m.___JS_FreeValueRT(v0, v12)
 										}
 									l10:
 									}
@@ -12959,7 +12959,7 @@ func (m *Module) XJS_ExecutePendingJob(v0, v1 int32) int32 {
 							goto l0
 						}
 						t12 := int32(load32(m.memory, uint64(uint32(v3))+8))
-						m.X__JS_FreeValueRT(t12, v8)
+						m.___JS_FreeValueRT(t12, v8)
 					}
 				l0:
 				}
@@ -12982,7 +12982,7 @@ func (m *Module) XJS_ExecutePendingJob(v0, v1 int32) int32 {
 					goto l2
 				}
 				t16 := int32(load32(m.memory, uint64(uint32(v3))+8))
-				m.X__JS_FreeValueRT(t16, v7)
+				m.___JS_FreeValueRT(t16, v7)
 			}
 		l2:
 		}
@@ -13051,7 +13051,7 @@ func (m *Module) _js_free_modules(v0, v1 int32) {
 					goto l0
 				}
 				t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t6, int64(uint32(v3-i32(12)))|i64(-0x300000000))
+				m.___JS_FreeValueRT(t6, int64(uint32(v3-i32(12)))|i64(-0x300000000))
 			}
 		l0:
 			if v2 != v6 {
@@ -13098,7 +13098,7 @@ func (m *Module) _js_free_shape0(v0, v1 int32) {
 			if v2 > i32(1) {
 				goto l1
 			}
-			m.X__JS_FreeValueRT(v0, int64(uint32(v4))|i64(-0x100000000))
+			m.___JS_FreeValueRT(v0, int64(uint32(v4))|i64(-0x100000000))
 		}
 	l1:
 	}
@@ -13238,7 +13238,7 @@ func (m *Module) _map_delete_record_internal(v0, v1, v2 int32) {
 				if v3 > i32(1) {
 					goto l0
 				}
-				m.X__JS_FreeValueRT(v0, v5)
+				m.___JS_FreeValueRT(v0, v5)
 			}
 		l0:
 		}
@@ -13253,7 +13253,7 @@ func (m *Module) _map_delete_record_internal(v0, v1, v2 int32) {
 				if v3 > i32(1) {
 					goto l1
 				}
-				m.X__JS_FreeValueRT(v0, v5)
+				m.___JS_FreeValueRT(v0, v5)
 			}
 		l1:
 		}
@@ -13975,7 +13975,7 @@ func (m *Module) _free_gc_object(v0, v1 int32) {
 							if v4 > i32(1) {
 								goto l9
 							}
-							m.X__JS_FreeValueRT(v0, v7)
+							m.___JS_FreeValueRT(v0, v7)
 						}
 					l9:
 					}
@@ -14053,7 +14053,7 @@ func (m *Module) _free_gc_object(v0, v1 int32) {
 					if v2 > i32(1) {
 						goto l12
 					}
-					m.X__JS_FreeValueRT(v0, v7)
+					m.___JS_FreeValueRT(v0, v7)
 				}
 			l12:
 			}
@@ -14068,7 +14068,7 @@ func (m *Module) _free_gc_object(v0, v1 int32) {
 					if v2 > i32(1) {
 						goto l13
 					}
-					m.X__JS_FreeValueRT(v0, v7)
+					m.___JS_FreeValueRT(v0, v7)
 				}
 			l13:
 			}
@@ -14113,7 +14113,7 @@ func (m *Module) _free_gc_object(v0, v1 int32) {
 							if v4 > i32(1) {
 								goto l14
 							}
-							m.X__JS_FreeValueRT(v0, v7)
+							m.___JS_FreeValueRT(v0, v7)
 						}
 					l14:
 					}
@@ -14188,7 +14188,7 @@ func (m *Module) _free_gc_object(v0, v1 int32) {
 					if v2 > i32(1) {
 						goto l18
 					}
-					m.X__JS_FreeValueRT(v0, v7)
+					m.___JS_FreeValueRT(v0, v7)
 				}
 			l18:
 			}
@@ -14203,7 +14203,7 @@ func (m *Module) _free_gc_object(v0, v1 int32) {
 					if v2 > i32(1) {
 						goto l19
 					}
-					m.X__JS_FreeValueRT(v0, v7)
+					m.___JS_FreeValueRT(v0, v7)
 				}
 			l19:
 			}
@@ -14218,7 +14218,7 @@ func (m *Module) _free_gc_object(v0, v1 int32) {
 					if v2 > i32(1) {
 						goto l20
 					}
-					m.X__JS_FreeValueRT(v0, v7)
+					m.___JS_FreeValueRT(v0, v7)
 				}
 			l20:
 			}
@@ -14233,7 +14233,7 @@ func (m *Module) _free_gc_object(v0, v1 int32) {
 					if v2 > i32(1) {
 						goto l21
 					}
-					m.X__JS_FreeValueRT(v0, v7)
+					m.___JS_FreeValueRT(v0, v7)
 				}
 			l21:
 			}
@@ -14248,7 +14248,7 @@ func (m *Module) _free_gc_object(v0, v1 int32) {
 					if v2 > i32(1) {
 						goto l22
 					}
-					m.X__JS_FreeValueRT(v0, v7)
+					m.___JS_FreeValueRT(v0, v7)
 				}
 			l22:
 			}
@@ -14263,7 +14263,7 @@ func (m *Module) _free_gc_object(v0, v1 int32) {
 					if v2 > i32(1) {
 						goto l23
 					}
-					m.X__JS_FreeValueRT(v0, v7)
+					m.___JS_FreeValueRT(v0, v7)
 				}
 			l23:
 			}
@@ -14278,7 +14278,7 @@ func (m *Module) _free_gc_object(v0, v1 int32) {
 					if v2 > i32(1) {
 						goto l24
 					}
-					m.X__JS_FreeValueRT(v0, v7)
+					m.___JS_FreeValueRT(v0, v7)
 				}
 			l24:
 			}
@@ -14293,7 +14293,7 @@ func (m *Module) _free_gc_object(v0, v1 int32) {
 					if v2 > i32(1) {
 						goto l25
 					}
-					m.X__JS_FreeValueRT(v0, v7)
+					m.___JS_FreeValueRT(v0, v7)
 				}
 			l25:
 			}
@@ -14551,7 +14551,7 @@ func (m *Module) XJS_NewContextRaw(v0 int32) int32 {
 										goto l4
 									}
 									t39 := int32(load32(m.memory, uint64(uint32(v1))+8))
-									m.X__JS_FreeValueRT(t39, v8)
+									m.___JS_FreeValueRT(t39, v8)
 								}
 							l4:
 							}
@@ -14576,7 +14576,7 @@ func (m *Module) XJS_NewContextRaw(v0 int32) int32 {
 											goto l7
 										}
 										t44 := int32(load32(m.memory, uint64(uint32(v1))+8))
-										m.X__JS_FreeValueRT(t44, v7)
+										m.___JS_FreeValueRT(t44, v7)
 									}
 								l7:
 								}
@@ -14684,7 +14684,7 @@ func (m *Module) XJS_NewContextRaw(v0 int32) int32 {
 							goto l2
 						}
 						t42 := int32(load32(m.memory, uint64(uint32(v1))+8))
-						m.X__JS_FreeValueRT(t42, v7)
+						m.___JS_FreeValueRT(t42, v7)
 						goto l2
 					}
 				}
@@ -14812,7 +14812,7 @@ func (m *Module) _JS_NewCFunction3(v0, v1, v2, v3, v4, v5 int32, v6 int64, v7 in
 				goto l0
 			}
 			t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t13, v6)
+			m.___JS_FreeValueRT(t13, v6)
 			return i64(0x600000000)
 		}
 	l0:
@@ -14849,7 +14849,7 @@ func (m *Module) _js_error_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int
 								goto l0
 							}
 							t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t6, v5)
+							m.___JS_FreeValueRT(t6, v5)
 						}
 					l0:
 					}
@@ -14888,7 +14888,7 @@ func (m *Module) _js_error_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int
 					goto l2
 				}
 				t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t15, v5)
+				m.___JS_FreeValueRT(t15, v5)
 			}
 		l2:
 			if v1&i64(-0x100000000) == i64(0x600000000) {
@@ -15011,7 +15011,7 @@ func (m *Module) _js_error_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int
 										goto l7
 									}
 									t43 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t43, v5)
+									m.___JS_FreeValueRT(t43, v5)
 								}
 							l7:
 							}
@@ -15026,7 +15026,7 @@ func (m *Module) _js_error_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int
 								goto l8
 							}
 							t45 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t45, v7)
+							m.___JS_FreeValueRT(t45, v7)
 						}
 					l8:
 					}
@@ -15040,7 +15040,7 @@ func (m *Module) _js_error_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int
 								goto l9
 							}
 							t47 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t47, v6)
+							m.___JS_FreeValueRT(t47, v6)
 						}
 					l9:
 					}
@@ -15064,7 +15064,7 @@ func (m *Module) _js_error_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int
 				goto l1
 			}
 			t50 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t50, v1)
+			m.___JS_FreeValueRT(t50, v1)
 		}
 	l1:
 		v1 = i64(0x600000000)
@@ -15178,7 +15178,7 @@ func (m *Module) _JS_NewCConstructor(v0, v1, v2, v3, v4, v5, v6 int32, v7 int64,
 											goto l4
 										}
 										t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t28, v13)
+										m.___JS_FreeValueRT(t28, v13)
 									}
 								l4:
 								}
@@ -15214,7 +15214,7 @@ func (m *Module) _JS_NewCConstructor(v0, v1, v2, v3, v4, v5, v6 int32, v7 int64,
 					goto l2
 				}
 				t31 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t31, v13)
+				m.___JS_FreeValueRT(t31, v13)
 			}
 		l2:
 			if uint64(v14) >= uint64(i64(-0x900000000)) {
@@ -15227,7 +15227,7 @@ func (m *Module) _JS_NewCConstructor(v0, v1, v2, v3, v4, v5, v6 int32, v7 int64,
 						goto l6
 					}
 					t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t33, v14)
+					m.___JS_FreeValueRT(t33, v14)
 				}
 			l6:
 			}
@@ -15246,7 +15246,7 @@ func (m *Module) _JS_NewCConstructor(v0, v1, v2, v3, v4, v5, v6 int32, v7 int64,
 		}
 	l5:
 		t35 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t35, v14)
+		m.___JS_FreeValueRT(t35, v14)
 	}
 l0:
 	return v15
@@ -15616,7 +15616,7 @@ func (m *Module) XJS_GetPropertyInternal(v0 int32, v1 int64, v2 int32, v3 int64,
 							goto l3
 						}
 						t71 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t71, v1)
+						m.___JS_FreeValueRT(t71, v1)
 						goto l3
 					}
 					t43 := int32(load32(m.memory, uint32(v6)))
@@ -15638,7 +15638,7 @@ func (m *Module) XJS_GetPropertyInternal(v0 int32, v1 int64, v2 int32, v3 int64,
 					store32(m.memory, uint32(t50), uint32(v7-i32(1)))
 					if v7 <= i32(1) {
 						t51 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t51, v1)
+						m.___JS_FreeValueRT(t51, v1)
 					}
 					if v6 < i32(0) {
 						goto l16
@@ -15662,7 +15662,7 @@ func (m *Module) XJS_GetPropertyInternal(v0 int32, v1 int64, v2 int32, v3 int64,
 									goto l24
 								}
 								t76 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t76, v1)
+								m.___JS_FreeValueRT(t76, v1)
 							}
 						l24:
 						}
@@ -15786,7 +15786,7 @@ func (m *Module) _js_array_constructor(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l4
 					}
 					t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t16, v4)
+					m.___JS_FreeValueRT(t16, v4)
 				}
 			l4:
 			}
@@ -16103,7 +16103,7 @@ func (m *Module) XJS_AddIntrinsicBaseObjects(v0 int32) int32 {
 					goto l1
 				}
 				t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t12, v1)
+				m.___JS_FreeValueRT(t12, v1)
 			}
 		l1:
 		}
@@ -16122,7 +16122,7 @@ func (m *Module) XJS_AddIntrinsicBaseObjects(v0 int32) int32 {
 					goto l2
 				}
 				t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t15, v1)
+				m.___JS_FreeValueRT(t15, v1)
 			}
 		l2:
 		}
@@ -16153,7 +16153,7 @@ func (m *Module) XJS_AddIntrinsicBaseObjects(v0 int32) int32 {
 				goto l0
 			}
 			t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t21, v1)
+			m.___JS_FreeValueRT(t21, v1)
 			goto l0
 		}
 		t22 := int32(load32(m.memory, uint64(uint32(v0))+48))
@@ -16170,7 +16170,7 @@ func (m *Module) XJS_AddIntrinsicBaseObjects(v0 int32) int32 {
 						goto l3
 					}
 					t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t26, v1)
+					m.___JS_FreeValueRT(t26, v1)
 				}
 			l3:
 			}
@@ -16186,7 +16186,7 @@ func (m *Module) XJS_AddIntrinsicBaseObjects(v0 int32) int32 {
 				goto l0
 			}
 			t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t28, v2)
+			m.___JS_FreeValueRT(t28, v2)
 			goto l0
 		}
 		if uint64(v2) >= uint64(i64(-0x900000000)) {
@@ -16199,7 +16199,7 @@ func (m *Module) XJS_AddIntrinsicBaseObjects(v0 int32) int32 {
 					goto l4
 				}
 				t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t30, v2)
+				m.___JS_FreeValueRT(t30, v2)
 			}
 		l4:
 		}
@@ -16280,7 +16280,7 @@ func (m *Module) XJS_AddIntrinsicBaseObjects(v0 int32) int32 {
 					goto l5
 				}
 				t61 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t61, v1)
+				m.___JS_FreeValueRT(t61, v1)
 			}
 		l5:
 		}
@@ -16305,7 +16305,7 @@ func (m *Module) XJS_AddIntrinsicBaseObjects(v0 int32) int32 {
 					goto l6
 				}
 				t67 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t67, v1)
+				m.___JS_FreeValueRT(t67, v1)
 			}
 		l6:
 		}
@@ -16330,7 +16330,7 @@ func (m *Module) XJS_AddIntrinsicBaseObjects(v0 int32) int32 {
 					goto l7
 				}
 				t73 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t73, v1)
+				m.___JS_FreeValueRT(t73, v1)
 			}
 		l7:
 		}
@@ -16387,7 +16387,7 @@ func (m *Module) XJS_AddIntrinsicBaseObjects(v0 int32) int32 {
 					goto l8
 				}
 				t95 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t95, v1)
+				m.___JS_FreeValueRT(t95, v1)
 			}
 		l8:
 		}
@@ -16418,7 +16418,7 @@ func (m *Module) XJS_AddIntrinsicBaseObjects(v0 int32) int32 {
 					goto l9
 				}
 				t105 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t105, v1)
+				m.___JS_FreeValueRT(t105, v1)
 			}
 		l9:
 		}
@@ -16466,7 +16466,7 @@ func (m *Module) XJS_AddIntrinsicBaseObjects(v0 int32) int32 {
 						goto l10
 					}
 					t121 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t121, v1)
+					m.___JS_FreeValueRT(t121, v1)
 				}
 			l10:
 			}
@@ -16501,7 +16501,7 @@ func (m *Module) XJS_AddIntrinsicDate(v0 int32) int32 {
 					goto l0
 				}
 				t3 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t3, v1)
+				m.___JS_FreeValueRT(t3, v1)
 			}
 		l0:
 		}
@@ -16991,7 +16991,7 @@ func (m *Module) ___JS_EvalInternal(v0 int32, v1 int64, v2, v3, v4, v5, v6 int32
 			goto l1
 		}
 		t113 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t113, int64(uint32(v10))|i64(-0x300000000))
+		m.___JS_FreeValueRT(t113, int64(uint32(v10))|i64(-0x300000000))
 	}
 l1:
 	m.___stack_pointer = v8 + i32(96)
@@ -17112,7 +17112,7 @@ func (m *Module) XJS_SetPropertyFunctionList(v0 int32, v1 int64, v2, v3 int32) i
 										goto l12
 									}
 									t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t39, v4)
+									m.___JS_FreeValueRT(t39, v4)
 									goto l12
 								}
 							l14:
@@ -17365,7 +17365,7 @@ l0:
 				goto l1
 			}
 			t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t14, v3)
+			m.___JS_FreeValueRT(t14, v3)
 		}
 	l1:
 	}
@@ -17410,7 +17410,7 @@ func (m *Module) XJS_AddIntrinsicMapSet(v0 int32) int32 {
 						goto l1
 					}
 					t11 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t11, v7)
+					m.___JS_FreeValueRT(t11, v7)
 				}
 			l1:
 			}
@@ -17479,7 +17479,7 @@ func (m *Module) XJS_AddIntrinsicTypedArrays(v0 int32) int32 {
 						goto l0
 					}
 					t3 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t3, v7)
+					m.___JS_FreeValueRT(t3, v7)
 				}
 			l0:
 			}
@@ -17498,7 +17498,7 @@ func (m *Module) XJS_AddIntrinsicTypedArrays(v0 int32) int32 {
 						goto l2
 					}
 					t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t6, v7)
+					m.___JS_FreeValueRT(t6, v7)
 				}
 			l2:
 			}
@@ -17533,7 +17533,7 @@ func (m *Module) XJS_AddIntrinsicTypedArrays(v0 int32) int32 {
 									goto l4
 								}
 								t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t15, v7)
+								m.___JS_FreeValueRT(t15, v7)
 							}
 						l4:
 						}
@@ -17577,7 +17577,7 @@ func (m *Module) XJS_AddIntrinsicTypedArrays(v0 int32) int32 {
 										goto l5
 									}
 									t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t28, v7)
+									m.___JS_FreeValueRT(t28, v7)
 								}
 							l5:
 							}
@@ -17596,7 +17596,7 @@ func (m *Module) XJS_AddIntrinsicTypedArrays(v0 int32) int32 {
 									goto l7
 								}
 								t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t30, v8)
+								m.___JS_FreeValueRT(t30, v8)
 							}
 						l7:
 						}
@@ -17635,7 +17635,7 @@ func (m *Module) XJS_AddIntrinsicTypedArrays(v0 int32) int32 {
 			}
 		l8:
 			t34 := int32(load32(m.memory, uint32(v4)))
-			m.X__JS_FreeValueRT(t34, v8)
+			m.___JS_FreeValueRT(t34, v8)
 		}
 	l1:
 	}
@@ -17699,7 +17699,7 @@ func (m *Module) XJS_AddIntrinsicPromise(v0 int32) int32 {
 					goto l2
 				}
 				t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t15, v1)
+				m.___JS_FreeValueRT(t15, v1)
 			}
 		l2:
 		}
@@ -17747,7 +17747,7 @@ func (m *Module) XJS_AddIntrinsicPromise(v0 int32) int32 {
 					goto l3
 				}
 				t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t32, v1)
+				m.___JS_FreeValueRT(t32, v1)
 			}
 		l3:
 		}
@@ -17800,7 +17800,7 @@ func (m *Module) XJS_AddIntrinsicWeakRef(v0 int32) int32 {
 					goto l2
 				}
 				t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t7, v5)
+				m.___JS_FreeValueRT(t7, v5)
 			}
 		l2:
 		}
@@ -17834,7 +17834,7 @@ func (m *Module) XJS_AddIntrinsicWeakRef(v0 int32) int32 {
 					goto l4
 				}
 				t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t14, v5)
+				m.___JS_FreeValueRT(t14, v5)
 			}
 		l4:
 		}
@@ -18138,7 +18138,7 @@ func (m *Module) XJS_DefineProperty(v0 int32, v1 int64, v2 int32, v3, v4, v5 int
 																	goto l23
 																}
 																t83 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																m.X__JS_FreeValueRT(t83, v1)
+																m.___JS_FreeValueRT(t83, v1)
 															}
 														l23:
 														} else {
@@ -18172,7 +18172,7 @@ func (m *Module) XJS_DefineProperty(v0 int32, v1 int64, v2 int32, v3, v4, v5 int
 																	goto l24
 																}
 																t92 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																m.X__JS_FreeValueRT(t92, int64(uint32(v7))|i64(-0x100000000))
+																m.___JS_FreeValueRT(t92, int64(uint32(v7))|i64(-0x100000000))
 															}
 														l24:
 														}
@@ -18206,7 +18206,7 @@ func (m *Module) XJS_DefineProperty(v0 int32, v1 int64, v2 int32, v3, v4, v5 int
 																goto l26
 															}
 															t98 := int32(load32(m.memory, uint64(uint32(v0))+8))
-															m.X__JS_FreeValueRT(t98, int64(uint32(v9))|i64(-0x100000000))
+															m.___JS_FreeValueRT(t98, int64(uint32(v9))|i64(-0x100000000))
 														}
 													l26:
 													}
@@ -18279,7 +18279,7 @@ func (m *Module) XJS_DefineProperty(v0 int32, v1 int64, v2 int32, v3, v4, v5 int
 																	goto l29
 																}
 																t111 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																m.X__JS_FreeValueRT(t111, int64(uint32(v12))|i64(-0x100000000))
+																m.___JS_FreeValueRT(t111, int64(uint32(v12))|i64(-0x100000000))
 															}
 														l29:
 														}
@@ -18295,7 +18295,7 @@ func (m *Module) XJS_DefineProperty(v0 int32, v1 int64, v2 int32, v3, v4, v5 int
 																	goto l30
 																}
 																t114 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																m.X__JS_FreeValueRT(t114, int64(uint32(v12))|i64(-0x100000000))
+																m.___JS_FreeValueRT(t114, int64(uint32(v12))|i64(-0x100000000))
 															}
 														l30:
 														}
@@ -18424,7 +18424,7 @@ func (m *Module) XJS_DefineProperty(v0 int32, v1 int64, v2 int32, v3, v4, v5 int
 																goto l32
 															}
 															t148 := int32(load32(m.memory, uint64(uint32(v0))+8))
-															m.X__JS_FreeValueRT(t148, v1)
+															m.___JS_FreeValueRT(t148, v1)
 														}
 													l32:
 													}
@@ -18535,7 +18535,7 @@ func (m *Module) XJS_DefineProperty(v0 int32, v1 int64, v2 int32, v3, v4, v5 int
 											goto l12
 										}
 										t41 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t41, v1)
+										m.___JS_FreeValueRT(t41, v1)
 										goto l12
 									}
 									if v2 == 0 {
@@ -18549,7 +18549,7 @@ func (m *Module) XJS_DefineProperty(v0 int32, v1 int64, v2 int32, v3, v4, v5 int
 													goto l14
 												}
 												t43 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t43, v1)
+												m.___JS_FreeValueRT(t43, v1)
 											}
 										l14:
 										}
@@ -18597,7 +18597,7 @@ func (m *Module) XJS_DefineProperty(v0 int32, v1 int64, v2 int32, v3, v4, v5 int
 												goto l19
 											}
 											t49 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t49, v1)
+											m.___JS_FreeValueRT(t49, v1)
 										}
 									l19:
 									}
@@ -18646,7 +18646,7 @@ func (m *Module) XJS_DefineProperty(v0 int32, v1 int64, v2 int32, v3, v4, v5 int
 									goto l12
 								}
 								t164 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t164, v1)
+								m.___JS_FreeValueRT(t164, v1)
 								goto l12
 							}
 							t31 := m._convert_fast_array_to_array(v0, v10)
@@ -18893,7 +18893,7 @@ func (m *Module) _js_function_constructor(v0 int32, v1 int64, v2, v3, v4 int32) 
 						goto l3
 					}
 					t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t25, v9)
+					m.___JS_FreeValueRT(t25, v9)
 				}
 			l3:
 			}
@@ -18919,7 +18919,7 @@ func (m *Module) _js_function_constructor(v0 int32, v1 int64, v2, v3, v4 int32) 
 											goto l4
 										}
 										t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t28, v9)
+										m.___JS_FreeValueRT(t28, v9)
 									}
 								l4:
 								}
@@ -18953,7 +18953,7 @@ func (m *Module) _js_function_constructor(v0 int32, v1 int64, v2, v3, v4 int32) 
 								goto l6
 							}
 							t37 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t37, v9)
+							m.___JS_FreeValueRT(t37, v9)
 						}
 					l6:
 						if v7 >= i32(0) {
@@ -18972,7 +18972,7 @@ func (m *Module) _js_function_constructor(v0 int32, v1 int64, v2, v3, v4 int32) 
 						goto l2
 					}
 					t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t39, v10)
+					m.___JS_FreeValueRT(t39, v10)
 					goto l2
 				}
 			l7:
@@ -19062,7 +19062,7 @@ func (m *Module) XJS_NewCFunctionData(v0, v1, v2, v3, v4, v5 int32) int64 {
 					goto l0
 				}
 				t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t4, v6)
+				m.___JS_FreeValueRT(t4, v6)
 				goto l0
 			}
 			store16(m.memory, uint64(uint32(v8))+6, uint16(v3))
@@ -19119,7 +19119,7 @@ func (m *Module) _JS_NewObjectProtoList(v0 int32, v1 int64, v2, v3 int32) int64 
 				goto l0
 			}
 			t3 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t3, v1)
+			m.___JS_FreeValueRT(t3, v1)
 		}
 	l0:
 	}
@@ -19196,7 +19196,7 @@ func (m *Module) _js_number_constructor(v0 int32, v1 int64, v2, v3 int32) int64 
 							goto l2
 						}
 						t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t14, v4)
+						m.___JS_FreeValueRT(t14, v4)
 					}
 				l2:
 				}
@@ -19274,7 +19274,7 @@ func (m *Module) _JS_SetObjectData(v0 int32, v1, v2 int64) int32 {
 						goto l1
 					}
 					t3 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t3, v1)
+					m.___JS_FreeValueRT(t3, v1)
 				}
 			l1:
 			}
@@ -19293,7 +19293,7 @@ func (m *Module) _JS_SetObjectData(v0 int32, v1, v2 int64) int32 {
 				goto l2
 			}
 			t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t5, v2)
+			m.___JS_FreeValueRT(t5, v2)
 		}
 	l2:
 	}
@@ -19385,7 +19385,7 @@ func (m *Module) _js_string_constructor(v0 int32, v1 int64, v2, v3 int32) int64 
 					goto l3
 				}
 				t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t13, v4)
+				m.___JS_FreeValueRT(t13, v4)
 			}
 		l3:
 		}
@@ -19508,7 +19508,7 @@ func (m *Module) XJS_DefinePropertyValue(v0 int32, v1 int64, v2 int32, v3 int64,
 				goto l0
 			}
 			t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t2, v3)
+			m.___JS_FreeValueRT(t2, v3)
 		}
 	l0:
 	}
@@ -19607,7 +19607,7 @@ func (m *Module) _js_date_constructor(v0 int32, v1 int64, v2, v3 int32) int64 {
 								goto l8
 							}
 							t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t16, v4)
+							m.___JS_FreeValueRT(t16, v4)
 						}
 					l8:
 					}
@@ -19727,7 +19727,7 @@ func (m *Module) _js_date_constructor(v0 int32, v1 int64, v2, v3 int32) int64 {
 					goto l10
 				}
 				t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t36, v1)
+				m.___JS_FreeValueRT(t36, v1)
 				goto l10
 			}
 		l14:
@@ -19826,7 +19826,7 @@ func (m *Module) _js_compile_regexp(v0 int32, v1, v2 int64) int64 {
 								goto l13
 							}
 							t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t5, int64(uint32(v5-i32(12)))|i64(-0x700000000))
+							m.___JS_FreeValueRT(t5, int64(uint32(v5-i32(12)))|i64(-0x700000000))
 							goto l13
 						}
 					l12:
@@ -19837,7 +19837,7 @@ func (m *Module) _js_compile_regexp(v0 int32, v1, v2 int64) int64 {
 					store32(m.memory, uint32(v3), uint32(v4-i32(1)))
 					if v4 <= i32(1) {
 						t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t7, int64(uint32(v5-i32(12)))|i64(-0x700000000))
+						m.___JS_FreeValueRT(t7, int64(uint32(v5-i32(12)))|i64(-0x700000000))
 					}
 					if v6&i32(272) != i32(272) {
 						goto l14
@@ -20145,7 +20145,7 @@ func (m *Module) _js_compile_regexp(v0 int32, v1, v2 int64) int64 {
 		store32(m.memory, uint32(v4), uint32(v5-i32(1)))
 		if v5 <= i32(1) {
 			t74 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t74, int64(uint32(v11-i32(12)))|i64(-0x700000000))
+			m.___JS_FreeValueRT(t74, int64(uint32(v11-i32(12)))|i64(-0x700000000))
 		}
 		if v6 != 0 {
 			t75 := int32(load32(m.memory, uint64(uint32(v8))+88))
@@ -20202,7 +20202,7 @@ func (m *Module) _js_regexp_constructor(v0 int32, v1 int64, v2, v3 int32) int64 
 								goto l2
 							}
 							t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t10, v5)
+							m.___JS_FreeValueRT(t10, v5)
 						}
 					l2:
 					}
@@ -20315,7 +20315,7 @@ func (m *Module) _js_regexp_constructor(v0 int32, v1 int64, v2, v3 int32) int64 
 										goto l9
 									}
 									t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t26, v7)
+									m.___JS_FreeValueRT(t26, v7)
 								}
 							l9:
 							}
@@ -20342,7 +20342,7 @@ func (m *Module) _js_regexp_constructor(v0 int32, v1 int64, v2, v3 int32) int64 
 									goto l4
 								}
 								t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t30, v6)
+								m.___JS_FreeValueRT(t30, v6)
 								goto l4
 							}
 						}
@@ -20374,7 +20374,7 @@ func (m *Module) _js_regexp_constructor(v0 int32, v1 int64, v2, v3 int32) int64 
 								goto l11
 							}
 							t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t34, v5)
+							m.___JS_FreeValueRT(t34, v5)
 						}
 					l11:
 					}
@@ -20388,7 +20388,7 @@ func (m *Module) _js_regexp_constructor(v0 int32, v1 int64, v2, v3 int32) int64 
 								goto l12
 							}
 							t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t36, v1)
+							m.___JS_FreeValueRT(t36, v1)
 						}
 					l12:
 					}
@@ -20403,7 +20403,7 @@ func (m *Module) _js_regexp_constructor(v0 int32, v1 int64, v2, v3 int32) int64 
 						goto l13
 					}
 					t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t38, v4)
+					m.___JS_FreeValueRT(t38, v4)
 					goto l13
 				}
 			l5:
@@ -20415,7 +20415,7 @@ func (m *Module) _js_regexp_constructor(v0 int32, v1 int64, v2, v3 int32) int64 
 					goto l10
 				}
 				t40 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t40, v7)
+				m.___JS_FreeValueRT(t40, v7)
 			}
 		l10:
 			if uint64(v6) >= uint64(i64(-0x900000000)) {
@@ -20428,7 +20428,7 @@ func (m *Module) _js_regexp_constructor(v0 int32, v1 int64, v2, v3 int32) int64 
 						goto l14
 					}
 					t42 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t42, v6)
+					m.___JS_FreeValueRT(t42, v6)
 				}
 			l14:
 			}
@@ -20443,7 +20443,7 @@ func (m *Module) _js_regexp_constructor(v0 int32, v1 int64, v2, v3 int32) int64 
 				goto l13
 			}
 			t44 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t44, v5)
+			m.___JS_FreeValueRT(t44, v5)
 			goto l13
 		}
 	l1:
@@ -20510,7 +20510,7 @@ func (m *Module) _js_proxy_call(v0 int32, v1, v2 int64, v3, v4, v5 int32) int64 
 									goto l2
 								}
 								t11 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t11, v6)
+								m.___JS_FreeValueRT(t11, v6)
 							}
 						l2:
 						}
@@ -20529,7 +20529,7 @@ func (m *Module) _js_proxy_call(v0 int32, v1, v2 int64, v3, v4, v5 int32) int64 
 							goto l3
 						}
 						t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t14, v1)
+						m.___JS_FreeValueRT(t14, v1)
 					}
 				l3:
 				}
@@ -20544,7 +20544,7 @@ func (m *Module) _js_proxy_call(v0 int32, v1, v2 int64, v3, v4, v5 int32) int64 
 					goto l0
 				}
 				t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t16, v7)
+				m.___JS_FreeValueRT(t16, v7)
 				goto l0
 			}
 		}
@@ -20570,7 +20570,7 @@ func (m *Module) _js_proxy_call(v0 int32, v1, v2 int64, v3, v4, v5 int32) int64 
 						goto l4
 					}
 					t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t21, v1)
+					m.___JS_FreeValueRT(t21, v1)
 				}
 			l4:
 			}
@@ -20605,7 +20605,7 @@ func (m *Module) _js_proxy_call(v0 int32, v1, v2 int64, v3, v4, v5 int32) int64 
 					goto l5
 				}
 				t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t30, v1)
+				m.___JS_FreeValueRT(t30, v1)
 			}
 		l5:
 		}
@@ -20620,7 +20620,7 @@ func (m *Module) _js_proxy_call(v0 int32, v1, v2 int64, v3, v4, v5 int32) int64 
 			goto l0
 		}
 		t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t32, v7)
+		m.___JS_FreeValueRT(t32, v7)
 	}
 l0:
 	m.___stack_pointer = v8 + i32(32)
@@ -20654,7 +20654,7 @@ func (m *Module) _js_proxy_constructor(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l0
 						}
 						t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t5, v1)
+						m.___JS_FreeValueRT(t5, v1)
 						return i64(0x600000000)
 					}
 					v2 = i32(1)
@@ -20729,7 +20729,7 @@ func (m *Module) XJS_DefinePropertyValueStr(v0 int32, v1 int64, v2 int32, v3 int
 				goto l0
 			}
 			t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t4, v3)
+			m.___JS_FreeValueRT(t4, v3)
 			return i32(-1)
 		}
 	l0:
@@ -20868,7 +20868,7 @@ func (m *Module) _js_map_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int64
 																	goto l15
 																}
 																t52 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																m.X__JS_FreeValueRT(t52, v10)
+																m.___JS_FreeValueRT(t52, v10)
 																goto l15
 															}
 														} else {
@@ -20904,7 +20904,7 @@ func (m *Module) _js_map_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int64
 																			goto l8
 																		}
 																		t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																		m.X__JS_FreeValueRT(t34, v14)
+																		m.___JS_FreeValueRT(t34, v14)
 																	}
 																l8:
 																}
@@ -20919,7 +20919,7 @@ func (m *Module) _js_map_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int64
 																	goto l9
 																}
 																t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																m.X__JS_FreeValueRT(t36, v15)
+																m.___JS_FreeValueRT(t36, v15)
 															}
 														l9:
 														}
@@ -20933,7 +20933,7 @@ func (m *Module) _js_map_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int64
 																	goto l10
 																}
 																t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																m.X__JS_FreeValueRT(t38, v10)
+																m.___JS_FreeValueRT(t38, v10)
 															}
 														l10:
 														}
@@ -20949,7 +20949,7 @@ func (m *Module) _js_map_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int64
 																	goto l11
 																}
 																t41 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																m.X__JS_FreeValueRT(t41, v10)
+																m.___JS_FreeValueRT(t41, v10)
 															}
 														l11:
 														}
@@ -20973,7 +20973,7 @@ func (m *Module) _js_map_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int64
 															goto l13
 														}
 														t45 := int32(load32(m.memory, uint64(uint32(v0))+8))
-														m.X__JS_FreeValueRT(t45, v12)
+														m.___JS_FreeValueRT(t45, v12)
 													}
 												l13:
 												}
@@ -20987,7 +20987,7 @@ func (m *Module) _js_map_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int64
 															goto l14
 														}
 														t47 := int32(load32(m.memory, uint64(uint32(v0))+8))
-														m.X__JS_FreeValueRT(t47, v11)
+														m.___JS_FreeValueRT(t47, v11)
 													}
 												l14:
 												}
@@ -20999,7 +20999,7 @@ func (m *Module) _js_map_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int64
 													goto l1
 												}
 												t49 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t49, v13)
+												m.___JS_FreeValueRT(t49, v13)
 												goto l1
 											}
 										l5:
@@ -21020,7 +21020,7 @@ func (m *Module) _js_map_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int64
 														goto l16
 													}
 													t56 := int32(load32(m.memory, uint64(uint32(v0))+8))
-													m.X__JS_FreeValueRT(t56, v10)
+													m.___JS_FreeValueRT(t56, v10)
 												}
 											l16:
 											}
@@ -21034,7 +21034,7 @@ func (m *Module) _js_map_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int64
 														goto l17
 													}
 													t58 := int32(load32(m.memory, uint64(uint32(v0))+8))
-													m.X__JS_FreeValueRT(t58, v14)
+													m.___JS_FreeValueRT(t58, v14)
 												}
 											l17:
 											}
@@ -21049,7 +21049,7 @@ func (m *Module) _js_map_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int64
 												goto l15
 											}
 											t60 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t60, v15)
+											m.___JS_FreeValueRT(t60, v15)
 										}
 									l15:
 										_ = m._JS_IteratorClose(v0, v11, i32(1))
@@ -21072,7 +21072,7 @@ func (m *Module) _js_map_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int64
 									goto l18
 								}
 								t64 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t64, v12)
+								m.___JS_FreeValueRT(t64, v12)
 							}
 						l18:
 						}
@@ -21086,7 +21086,7 @@ func (m *Module) _js_map_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int64
 									goto l19
 								}
 								t66 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t66, v11)
+								m.___JS_FreeValueRT(t66, v11)
 							}
 						l19:
 						}
@@ -21101,7 +21101,7 @@ func (m *Module) _js_map_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int64
 							goto l0
 						}
 						t68 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t68, v13)
+						m.___JS_FreeValueRT(t68, v13)
 					}
 				l0:
 				}
@@ -21116,7 +21116,7 @@ func (m *Module) _js_map_constructor(v0 int32, v1 int64, v2, v3, v4 int32) int64
 					goto l20
 				}
 				t70 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t70, v1)
+				m.___JS_FreeValueRT(t70, v1)
 			}
 		l20:
 		}
@@ -21288,7 +21288,7 @@ func (m *Module) _js_typed_array_constructor(v0 int32, v1 int64, v2, v3, v4 int3
 													goto l9
 												}
 												t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t34, v8)
+												m.___JS_FreeValueRT(t34, v8)
 											}
 										l9:
 										}
@@ -21393,7 +21393,7 @@ func (m *Module) _js_typed_array_constructor(v0 int32, v1 int64, v2, v3, v4 int3
 								goto l8
 							}
 							t52 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t52, v5)
+							m.___JS_FreeValueRT(t52, v5)
 						}
 					l8:
 						if uint64(v1) < uint64(i64(-0x900000000)) {
@@ -21411,7 +21411,7 @@ func (m *Module) _js_typed_array_constructor(v0 int32, v1 int64, v2, v3, v4 int3
 					}
 				l14:
 					t54 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t54, v5)
+					m.___JS_FreeValueRT(t54, v5)
 				}
 			l13:
 				v7 = v1
@@ -21457,7 +21457,7 @@ l6:
 				goto l15
 			}
 			t62 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t62, v7)
+			m.___JS_FreeValueRT(t62, v7)
 		}
 	l15:
 	}
@@ -21610,7 +21610,7 @@ func (m *Module) _js_dataview_constructor(v0 int32, v1 int64, v2, v3 int32) int6
 					goto l1
 				}
 				t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t29, v1)
+				m.___JS_FreeValueRT(t29, v1)
 				goto l1
 			}
 		l0:
@@ -21703,7 +21703,7 @@ func (m *Module) _js_promise_resolve_function_call(v0 int32, v1, v2 int64, v3, v
 										goto l0
 									}
 									t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t22, v2)
+									m.___JS_FreeValueRT(t22, v2)
 									goto l0
 								}
 							l2:
@@ -21716,7 +21716,7 @@ func (m *Module) _js_promise_resolve_function_call(v0 int32, v1, v2 int64, v3, v
 								goto l1
 							}
 							t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t24, v2)
+							m.___JS_FreeValueRT(t24, v2)
 							goto l1
 						}
 					}
@@ -21738,7 +21738,7 @@ func (m *Module) _js_promise_resolve_function_call(v0 int32, v1, v2 int64, v3, v
 						goto l0
 					}
 					t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t29, v1)
+					m.___JS_FreeValueRT(t29, v1)
 					goto l0
 				} else {
 					p5 = i64(0x300000000)
@@ -21850,7 +21850,7 @@ func (m *Module) _js_async_generator_function_call(v0 int32, v1, v2 int64, v3, v
 							goto l1
 						}
 						t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t6, v2)
+						m.___JS_FreeValueRT(t6, v2)
 					}
 				l1:
 				}
@@ -21933,7 +21933,7 @@ func (m *Module) _js_promise_constructor(v0 int32, v1 int64, v2, v3 int32) int64
 										goto l2
 									}
 									t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t12, v4)
+									m.___JS_FreeValueRT(t12, v4)
 								} else {
 									t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
 									v3 = t13
@@ -21956,7 +21956,7 @@ func (m *Module) _js_promise_constructor(v0 int32, v1 int64, v2, v3 int32) int64
 												goto l3
 											}
 											t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t19, v6)
+											m.___JS_FreeValueRT(t19, v6)
 										}
 									l3:
 									}
@@ -21972,7 +21972,7 @@ func (m *Module) _js_promise_constructor(v0 int32, v1 int64, v2, v3 int32) int64
 											goto l2
 										}
 										t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t21, v4)
+										m.___JS_FreeValueRT(t21, v4)
 										goto l2
 									}
 									t22 := int64(load64(m.memory, uint64(uint32(v2))+16))
@@ -21987,7 +21987,7 @@ func (m *Module) _js_promise_constructor(v0 int32, v1 int64, v2, v3 int32) int64
 												goto l4
 											}
 											t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t24, v4)
+											m.___JS_FreeValueRT(t24, v4)
 										}
 									l4:
 									}
@@ -22004,7 +22004,7 @@ func (m *Module) _js_promise_constructor(v0 int32, v1 int64, v2, v3 int32) int64
 										goto l1
 									}
 									t27 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t27, v4)
+									m.___JS_FreeValueRT(t27, v4)
 									goto l1
 								}
 							}
@@ -22021,7 +22021,7 @@ func (m *Module) _js_promise_constructor(v0 int32, v1 int64, v2, v3 int32) int64
 										goto l5
 									}
 									t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t30, v5)
+									m.___JS_FreeValueRT(t30, v5)
 								}
 							l5:
 							}
@@ -22057,7 +22057,7 @@ func (m *Module) _js_promise_constructor(v0 int32, v1 int64, v2, v3 int32) int64
 				}
 			l7:
 				t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t34, v4)
+				m.___JS_FreeValueRT(t34, v4)
 			}
 		l6:
 			v5 = v1
@@ -22127,7 +22127,7 @@ func (m *Module) _js_weakref_constructor(v0 int32, v1 int64, v2, v3 int32) int64
 					goto l1
 				}
 				t11 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t11, v1)
+				m.___JS_FreeValueRT(t11, v1)
 				return i64(0x600000000)
 			}
 			v4 = p6
@@ -22216,7 +22216,7 @@ func (m *Module) _js_finrec_constructor(v0 int32, v1 int64, v2, v3 int32) int64 
 							goto l1
 						}
 						t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t19, v1)
+						m.___JS_FreeValueRT(t19, v1)
 						return i64(0x600000000)
 					}
 					v6 = p12
@@ -22260,7 +22260,7 @@ func (m *Module) XJS_SetClassProto(v0, v1 int32, v2 int64) {
 				goto l0
 			}
 			t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t5, v3)
+			m.___JS_FreeValueRT(t5, v3)
 		}
 	l0:
 	}
@@ -22281,7 +22281,7 @@ func (m *Module) _set_value(v0, v1 int32, v2 int64) {
 				return
 			}
 			t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t2, v3)
+			m.___JS_FreeValueRT(t2, v3)
 		}
 	}
 }
@@ -23408,7 +23408,7 @@ func (m *Module) XJS_AtomToCStringLen(v0, v1, v2 int32) int32 {
 				goto l0
 			}
 			t3 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t3, v3)
+			m.___JS_FreeValueRT(t3, v3)
 		} else {
 			v2 = i32(0)
 			if v1 == 0 {
@@ -23562,7 +23562,7 @@ func (m *Module) XJS_ToCStringLen2(v0, v1 int32, v2 int64, v3 int32) int32 {
 					goto l9
 				}
 				t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t18, v2)
+				m.___JS_FreeValueRT(t18, v2)
 			}
 		l9:
 		}
@@ -23864,7 +23864,7 @@ func (m *Module) _JS_ToStringInternal(v0 int32, v1 int64, v2 int32) int64 {
 						goto l11
 					}
 					t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t14, v1)
+					m.___JS_FreeValueRT(t14, v1)
 					goto l11
 				}
 			}
@@ -23906,7 +23906,7 @@ func (m *Module) _JS_ToStringInternal(v0 int32, v1 int64, v2 int32) int64 {
 									goto l15
 								}
 								t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t26, v9)
+								m.___JS_FreeValueRT(t26, v9)
 							}
 						l15:
 						}
@@ -23922,7 +23922,7 @@ func (m *Module) _JS_ToStringInternal(v0 int32, v1 int64, v2 int32) int64 {
 									goto l16
 								}
 								t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t29, v9)
+								m.___JS_FreeValueRT(t29, v9)
 							}
 						l16:
 						}
@@ -23946,7 +23946,7 @@ func (m *Module) _JS_ToStringInternal(v0 int32, v1 int64, v2 int32) int64 {
 						goto l11
 					}
 					t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t34, v1)
+					m.___JS_FreeValueRT(t34, v1)
 					goto l11
 				}
 			l14:
@@ -23966,7 +23966,7 @@ func (m *Module) _JS_ToStringInternal(v0 int32, v1 int64, v2 int32) int64 {
 				goto l11
 			}
 			t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t36, v1)
+			m.___JS_FreeValueRT(t36, v1)
 			goto l11
 		case 7:
 			t37 := m._strlen(i32(15052))
@@ -23998,7 +23998,7 @@ func (m *Module) _JS_ToStringInternal(v0 int32, v1 int64, v2 int32) int64 {
 				goto l11
 			}
 			t43 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t43, v1)
+			m.___JS_FreeValueRT(t43, v1)
 			goto l11
 		case 9:
 			t44 := m.___stack_pointer
@@ -24095,7 +24095,7 @@ func (m *Module) XJS_FreeCString(v0, v1 int32) {
 				goto l0
 			}
 			t1 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t1, int64(uint32(v1-i32(12)))|i64(-0x700000000))
+			m.___JS_FreeValueRT(t1, int64(uint32(v1-i32(12)))|i64(-0x700000000))
 		}
 	l0:
 	}
@@ -24341,7 +24341,7 @@ func (m *Module) _free_property(v0, v1, v2 int32) {
 					if v3 > i32(1) {
 						goto l4
 					}
-					m.X__JS_FreeValueRT(v0, int64(uint32(v2))|i64(-0x100000000))
+					m.___JS_FreeValueRT(v0, int64(uint32(v2))|i64(-0x100000000))
 				}
 			l4:
 			}
@@ -24357,7 +24357,7 @@ func (m *Module) _free_property(v0, v1, v2 int32) {
 			if v2 > i32(1) {
 				return
 			}
-			m.X__JS_FreeValueRT(v0, int64(uint32(v1))|i64(-0x100000000))
+			m.___JS_FreeValueRT(v0, int64(uint32(v1))|i64(-0x100000000))
 		}
 	} else {
 		t6 := int64(load64(m.memory, uint32(v1)))
@@ -24372,7 +24372,7 @@ func (m *Module) _free_property(v0, v1, v2 int32) {
 		if v1 > i32(1) {
 			return
 		}
-		m.X__JS_FreeValueRT(v0, v5)
+		m.___JS_FreeValueRT(v0, v5)
 	}
 }
 func (m *Module) _add_property(v0, v1, v2, v3 int32) int32 {
@@ -24640,10 +24640,6 @@ func (m *Module) XJS_SetOpaque(v0 int64, v1 int32) {
 	if uint64(v0) >= uint64(i64(-0x100000000)) {
 		store32(m.memory, uint64(uint32(int32(v0)))+24, uint32(v1))
 	}
-}
-func (m *Module) X__JS_FreeValue(v0 int32, v1 int64) {
-	t0 := int32(load32(m.memory, uint64(uint32(v0))+8))
-	m.X__JS_FreeValueRT(t0, v1)
 }
 func (m *Module) XJS_MarkValue(v0 int32, v1 int64, v2 int32) {
 	if uint64(v1) >= uint64(i64(-0x300000000)) {
@@ -25659,7 +25655,7 @@ func (m *Module) XJS_Throw(v0 int32, v1 int64) int64 {
 				goto l0
 			}
 			t3 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t3, v5)
+			m.___JS_FreeValueRT(t3, v5)
 		}
 	l0:
 	}
@@ -25729,7 +25725,7 @@ func (m *Module) _JS_ThrowError2(v0, v1, v2, v3, v4 int32) {
 						goto l0
 					}
 					t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t10, v7)
+					m.___JS_FreeValueRT(t10, v7)
 				}
 			l0:
 			}
@@ -25897,7 +25893,7 @@ func (m *Module) _JS_SetPrototypeInternal(v0 int32, v1, v2 int64, v3 int32) int3
 										goto l10
 									}
 									t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t25, int64(uint32(v3))|i64(-0x100000000))
+									m.___JS_FreeValueRT(t25, int64(uint32(v3))|i64(-0x100000000))
 								}
 							l10:
 							}
@@ -26136,7 +26132,7 @@ func (m *Module) _JS_CallFree(v0 int32, v1, v2 int64, v3, v4 int32) int64 {
 				goto l0
 			}
 			t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t2, v1)
+			m.___JS_FreeValueRT(t2, v1)
 		}
 	l0:
 	}
@@ -26240,7 +26236,7 @@ func (m *Module) _JS_ToBoolFree(v0 int32, v1 int64) int32 {
 				goto l7
 			}
 			t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t14, v1)
+			m.___JS_FreeValueRT(t14, v1)
 			goto l7
 		}
 	l11:
@@ -26255,7 +26251,7 @@ func (m *Module) _JS_ToBoolFree(v0 int32, v1 int64) int32 {
 			goto l7
 		}
 		t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t16, v1)
+		m.___JS_FreeValueRT(t16, v1)
 		return v2
 	}
 l7:
@@ -26359,7 +26355,7 @@ func (m *Module) _JS_OrdinaryIsInstanceOf(v0 int32, v1, v2 int64) int32 {
 										goto l5
 									}
 									t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t21, v1)
+									m.___JS_FreeValueRT(t21, v1)
 									goto l5
 								}
 								t16 := int32(load32(m.memory, uint64(uint32(v0))+224))
@@ -26389,7 +26385,7 @@ func (m *Module) _JS_OrdinaryIsInstanceOf(v0 int32, v1, v2 int64) int32 {
 										goto l5
 									}
 									t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t23, v1)
+									m.___JS_FreeValueRT(t23, v1)
 									goto l5
 								}
 							}
@@ -26420,7 +26416,7 @@ func (m *Module) _JS_OrdinaryIsInstanceOf(v0 int32, v1, v2 int64) int32 {
 				goto l0
 			}
 			t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t26, v2)
+			m.___JS_FreeValueRT(t26, v2)
 			return v5
 		}
 	l0:
@@ -26469,7 +26465,7 @@ func (m *Module) _JS_GetPrototypeFree(v0 int32, v1 int64) int64 {
 				goto l0
 			}
 			t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t2, v1)
+			m.___JS_FreeValueRT(t2, v1)
 		}
 	l0:
 	}
@@ -26836,7 +26832,7 @@ func (m *Module) _JS_GetPropertyValue(v0 int32, v1, v2 int64) int64 {
 						goto l15
 					}
 					t54 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t54, v2)
+					m.___JS_FreeValueRT(t54, v2)
 				}
 			l15:
 			}
@@ -26860,7 +26856,7 @@ func (m *Module) _JS_GetPropertyValue(v0 int32, v1, v2 int64) int64 {
 					goto l17
 				}
 				t57 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t57, v2)
+				m.___JS_FreeValueRT(t57, v2)
 			}
 		l17:
 		}
@@ -26902,7 +26898,7 @@ func (m *Module) _JS_AtomIsNumericIndex(v0, v1 int32) int32 {
 				goto l0
 			}
 			t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t2, v2)
+			m.___JS_FreeValueRT(t2, v2)
 			return i32(1)
 		}
 	l0:
@@ -27033,7 +27029,7 @@ func (m *Module) _JS_AtomIsNumericIndex1(v0, v1 int32) int64 {
 								goto l1
 							}
 							t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t16, v4)
+							m.___JS_FreeValueRT(t16, v4)
 							return v5
 						}
 						t17 := v2
@@ -27049,7 +27045,7 @@ func (m *Module) _JS_AtomIsNumericIndex1(v0, v1 int32) int64 {
 									goto l2
 								}
 								t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t20, v5)
+								m.___JS_FreeValueRT(t20, v5)
 							}
 						l2:
 						}
@@ -27067,7 +27063,7 @@ func (m *Module) _JS_AtomIsNumericIndex1(v0, v1 int32) int64 {
 							goto l0
 						}
 						t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t22, v4)
+						m.___JS_FreeValueRT(t22, v4)
 						goto l0
 					}
 				l3:
@@ -27852,7 +27848,7 @@ func (m *Module) _js_free_desc(v0, v1 int32) {
 				goto l0
 			}
 			t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t2, v2)
+			m.___JS_FreeValueRT(t2, v2)
 		}
 	l0:
 	}
@@ -27868,7 +27864,7 @@ func (m *Module) _js_free_desc(v0, v1 int32) {
 				goto l1
 			}
 			t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t5, v2)
+			m.___JS_FreeValueRT(t5, v2)
 		}
 	l1:
 	}
@@ -27884,7 +27880,7 @@ func (m *Module) _js_free_desc(v0, v1 int32) {
 				goto l2
 			}
 			t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t8, v2)
+			m.___JS_FreeValueRT(t8, v2)
 		}
 	l2:
 	}
@@ -28050,7 +28046,7 @@ func (m *Module) XJS_HasProperty(v0 int32, v1 int64, v2 int32) int32 {
 							goto l1
 						}
 						t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t21, v1)
+						m.___JS_FreeValueRT(t21, v1)
 						return v4
 					}
 				}
@@ -28066,7 +28062,7 @@ func (m *Module) XJS_HasProperty(v0 int32, v1 int64, v2 int32) int32 {
 			store32(m.memory, uint32(t9), uint32(v5-i32(1)))
 			if v5 <= i32(1) {
 				t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t10, int64(uint32(v3))|i64(-0x100000000))
+				m.___JS_FreeValueRT(t10, int64(uint32(v3))|i64(-0x100000000))
 			}
 			if v4 != 0 {
 				goto l1
@@ -28270,7 +28266,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 								goto l9
 							}
 							t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t16, v1)
+							m.___JS_FreeValueRT(t16, v1)
 							goto l9
 						}
 						if v11&i32(0x20000000) != 0 {
@@ -28329,7 +28325,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 								goto l9
 							}
 							t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t26, v3)
+							m.___JS_FreeValueRT(t26, v3)
 							goto l9
 						}
 					}
@@ -28351,7 +28347,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 										goto l17
 									}
 									t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t29, v3)
+									m.___JS_FreeValueRT(t29, v3)
 								}
 							l17:
 							}
@@ -28368,7 +28364,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 										goto l18
 									}
 									t31 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t31, v3)
+									m.___JS_FreeValueRT(t31, v3)
 								}
 							l18:
 							}
@@ -28421,7 +28417,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 												goto l9
 											}
 											t66 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t66, v3)
+											m.___JS_FreeValueRT(t66, v3)
 											goto l9
 										}
 										goto l22
@@ -28467,7 +28463,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 									store32(m.memory, uint32(t72), uint32(v2-i32(1)))
 									if v2 <= i32(1) {
 										t73 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t73, v1)
+										m.___JS_FreeValueRT(t73, v1)
 									}
 									if uint64(v3) < uint64(i64(-0x900000000)) {
 										goto l9
@@ -28480,7 +28476,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 										goto l9
 									}
 									t75 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t75, v3)
+									m.___JS_FreeValueRT(t75, v3)
 									goto l9
 								}
 								t43 := int32(load32(m.memory, uint32(v6)))
@@ -28502,7 +28498,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 								store32(m.memory, uint32(t50), uint32(v8-i32(1)))
 								if v8 <= i32(1) {
 									t51 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t51, v13)
+									m.___JS_FreeValueRT(t51, v13)
 								}
 								if v6 < i32(0) {
 									if uint64(v3) < uint64(i64(-0x900000000)) {
@@ -28516,7 +28512,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 										goto l9
 									}
 									t77 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t77, v3)
+									m.___JS_FreeValueRT(t77, v3)
 									goto l9
 								}
 								if v6 != 0 {
@@ -28543,7 +28539,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 													goto l35
 												}
 												t85 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t85, v1)
+												m.___JS_FreeValueRT(t85, v1)
 											}
 										l35:
 										}
@@ -28560,7 +28556,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 											goto l9
 										}
 										t88 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t88, v1)
+										m.___JS_FreeValueRT(t88, v1)
 										goto l9
 									}
 									t89 := int64(load64(m.memory, uint64(uint32(v10))+24))
@@ -28575,7 +28571,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 												goto l36
 											}
 											t91 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t91, v13)
+											m.___JS_FreeValueRT(t91, v13)
 										}
 									l36:
 									}
@@ -28599,7 +28595,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 										goto l9
 									}
 									t95 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t95, v3)
+									m.___JS_FreeValueRT(t95, v3)
 									goto l9
 								}
 							}
@@ -28690,7 +28686,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 						goto l8
 					}
 					t99 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t99, v3)
+					m.___JS_FreeValueRT(t99, v3)
 					goto l8
 				}
 				t100 := int32(load16(m.memory, uint64(uint32(v7))+10))
@@ -28714,7 +28710,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 							goto l37
 						}
 						t104 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t104, v1)
+						m.___JS_FreeValueRT(t104, v1)
 					}
 				l37:
 				}
@@ -28735,7 +28731,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 							goto l38
 						}
 						t106 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t106, v3)
+						m.___JS_FreeValueRT(t106, v3)
 					}
 				l38:
 				}
@@ -28756,7 +28752,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 							goto l39
 						}
 						t110 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t110, v3)
+						m.___JS_FreeValueRT(t110, v3)
 					}
 				l39:
 				}
@@ -28779,7 +28775,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 						goto l9
 					}
 					t114 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t114, v3)
+					m.___JS_FreeValueRT(t114, v3)
 					goto l9
 				}
 				if v6 == 0 {
@@ -28799,7 +28795,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 								goto l41
 							}
 							t118 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t118, v1)
+							m.___JS_FreeValueRT(t118, v1)
 						}
 					l41:
 					}
@@ -28824,7 +28820,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 						goto l9
 					}
 					t123 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t123, v3)
+					m.___JS_FreeValueRT(t123, v3)
 					goto l9
 				}
 				t124 := int64(load64(m.memory, uint64(uint32(v10))+32))
@@ -28839,7 +28835,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 							goto l42
 						}
 						t126 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t126, v1)
+						m.___JS_FreeValueRT(t126, v1)
 					}
 				l42:
 				}
@@ -28855,7 +28851,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 							goto l43
 						}
 						t129 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t129, v1)
+						m.___JS_FreeValueRT(t129, v1)
 					}
 				l43:
 				}
@@ -28869,7 +28865,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 							goto l44
 						}
 						t131 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t131, v3)
+						m.___JS_FreeValueRT(t131, v3)
 					}
 				l44:
 				}
@@ -28918,7 +28914,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 					goto l9
 				}
 				t138 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t138, v3)
+				m.___JS_FreeValueRT(t138, v3)
 				goto l9
 			}
 		l40:
@@ -28935,7 +28931,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 				goto l9
 			}
 			t141 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t141, v3)
+			m.___JS_FreeValueRT(t141, v3)
 			goto l9
 		}
 	l8:
@@ -28955,7 +28951,7 @@ func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 in
 					goto l45
 				}
 				t143 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t143, v3)
+				m.___JS_FreeValueRT(t143, v3)
 			}
 		l45:
 		}
@@ -29011,7 +29007,7 @@ func (m *Module) _set_array_length(v0, v1 int32, v2 int64, v3 int32) int32 {
 									goto l1
 								}
 								t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t15, v2)
+								m.___JS_FreeValueRT(t15, v2)
 							}
 						l1:
 						}
@@ -29212,7 +29208,7 @@ func (m *Module) _call_setter(v0, v1 int32, v2, v3 int64, v4 int32) int32 {
 						goto l0
 					}
 					t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t5, v3)
+					m.___JS_FreeValueRT(t5, v3)
 				}
 			l0:
 			}
@@ -29232,7 +29228,7 @@ func (m *Module) _call_setter(v0, v1 int32, v2, v3 int64, v4 int32) int32 {
 				goto l2
 			}
 			t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t7, v2)
+			m.___JS_FreeValueRT(t7, v2)
 			goto l2
 		}
 	l1:
@@ -29247,7 +29243,7 @@ func (m *Module) _call_setter(v0, v1 int32, v2, v3 int64, v4 int32) int32 {
 					goto l3
 				}
 				t9 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t9, v3)
+				m.___JS_FreeValueRT(t9, v3)
 			}
 		l3:
 		}
@@ -29315,7 +29311,7 @@ func (m *Module) _JS_SetPropertyValue(v0 int32, v1, v2, v3 int64, v4 int32) int3
 									goto l14
 								}
 								t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t6, v1)
+								m.___JS_FreeValueRT(t6, v1)
 								goto l14
 							}
 							if v6 != v8 {
@@ -29456,7 +29452,7 @@ func (m *Module) _JS_SetPropertyValue(v0 int32, v1, v2, v3 int64, v4 int32) int3
 								goto l14
 							}
 							t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t32, v1)
+							m.___JS_FreeValueRT(t32, v1)
 							goto l14
 						case 7:
 							t33 := int32(load32(m.memory, uint64(uint32(v5))+32))
@@ -29482,7 +29478,7 @@ func (m *Module) _JS_SetPropertyValue(v0 int32, v1, v2, v3 int64, v4 int32) int3
 								goto l14
 							}
 							t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t39, v1)
+							m.___JS_FreeValueRT(t39, v1)
 							goto l14
 						case 19:
 							t40 := m._JS_ToUint8ClampFree(v0, v7+i32(20), v3)
@@ -29580,7 +29576,7 @@ func (m *Module) _JS_SetPropertyValue(v0 int32, v1, v2, v3 int64, v4 int32) int3
 				goto l16
 			}
 			t63 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t63, v2)
+			m.___JS_FreeValueRT(t63, v2)
 		}
 	l16:
 		if v5 != 0 {
@@ -29601,7 +29597,7 @@ func (m *Module) _JS_SetPropertyValue(v0 int32, v1, v2, v3 int64, v4 int32) int3
 			goto l14
 		}
 		t66 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t66, v3)
+		m.___JS_FreeValueRT(t66, v3)
 	}
 l14:
 	m.___stack_pointer = v7 + i32(32)
@@ -29667,7 +29663,7 @@ func (m *Module) _add_fast_array_element(v0, v1 int32, v2 int64, v3 int32) int32
 						goto l1
 					}
 					t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t7, v2)
+					m.___JS_FreeValueRT(t7, v2)
 				}
 			l1:
 			}
@@ -29695,7 +29691,7 @@ func (m *Module) _add_fast_array_element(v0, v1 int32, v2 int64, v3 int32) int32
 					goto l2
 				}
 				t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t13, v2)
+				m.___JS_FreeValueRT(t13, v2)
 				return i32(-1)
 			}
 		}
@@ -29860,7 +29856,7 @@ func (m *Module) _JS_CreateProperty(v0, v1, v2 int32, v3, v4, v5 int64, v6 int32
 						goto l0
 					}
 					t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t32, v13)
+					m.___JS_FreeValueRT(t32, v13)
 				}
 			l0:
 			}
@@ -30144,7 +30140,7 @@ func (m *Module) _JS_ToBigInt64Free(v0, v1 int32, v2 int64) int32 {
 				goto l0
 			}
 			t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t5, v6)
+			m.___JS_FreeValueRT(t5, v6)
 		}
 	l0:
 	} else {
@@ -30198,7 +30194,7 @@ l0:
 					goto l8
 				}
 				t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t4, v1)
+				m.___JS_FreeValueRT(t4, v1)
 			}
 		l8:
 		}
@@ -30215,7 +30211,7 @@ l0:
 					goto l10
 				}
 				t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t7, v1)
+				m.___JS_FreeValueRT(t7, v1)
 			}
 		l10:
 		}
@@ -30234,7 +30230,7 @@ l0:
 					goto l11
 				}
 				t11 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t11, v1)
+				m.___JS_FreeValueRT(t11, v1)
 			}
 		l11:
 		}
@@ -30276,7 +30272,7 @@ l0:
 							goto l13
 						}
 						t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t22, v1)
+						m.___JS_FreeValueRT(t22, v1)
 						goto l13
 					}
 				l12:
@@ -30293,7 +30289,7 @@ l0:
 			goto l1
 		}
 		t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t24, int64(uint32(v2-i32(12)))|i64(-0x700000000))
+		m.___JS_FreeValueRT(t24, int64(uint32(v2-i32(12)))|i64(-0x700000000))
 		goto l1
 	case 10, 11:
 		v6 = v1 & i64(0xffffffff)
@@ -30310,7 +30306,7 @@ l0:
 			goto l1
 		}
 		t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t26, v1)
+		m.___JS_FreeValueRT(t26, v1)
 		goto l1
 	}
 l9:
@@ -30399,7 +30395,7 @@ func (m *Module) _JS_ToArrayLengthFree(v0, v1 int32, v2 int64, v3 int32) int32 {
 						goto l2
 					}
 					t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t14, v2)
+					m.___JS_FreeValueRT(t14, v2)
 					goto l2
 				}
 			l3:
@@ -30617,7 +30613,7 @@ func (m *Module) _delete_property(v0, v1, v2 int32) int32 {
 							goto l9
 						}
 						t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t28, v17)
+						m.___JS_FreeValueRT(t28, v17)
 					}
 				l9:
 				} else {
@@ -31008,7 +31004,7 @@ l1:
 				goto l7
 			}
 			t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t4, v1)
+			m.___JS_FreeValueRT(t4, v1)
 		}
 	l7:
 	}
@@ -31092,7 +31088,7 @@ func (m *Module) _remove_global_object_property(v0, v1, v2, v3 int32) int32 {
 				goto l0
 			}
 			t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t8, v5)
+			m.___JS_FreeValueRT(t8, v5)
 		}
 	l0:
 	}
@@ -31132,7 +31128,7 @@ func (m *Module) _free_var_ref(v0, v1 int32) {
 					if v2 > i32(1) {
 						goto l1
 					}
-					m.X__JS_FreeValueRT(v0, v4)
+					m.___JS_FreeValueRT(v0, v4)
 				} else {
 					t5 := int32(load32(m.memory, uint64(uint32(v1))+20))
 					v2 = t5
@@ -31505,7 +31501,7 @@ func (m *Module) XJS_SetPropertyInt64(v0 int32, v1, v2, v3 int64) int32 {
 				goto l0
 			}
 			t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t4, v3)
+			m.___JS_FreeValueRT(t4, v3)
 			return i32(-1)
 		}
 	l0:
@@ -31573,7 +31569,7 @@ func (m *Module) XJS_SetPropertyStr(v0 int32, v1 int64, v2 int32, v3 int64) int3
 				goto l0
 			}
 			t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t4, v3)
+			m.___JS_FreeValueRT(t4, v3)
 			return i32(-1)
 		}
 	l0:
@@ -31726,7 +31722,7 @@ func (m *Module) _js_strict_eq2(v0 int32, v1, v2 int64, v3 int32) int32 {
 						goto l11
 					}
 					t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t16, v1)
+					m.___JS_FreeValueRT(t16, v1)
 				}
 			l11:
 			}
@@ -31741,7 +31737,7 @@ func (m *Module) _js_strict_eq2(v0 int32, v1, v2 int64, v3 int32) int32 {
 				goto l10
 			}
 			t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t18, v2)
+			m.___JS_FreeValueRT(t18, v2)
 			goto l10
 		}
 	l9:
@@ -31953,7 +31949,7 @@ func (m *Module) _JS_DefinePropertyValueValue(v0 int32, v1, v2, v3 int64, v4 int
 				goto l0
 			}
 			t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t2, v2)
+			m.___JS_FreeValueRT(t2, v2)
 		}
 	l0:
 	}
@@ -31975,7 +31971,7 @@ func (m *Module) _JS_DefinePropertyValueValue(v0 int32, v1, v2, v3 int64, v4 int
 				goto l1
 			}
 			t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t5, v3)
+			m.___JS_FreeValueRT(t5, v3)
 			return i32(-1)
 		}
 	l1:
@@ -32029,7 +32025,7 @@ func (m *Module) XJS_DefinePropertyGetSet(v0 int32, v1 int64, v2 int32, v3, v4 i
 				goto l0
 			}
 			t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t2, v3)
+			m.___JS_FreeValueRT(t2, v3)
 		}
 	l0:
 	}
@@ -32043,7 +32039,7 @@ func (m *Module) XJS_DefinePropertyGetSet(v0 int32, v1 int64, v2 int32, v3, v4 i
 				goto l1
 			}
 			t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t4, v4)
+			m.___JS_FreeValueRT(t4, v4)
 		}
 	l1:
 	}
@@ -32070,7 +32066,7 @@ func (m *Module) XJS_DeleteProperty(v0 int32, v1 int64, v2, v3 int32) int32 {
 						goto l0
 					}
 					t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t4, v1)
+					m.___JS_FreeValueRT(t4, v1)
 				}
 			l0:
 			}
@@ -32154,7 +32150,7 @@ func (m *Module) _JS_ToObject(v0 int32, v1 int64) int64 {
 					goto l7
 				}
 				t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t12, v1)
+				m.___JS_FreeValueRT(t12, v1)
 				return v5
 			case 8, 15:
 				if uint64(v1) >= uint64(i64(-0x900000000)) {
@@ -32706,7 +32702,7 @@ func (m *Module) _string_buffer_concat_value(v0 int32, v1 int64) int32 {
 						goto l1
 					}
 					t19 := int32(load32(m.memory, uint64(uint32(t17))+8))
-					m.X__JS_FreeValueRT(t19, v1)
+					m.___JS_FreeValueRT(t19, v1)
 					return v3
 				}
 				t1 := v0
@@ -32785,7 +32781,7 @@ func (m *Module) _JS_ToPrimitiveFree(v0 int32, v1 int64, v2 int32) int64 {
 									goto l2
 								}
 								t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t10, v8)
+								m.___JS_FreeValueRT(t10, v8)
 							}
 						l2:
 						}
@@ -32798,7 +32794,7 @@ func (m *Module) _JS_ToPrimitiveFree(v0 int32, v1 int64, v2 int32) int64 {
 						store32(m.memory, uint32(v3), uint32(v2-i32(1)))
 						if v2 <= i32(1) {
 							t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t12, v1)
+							m.___JS_FreeValueRT(t12, v1)
 						}
 						if uint64(v7) < uint64(i64(-0x100000000)) {
 							goto l3
@@ -32809,7 +32805,7 @@ func (m *Module) _JS_ToPrimitiveFree(v0 int32, v1 int64, v2 int32) int64 {
 						store32(m.memory, uint32(v3), uint32(v2-i32(1)))
 						if v2 <= i32(1) {
 							t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t14, v7)
+							m.___JS_FreeValueRT(t14, v7)
 						}
 						_ = m.XJS_ThrowTypeError(v0, i32(10760), i32(0))
 						v7 = i64(0x600000000)
@@ -32877,7 +32873,7 @@ func (m *Module) _JS_ToPrimitiveFree(v0 int32, v1 int64, v2 int32) int64 {
 									store32(m.memory, uint32(v4), uint32(v2-i32(1)))
 									if v2 <= i32(1) {
 										t31 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t31, v8)
+										m.___JS_FreeValueRT(t31, v8)
 									}
 									if v7&i64(-0x100000000) == i64(0x600000000) {
 										goto l1
@@ -32891,7 +32887,7 @@ func (m *Module) _JS_ToPrimitiveFree(v0 int32, v1 int64, v2 int32) int64 {
 											goto l3
 										}
 										t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t38, v1)
+										m.___JS_FreeValueRT(t38, v1)
 										goto l3
 									}
 									v4 = int32(v7) - i32(4)
@@ -32916,7 +32912,7 @@ func (m *Module) _JS_ToPrimitiveFree(v0 int32, v1 int64, v2 int32) int64 {
 						}
 					l7:
 						t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t34, v8)
+						m.___JS_FreeValueRT(t34, v8)
 					}
 				l4:
 					v2 = i32(1)
@@ -32939,7 +32935,7 @@ func (m *Module) _JS_ToPrimitiveFree(v0 int32, v1 int64, v2 int32) int64 {
 				goto l3
 			}
 			t40 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t40, v1)
+			m.___JS_FreeValueRT(t40, v1)
 		}
 	l3:
 	} else {
@@ -33481,7 +33477,7 @@ func (m *Module) _js_print_value(v0 int32, v1 int64) {
 						if v0 > i32(1) {
 							goto l16
 						}
-						m.X__JS_FreeValueRT(t7, v16)
+						m.___JS_FreeValueRT(t7, v16)
 						goto l16
 					}
 				l15:
@@ -33970,7 +33966,7 @@ func (m *Module) _js_print_value(v0 int32, v1 int64) {
 															goto l43
 														}
 														t137 := int32(load32(m.memory, uint64(uint32(t135))+8))
-														m.X__JS_FreeValueRT(t137, int64(uint32(v2-i32(12)))|i64(-0x700000000))
+														m.___JS_FreeValueRT(t137, int64(uint32(v2-i32(12)))|i64(-0x700000000))
 													}
 												l43:
 												} else {
@@ -34033,7 +34029,7 @@ func (m *Module) _js_print_value(v0 int32, v1 int64) {
 															goto l44
 														}
 														t162 := int32(load32(m.memory, uint64(uint32(t160))+8))
-														m.X__JS_FreeValueRT(t162, int64(uint32(v2-i32(12)))|i64(-0x700000000))
+														m.___JS_FreeValueRT(t162, int64(uint32(v2-i32(12)))|i64(-0x700000000))
 													}
 												l44:
 												}
@@ -34066,7 +34062,7 @@ func (m *Module) _js_print_value(v0 int32, v1 int64) {
 														if v2 > i32(1) {
 															goto l46
 														}
-														m.X__JS_FreeValueRT(t166, v1)
+														m.___JS_FreeValueRT(t166, v1)
 													}
 												l46:
 												}
@@ -35129,7 +35125,7 @@ func (m *Module) _JS_IteratorClose(v0 int32, v1 int64, v2 int32) int32 {
 					goto l1
 				}
 				t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t8, v1)
+				m.___JS_FreeValueRT(t8, v1)
 				goto l1
 			}
 		l0:
@@ -35201,7 +35197,7 @@ func (m *Module) _js_closure(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 						goto l0
 					}
 					t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t20, v1)
+					m.___JS_FreeValueRT(t20, v1)
 					goto l0
 				} else {
 					if v2&i32(1) == 0 {
@@ -35229,7 +35225,7 @@ func (m *Module) _js_closure(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 				goto l0
 			}
 			t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t24, v1)
+			m.___JS_FreeValueRT(t24, v1)
 			return i64(0x600000000)
 		}
 	}
@@ -35478,7 +35474,7 @@ func (m *Module) _js_create_array(v0, v1, v2 int32) int64 {
 					}
 				}
 				t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t12, v3)
+				m.___JS_FreeValueRT(t12, v3)
 				goto l2
 			}
 		l1:
@@ -35696,7 +35692,7 @@ func (m *Module) _JS_EvalObject(v0 int32, v1, v2 int64, v3, v4 int32) int64 {
 			goto l0
 		}
 		t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t5, int64(uint32(v6-i32(12)))|i64(-0x700000000))
+		m.___JS_FreeValueRT(t5, int64(uint32(v6-i32(12)))|i64(-0x700000000))
 	} else {
 		if uint64(v2) < uint64(i64(-0x900000000)) {
 			goto l0
@@ -35874,7 +35870,7 @@ func (m *Module) _free_arg_list(v0, v1, v2 int32) {
 						goto l0
 					}
 					t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t2, v6)
+					m.___JS_FreeValueRT(t2, v6)
 				}
 			l0:
 			}
@@ -35999,7 +35995,7 @@ func (m *Module) _js_new_promise_capability(v0, v1 int32, v2 int64) int64 {
 							goto l7
 						}
 						t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t20, v8)
+						m.___JS_FreeValueRT(t20, v8)
 					}
 				l7:
 				}
@@ -36018,7 +36014,7 @@ func (m *Module) _js_new_promise_capability(v0, v1 int32, v2 int64) int64 {
 			}
 		l5:
 			t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t22, v8)
+			m.___JS_FreeValueRT(t22, v8)
 		}
 	l4:
 		v9 = v2
@@ -36067,7 +36063,7 @@ func (m *Module) _js_for_of_start(v0, v1, v2 int32) int32 {
 						goto l0
 					}
 					t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t4, v3)
+					m.___JS_FreeValueRT(t4, v3)
 				}
 			l0:
 			}
@@ -36114,7 +36110,7 @@ func (m *Module) _JS_IteratorNext(v0 int32, v1, v2 int64, v3 int32) int64 {
 								goto l1
 							}
 							t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t4, v1)
+							m.___JS_FreeValueRT(t4, v1)
 						}
 					l1:
 					}
@@ -36136,7 +36132,7 @@ func (m *Module) _JS_IteratorNext(v0 int32, v1, v2 int64, v3 int32) int64 {
 						goto l2
 					}
 					t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t7, v1)
+					m.___JS_FreeValueRT(t7, v1)
 					goto l2
 				}
 				t8 := m._JS_ToBoolFree(v0, v2)
@@ -36159,7 +36155,7 @@ func (m *Module) _JS_IteratorNext(v0 int32, v1, v2 int64, v3 int32) int64 {
 					goto l0
 				}
 				t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t12, v1)
+				m.___JS_FreeValueRT(t12, v1)
 				goto l0
 			}
 		l2:
@@ -36277,7 +36273,7 @@ func (m *Module) _js_method_set_home_object(v0 int32, v1, v2 int64) {
 							goto l4
 						}
 						t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t5, int64(uint32(v3))|i64(-0x100000000))
+						m.___JS_FreeValueRT(t5, int64(uint32(v3))|i64(-0x100000000))
 					}
 				l4:
 				}
@@ -36349,7 +36345,7 @@ func (m *Module) _JS_ConcatString3(v0, v1 int32, v2 int64, v3 int32) int64 {
 						goto l0
 					}
 					t3 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t3, v2)
+					m.___JS_FreeValueRT(t3, v2)
 				}
 			l0:
 			}
@@ -36393,7 +36389,7 @@ func (m *Module) _JS_ConcatString3(v0, v1 int32, v2 int64, v3 int32) int64 {
 				goto l1
 			}
 			t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t12, v10)
+			m.___JS_FreeValueRT(t12, v10)
 			goto l1
 		}
 		v5 = v4 + i32(8)
@@ -36411,7 +36407,7 @@ func (m *Module) _JS_ConcatString3(v0, v1 int32, v2 int64, v3 int32) int64 {
 					goto l2
 				}
 				t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t18, v10)
+				m.___JS_FreeValueRT(t18, v10)
 			}
 		l2:
 		}
@@ -37014,7 +37010,7 @@ func (m *Module) _js_closure2(v0 int32, v1 int64, v2, v3, v4, v5 int32) int64 {
 					goto l44
 				}
 				t135 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t135, v1)
+				m.___JS_FreeValueRT(t135, v1)
 				goto l44
 			}
 		l0:
@@ -37069,7 +37065,7 @@ func (m *Module) _js_create_array_iterator(v0 int32, v1 int64, v2, v3, v4 int32)
 					goto l1
 				}
 				t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t8, v1)
+				m.___JS_FreeValueRT(t8, v1)
 			}
 		l1:
 		}
@@ -37083,7 +37079,7 @@ func (m *Module) _js_create_array_iterator(v0 int32, v1 int64, v2, v3, v4 int32)
 					goto l2
 				}
 				t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t10, v5)
+				m.___JS_FreeValueRT(t10, v5)
 			}
 		l2:
 		}
@@ -37125,7 +37121,7 @@ func (m *Module) _JS_GetIterator(v0 int32, v1 int64, v2 int32) int64 {
 						goto l2
 					}
 					t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t4, v3)
+					m.___JS_FreeValueRT(t4, v3)
 				}
 			l2:
 			}
@@ -37153,7 +37149,7 @@ func (m *Module) _JS_GetIterator(v0 int32, v1 int64, v2 int32) int64 {
 							goto l3
 						}
 						t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t10, v5)
+						m.___JS_FreeValueRT(t10, v5)
 						goto l3
 					}
 					t11 := m.Xjs_mallocz(v0, i32(16))
@@ -37182,7 +37178,7 @@ func (m *Module) _JS_GetIterator(v0 int32, v1 int64, v2 int32) int64 {
 								goto l4
 							}
 							t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t14, v1)
+							m.___JS_FreeValueRT(t14, v1)
 						}
 					l4:
 					}
@@ -37197,7 +37193,7 @@ func (m *Module) _JS_GetIterator(v0 int32, v1 int64, v2 int32) int64 {
 						goto l3
 					}
 					t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t16, v5)
+					m.___JS_FreeValueRT(t16, v5)
 				}
 			l3:
 			}
@@ -37212,7 +37208,7 @@ func (m *Module) _JS_GetIterator(v0 int32, v1 int64, v2 int32) int64 {
 				goto l0
 			}
 			t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t18, v4)
+			m.___JS_FreeValueRT(t18, v4)
 			return v3
 		}
 	l1:
@@ -37261,7 +37257,7 @@ func (m *Module) _JS_GetIterator(v0 int32, v1 int64, v2 int32) int64 {
 				store32(m.memory, uint32(v6), uint32(v2-i32(1)))
 				if v2 <= i32(1) {
 					t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t30, v3)
+					m.___JS_FreeValueRT(t30, v3)
 				}
 				return t28
 			}
@@ -37275,7 +37271,7 @@ func (m *Module) _JS_GetIterator(v0 int32, v1 int64, v2 int32) int64 {
 			goto l5
 		}
 		t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t32, v3)
+		m.___JS_FreeValueRT(t32, v3)
 	}
 l5:
 	_ = m.XJS_ThrowTypeError(v0, i32(12105), i32(0))
@@ -37342,7 +37338,7 @@ func (m *Module) _js_array_iterator_next(v0 int32, v1 int64, v2, v3, v4, v5 int3
 									goto l2
 								}
 								t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t14, v6)
+								m.___JS_FreeValueRT(t14, v6)
 							}
 						l2:
 						}
@@ -37417,7 +37413,7 @@ func (m *Module) _js_array_iterator_next(v0 int32, v1 int64, v2, v3, v4, v5 int3
 								goto l5
 							}
 							t27 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t27, v6)
+							m.___JS_FreeValueRT(t27, v6)
 						}
 					l5:
 					}
@@ -37432,7 +37428,7 @@ func (m *Module) _js_array_iterator_next(v0 int32, v1 int64, v2, v3, v4, v5 int3
 						goto l4
 					}
 					t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t29, v7)
+					m.___JS_FreeValueRT(t29, v7)
 					goto l4
 				}
 			l3:
@@ -37613,7 +37609,7 @@ func (m *Module) _JS_ConcatString(v0 int32, v1, v2 int64) int64 {
 							goto l0
 						}
 						t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t2, v1)
+						m.___JS_FreeValueRT(t2, v1)
 					}
 				l0:
 				}
@@ -37632,7 +37628,7 @@ func (m *Module) _JS_ConcatString(v0 int32, v1, v2 int64) int64 {
 					goto l2
 				}
 				t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t4, v2)
+				m.___JS_FreeValueRT(t4, v2)
 				return i64(0x600000000)
 			}
 		l1:
@@ -37654,7 +37650,7 @@ func (m *Module) _JS_ConcatString(v0 int32, v1, v2 int64) int64 {
 								goto l3
 							}
 							t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t7, v2)
+							m.___JS_FreeValueRT(t7, v2)
 						}
 					l3:
 					}
@@ -37688,7 +37684,7 @@ func (m *Module) _JS_ConcatString(v0 int32, v1, v2 int64) int64 {
 					store32(m.memory, uint32(v4), uint32(v3-i32(1)))
 					if v3 <= i32(1) {
 						t11 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t11, v5)
+						m.___JS_FreeValueRT(t11, v5)
 					}
 					return v1
 				}
@@ -37721,7 +37717,7 @@ func (m *Module) _JS_ConcatString(v0 int32, v1, v2 int64) int64 {
 						goto l2
 					}
 					t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t17, v1)
+					m.___JS_FreeValueRT(t17, v1)
 					return i64(0x600000000)
 				}
 				t18 := int64(load64(m.memory, uint64(uint32(v3))+16))
@@ -37744,7 +37740,7 @@ func (m *Module) _JS_ConcatString(v0 int32, v1, v2 int64) int64 {
 					goto l2
 				}
 				t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t22, v1)
+				m.___JS_FreeValueRT(t22, v1)
 				return v6
 			} else {
 				v3 = int32(v1)
@@ -37757,7 +37753,7 @@ func (m *Module) _JS_ConcatString(v0 int32, v1, v2 int64) int64 {
 					store32(m.memory, uint32(v4), uint32(v3-i32(1)))
 					if v3 <= i32(1) {
 						t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t25, v1)
+						m.___JS_FreeValueRT(t25, v1)
 					}
 					return v5
 				}
@@ -37819,7 +37815,7 @@ func (m *Module) _JS_ConcatString(v0 int32, v1, v2 int64) int64 {
 					goto l2
 				}
 				t37 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t37, v5)
+				m.___JS_FreeValueRT(t37, v5)
 				return v6
 			}
 		l6:
@@ -37832,7 +37828,7 @@ func (m *Module) _JS_ConcatString(v0 int32, v1, v2 int64) int64 {
 			goto l2
 		}
 		t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t39, v5)
+		m.___JS_FreeValueRT(t39, v5)
 		return i64(0x600000000)
 	}
 l2:
@@ -37922,7 +37918,7 @@ func (m *Module) _js_add_slow(v0, v1 int32) int32 {
 								goto l2
 							}
 							t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t13, v2)
+							m.___JS_FreeValueRT(t13, v2)
 							goto l2
 						}
 						t14 := m._JS_ToPrimitiveFree(v0, v2, i32(2))
@@ -37953,7 +37949,7 @@ func (m *Module) _js_add_slow(v0, v1 int32) int32 {
 							goto l2
 						}
 						t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t18, v3)
+						m.___JS_FreeValueRT(t18, v3)
 						goto l2
 					}
 				l3:
@@ -37975,7 +37971,7 @@ func (m *Module) _js_add_slow(v0, v1 int32) int32 {
 								goto l2
 							}
 							t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t21, v2)
+							m.___JS_FreeValueRT(t21, v2)
 							goto l2
 						}
 						t22 := m._JS_ToNumberHintFree(v0, v2, i32(1))
@@ -37993,7 +37989,7 @@ func (m *Module) _js_add_slow(v0, v1 int32) int32 {
 								goto l2
 							}
 							t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t24, v3)
+							m.___JS_FreeValueRT(t24, v3)
 							goto l2
 						}
 						v6 = int32(int64(uint64(v3) >> 32))
@@ -38075,7 +38071,7 @@ func (m *Module) _js_add_slow(v0, v1 int32) int32 {
 											goto l4
 										}
 										t40 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t40, v3)
+										m.___JS_FreeValueRT(t40, v3)
 									}
 								l4:
 								}
@@ -38089,7 +38085,7 @@ func (m *Module) _js_add_slow(v0, v1 int32) int32 {
 											goto l5
 										}
 										t42 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t42, v2)
+										m.___JS_FreeValueRT(t42, v2)
 									}
 								l5:
 								}
@@ -38139,7 +38135,7 @@ func (m *Module) _js_add_slow(v0, v1 int32) int32 {
 							goto l2
 						}
 						t55 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t55, v2)
+						m.___JS_FreeValueRT(t55, v2)
 						goto l2
 					}
 				}
@@ -38366,7 +38362,7 @@ func (m *Module) _js_unary_arith_slow(v0, v1, v2 int32) int32 {
 							goto l0
 						}
 						t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t14, v3)
+						m.___JS_FreeValueRT(t14, v3)
 						goto l0
 					case 2, 3:
 						store32(m.memory, uint64(uint32(v7))+20, uint32(i32(1)))
@@ -38392,7 +38388,7 @@ func (m *Module) _js_unary_arith_slow(v0, v1, v2 int32) int32 {
 								goto l19
 							}
 							t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t18, v3)
+							m.___JS_FreeValueRT(t18, v3)
 						}
 					l19:
 					}
@@ -38659,7 +38655,7 @@ func (m *Module) _js_binary_logic_slow(v0, v1, v2 int32) int32 {
 					}
 				}
 				t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t24, v18)
+				m.___JS_FreeValueRT(t24, v18)
 				goto l12
 			}
 		l9:
@@ -38981,7 +38977,7 @@ func (m *Module) _js_binary_logic_slow(v0, v1, v2 int32) int32 {
 						goto l38
 					}
 					t80 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t80, v17)
+					m.___JS_FreeValueRT(t80, v17)
 				}
 			l38:
 			}
@@ -38995,7 +38991,7 @@ func (m *Module) _js_binary_logic_slow(v0, v1, v2 int32) int32 {
 						goto l39
 					}
 					t82 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t82, v18)
+					m.___JS_FreeValueRT(t82, v18)
 				}
 			l39:
 			}
@@ -39129,7 +39125,7 @@ func (m *Module) _js_relational_slow(v0, v1, v2 int32) int32 {
 										goto l9
 									}
 									t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t16, v4)
+									m.___JS_FreeValueRT(t16, v4)
 								}
 							l9:
 							}
@@ -39144,7 +39140,7 @@ func (m *Module) _js_relational_slow(v0, v1, v2 int32) int32 {
 								goto l10
 							}
 							t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t18, v3)
+							m.___JS_FreeValueRT(t18, v3)
 							goto l10
 						}
 					l2:
@@ -39316,7 +39312,7 @@ func (m *Module) _js_relational_slow(v0, v1, v2 int32) int32 {
 									goto l21
 								}
 								t37 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t37, v4)
+								m.___JS_FreeValueRT(t37, v4)
 							}
 						l21:
 						}
@@ -39332,7 +39328,7 @@ func (m *Module) _js_relational_slow(v0, v1, v2 int32) int32 {
 							goto l10
 						}
 						t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t39, v3)
+						m.___JS_FreeValueRT(t39, v3)
 						goto l10
 					}
 				l15:
@@ -39399,7 +39395,7 @@ func (m *Module) _js_relational_slow(v0, v1, v2 int32) int32 {
 			}
 		}
 		t49 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t49, v3)
+		m.___JS_FreeValueRT(t49, v3)
 	}
 l0:
 	store64(m.memory, uint32(v5), uint64(i64(0x300000000)))
@@ -39682,7 +39678,7 @@ func (m *Module) _js_eq_slow(v0, v1, v2 int32) int32 {
 												goto l27
 											}
 											t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t18, v4)
+											m.___JS_FreeValueRT(t18, v4)
 										}
 									l27:
 									}
@@ -39698,7 +39694,7 @@ func (m *Module) _js_eq_slow(v0, v1, v2 int32) int32 {
 										goto l4
 									}
 									t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t20, v3)
+									m.___JS_FreeValueRT(t20, v3)
 									goto l4
 								}
 							l25:
@@ -39749,7 +39745,7 @@ func (m *Module) _js_eq_slow(v0, v1, v2 int32) int32 {
 									goto l30
 								}
 								t27 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t27, v4)
+								m.___JS_FreeValueRT(t27, v4)
 							}
 						l30:
 							if uint64(v3) < uint64(i64(-0x900000000)) {
@@ -39763,7 +39759,7 @@ func (m *Module) _js_eq_slow(v0, v1, v2 int32) int32 {
 								goto l4
 							}
 							t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t29, v3)
+							m.___JS_FreeValueRT(t29, v3)
 							goto l4
 						}
 					l1:
@@ -39792,7 +39788,7 @@ func (m *Module) _js_eq_slow(v0, v1, v2 int32) int32 {
 				}
 			l24:
 				t35 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t35, v3)
+				m.___JS_FreeValueRT(t35, v3)
 				goto l23
 			}
 		l0:
@@ -39962,7 +39958,7 @@ func (m *Module) _js_dynamic_import_job(v0, v1, v2 int32) int64 {
 				store32(m.memory, uint32(v5), uint32(v2-i32(1)))
 				if v2 <= i32(1) {
 					t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t8, int64(uint32(v3-i32(12)))|i64(-0x700000000))
+					m.___JS_FreeValueRT(t8, int64(uint32(v3-i32(12)))|i64(-0x700000000))
 				}
 				v3 = v1 - i32(16)
 				t9 := int32(load32(m.memory, uint32(v3)))
@@ -39972,7 +39968,7 @@ func (m *Module) _js_dynamic_import_job(v0, v1, v2 int32) int64 {
 					goto l1
 				}
 				t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t10, int64(uint32(v1-i32(12)))|i64(-0x700000000))
+				m.___JS_FreeValueRT(t10, int64(uint32(v1-i32(12)))|i64(-0x700000000))
 				goto l1
 			} else {
 				_ = m.XJS_ThrowTypeError(v0, i32(16563), i32(0))
@@ -40000,7 +39996,7 @@ func (m *Module) _js_dynamic_import_job(v0, v1, v2 int32) int64 {
 					goto l2
 				}
 				t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t17, v6)
+				m.___JS_FreeValueRT(t17, v6)
 			}
 		l2:
 		}
@@ -40016,7 +40012,7 @@ func (m *Module) _js_dynamic_import_job(v0, v1, v2 int32) int64 {
 					goto l3
 				}
 				t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t20, v6)
+				m.___JS_FreeValueRT(t20, v6)
 			}
 		l3:
 		}
@@ -40098,7 +40094,7 @@ func (m *Module) _JS_ThrowTypeErrorNotAConstructor(v0 int32, v1 int64) {
 				goto l1
 			}
 			t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t12, int64(uint32(v2-i32(12)))|i64(-0x700000000))
+			m.___JS_FreeValueRT(t12, int64(uint32(v2-i32(12)))|i64(-0x700000000))
 			goto l1
 		}
 	l0:
@@ -40781,7 +40777,7 @@ func (m *Module) XJS_SetModuleExport(v0, v1, v2 int32, v3 int64) int32 {
 		}
 	l2:
 		t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t10, v6)
+		m.___JS_FreeValueRT(t10, v6)
 	}
 l3:
 	return v2
@@ -40802,7 +40798,7 @@ func (m *Module) XJS_SetModulePrivateValue(v0, v1 int32, v2 int64) int32 {
 				goto l0
 			}
 			t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t2, v3)
+			m.___JS_FreeValueRT(t2, v3)
 		}
 	l0:
 	}
@@ -40999,7 +40995,7 @@ func (m *Module) XJS_GetModuleNamespace(v0, v1 int32) int64 {
 					goto l0
 				}
 				t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t38, v11)
+				m.___JS_FreeValueRT(t38, v11)
 				goto l0
 			}
 		l11:
@@ -41216,7 +41212,7 @@ l0:
 				goto l1
 			}
 			t6 := int32(load32(m.memory, uint64(uint32(v2))+8))
-			m.X__JS_FreeValueRT(t6, v3)
+			m.___JS_FreeValueRT(t6, v3)
 		}
 	l1:
 	}
@@ -41230,7 +41226,7 @@ l0:
 				goto l2
 			}
 			t8 := int32(load32(m.memory, uint64(uint32(v2))+8))
-			m.X__JS_FreeValueRT(t8, v4)
+			m.___JS_FreeValueRT(t8, v4)
 		}
 	l2:
 	}
@@ -41352,7 +41348,7 @@ func (m *Module) XJS_LoadModule(v0, v1, v2 int32) int64 {
 					goto l0
 				}
 				t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t4, v3)
+				m.___JS_FreeValueRT(t4, v3)
 			}
 		l0:
 		}
@@ -41368,7 +41364,7 @@ func (m *Module) XJS_LoadModule(v0, v1, v2 int32) int64 {
 					goto l1
 				}
 				t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t7, v3)
+				m.___JS_FreeValueRT(t7, v3)
 			}
 		l1:
 		}
@@ -41424,7 +41420,7 @@ func (m *Module) _JS_LoadModuleInternal(v0, v1, v2, v3 int32, v4 int64) {
 				store64(m.memory, uint64(uint32(v5))+40, uint64(v7))
 				if v1 <= i32(1) {
 					t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t15, v6)
+					m.___JS_FreeValueRT(t15, v6)
 				}
 				t16 := m._js_promise_then(v0, v4, v0, v5+i32(32))
 				v6 = t16
@@ -41438,7 +41434,7 @@ func (m *Module) _JS_LoadModuleInternal(v0, v1, v2, v3 int32, v4 int64) {
 							goto l1
 						}
 						t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t18, v6)
+						m.___JS_FreeValueRT(t18, v6)
 					}
 				l1:
 				}
@@ -41452,7 +41448,7 @@ func (m *Module) _JS_LoadModuleInternal(v0, v1, v2, v3 int32, v4 int64) {
 							goto l2
 						}
 						t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t20, v8)
+						m.___JS_FreeValueRT(t20, v8)
 					}
 				l2:
 				}
@@ -41466,7 +41462,7 @@ func (m *Module) _JS_LoadModuleInternal(v0, v1, v2, v3 int32, v4 int64) {
 							goto l3
 						}
 						t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t22, v7)
+						m.___JS_FreeValueRT(t22, v7)
 					}
 				l3:
 				}
@@ -41481,7 +41477,7 @@ func (m *Module) _JS_LoadModuleInternal(v0, v1, v2, v3 int32, v4 int64) {
 					goto l4
 				}
 				t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t24, v4)
+				m.___JS_FreeValueRT(t24, v4)
 				goto l4
 			}
 		l0:
@@ -41505,7 +41501,7 @@ func (m *Module) _JS_LoadModuleInternal(v0, v1, v2, v3 int32, v4 int64) {
 					goto l5
 				}
 				t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t30, v4)
+				m.___JS_FreeValueRT(t30, v4)
 			}
 		l5:
 		}
@@ -41522,7 +41518,7 @@ func (m *Module) _JS_LoadModuleInternal(v0, v1, v2, v3 int32, v4 int64) {
 			goto l4
 		}
 		t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t33, v4)
+		m.___JS_FreeValueRT(t33, v4)
 	}
 l4:
 	m.___stack_pointer = v5 + i32(48)
@@ -41750,7 +41746,7 @@ func (m *Module) _js_resolve_module(v0, v1 int32) int32 {
 						store32(m.memory, uint32(v4), uint32(v5-i32(1)))
 						if v5 <= i32(1) {
 							t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t10, int64(uint32(v3-i32(12)))|i64(-0x700000000))
+							m.___JS_FreeValueRT(t10, int64(uint32(v3-i32(12)))|i64(-0x700000000))
 						}
 						v3 = v2 - i32(16)
 						t11 := int32(load32(m.memory, uint32(v3)))
@@ -41772,7 +41768,7 @@ func (m *Module) _js_resolve_module(v0, v1 int32) int32 {
 						}
 					}
 					t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t13, int64(uint32(v2-i32(12)))|i64(-0x700000000))
+					m.___JS_FreeValueRT(t13, int64(uint32(v2-i32(12)))|i64(-0x700000000))
 				}
 			l2:
 				if v6 == 0 {
@@ -41818,7 +41814,7 @@ func (m *Module) _JS_EvalFunctionInternal(v0 int32, v1, v2 int64, v3, v4 int32) 
 					goto l3
 				}
 				t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t2, v1)
+				m.___JS_FreeValueRT(t2, v1)
 			}
 		l3:
 		}
@@ -41948,7 +41944,7 @@ func (m *Module) _JS_EvalFunctionInternal(v0 int32, v1, v2 int64, v3, v4 int32) 
 									goto l7
 								}
 								t27 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t27, v1)
+								m.___JS_FreeValueRT(t27, v1)
 							}
 						l7:
 						}
@@ -41998,7 +41994,7 @@ func (m *Module) _JS_EvalFunctionInternal(v0 int32, v1, v2 int64, v3, v4 int32) 
 									goto l11
 								}
 								t35 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t35, v1)
+								m.___JS_FreeValueRT(t35, v1)
 							}
 						l11:
 						}
@@ -42024,7 +42020,7 @@ func (m *Module) _JS_EvalFunctionInternal(v0 int32, v1, v2 int64, v3, v4 int32) 
 							goto l8
 						}
 						t41 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t41, v1)
+						m.___JS_FreeValueRT(t41, v1)
 					}
 				}
 			l8:
@@ -42070,7 +42066,7 @@ func (m *Module) _JS_EvalFunctionInternal(v0 int32, v1, v2 int64, v3, v4 int32) 
 					goto l13
 				}
 				t48 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t48, v1)
+				m.___JS_FreeValueRT(t48, v1)
 			}
 		l13:
 		}
@@ -42105,7 +42101,7 @@ func (m *Module) _js_load_module_fulfilled(v0 int32, v1 int64, v2, v3, v4, v5 in
 						goto l0
 					}
 					t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t7, v1)
+					m.___JS_FreeValueRT(t7, v1)
 				}
 			l0:
 			}
@@ -42122,7 +42118,7 @@ func (m *Module) _js_load_module_fulfilled(v0 int32, v1 int64, v2, v3, v4, v5 in
 				goto l1
 			}
 			t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t10, v1)
+			m.___JS_FreeValueRT(t10, v1)
 		}
 	l1:
 	} else {
@@ -42163,7 +42159,7 @@ func (m *Module) _js_load_module_rejected(v0 int32, v1 int64, v2, v3, v4, v5 int
 				goto l0
 			}
 			t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t7, v1)
+			m.___JS_FreeValueRT(t7, v1)
 		}
 	l0:
 	}
@@ -42204,7 +42200,7 @@ func (m *Module) _js_promise_then(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l2
 					}
 					t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t6, v4)
+					m.___JS_FreeValueRT(t6, v4)
 				}
 			l2:
 			}
@@ -42231,7 +42227,7 @@ func (m *Module) _js_promise_then(v0 int32, v1 int64, v2, v3 int32) int64 {
 									goto l3
 								}
 								t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t13, v1)
+								m.___JS_FreeValueRT(t13, v1)
 							}
 						l3:
 						}
@@ -42257,7 +42253,7 @@ func (m *Module) _js_promise_then(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l1
 					}
 					t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t16, v5)
+					m.___JS_FreeValueRT(t16, v5)
 					goto l1
 				}
 			l5:
@@ -42532,7 +42528,7 @@ func (m *Module) _js_inner_module_linking(v0, v1, v2, v3 int32) int32 {
 												goto l8
 											}
 											t43 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t43, v12)
+											m.___JS_FreeValueRT(t43, v12)
 										}
 									l8:
 									} else {
@@ -42585,7 +42581,7 @@ func (m *Module) _js_inner_module_linking(v0, v1, v2, v3 int32) int32 {
 													goto l1
 												}
 												t66 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t66, v12)
+												m.___JS_FreeValueRT(t66, v12)
 												goto l1
 											}
 											m._set_value(v0, v4+i32(16), v12)
@@ -42649,7 +42645,7 @@ func (m *Module) _js_inner_module_linking(v0, v1, v2, v3 int32) int32 {
 							goto l14
 						}
 						t76 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t76, v12)
+						m.___JS_FreeValueRT(t76, v12)
 					}
 				l14:
 				}
@@ -43371,7 +43367,7 @@ func (m *Module) _JS_WriteObjectRec(v0 int32, v1 int64) int32 {
 								goto l21
 							}
 							t48 := int32(load32(m.memory, uint64(uint32(t46))+8))
-							m.X__JS_FreeValueRT(t48, v1)
+							m.___JS_FreeValueRT(t48, v1)
 						}
 					l21:
 					}
@@ -45393,7 +45389,7 @@ func (m *Module) _JS_ReadObjectRec(v0 int32) int64 {
 										goto l22
 									}
 									t151 := int32(load32(m.memory, uint64(uint32(v6))+8))
-									m.X__JS_FreeValueRT(t151, v13)
+									m.___JS_FreeValueRT(t151, v13)
 								}
 							l22:
 							}
@@ -45673,7 +45669,7 @@ func (m *Module) _JS_ReadObjectRec(v0 int32) int64 {
 									goto l36
 								}
 								t217 := int32(load32(m.memory, uint64(uint32(v6))+8))
-								m.X__JS_FreeValueRT(t217, v14)
+								m.___JS_FreeValueRT(t217, v14)
 							}
 						l36:
 						}
@@ -45773,7 +45769,7 @@ func (m *Module) _JS_ReadObjectRec(v0 int32) int64 {
 											store32(m.memory, uint32(v3), uint32(v1-i32(1)))
 											if v1 <= i32(1) {
 												t240 := int32(load32(m.memory, uint64(uint32(v2))+8))
-												m.X__JS_FreeValueRT(t240, v14)
+												m.___JS_FreeValueRT(t240, v14)
 											}
 											v13 = i64(0x600000000)
 											goto l46
@@ -45791,7 +45787,7 @@ func (m *Module) _JS_ReadObjectRec(v0 int32) int64 {
 											goto l46
 										}
 										t244 := int32(load32(m.memory, uint64(uint32(v2))+8))
-										m.X__JS_FreeValueRT(t244, v14)
+										m.___JS_FreeValueRT(t244, v14)
 										goto l46
 									}
 								l47:
@@ -45804,7 +45800,7 @@ func (m *Module) _JS_ReadObjectRec(v0 int32) int64 {
 									goto l46
 								}
 								t246 := int32(load32(m.memory, uint64(uint32(v2))+8))
-								m.X__JS_FreeValueRT(t246, v14)
+								m.___JS_FreeValueRT(t246, v14)
 							}
 						l46:
 						}
@@ -45878,7 +45874,7 @@ func (m *Module) _JS_ReadObjectRec(v0 int32) int64 {
 											goto l49
 										}
 										t267 := int32(load32(m.memory, uint64(uint32(v3))+8))
-										m.X__JS_FreeValueRT(t267, v13)
+										m.___JS_FreeValueRT(t267, v13)
 									}
 								l49:
 								}
@@ -45956,7 +45952,7 @@ func (m *Module) _JS_ReadObjectRec(v0 int32) int64 {
 									goto l50
 								}
 								t286 := int32(load32(m.memory, uint64(uint32(v3))+8))
-								m.X__JS_FreeValueRT(t286, v14)
+								m.___JS_FreeValueRT(t286, v14)
 							}
 						l50:
 						}
@@ -46008,7 +46004,7 @@ func (m *Module) _JS_ReadObjectRec(v0 int32) int64 {
 											goto l52
 										}
 										t298 := int32(load32(m.memory, uint64(uint32(v1))+8))
-										m.X__JS_FreeValueRT(t298, v15)
+										m.___JS_FreeValueRT(t298, v15)
 									}
 								l52:
 								}
@@ -46023,7 +46019,7 @@ func (m *Module) _JS_ReadObjectRec(v0 int32) int64 {
 									goto l53
 								}
 								t300 := int32(load32(m.memory, uint64(uint32(v1))+8))
-								m.X__JS_FreeValueRT(t300, v14)
+								m.___JS_FreeValueRT(t300, v14)
 							}
 						l53:
 						}
@@ -46068,7 +46064,7 @@ func (m *Module) _JS_ReadObjectRec(v0 int32) int64 {
 													goto l57
 												}
 												t307 := int32(load32(m.memory, uint64(uint32(v1))+8))
-												m.X__JS_FreeValueRT(t307, v15)
+												m.___JS_FreeValueRT(t307, v15)
 											}
 										l57:
 										}
@@ -46087,7 +46083,7 @@ func (m *Module) _JS_ReadObjectRec(v0 int32) int64 {
 									}
 								l55:
 									t309 := int32(load32(m.memory, uint64(uint32(v1))+8))
-									m.X__JS_FreeValueRT(t309, v15)
+									m.___JS_FreeValueRT(t309, v15)
 								}
 							l54:
 								v14 = v13
@@ -46252,7 +46248,7 @@ func (m *Module) _JS_ReadObjectRec(v0 int32) int64 {
 								goto l63
 							}
 							t349 := int32(load32(m.memory, uint64(uint32(v2))+8))
-							m.X__JS_FreeValueRT(t349, v14)
+							m.___JS_FreeValueRT(t349, v14)
 						}
 					l63:
 						m.___stack_pointer = v1 + i32(16)
@@ -46353,7 +46349,7 @@ func (m *Module) _JS_ReadObjectRec(v0 int32) int64 {
 										goto l67
 									}
 									t371 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t371, v13)
+									m.___JS_FreeValueRT(t371, v13)
 								}
 							l67:
 							}
@@ -46810,7 +46806,7 @@ func (m *Module) _JS_ParseJSON3(v0, v1, v2, v3, v4, v5 int32) int64 {
 					goto l0
 				}
 				t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t5, v7)
+				m.___JS_FreeValueRT(t5, v7)
 			}
 		l0:
 		}
@@ -48027,7 +48023,7 @@ func (m *Module) _json_parse_value(v0, v1 int32) int64 {
 				goto l24
 			}
 			t74 := int32(load32(m.memory, uint64(uint32(v4))+8))
-			m.X__JS_FreeValueRT(t74, v9)
+			m.___JS_FreeValueRT(t74, v9)
 			goto l24
 		}
 	l6:
@@ -48117,7 +48113,7 @@ func (m *Module) _json_free_parse_record(v0, v1 int32) {
 					goto l2
 				}
 				t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t16, v4)
+				m.___JS_FreeValueRT(t16, v4)
 			}
 		l2:
 		}
@@ -48163,7 +48159,7 @@ func (m *Module) _free_token(v0, v1 int32) {
 								goto l7
 							}
 							t6 := int32(load32(m.memory, uint64(uint32(t4))+8))
-							m.X__JS_FreeValueRT(t6, v5)
+							m.___JS_FreeValueRT(t6, v5)
 						}
 					l7:
 					}
@@ -48202,7 +48198,7 @@ func (m *Module) _free_token(v0, v1 int32) {
 			return
 		}
 		t14 := int32(load32(m.memory, uint64(uint32(t12))+8))
-		m.X__JS_FreeValueRT(t14, v5)
+		m.___JS_FreeValueRT(t14, v5)
 	}
 }
 func (m *Module) _ident_realloc(v0, v1, v2, v3 int32) int32 {
@@ -48556,7 +48552,7 @@ func (m *Module) XJS_JSONStringify(v0 int32, v1, v2, v3 int64) int64 {
 											goto l4
 										}
 										t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t26, v8)
+										m.___JS_FreeValueRT(t26, v8)
 										goto l4
 									}
 								}
@@ -48588,7 +48584,7 @@ func (m *Module) XJS_JSONStringify(v0 int32, v1, v2, v3 int64) int64 {
 									goto l4
 								}
 								t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t33, v8)
+								m.___JS_FreeValueRT(t33, v8)
 								goto l4
 							}
 						l3:
@@ -48606,7 +48602,7 @@ func (m *Module) XJS_JSONStringify(v0 int32, v1, v2, v3 int64) int64 {
 									goto l2
 								}
 								t41 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t41, v8)
+								m.___JS_FreeValueRT(t41, v8)
 								goto l2
 							}
 							t35 := m._JS_ToBoolFree(v0, v13)
@@ -48626,7 +48622,7 @@ func (m *Module) XJS_JSONStringify(v0 int32, v1, v2, v3 int64) int64 {
 								goto l4
 							}
 							t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t38, v8)
+							m.___JS_FreeValueRT(t38, v8)
 						}
 					l4:
 						t39 := v16
@@ -48719,7 +48715,7 @@ func (m *Module) XJS_JSONStringify(v0 int32, v1, v2, v3 int64) int64 {
 							goto l13
 						}
 						t58 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t58, v3)
+						m.___JS_FreeValueRT(t58, v3)
 					}
 				l13:
 				}
@@ -48792,7 +48788,7 @@ l14:
 				goto l15
 			}
 			t75 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t75, v9)
+			m.___JS_FreeValueRT(t75, v9)
 		}
 	l15:
 	}
@@ -48808,7 +48804,7 @@ l14:
 				goto l16
 			}
 			t78 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t78, v1)
+			m.___JS_FreeValueRT(t78, v1)
 		}
 	l16:
 	}
@@ -48824,7 +48820,7 @@ l14:
 				goto l17
 			}
 			t81 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t81, v1)
+			m.___JS_FreeValueRT(t81, v1)
 		}
 	l17:
 	}
@@ -48840,7 +48836,7 @@ l14:
 				goto l18
 			}
 			t84 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t84, v1)
+			m.___JS_FreeValueRT(t84, v1)
 		}
 	l18:
 	}
@@ -48856,7 +48852,7 @@ l14:
 				goto l19
 			}
 			t87 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t87, v1)
+			m.___JS_FreeValueRT(t87, v1)
 		}
 	l19:
 	}
@@ -48882,7 +48878,7 @@ func (m *Module) _js_get_length64(v0, v1 int32, v2 int64) int32 {
 				goto l0
 			}
 			t3 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t3, v2)
+			m.___JS_FreeValueRT(t3, v2)
 		}
 	l0:
 	}
@@ -48919,7 +48915,7 @@ func (m *Module) _JS_ToStringFree(v0 int32, v1 int64) int64 {
 				goto l0
 			}
 			t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t2, v1)
+			m.___JS_FreeValueRT(t2, v1)
 		}
 	l0:
 	}
@@ -49071,7 +49067,7 @@ func (m *Module) _js_array_includes(v0 int32, v1 int64, v2, v3 int32) int64 {
 		}
 	l7:
 		t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t28, v6)
+		m.___JS_FreeValueRT(t28, v6)
 	}
 l6:
 	m.___stack_pointer = v4 + i32(16)
@@ -49237,7 +49233,7 @@ func (m *Module) _js_json_check(v0, v1 int32, v2, v3, v4 int64) int64 {
 									goto l5
 								}
 								t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t13, v3)
+								m.___JS_FreeValueRT(t13, v3)
 							}
 						l5:
 						}
@@ -49256,7 +49252,7 @@ func (m *Module) _js_json_check(v0, v1 int32, v2, v3, v4 int64) int64 {
 					goto l1
 				}
 				t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t15, v8)
+				m.___JS_FreeValueRT(t15, v8)
 			}
 		l1:
 			v8 = v3
@@ -49279,7 +49275,7 @@ func (m *Module) _js_json_check(v0, v1 int32, v2, v3, v4 int64) int64 {
 							goto l7
 						}
 						t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t20, v8)
+						m.___JS_FreeValueRT(t20, v8)
 					}
 				l7:
 				}
@@ -49351,7 +49347,7 @@ func (m *Module) _js_json_check(v0, v1 int32, v2, v3, v4 int64) int64 {
 		}
 	l3:
 		t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t30, v3)
+		m.___JS_FreeValueRT(t30, v3)
 	}
 l2:
 	m.___stack_pointer = v6 + i32(32)
@@ -49541,7 +49537,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 																					goto l14
 																				}
 																				t42 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																				m.X__JS_FreeValueRT(t42, v4)
+																				m.___JS_FreeValueRT(t42, v4)
 																			}
 																		l14:
 																		}
@@ -49627,7 +49623,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 																							goto l18
 																						}
 																						t58 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																						m.X__JS_FreeValueRT(t58, v4)
+																						m.___JS_FreeValueRT(t58, v4)
 																					}
 																				l18:
 																				}
@@ -49673,7 +49669,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 																							goto l13
 																						}
 																						t76 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																						m.X__JS_FreeValueRT(t76, v10)
+																						m.___JS_FreeValueRT(t76, v10)
 																						goto l13
 																					}
 																					t69 := int32(load32(m.memory, uint64(uint32(v1))+40))
@@ -49730,7 +49726,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 															store32(m.memory, uint32(v13), uint32(v1-i32(1)))
 															if v1 <= i32(1) {
 																t89 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																m.X__JS_FreeValueRT(t89, v2)
+																m.___JS_FreeValueRT(t89, v2)
 															}
 															if uint64(v6) >= uint64(i64(-0x900000000)) {
 																{
@@ -49742,7 +49738,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 																		goto l23
 																	}
 																	t91 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																	m.X__JS_FreeValueRT(t91, v6)
+																	m.___JS_FreeValueRT(t91, v6)
 																}
 															l23:
 															}
@@ -49756,7 +49752,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 																		goto l24
 																	}
 																	t93 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																	m.X__JS_FreeValueRT(t93, v5)
+																	m.___JS_FreeValueRT(t93, v5)
 																}
 															l24:
 															}
@@ -49770,7 +49766,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 																		goto l25
 																	}
 																	t95 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																	m.X__JS_FreeValueRT(t95, v9)
+																	m.___JS_FreeValueRT(t95, v9)
 																}
 															l25:
 															}
@@ -49784,7 +49780,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 																		goto l26
 																	}
 																	t97 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																	m.X__JS_FreeValueRT(t97, v8)
+																	m.___JS_FreeValueRT(t97, v8)
 																}
 															l26:
 															}
@@ -49800,7 +49796,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 																goto l27
 															}
 															t99 := int32(load32(m.memory, uint64(uint32(v0))+8))
-															m.X__JS_FreeValueRT(t99, v4)
+															m.___JS_FreeValueRT(t99, v4)
 															goto l27
 														}
 													l6:
@@ -49829,7 +49825,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 													goto l28
 												}
 												t102 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t102, v2)
+												m.___JS_FreeValueRT(t102, v2)
 												goto l28
 											}
 											v9 = p6
@@ -49855,7 +49851,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 									goto l5
 								}
 								t106 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t106, v2)
+								m.___JS_FreeValueRT(t106, v2)
 							}
 						l5:
 						} else {
@@ -49889,7 +49885,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 									goto l27
 								}
 								t112 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t112, v4)
+								m.___JS_FreeValueRT(t112, v4)
 								goto l27
 							case 17:
 								if uint64((v4+i64(0x7ff8000a00000000))&i64(0x7fffffffffffffff)) < uint64(i64(0x7ff0000000000000)) {
@@ -49910,7 +49906,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 									goto l27
 								}
 								t114 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t114, v4)
+								m.___JS_FreeValueRT(t114, v4)
 								goto l27
 							}
 						}
@@ -49943,7 +49939,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 				goto l34
 			}
 			t119 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t119, v2)
+			m.___JS_FreeValueRT(t119, v2)
 		}
 	l34:
 		if uint64(v6) >= uint64(i64(-0x900000000)) {
@@ -49956,7 +49952,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 					goto l35
 				}
 				t121 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t121, v6)
+				m.___JS_FreeValueRT(t121, v6)
 			}
 		l35:
 		}
@@ -49970,7 +49966,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 					goto l36
 				}
 				t123 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t123, v5)
+				m.___JS_FreeValueRT(t123, v5)
 			}
 		l36:
 		}
@@ -49984,7 +49980,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 					goto l37
 				}
 				t125 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t125, v9)
+				m.___JS_FreeValueRT(t125, v9)
 			}
 		l37:
 		}
@@ -49998,7 +49994,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 					goto l38
 				}
 				t127 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t127, v8)
+				m.___JS_FreeValueRT(t127, v8)
 			}
 		l38:
 		}
@@ -50014,7 +50010,7 @@ func (m *Module) _js_json_to_str(v0, v1 int32, v2, v3 int64) int32 {
 			goto l27
 		}
 		t129 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t129, v4)
+		m.___JS_FreeValueRT(t129, v4)
 		goto l27
 	}
 l4:
@@ -50198,7 +50194,7 @@ func (m *Module) _js_array_push(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 							goto l7
 						}
 						t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t36, v9)
+						m.___JS_FreeValueRT(t36, v9)
 					}
 				l7:
 				}
@@ -50228,7 +50224,7 @@ func (m *Module) _js_array_push(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 			goto l1
 		}
 		t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t39, v9)
+		m.___JS_FreeValueRT(t39, v9)
 	}
 l1:
 	m.___stack_pointer = v7 + i32(16)
@@ -50246,7 +50242,7 @@ func (m *Module) _check_exception_free(v0 int32, v1 int64) int32 {
 				goto l0
 			}
 			t1 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t1, v1)
+			m.___JS_FreeValueRT(t1, v1)
 		}
 	l0:
 	}
@@ -50411,7 +50407,7 @@ func (m *Module) _JS_GetOwnPropertyNames2(v0 int32, v1 int64, v2, v3 int32) int6
 									goto l8
 								}
 								t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t30, v4)
+								m.___JS_FreeValueRT(t30, v4)
 								goto l8
 							}
 						l3:
@@ -50431,7 +50427,7 @@ func (m *Module) _JS_GetOwnPropertyNames2(v0 int32, v1 int64, v2, v3 int32) int6
 								goto l0
 							}
 							t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t32, v1)
+							m.___JS_FreeValueRT(t32, v1)
 							goto l0
 						}
 					l11:
@@ -50454,7 +50450,7 @@ func (m *Module) _JS_GetOwnPropertyNames2(v0 int32, v1 int64, v2, v3 int32) int6
 				goto l12
 			}
 			t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t36, v5)
+			m.___JS_FreeValueRT(t36, v5)
 		}
 	l12:
 	}
@@ -50638,7 +50634,7 @@ func (m *Module) _JS_ToQuotedString(v0, v1 int32, v2 int64) int32 {
 			}
 		l15:
 			t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t28, v2)
+			m.___JS_FreeValueRT(t28, v2)
 		}
 	l14:
 	}
@@ -50663,7 +50659,7 @@ func (m *Module) _string_buffer_concat_value_free(v0 int32, v1 int64) int32 {
 				goto l0
 			}
 			t3 := int32(load32(m.memory, uint64(uint32(t1))+8))
-			m.X__JS_FreeValueRT(t3, v1)
+			m.___JS_FreeValueRT(t3, v1)
 			return i32(-1)
 		} else {
 			if v1&i64(-0x100000000) != i64(-0x700000000) {
@@ -50698,7 +50694,7 @@ func (m *Module) _string_buffer_concat_value_free(v0 int32, v1 int64) int32 {
 				goto l0
 			}
 			t14 := int32(load32(m.memory, uint64(uint32(t12))+8))
-			m.X__JS_FreeValueRT(t14, v1)
+			m.___JS_FreeValueRT(t14, v1)
 		}
 	}
 l0:
@@ -50825,7 +50821,7 @@ func (m *Module) _js_array_pop(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 						goto l2
 					}
 					t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t22, v5)
+					m.___JS_FreeValueRT(t22, v5)
 				}
 			l2:
 			}
@@ -50843,7 +50839,7 @@ func (m *Module) _js_array_pop(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 		}
 	l6:
 		t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t24, v1)
+		m.___JS_FreeValueRT(t24, v1)
 	}
 l5:
 	m.___stack_pointer = v9 + i32(16)
@@ -51052,7 +51048,7 @@ func (m *Module) _fulfill_or_reject_promise(v0 int32, v1, v2 int64, v3 int32) {
 						goto l1
 					}
 					t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t7, v11)
+					m.___JS_FreeValueRT(t7, v11)
 				}
 			l1:
 			}
@@ -51191,7 +51187,7 @@ func (m *Module) _js_promise_resolve_thenable_job(v0, v1, v2 int32) int64 {
 						goto l0
 					}
 					t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t13, v3)
+					m.___JS_FreeValueRT(t13, v3)
 				}
 			l0:
 			}
@@ -51207,7 +51203,7 @@ func (m *Module) _js_promise_resolve_thenable_job(v0, v1, v2 int32) int64 {
 						goto l1
 					}
 					t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t16, v3)
+					m.___JS_FreeValueRT(t16, v3)
 				}
 			l1:
 			}
@@ -51224,7 +51220,7 @@ func (m *Module) _js_promise_resolve_thenable_job(v0, v1, v2 int32) int64 {
 				goto l2
 			}
 			t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t19, v3)
+			m.___JS_FreeValueRT(t19, v3)
 		}
 	l2:
 	} else {
@@ -51265,7 +51261,7 @@ func (m *Module) _js_async_function_resume(v0, v1 int32) {
 							goto l1
 						}
 						t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t8, v9)
+						m.___JS_FreeValueRT(t8, v9)
 					}
 				l1:
 				}
@@ -51280,7 +51276,7 @@ func (m *Module) _js_async_function_resume(v0, v1 int32) {
 					goto l2
 				}
 				t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t10, v8)
+				m.___JS_FreeValueRT(t10, v8)
 				goto l2
 			} else {
 				t11 := int32(load32(m.memory, uint64(uint32(v1))+88))
@@ -51299,7 +51295,7 @@ func (m *Module) _js_async_function_resume(v0, v1 int32) {
 							goto l3
 						}
 						t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t15, v8)
+						m.___JS_FreeValueRT(t15, v8)
 					}
 				l3:
 				}
@@ -51318,7 +51314,7 @@ func (m *Module) _js_async_function_resume(v0, v1 int32) {
 							goto l4
 						}
 						t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t20, v9)
+						m.___JS_FreeValueRT(t20, v9)
 					}
 				l4:
 				}
@@ -51354,7 +51350,7 @@ func (m *Module) _js_async_function_resume(v0, v1 int32) {
 								goto l5
 							}
 							t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t29, v9)
+							m.___JS_FreeValueRT(t29, v9)
 							goto l5
 						}
 						t30 := int32(load32(m.memory, uint32(v2)))
@@ -51373,7 +51369,7 @@ func (m *Module) _js_async_function_resume(v0, v1 int32) {
 									goto l6
 								}
 								t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t33, v8)
+								m.___JS_FreeValueRT(t33, v8)
 							}
 						l6:
 						}
@@ -51394,7 +51390,7 @@ func (m *Module) _js_async_function_resume(v0, v1 int32) {
 										goto l7
 									}
 									t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t36, v8)
+									m.___JS_FreeValueRT(t36, v8)
 								}
 							l7:
 							}
@@ -51423,7 +51419,7 @@ func (m *Module) _js_async_function_resume(v0, v1 int32) {
 					goto l0
 				}
 				t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t39, v8)
+				m.___JS_FreeValueRT(t39, v8)
 			}
 		}
 	l0:
@@ -51448,7 +51444,7 @@ func (m *Module) _js_async_function_resume(v0, v1 int32) {
 					goto l9
 				}
 				t46 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t46, v9)
+				m.___JS_FreeValueRT(t46, v9)
 			}
 		l9:
 		}
@@ -51463,7 +51459,7 @@ func (m *Module) _js_async_function_resume(v0, v1 int32) {
 			goto l2
 		}
 		t48 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t48, v8)
+		m.___JS_FreeValueRT(t48, v8)
 	}
 l2:
 	m.___stack_pointer = v3 - i32(-64)
@@ -51492,7 +51488,7 @@ func (m *Module) _js_async_generator_free(v0, v1 int32) {
 					if v3 > i32(1) {
 						goto l0
 					}
-					m.X__JS_FreeValueRT(v0, v2)
+					m.___JS_FreeValueRT(v0, v2)
 				}
 			l0:
 			}
@@ -51507,7 +51503,7 @@ func (m *Module) _js_async_generator_free(v0, v1 int32) {
 					if v3 > i32(1) {
 						goto l1
 					}
-					m.X__JS_FreeValueRT(v0, v2)
+					m.___JS_FreeValueRT(v0, v2)
 				}
 			l1:
 			}
@@ -51522,7 +51518,7 @@ func (m *Module) _js_async_generator_free(v0, v1 int32) {
 					if v3 > i32(1) {
 						goto l2
 					}
-					m.X__JS_FreeValueRT(v0, v2)
+					m.___JS_FreeValueRT(v0, v2)
 				}
 			l2:
 			}
@@ -51537,7 +51533,7 @@ func (m *Module) _js_async_generator_free(v0, v1 int32) {
 					if v3 > i32(1) {
 						goto l3
 					}
-					m.X__JS_FreeValueRT(v0, v2)
+					m.___JS_FreeValueRT(v0, v2)
 				}
 			l3:
 			}
@@ -51613,7 +51609,7 @@ func (m *Module) _js_create_resolving_functions(v0, v1 int32, v2 int64) int32 {
 				goto l0
 			}
 			t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t8, v8)
+			m.___JS_FreeValueRT(t8, v8)
 		}
 	l0:
 		t9 := v5 & i32(1)
@@ -51634,7 +51630,7 @@ func (m *Module) _js_create_resolving_functions(v0, v1 int32, v2 int64) int32 {
 			goto l3
 		}
 		t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t12, v2)
+		m.___JS_FreeValueRT(t12, v2)
 	}
 l3:
 	t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
@@ -52696,7 +52692,7 @@ func (m *Module) _js_Date_parse(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l65
 			}
 			t119 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t119, v24)
+			m.___JS_FreeValueRT(t119, v24)
 		}
 	l65:
 	}
@@ -53874,7 +53870,7 @@ func (m *Module) _next_token(v0 int32) int32 {
 								goto l69
 							}
 							t101 := int32(load32(m.memory, uint64(uint32(t99))+8))
-							m.X__JS_FreeValueRT(t101, v7)
+							m.___JS_FreeValueRT(t101, v7)
 						}
 					l69:
 					}
@@ -54937,7 +54933,7 @@ func (m *Module) _js_free_function_def(v0, v1 int32) {
 						goto l1
 					}
 					t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t17, v6)
+					m.___JS_FreeValueRT(t17, v6)
 				}
 			l1:
 			}
@@ -60813,7 +60809,7 @@ func (m *Module) _js_bigint_constructor(v0 int32, v1 int64, v2, v3 int32) int64 
 						goto l10
 					}
 					t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t17, v1)
+					m.___JS_FreeValueRT(t17, v1)
 				}
 			l10:
 			}
@@ -60996,7 +60992,7 @@ func (m *Module) _js_array_buffer_constructor3(v0 int32, v1, v2 int64, v3, v4, v
 							goto l9
 						}
 						t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t28, v1)
+						m.___JS_FreeValueRT(t28, v1)
 					}
 				l9:
 				}
@@ -61192,7 +61188,7 @@ func (m *Module) _js_typed_array_constructor_ta(v0 int32, v1, v2 int64, v3, v4 i
 							goto l1
 						}
 						t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t7, v5)
+						m.___JS_FreeValueRT(t7, v5)
 						goto l1
 					}
 					var p8 int32
@@ -61303,7 +61299,7 @@ func (m *Module) _js_typed_array_constructor_ta(v0 int32, v1, v2 int64, v3, v4 i
 					goto l5
 				}
 				t35 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t35, v1)
+				m.___JS_FreeValueRT(t35, v1)
 			}
 		l5:
 		}
@@ -61381,7 +61377,7 @@ func (m *Module) _js_array_from_iterator(v0, v1 int32, v2, v3 int64) int64 {
 											goto l2
 										}
 										t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t15, v8)
+										m.___JS_FreeValueRT(t15, v8)
 									}
 								l2:
 								}
@@ -61395,7 +61391,7 @@ func (m *Module) _js_array_from_iterator(v0, v1 int32, v2, v3 int64) int64 {
 											goto l3
 										}
 										t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t17, v3)
+										m.___JS_FreeValueRT(t17, v3)
 									}
 								l3:
 								}
@@ -61415,7 +61411,7 @@ func (m *Module) _js_array_from_iterator(v0, v1 int32, v2, v3 int64) int64 {
 								goto l5
 							}
 							t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t19, v8)
+							m.___JS_FreeValueRT(t19, v8)
 						}
 					l5:
 					}
@@ -61430,7 +61426,7 @@ func (m *Module) _js_array_from_iterator(v0, v1 int32, v2, v3 int64) int64 {
 						goto l6
 					}
 					t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t21, v3)
+					m.___JS_FreeValueRT(t21, v3)
 				}
 			l6:
 			}
@@ -61445,7 +61441,7 @@ func (m *Module) _js_array_from_iterator(v0, v1 int32, v2, v3 int64) int64 {
 				goto l4
 			}
 			t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t23, v9)
+			m.___JS_FreeValueRT(t23, v9)
 		}
 	l4:
 	}
@@ -61499,7 +61495,7 @@ func (m *Module) _typed_array_init(v0 int32, v1, v2, v3, v4 int64, v5 int32) int
 				goto l0
 			}
 			t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t10, v2)
+			m.___JS_FreeValueRT(t10, v2)
 			p4 = i32(-1)
 		}
 		p0 = p4
@@ -61632,7 +61628,7 @@ func (m *Module) _js_array_buffer_constructor0(v0 int32, v1 int64, v2, v3, v4 in
 								goto l2
 							}
 							t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t7, v6)
+							m.___JS_FreeValueRT(t7, v6)
 						}
 					l2:
 					}
@@ -61717,7 +61713,7 @@ func (m *Module) _js_array_finalizer(v0 int32, v1 int64) {
 					if v4 > i32(1) {
 						goto l0
 					}
-					m.X__JS_FreeValueRT(v0, v1)
+					m.___JS_FreeValueRT(v0, v1)
 				}
 			l0:
 			}
@@ -61770,7 +61766,7 @@ func (m *Module) _js_object_data_finalizer(v0 int32, v1 int64) {
 			if v2 > i32(1) {
 				goto l0
 			}
-			m.X__JS_FreeValueRT(v0, v1)
+			m.___JS_FreeValueRT(v0, v1)
 		}
 	l0:
 	}
@@ -61854,7 +61850,7 @@ func (m *Module) _js_bytecode_function_finalizer(v0 int32, v1 int64) {
 			if v4 > i32(1) {
 				goto l0
 			}
-			m.X__JS_FreeValueRT(v0, int64(uint32(v3))|i64(-0x100000000))
+			m.___JS_FreeValueRT(v0, int64(uint32(v3))|i64(-0x100000000))
 		}
 	l0:
 	}
@@ -61890,7 +61886,7 @@ func (m *Module) _js_bytecode_function_finalizer(v0 int32, v1 int64) {
 			if v2 > i32(1) {
 				goto l2
 			}
-			m.X__JS_FreeValueRT(v0, int64(uint32(v4))|i64(-0x200000000))
+			m.___JS_FreeValueRT(v0, int64(uint32(v4))|i64(-0x200000000))
 		}
 	l2:
 	}
@@ -61947,7 +61943,7 @@ func (m *Module) _js_bound_function_finalizer(v0 int32, v1 int64) {
 			if v2 > i32(1) {
 				goto l0
 			}
-			m.X__JS_FreeValueRT(v0, v1)
+			m.___JS_FreeValueRT(v0, v1)
 		}
 	l0:
 	}
@@ -61962,7 +61958,7 @@ func (m *Module) _js_bound_function_finalizer(v0 int32, v1 int64) {
 			if v2 > i32(1) {
 				goto l1
 			}
-			m.X__JS_FreeValueRT(v0, v1)
+			m.___JS_FreeValueRT(v0, v1)
 		}
 	l1:
 	}
@@ -61982,7 +61978,7 @@ func (m *Module) _js_bound_function_finalizer(v0 int32, v1 int64) {
 					if v3 > i32(1) {
 						goto l2
 					}
-					m.X__JS_FreeValueRT(v0, v1)
+					m.___JS_FreeValueRT(v0, v1)
 				}
 			l2:
 			}
@@ -62061,7 +62057,7 @@ func (m *Module) _js_c_function_data_finalizer(v0 int32, v1 int64) {
 							if v4 > i32(1) {
 								goto l1
 							}
-							m.X__JS_FreeValueRT(v0, v1)
+							m.___JS_FreeValueRT(v0, v1)
 						}
 					l1:
 					}
@@ -62132,7 +62128,7 @@ func (m *Module) _js_for_in_iterator_finalizer(v0 int32, v1 int64) {
 			if v3 > i32(1) {
 				goto l0
 			}
-			m.X__JS_FreeValueRT(v0, v1)
+			m.___JS_FreeValueRT(v0, v1)
 		}
 	l0:
 	}
@@ -62181,7 +62177,7 @@ func (m *Module) _js_regexp_finalizer(v0 int32, v1 int64) {
 			if v3 > i32(1) {
 				goto l0
 			}
-			m.X__JS_FreeValueRT(v0, int64(uint32(v2))|i64(-0x700000000))
+			m.___JS_FreeValueRT(v0, int64(uint32(v2))|i64(-0x700000000))
 		}
 	l0:
 	}
@@ -62196,7 +62192,7 @@ func (m *Module) _js_regexp_finalizer(v0 int32, v1 int64) {
 			if v3 > i32(1) {
 				goto l1
 			}
-			m.X__JS_FreeValueRT(v0, int64(uint32(v2))|i64(-0x700000000))
+			m.___JS_FreeValueRT(v0, int64(uint32(v2))|i64(-0x700000000))
 		}
 	l1:
 	}
@@ -62275,7 +62271,7 @@ func (m *Module) _js_typed_array_finalizer(v0 int32, v1 int64) {
 		v3 = t4
 		store32(m.memory, uint32(v5), uint32(v3-i32(1)))
 		if v3 <= i32(1) {
-			m.X__JS_FreeValueRT(v0, int64(uint32(v4))|i64(-0x100000000))
+			m.___JS_FreeValueRT(v0, int64(uint32(v4))|i64(-0x100000000))
 		}
 		m.___js_free(v0, v2)
 	}
@@ -62324,7 +62320,7 @@ func (m *Module) _js_map_finalizer(v0 int32, v1 int64) {
 								if v5 > i32(1) {
 									goto l0
 								}
-								m.X__JS_FreeValueRT(v0, v1)
+								m.___JS_FreeValueRT(v0, v1)
 							}
 						l0:
 						}
@@ -62340,7 +62336,7 @@ func (m *Module) _js_map_finalizer(v0 int32, v1 int64) {
 						if v5 > i32(1) {
 							goto l1
 						}
-						m.X__JS_FreeValueRT(v0, v1)
+						m.___JS_FreeValueRT(v0, v1)
 					}
 				l1:
 				}
@@ -62417,7 +62413,7 @@ func (m *Module) _js_iterator_concat_finalizer(v0 int32, v1 int64) {
 				if v2 > i32(1) {
 					goto l0
 				}
-				m.X__JS_FreeValueRT(v0, v1)
+				m.___JS_FreeValueRT(v0, v1)
 			}
 		l0:
 		}
@@ -62432,7 +62428,7 @@ func (m *Module) _js_iterator_concat_finalizer(v0 int32, v1 int64) {
 				if v2 > i32(1) {
 					goto l1
 				}
-				m.X__JS_FreeValueRT(v0, v1)
+				m.___JS_FreeValueRT(v0, v1)
 			}
 		l1:
 		}
@@ -62454,7 +62450,7 @@ func (m *Module) _js_iterator_concat_finalizer(v0 int32, v1 int64) {
 						if v5 > i32(1) {
 							goto l2
 						}
-						m.X__JS_FreeValueRT(v0, v1)
+						m.___JS_FreeValueRT(v0, v1)
 					}
 				l2:
 				}
@@ -62530,7 +62526,7 @@ func (m *Module) _js_iterator_helper_finalizer(v0 int32, v1 int64) {
 				if v2 > i32(1) {
 					goto l0
 				}
-				m.X__JS_FreeValueRT(v0, v1)
+				m.___JS_FreeValueRT(v0, v1)
 			}
 		l0:
 		}
@@ -62545,7 +62541,7 @@ func (m *Module) _js_iterator_helper_finalizer(v0 int32, v1 int64) {
 				if v2 > i32(1) {
 					goto l1
 				}
-				m.X__JS_FreeValueRT(v0, v1)
+				m.___JS_FreeValueRT(v0, v1)
 			}
 		l1:
 		}
@@ -62560,7 +62556,7 @@ func (m *Module) _js_iterator_helper_finalizer(v0 int32, v1 int64) {
 				if v2 > i32(1) {
 					goto l2
 				}
-				m.X__JS_FreeValueRT(v0, v1)
+				m.___JS_FreeValueRT(v0, v1)
 			}
 		l2:
 		}
@@ -62575,7 +62571,7 @@ func (m *Module) _js_iterator_helper_finalizer(v0 int32, v1 int64) {
 				if v2 > i32(1) {
 					goto l3
 				}
-				m.X__JS_FreeValueRT(v0, v1)
+				m.___JS_FreeValueRT(v0, v1)
 			}
 		l3:
 		}
@@ -62629,7 +62625,7 @@ func (m *Module) _js_iterator_wrap_finalizer(v0 int32, v1 int64) {
 				if v2 > i32(1) {
 					goto l0
 				}
-				m.X__JS_FreeValueRT(v0, v1)
+				m.___JS_FreeValueRT(v0, v1)
 			}
 		l0:
 		}
@@ -62644,7 +62640,7 @@ func (m *Module) _js_iterator_wrap_finalizer(v0 int32, v1 int64) {
 				if v2 > i32(1) {
 					goto l1
 				}
-				m.X__JS_FreeValueRT(v0, v1)
+				m.___JS_FreeValueRT(v0, v1)
 			}
 		l1:
 		}
@@ -62707,7 +62703,7 @@ func (m *Module) _js_map_iterator_finalizer(v0 int32, v1 int64) {
 			if v3 > i32(1) {
 				goto l1
 			}
-			m.X__JS_FreeValueRT(v0, v1)
+			m.___JS_FreeValueRT(v0, v1)
 		}
 	l1:
 		m.___js_free(v0, v2)
@@ -62764,7 +62760,7 @@ func (m *Module) _js_array_iterator_finalizer(v0 int32, v1 int64) {
 				if v3 > i32(1) {
 					goto l0
 				}
-				m.X__JS_FreeValueRT(v0, v1)
+				m.___JS_FreeValueRT(v0, v1)
 			}
 		l0:
 		}
@@ -62825,7 +62821,7 @@ func (m *Module) _js_global_object_finalizer(v0 int32, v1 int64) {
 			if v2 > i32(1) {
 				goto l0
 			}
-			m.X__JS_FreeValueRT(v0, v1)
+			m.___JS_FreeValueRT(v0, v1)
 		}
 	l0:
 	}
@@ -63023,7 +63019,7 @@ func (m *Module) _async_func_free_frame(v0, v1 int32) {
 					if v3 > i32(1) {
 						goto l0
 					}
-					m.X__JS_FreeValueRT(v0, v5)
+					m.___JS_FreeValueRT(v0, v5)
 				}
 			l0:
 			}
@@ -63045,7 +63041,7 @@ func (m *Module) _async_func_free_frame(v0, v1 int32) {
 			if v2 > i32(1) {
 				goto l2
 			}
-			m.X__JS_FreeValueRT(v0, v5)
+			m.___JS_FreeValueRT(v0, v5)
 		}
 	l2:
 	}
@@ -63060,7 +63056,7 @@ func (m *Module) _async_func_free_frame(v0, v1 int32) {
 			if v1 > i32(1) {
 				goto l3
 			}
-			m.X__JS_FreeValueRT(v0, v5)
+			m.___JS_FreeValueRT(v0, v5)
 		}
 	l3:
 	}
@@ -63422,7 +63418,7 @@ func (m *Module) _js_instantiate_prototype(v0, v1, v2, v3 int32) int64 {
 				goto l0
 			}
 			t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t6, v4)
+			m.___JS_FreeValueRT(t6, v4)
 		}
 	l0:
 	}
@@ -64816,7 +64812,7 @@ func (m *Module) _js_print_raw_string(v0 int32, v1 int64) {
 				goto l0
 			}
 			t8 := int32(load32(m.memory, uint64(uint32(t6))+8))
-			m.X__JS_FreeValueRT(t8, int64(uint32(v3-i32(12)))|i64(-0x700000000))
+			m.___JS_FreeValueRT(t8, int64(uint32(v3-i32(12)))|i64(-0x700000000))
 		}
 	l0:
 	}
@@ -65345,7 +65341,7 @@ func (m *Module) _JS_StringToBigInt(v0 int32, v1 int64) int64 {
 				goto l0
 			}
 			t3 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t3, v1)
+			m.___JS_FreeValueRT(t3, v1)
 		}
 	l0:
 	}
@@ -65386,7 +65382,7 @@ func (m *Module) _JS_StringToBigInt(v0 int32, v1 int64) int64 {
 								goto l2
 							}
 							t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t14, v6)
+							m.___JS_FreeValueRT(t14, v6)
 							goto l2
 						}
 					l1:
@@ -65403,7 +65399,7 @@ func (m *Module) _JS_StringToBigInt(v0 int32, v1 int64) int64 {
 				goto l3
 			}
 			t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t16, int64(uint32(v5-i32(12)))|i64(-0x700000000))
+			m.___JS_FreeValueRT(t16, int64(uint32(v5-i32(12)))|i64(-0x700000000))
 		}
 	l3:
 	} else {
@@ -65821,7 +65817,7 @@ func (m *Module) _JS_ConcatString2(v0 int32, v1, v2 int64) int64 {
 						goto l6
 					}
 					t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t21, v1)
+					m.___JS_FreeValueRT(t21, v1)
 				}
 			l6:
 			}
@@ -65839,7 +65835,7 @@ func (m *Module) _JS_ConcatString2(v0 int32, v1, v2 int64) int64 {
 			}
 		}
 		t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t23, v2)
+		m.___JS_FreeValueRT(t23, v2)
 	}
 l0:
 	return v1
@@ -65966,7 +65962,7 @@ func (m *Module) _js_new_string_rope(v0 int32, v1, v2 int64) int64 {
 									goto l5
 								}
 								t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t21, v1)
+								m.___JS_FreeValueRT(t21, v1)
 							}
 						l5:
 						}
@@ -65986,7 +65982,7 @@ func (m *Module) _js_new_string_rope(v0 int32, v1, v2 int64) int64 {
 					goto l0
 				}
 				t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t24, v2)
+				m.___JS_FreeValueRT(t24, v2)
 				goto l0
 			}
 		} else {
@@ -66002,7 +65998,7 @@ func (m *Module) _js_new_string_rope(v0 int32, v1, v2 int64) int64 {
 					goto l7
 				}
 				t27 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t27, v1)
+				m.___JS_FreeValueRT(t27, v1)
 			}
 		l7:
 		}
@@ -66018,7 +66014,7 @@ func (m *Module) _js_new_string_rope(v0 int32, v1, v2 int64) int64 {
 			goto l0
 		}
 		t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t29, v2)
+		m.___JS_FreeValueRT(t29, v2)
 	}
 l0:
 	m.___stack_pointer = v7 + i32(352)
@@ -67122,7 +67118,7 @@ func (m *Module) _js_compare_bigint(v0, v1 int32, v2, v3 int64) int32 {
 						goto l10
 					}
 					t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t22, v2)
+					m.___JS_FreeValueRT(t22, v2)
 				}
 			l10:
 			}
@@ -67137,7 +67133,7 @@ func (m *Module) _js_compare_bigint(v0, v1 int32, v2, v3 int64) int32 {
 				goto l9
 			}
 			t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t24, v3)
+			m.___JS_FreeValueRT(t24, v3)
 			goto l9
 		}
 	l3:
@@ -67151,7 +67147,7 @@ func (m *Module) _js_compare_bigint(v0, v1 int32, v2, v3 int64) int32 {
 					goto l11
 				}
 				t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t26, v2)
+				m.___JS_FreeValueRT(t26, v2)
 			}
 		l11:
 		}
@@ -67167,7 +67163,7 @@ func (m *Module) _js_compare_bigint(v0, v1 int32, v2, v3 int64) int32 {
 			goto l12
 		}
 		t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t28, v3)
+		m.___JS_FreeValueRT(t28, v3)
 		goto l12
 	}
 l9:
@@ -67287,7 +67283,7 @@ func (m *Module) _JS_GetIterator2(v0 int32, v1, v2 int64) int64 {
 						goto l0
 					}
 					t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t2, v1)
+					m.___JS_FreeValueRT(t2, v1)
 				}
 			l0:
 			}
@@ -67346,7 +67342,7 @@ func (m *Module) _JS_IteratorNext2(v0 int32, v1, v2 int64, v3, v4, v5 int32) int
 						goto l2
 					}
 					t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t8, v1)
+					m.___JS_FreeValueRT(t8, v1)
 				}
 			l2:
 			}
@@ -67650,7 +67646,7 @@ func (m *Module) _JS_SpeciesConstructor(v0 int32, v1, v2 int64) int64 {
 							goto l0
 						}
 						t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t2, v1)
+						m.___JS_FreeValueRT(t2, v1)
 						goto l0
 					}
 					t3 := m.XJS_GetPropertyInternal(v0, v1, i32(240), v1, i32(0))
@@ -67661,7 +67657,7 @@ func (m *Module) _JS_SpeciesConstructor(v0 int32, v1, v2 int64) int64 {
 					store32(m.memory, uint32(v5), uint32(v4-i32(1)))
 					if v4 <= i32(1) {
 						t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t5, v1)
+						m.___JS_FreeValueRT(t5, v1)
 					}
 					v1 = v3 & i64(-0x100000000)
 					if v1 != i64(0x200000000) {
@@ -67694,7 +67690,7 @@ func (m *Module) _JS_SpeciesConstructor(v0 int32, v1, v2 int64) int64 {
 									goto l2
 								}
 								t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t8, v3)
+								m.___JS_FreeValueRT(t8, v3)
 								goto l2
 							}
 						l3:
@@ -67922,7 +67918,7 @@ func (m *Module) _promise_reaction_data_free(v0, v1 int32) {
 			if v3 > i32(1) {
 				goto l0
 			}
-			m.X__JS_FreeValueRT(v0, v2)
+			m.___JS_FreeValueRT(v0, v2)
 		}
 	l0:
 	}
@@ -67937,7 +67933,7 @@ func (m *Module) _promise_reaction_data_free(v0, v1 int32) {
 			if v3 > i32(1) {
 				goto l1
 			}
-			m.X__JS_FreeValueRT(v0, v2)
+			m.___JS_FreeValueRT(v0, v2)
 		}
 	l1:
 	}
@@ -67952,7 +67948,7 @@ func (m *Module) _promise_reaction_data_free(v0, v1 int32) {
 			if v3 > i32(1) {
 				goto l2
 			}
-			m.X__JS_FreeValueRT(v0, v2)
+			m.___JS_FreeValueRT(v0, v2)
 		}
 	l2:
 	}
@@ -68045,7 +68041,7 @@ l2:
 				goto l3
 			}
 			t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t19, v3)
+			m.___JS_FreeValueRT(t19, v3)
 		}
 	l3:
 	}
@@ -68091,7 +68087,7 @@ func (m *Module) _js_execute_async_module(v0, v1 int32) {
 						goto l0
 					}
 					t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t12, v8)
+					m.___JS_FreeValueRT(t12, v8)
 				}
 			l0:
 			}
@@ -68101,7 +68097,7 @@ func (m *Module) _js_execute_async_module(v0, v1 int32) {
 			store32(m.memory, uint32(t14), uint32(v1-i32(1)))
 			if v1 <= i32(1) {
 				t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t15, v9)
+				m.___JS_FreeValueRT(t15, v9)
 			}
 			if uint64(v6) >= uint64(i64(-0x900000000)) {
 				{
@@ -68113,7 +68109,7 @@ func (m *Module) _js_execute_async_module(v0, v1 int32) {
 						goto l1
 					}
 					t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t17, v6)
+					m.___JS_FreeValueRT(t17, v6)
 				}
 			l1:
 			}
@@ -68127,7 +68123,7 @@ func (m *Module) _js_execute_async_module(v0, v1 int32) {
 						goto l2
 					}
 					t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t19, v7)
+					m.___JS_FreeValueRT(t19, v7)
 				}
 			l2:
 			}
@@ -68142,7 +68138,7 @@ func (m *Module) _js_execute_async_module(v0, v1 int32) {
 				goto l3
 			}
 			t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t21, v5)
+			m.___JS_FreeValueRT(t21, v5)
 		}
 	l3:
 	}
@@ -68200,7 +68196,7 @@ func (m *Module) _js_execute_sync_module(v0, v1, v2 int32) int32 {
 											goto l5
 										}
 										t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t8, v4)
+										m.___JS_FreeValueRT(t8, v4)
 										goto l5
 									case 1:
 										t9 := int64(load64(m.memory, uint64(uint32(v3))+24))
@@ -68219,7 +68215,7 @@ func (m *Module) _js_execute_sync_module(v0, v1, v2 int32) int32 {
 											goto l6
 										}
 										t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t12, v4)
+										m.___JS_FreeValueRT(t12, v4)
 										return i32(-1)
 									}
 								}
@@ -68234,7 +68230,7 @@ func (m *Module) _js_execute_sync_module(v0, v1, v2 int32) int32 {
 							goto l1
 						}
 						t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t14, v4)
+						m.___JS_FreeValueRT(t14, v4)
 					}
 				l1:
 					_ = m.XJS_ThrowTypeError(v0, i32(10509), i32(0))
@@ -68327,7 +68323,7 @@ func (m *Module) _js_async_module_execution_fulfilled(v0 int32, v1 int64, v2, v3
 								store32(m.memory, uint32(t17), uint32(v4-i32(1)))
 								if v4 <= i32(1) {
 									t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t18, v8)
+									m.___JS_FreeValueRT(t18, v8)
 								}
 								t19 := int64(load64(m.memory, uint64(uint32(v3))+8))
 								v8 = t19
@@ -68342,7 +68338,7 @@ func (m *Module) _js_async_module_execution_fulfilled(v0 int32, v1 int64, v2, v3
 									goto l4
 								}
 								t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t21, v8)
+								m.___JS_FreeValueRT(t21, v8)
 							}
 						l4:
 						} else {
@@ -68444,7 +68440,7 @@ func (m *Module) _js_async_module_execution_rejected(v0 int32, v1 int64, v2, v3,
 							goto l3
 						}
 						t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t17, v6)
+						m.___JS_FreeValueRT(t17, v6)
 					}
 				l3:
 				}
@@ -68471,7 +68467,7 @@ func (m *Module) _js_async_module_execution_rejected(v0 int32, v1 int64, v2, v3,
 					store32(m.memory, uint32(t25), uint32(v5-i32(1)))
 					if v5 <= i32(1) {
 						t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t26, v6)
+						m.___JS_FreeValueRT(t26, v6)
 					}
 					v3 = v3 + i32(4)
 					v8 = v8 + i32(1)
@@ -68530,7 +68526,7 @@ func (m *Module) _js_set_module_evaluated(v0, v1 int32) {
 				goto l0
 			}
 			t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t6, v4)
+			m.___JS_FreeValueRT(t6, v4)
 		}
 	l0:
 	}
@@ -69152,7 +69148,7 @@ func (m *Module) _js_string_normalize(v0 int32, v1 int64, v2, v3 int32) int64 {
 									goto l0
 								}
 								t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t14, int64(uint32(v2-i32(12)))|i64(-0x700000000))
+								m.___JS_FreeValueRT(t14, int64(uint32(v2-i32(12)))|i64(-0x700000000))
 								goto l0
 							}
 						l1:
@@ -69163,7 +69159,7 @@ func (m *Module) _js_string_normalize(v0 int32, v1 int64, v2, v3 int32) int64 {
 						store32(m.memory, uint32(v7), uint32(v3-i32(1)))
 						if v3 <= i32(1) {
 							t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t16, int64(uint32(v2-i32(12)))|i64(-0x700000000))
+							m.___JS_FreeValueRT(t16, int64(uint32(v2-i32(12)))|i64(-0x700000000))
 						}
 						_ = m.XJS_ThrowRangeError(v0, i32(9074), i32(0))
 					}
@@ -69179,7 +69175,7 @@ func (m *Module) _js_string_normalize(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l2
 					}
 					t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t19, v1)
+					m.___JS_FreeValueRT(t19, v1)
 					goto l2
 				}
 			l0:
@@ -69196,7 +69192,7 @@ func (m *Module) _js_string_normalize(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l3
 					}
 					t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t22, v1)
+					m.___JS_FreeValueRT(t22, v1)
 				}
 			l3:
 			}
@@ -69344,7 +69340,7 @@ func (m *Module) _js_string_normalize1(v0, v1 int32, v2 int64, v3 int32) int32 {
 						goto l0
 					}
 					t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t7, v2)
+					m.___JS_FreeValueRT(t7, v2)
 					goto l1
 				}
 				store32(m.memory, uint64(uint32(v14))+12, uint32(i32(0)))
@@ -69372,7 +69368,7 @@ func (m *Module) _js_string_normalize1(v0, v1 int32, v2 int64, v3 int32) int32 {
 							goto l3
 						}
 						t11 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t11, v2)
+						m.___JS_FreeValueRT(t11, v2)
 					}
 				l3:
 				}
@@ -69677,7 +69673,7 @@ func (m *Module) _js_string_localeCompare(v0 int32, v1 int64, v2, v3 int32) int6
 					goto l0
 				}
 				t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t5, v1)
+				m.___JS_FreeValueRT(t5, v1)
 				goto l0
 			}
 			t6 := m._js_string_normalize1(v0, v6+i32(12), v1, i32(0))
@@ -69692,7 +69688,7 @@ func (m *Module) _js_string_localeCompare(v0 int32, v1 int64, v2, v3 int32) int6
 						goto l1
 					}
 					t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t8, v1)
+					m.___JS_FreeValueRT(t8, v1)
 				}
 			l1:
 			}
@@ -69708,7 +69704,7 @@ func (m *Module) _js_string_localeCompare(v0 int32, v1 int64, v2, v3 int32) int6
 					goto l0
 				}
 				t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t10, v4)
+				m.___JS_FreeValueRT(t10, v4)
 				goto l0
 			}
 			t11 := m._js_string_normalize1(v0, v6+i32(8), v4, i32(0))
@@ -69723,7 +69719,7 @@ func (m *Module) _js_string_localeCompare(v0 int32, v1 int64, v2, v3 int32) int6
 						goto l2
 					}
 					t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t13, v4)
+					m.___JS_FreeValueRT(t13, v4)
 				}
 			l2:
 			}
@@ -69985,7 +69981,7 @@ func (m *Module) _js_regexp_escape(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l8
 					}
 					t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t36, v1)
+					m.___JS_FreeValueRT(t36, v1)
 				}
 			l8:
 			}
@@ -70694,7 +70690,7 @@ func (m *Module) _js_regexp_exec(v0 int32, v1 int64, v2, v3 int32) int64 {
 												}
 											l22:
 												t87 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t87, v4)
+												m.___JS_FreeValueRT(t87, v4)
 												goto l13
 											}
 										l21:
@@ -70739,7 +70735,7 @@ func (m *Module) _js_regexp_exec(v0 int32, v1 int64, v2, v3 int32) int64 {
 											goto l24
 										}
 										t92 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t92, v6)
+										m.___JS_FreeValueRT(t92, v6)
 									}
 								l24:
 								}
@@ -70754,7 +70750,7 @@ func (m *Module) _js_regexp_exec(v0 int32, v1 int64, v2, v3 int32) int64 {
 									goto l25
 								}
 								t94 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t94, v5)
+								m.___JS_FreeValueRT(t94, v5)
 								goto l25
 							}
 						l3:
@@ -70814,7 +70810,7 @@ func (m *Module) _js_regexp_exec(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l26
 					}
 					t105 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t105, v8)
+					m.___JS_FreeValueRT(t105, v8)
 				}
 			l26:
 			}
@@ -70828,7 +70824,7 @@ func (m *Module) _js_regexp_exec(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l27
 					}
 					t107 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t107, v1)
+					m.___JS_FreeValueRT(t107, v1)
 				}
 			l27:
 			}
@@ -70842,7 +70838,7 @@ func (m *Module) _js_regexp_exec(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l28
 					}
 					t109 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t109, v4)
+					m.___JS_FreeValueRT(t109, v4)
 				}
 			l28:
 			}
@@ -70871,7 +70867,7 @@ func (m *Module) _JS_ToLengthFree(v0, v1 int32, v2 int64) int32 {
 				goto l0
 			}
 			t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t2, v2)
+			m.___JS_FreeValueRT(t2, v2)
 		}
 	l0:
 	}
@@ -70944,7 +70940,7 @@ func (m *Module) _js_regexp_compile(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l3
 						}
 						t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t14, v4)
+						m.___JS_FreeValueRT(t14, v4)
 					}
 				l3:
 				}
@@ -70959,7 +70955,7 @@ func (m *Module) _js_regexp_compile(v0 int32, v1 int64, v2, v3 int32) int64 {
 			store32(m.memory, uint32(v2), uint32(v6-i32(1)))
 			if v6 <= i32(1) {
 				t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t17, int64(uint32(v3))|i64(-0x700000000))
+				m.___JS_FreeValueRT(t17, int64(uint32(v3))|i64(-0x700000000))
 			}
 			t18 := int32(load32(m.memory, uint64(uint32(v7))+28))
 			v3 = t18
@@ -70969,7 +70965,7 @@ func (m *Module) _js_regexp_compile(v0 int32, v1 int64, v2, v3 int32) int64 {
 			store32(m.memory, uint32(v2), uint32(v6-i32(1)))
 			if v6 <= i32(1) {
 				t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t20, int64(uint32(v3))|i64(-0x700000000))
+				m.___JS_FreeValueRT(t20, int64(uint32(v3))|i64(-0x700000000))
 			}
 			store32(m.memory, uint64(uint32(v7))+28, uint32(v5))
 			store32(m.memory, uint64(uint32(v7))+24, uint32(v4))
@@ -71005,7 +71001,7 @@ func (m *Module) _js_regexp_test(v0 int32, v1 int64, v2, v3 int32) int64 {
 					goto l0
 				}
 				t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t4, v1)
+				m.___JS_FreeValueRT(t4, v1)
 			}
 		l0:
 		}
@@ -71078,7 +71074,7 @@ func (m *Module) _JS_RegExpExec(v0 int32, v1, v2 int64) int64 {
 									goto l3
 								}
 								t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t12, v2)
+								m.___JS_FreeValueRT(t12, v2)
 							}
 						l3:
 						}
@@ -71096,7 +71092,7 @@ func (m *Module) _JS_RegExpExec(v0 int32, v1, v2 int64) int64 {
 					goto l0
 				}
 				t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t15, v2)
+				m.___JS_FreeValueRT(t15, v2)
 			}
 		l0:
 			t16 := m._js_regexp_exec(v0, v1, v5, v5+i32(8))
@@ -71549,7 +71545,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 																		goto l12
 																	}
 																	t94 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																	m.X__JS_FreeValueRT(t94, v19)
+																	m.___JS_FreeValueRT(t94, v19)
 																}
 															l12:
 															}
@@ -71583,7 +71579,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 														goto l14
 													}
 													t98 := int32(load32(m.memory, uint64(uint32(v0))+8))
-													m.X__JS_FreeValueRT(t98, v19)
+													m.___JS_FreeValueRT(t98, v19)
 												}
 											l14:
 											}
@@ -71720,7 +71716,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 											goto l20
 										}
 										t128 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t128, v20)
+										m.___JS_FreeValueRT(t128, v20)
 									}
 								l20:
 								}
@@ -71793,7 +71789,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 										goto l25
 									}
 									t145 := int32(load32(m.memory, uint64(uint32(t143))+8))
-									m.X__JS_FreeValueRT(t145, v19)
+									m.___JS_FreeValueRT(t145, v19)
 								}
 							l25:
 							}
@@ -71828,7 +71824,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 												goto l27
 											}
 											t153 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t153, v20)
+											m.___JS_FreeValueRT(t153, v20)
 										}
 									l27:
 									}
@@ -71869,7 +71865,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 												goto l28
 											}
 											t162 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t162, v21)
+											m.___JS_FreeValueRT(t162, v21)
 										}
 									l28:
 									}
@@ -71937,7 +71933,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 												goto l32
 											}
 											t174 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t174, v24)
+											m.___JS_FreeValueRT(t174, v24)
 										}
 									l32:
 									}
@@ -71966,7 +71962,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 													goto l33
 												}
 												t178 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t178, v22)
+												m.___JS_FreeValueRT(t178, v22)
 											}
 										l33:
 										}
@@ -71996,7 +71992,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 													goto l34
 												}
 												t185 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t185, v1)
+												m.___JS_FreeValueRT(t185, v1)
 											}
 										l34:
 										}
@@ -72041,7 +72037,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 													goto l35
 												}
 												t192 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t192, v22)
+												m.___JS_FreeValueRT(t192, v22)
 											}
 										l35:
 										}
@@ -72121,7 +72117,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 						goto l39
 					}
 					t209 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t209, v28)
+					m.___JS_FreeValueRT(t209, v28)
 				}
 			l39:
 			}
@@ -72135,7 +72131,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 						goto l40
 					}
 					t211 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t211, v20)
+					m.___JS_FreeValueRT(t211, v20)
 				}
 			l40:
 			}
@@ -72149,7 +72145,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 						goto l41
 					}
 					t213 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t213, v26)
+					m.___JS_FreeValueRT(t213, v26)
 				}
 			l41:
 			}
@@ -72163,7 +72159,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 						goto l42
 					}
 					t215 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t215, v21)
+					m.___JS_FreeValueRT(t215, v21)
 				}
 			l42:
 			}
@@ -72177,7 +72173,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 						goto l43
 					}
 					t217 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t217, v22)
+					m.___JS_FreeValueRT(t217, v22)
 				}
 			l43:
 			}
@@ -72191,7 +72187,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 						goto l44
 					}
 					t219 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t219, v24)
+					m.___JS_FreeValueRT(t219, v24)
 				}
 			l44:
 			}
@@ -72206,7 +72202,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 				goto l45
 			}
 			t221 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t221, v27)
+			m.___JS_FreeValueRT(t221, v27)
 		}
 	l45:
 	} else {
@@ -72636,7 +72632,7 @@ func (m *Module) _value_buffer_free(v0 int32) {
 				store32(m.memory, uint32(v3), uint32(v1-i32(1)))
 				if v1 <= i32(1) {
 					t6 := int32(load32(m.memory, uint64(uint32(v2))+8))
-					m.X__JS_FreeValueRT(t6, v4)
+					m.___JS_FreeValueRT(t6, v4)
 				}
 				t7 := int32(load32(m.memory, uint64(uint32(v0))+40))
 				v1 = t7
@@ -72720,7 +72716,7 @@ func (m *Module) _js_regexp_Symbol_match(v0 int32, v1 int64, v2, v3 int32) int64
 														goto l3
 													}
 													t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-													m.X__JS_FreeValueRT(t13, v8)
+													m.___JS_FreeValueRT(t13, v8)
 												}
 											l3:
 											}
@@ -72742,7 +72738,7 @@ func (m *Module) _js_regexp_Symbol_match(v0 int32, v1 int64, v2, v3 int32) int64
 															goto l8
 														}
 														t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-														m.X__JS_FreeValueRT(t34, v9)
+														m.___JS_FreeValueRT(t34, v9)
 													}
 												l8:
 												} else {
@@ -72759,7 +72755,7 @@ func (m *Module) _js_regexp_Symbol_match(v0 int32, v1 int64, v2, v3 int32) int64
 													goto l9
 												}
 												t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t36, v8)
+												m.___JS_FreeValueRT(t36, v8)
 												goto l9
 											}
 											if v11 == i64(0x600000000) {
@@ -72827,7 +72823,7 @@ func (m *Module) _js_regexp_Symbol_match(v0 int32, v1 int64, v2, v3 int32) int64
 													goto l7
 												}
 												t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t30, v9)
+												m.___JS_FreeValueRT(t30, v9)
 											}
 										l7:
 										}
@@ -72842,7 +72838,7 @@ func (m *Module) _js_regexp_Symbol_match(v0 int32, v1 int64, v2, v3 int32) int64
 											goto l2
 										}
 										t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t32, v8)
+										m.___JS_FreeValueRT(t32, v8)
 										goto l2
 									}
 								}
@@ -72859,7 +72855,7 @@ func (m *Module) _js_regexp_Symbol_match(v0 int32, v1 int64, v2, v3 int32) int64
 								goto l1
 							}
 							t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t38, v13)
+							m.___JS_FreeValueRT(t38, v13)
 							goto l1
 						}
 					l9:
@@ -72877,7 +72873,7 @@ func (m *Module) _js_regexp_Symbol_match(v0 int32, v1 int64, v2, v3 int32) int64
 								goto l10
 							}
 							t41 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t41, v13)
+							m.___JS_FreeValueRT(t41, v13)
 						}
 					l10:
 					}
@@ -72892,7 +72888,7 @@ func (m *Module) _js_regexp_Symbol_match(v0 int32, v1 int64, v2, v3 int32) int64
 						goto l0
 					}
 					t43 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t43, v10)
+					m.___JS_FreeValueRT(t43, v10)
 					goto l0
 				}
 			l1:
@@ -72908,7 +72904,7 @@ func (m *Module) _js_regexp_Symbol_match(v0 int32, v1 int64, v2, v3 int32) int64
 				goto l0
 			}
 			t45 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t45, v10)
+			m.___JS_FreeValueRT(t45, v10)
 		}
 	l0:
 	} else {
@@ -73018,7 +73014,7 @@ func (m *Module) _js_regexp_Symbol_matchAll(v0 int32, v1 int64, v2, v3 int32) in
 								goto l3
 							}
 							t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t26, v6)
+							m.___JS_FreeValueRT(t26, v6)
 						}
 					l3:
 					}
@@ -73033,7 +73029,7 @@ func (m *Module) _js_regexp_Symbol_matchAll(v0 int32, v1 int64, v2, v3 int32) in
 						goto l0
 					}
 					t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t28, v7)
+					m.___JS_FreeValueRT(t28, v7)
 					goto l0
 				} else {
 					p5 = i64(0x300000000)
@@ -73053,7 +73049,7 @@ func (m *Module) _js_regexp_Symbol_matchAll(v0 int32, v1 int64, v2, v3 int32) in
 						goto l4
 					}
 					t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t30, v11)
+					m.___JS_FreeValueRT(t30, v11)
 				}
 			l4:
 			}
@@ -73067,7 +73063,7 @@ func (m *Module) _js_regexp_Symbol_matchAll(v0 int32, v1 int64, v2, v3 int32) in
 						goto l5
 					}
 					t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t32, v6)
+					m.___JS_FreeValueRT(t32, v6)
 				}
 			l5:
 			}
@@ -73081,7 +73077,7 @@ func (m *Module) _js_regexp_Symbol_matchAll(v0 int32, v1 int64, v2, v3 int32) in
 						goto l6
 					}
 					t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t34, v7)
+					m.___JS_FreeValueRT(t34, v7)
 				}
 			l6:
 			}
@@ -73095,7 +73091,7 @@ func (m *Module) _js_regexp_Symbol_matchAll(v0 int32, v1 int64, v2, v3 int32) in
 						goto l7
 					}
 					t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t36, v9)
+					m.___JS_FreeValueRT(t36, v9)
 				}
 			l7:
 			}
@@ -73111,7 +73107,7 @@ func (m *Module) _js_regexp_Symbol_matchAll(v0 int32, v1 int64, v2, v3 int32) in
 				goto l0
 			}
 			t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t38, v10)
+			m.___JS_FreeValueRT(t38, v10)
 		}
 	l0:
 	} else {
@@ -73174,7 +73170,7 @@ func (m *Module) _js_regexp_Symbol_search(v0 int32, v1 int64, v2, v3 int32) int6
 										goto l1
 									}
 									t11 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t11, v5)
+									m.___JS_FreeValueRT(t11, v5)
 								} else {
 									t12 := m.XJS_SetPropertyInternal(v0, v1, i32(89), v5, v1, i32(0x4000))
 									if t12 >= i32(0) {
@@ -73195,7 +73191,7 @@ func (m *Module) _js_regexp_Symbol_search(v0 int32, v1 int64, v2, v3 int32) int6
 										goto l3
 									}
 									t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t14, v7)
+									m.___JS_FreeValueRT(t14, v7)
 								}
 							l3:
 							}
@@ -73209,7 +73205,7 @@ func (m *Module) _js_regexp_Symbol_search(v0 int32, v1 int64, v2, v3 int32) int6
 										goto l4
 									}
 									t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t16, v4)
+									m.___JS_FreeValueRT(t16, v4)
 								}
 							l4:
 							}
@@ -73230,7 +73226,7 @@ func (m *Module) _js_regexp_Symbol_search(v0 int32, v1 int64, v2, v3 int32) int6
 								goto l5
 							}
 							t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t19, v6)
+							m.___JS_FreeValueRT(t19, v6)
 							return v4
 						}
 					l2:
@@ -73246,7 +73242,7 @@ func (m *Module) _js_regexp_Symbol_search(v0 int32, v1 int64, v2, v3 int32) int6
 						goto l0
 					}
 					t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t21, v6)
+					m.___JS_FreeValueRT(t21, v6)
 				}
 			l0:
 			}
@@ -73260,7 +73256,7 @@ func (m *Module) _js_regexp_Symbol_search(v0 int32, v1 int64, v2, v3 int32) int6
 						goto l6
 					}
 					t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t23, v7)
+					m.___JS_FreeValueRT(t23, v7)
 				}
 			l6:
 			}
@@ -73274,7 +73270,7 @@ func (m *Module) _js_regexp_Symbol_search(v0 int32, v1 int64, v2, v3 int32) int6
 						goto l7
 					}
 					t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t25, v4)
+					m.___JS_FreeValueRT(t25, v4)
 				}
 			l7:
 			}
@@ -73290,7 +73286,7 @@ func (m *Module) _js_regexp_Symbol_search(v0 int32, v1 int64, v2, v3 int32) int6
 				goto l5
 			}
 			t27 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t27, v5)
+			m.___JS_FreeValueRT(t27, v5)
 		}
 	l5:
 	}
@@ -73403,7 +73399,7 @@ func (m *Module) _js_regexp_Symbol_split(v0 int32, v1 int64, v2, v3 int32) int64
 													goto l4
 												}
 												t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t25, v7)
+												m.___JS_FreeValueRT(t25, v7)
 											}
 										l4:
 										}
@@ -73547,7 +73543,7 @@ func (m *Module) _js_regexp_Symbol_split(v0 int32, v1 int64, v2, v3 int32) int64
 								goto l9
 							}
 							t54 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t54, v6)
+							m.___JS_FreeValueRT(t54, v6)
 						}
 					l9:
 					}
@@ -73571,7 +73567,7 @@ func (m *Module) _js_regexp_Symbol_split(v0 int32, v1 int64, v2, v3 int32) int64
 						goto l10
 					}
 					t56 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t56, v10)
+					m.___JS_FreeValueRT(t56, v10)
 				}
 			l10:
 			}
@@ -73585,7 +73581,7 @@ func (m *Module) _js_regexp_Symbol_split(v0 int32, v1 int64, v2, v3 int32) int64
 						goto l11
 					}
 					t58 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t58, v11)
+					m.___JS_FreeValueRT(t58, v11)
 				}
 			l11:
 			}
@@ -73599,7 +73595,7 @@ func (m *Module) _js_regexp_Symbol_split(v0 int32, v1 int64, v2, v3 int32) int64
 						goto l12
 					}
 					t60 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t60, v1)
+					m.___JS_FreeValueRT(t60, v1)
 				}
 			l12:
 			}
@@ -73613,7 +73609,7 @@ func (m *Module) _js_regexp_Symbol_split(v0 int32, v1 int64, v2, v3 int32) int64
 						goto l13
 					}
 					t62 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t62, v9)
+					m.___JS_FreeValueRT(t62, v9)
 				}
 			l13:
 			}
@@ -73628,7 +73624,7 @@ func (m *Module) _js_regexp_Symbol_split(v0 int32, v1 int64, v2, v3 int32) int64
 				goto l0
 			}
 			t64 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t64, v7)
+			m.___JS_FreeValueRT(t64, v7)
 		}
 	l0:
 	} else {
@@ -73737,7 +73733,7 @@ func (m *Module) _js_regexp_string_iterator_next(v0 int32, v1 int64, v2, v3, v4,
 						goto l1
 					}
 					t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t24, v6)
+					m.___JS_FreeValueRT(t24, v6)
 					goto l1
 				}
 			l3:
@@ -73754,7 +73750,7 @@ func (m *Module) _js_regexp_string_iterator_next(v0 int32, v1 int64, v2, v3, v4,
 						goto l4
 					}
 					t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t26, v1)
+					m.___JS_FreeValueRT(t26, v1)
 				}
 			l4:
 			}
@@ -73771,7 +73767,7 @@ func (m *Module) _js_regexp_string_iterator_next(v0 int32, v1 int64, v2, v3, v4,
 				goto l1
 			}
 			t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t28, v6)
+			m.___JS_FreeValueRT(t28, v6)
 			goto l1
 		}
 	l0:
@@ -73889,7 +73885,7 @@ l0:
 												goto l3
 											}
 											t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t16, v6)
+											m.___JS_FreeValueRT(t16, v6)
 										}
 									l3:
 									}
@@ -73947,7 +73943,7 @@ l0:
 												goto l5
 											}
 											t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t26, v6)
+											m.___JS_FreeValueRT(t26, v6)
 										}
 									l5:
 									}
@@ -74171,7 +74167,7 @@ func (m *Module) _js_json_parse(v0 int32, v1 int64, v2, v3 int32) int64 {
 													goto l2
 												}
 												t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t23, v1)
+												m.___JS_FreeValueRT(t23, v1)
 												goto l2
 											} else {
 												if uint64(v7) < uint64(i64(-0x900000000)) {
@@ -74185,7 +74181,7 @@ func (m *Module) _js_json_parse(v0 int32, v1 int64, v2, v3 int32) int64 {
 													goto l1
 												}
 												t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t25, v7)
+												m.___JS_FreeValueRT(t25, v7)
 											}
 										}
 									l1:
@@ -74202,7 +74198,7 @@ func (m *Module) _js_json_parse(v0 int32, v1 int64, v2, v3 int32) int64 {
 										goto l3
 									}
 									t27 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t27, v1)
+									m.___JS_FreeValueRT(t27, v1)
 								}
 							l3:
 							}
@@ -74232,7 +74228,7 @@ func (m *Module) _js_json_parse(v0 int32, v1 int64, v2, v3 int32) int64 {
 			}
 		l4:
 			t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t32, int64(uint32(v5-i32(12)))|i64(-0x700000000))
+			m.___JS_FreeValueRT(t32, int64(uint32(v5-i32(12)))|i64(-0x700000000))
 		}
 	l5:
 	} else {
@@ -74469,7 +74465,7 @@ func (m *Module) _internalize_json_property(v0 int32, v1 int64, v2 int32, v3 int
 									goto l10
 								}
 								t46 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t46, v8)
+								m.___JS_FreeValueRT(t46, v8)
 							}
 						l10:
 						}
@@ -74483,7 +74479,7 @@ func (m *Module) _internalize_json_property(v0 int32, v1 int64, v2 int32, v3 int
 									goto l11
 								}
 								t48 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t48, v6)
+								m.___JS_FreeValueRT(t48, v6)
 							}
 						l11:
 						}
@@ -74498,7 +74494,7 @@ func (m *Module) _internalize_json_property(v0 int32, v1 int64, v2 int32, v3 int
 							goto l0
 						}
 						t50 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t50, v7)
+						m.___JS_FreeValueRT(t50, v7)
 						goto l0
 					}
 				l6:
@@ -74515,7 +74511,7 @@ func (m *Module) _internalize_json_property(v0 int32, v1 int64, v2 int32, v3 int
 						goto l12
 					}
 					t53 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t53, v7)
+					m.___JS_FreeValueRT(t53, v7)
 				}
 			l12:
 			} else {
@@ -74534,7 +74530,7 @@ func (m *Module) _internalize_json_property(v0 int32, v1 int64, v2 int32, v3 int
 				goto l0
 			}
 			t56 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t56, v6)
+			m.___JS_FreeValueRT(t56, v6)
 		}
 	l0:
 	} else {
@@ -74623,7 +74619,7 @@ func (m *Module) _js_json_rawJSON(v0 int32, v1 int64, v2, v3 int32) int64 {
 									goto l3
 								}
 								t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t13, v1)
+								m.___JS_FreeValueRT(t13, v1)
 							}
 						l3:
 						}
@@ -74650,7 +74646,7 @@ func (m *Module) _js_json_rawJSON(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l5
 						}
 						t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t18, v5)
+						m.___JS_FreeValueRT(t18, v5)
 						goto l5
 					}
 				l1:
@@ -74670,7 +74666,7 @@ func (m *Module) _js_json_rawJSON(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l5
 			}
 			t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t21, v4)
+			m.___JS_FreeValueRT(t21, v4)
 		}
 	l5:
 	} else {
@@ -74711,7 +74707,7 @@ func (m *Module) _js_proxy_finalizer(v0 int32, v1 int64) {
 					if v3 > i32(1) {
 						goto l1
 					}
-					m.X__JS_FreeValueRT(v0, v1)
+					m.___JS_FreeValueRT(v0, v1)
 				}
 			l1:
 			}
@@ -74726,7 +74722,7 @@ func (m *Module) _js_proxy_finalizer(v0 int32, v1 int64) {
 					if v3 > i32(1) {
 						goto l2
 					}
-					m.X__JS_FreeValueRT(v0, v1)
+					m.___JS_FreeValueRT(v0, v1)
 				}
 			l2:
 			}
@@ -74798,7 +74794,7 @@ func (m *Module) _js_proxy_get_own_property(v0, v1 int32, v2 int64, v3 int32) in
 					goto l0
 				}
 				t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t7, v2)
+				m.___JS_FreeValueRT(t7, v2)
 				goto l0
 			}
 			t8 := int64(load64(m.memory, uint32(v5)))
@@ -74817,7 +74813,7 @@ func (m *Module) _js_proxy_get_own_property(v0, v1 int32, v2 int64, v3 int32) in
 						goto l1
 					}
 					t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t12, v10)
+					m.___JS_FreeValueRT(t12, v10)
 				}
 			l1:
 			}
@@ -74839,7 +74835,7 @@ func (m *Module) _js_proxy_get_own_property(v0, v1 int32, v2 int64, v3 int32) in
 							goto l2
 						}
 						t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t14, v2)
+						m.___JS_FreeValueRT(t14, v2)
 						goto l2
 					}
 				}
@@ -74857,7 +74853,7 @@ func (m *Module) _js_proxy_get_own_property(v0, v1 int32, v2 int64, v3 int32) in
 						goto l0
 					}
 					t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t17, v2)
+					m.___JS_FreeValueRT(t17, v2)
 					goto l0
 				}
 				if v7 != 0 {
@@ -74896,7 +74892,7 @@ func (m *Module) _js_proxy_get_own_property(v0, v1 int32, v2 int64, v3 int32) in
 						goto l0
 					}
 					t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t23, v2)
+					m.___JS_FreeValueRT(t23, v2)
 					goto l0
 				}
 				t24 := m._js_obj_to_desc(v0, v4+i32(32), v2)
@@ -74910,7 +74906,7 @@ func (m *Module) _js_proxy_get_own_property(v0, v1 int32, v2 int64, v3 int32) in
 							goto l4
 						}
 						t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t26, v2)
+						m.___JS_FreeValueRT(t26, v2)
 					}
 				l4:
 				}
@@ -75176,7 +75172,7 @@ func (m *Module) _js_obj_to_desc(v0, v1 int32, v2 int64) int32 {
 							goto l7
 						}
 						t37 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t37, v9)
+						m.___JS_FreeValueRT(t37, v9)
 					}
 				l7:
 				}
@@ -75190,7 +75186,7 @@ func (m *Module) _js_obj_to_desc(v0, v1 int32, v2 int64) int32 {
 							goto l8
 						}
 						t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t39, v8)
+						m.___JS_FreeValueRT(t39, v8)
 					}
 				l8:
 				}
@@ -75206,7 +75202,7 @@ func (m *Module) _js_obj_to_desc(v0, v1 int32, v2 int64) int32 {
 					goto l6
 				}
 				t41 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t41, v10)
+				m.___JS_FreeValueRT(t41, v10)
 				return i32(-1)
 			}
 		l6:
@@ -75290,7 +75286,7 @@ func (m *Module) _js_proxy_get_own_property_names(v0, v1, v2 int32, v3 int64) in
 													goto l6
 												}
 												t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t17, v3)
+												m.___JS_FreeValueRT(t17, v3)
 											}
 										l6:
 										}
@@ -75310,7 +75306,7 @@ func (m *Module) _js_proxy_get_own_property_names(v0, v1, v2 int32, v3 int64) in
 											goto l3
 										}
 										t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t14, v3)
+										m.___JS_FreeValueRT(t14, v3)
 									}
 								l3:
 								}
@@ -75481,7 +75477,7 @@ func (m *Module) _js_proxy_get_own_property_names(v0, v1, v2 int32, v3 int64) in
 								goto l18
 							}
 							t45 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t45, v16)
+							m.___JS_FreeValueRT(t45, v16)
 						}
 					l18:
 					}
@@ -75506,7 +75502,7 @@ func (m *Module) _js_proxy_get_own_property_names(v0, v1, v2 int32, v3 int64) in
 				goto l0
 			}
 			t48 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t48, v16)
+			m.___JS_FreeValueRT(t48, v16)
 		}
 	l0:
 	}
@@ -75546,7 +75542,7 @@ func (m *Module) _js_proxy_delete_property(v0 int32, v1 int64, v2 int32) int32 {
 					goto l0
 				}
 				t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t7, v1)
+				m.___JS_FreeValueRT(t7, v1)
 				goto l0
 			}
 			t8 := int64(load64(m.memory, uint32(v6)))
@@ -75565,7 +75561,7 @@ func (m *Module) _js_proxy_delete_property(v0 int32, v1 int64, v2 int32) int32 {
 						goto l1
 					}
 					t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t12, v8)
+					m.___JS_FreeValueRT(t12, v8)
 				}
 			l1:
 			}
@@ -75650,7 +75646,7 @@ func (m *Module) _js_proxy_define_own_property(v0 int32, v1 int64, v2 int32, v3,
 					goto l0
 				}
 				t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t7, v15)
+				m.___JS_FreeValueRT(t7, v15)
 				goto l0
 			}
 			t8 := int32(load32(m.memory, uint64(uint32(v0))+48))
@@ -75668,7 +75664,7 @@ func (m *Module) _js_proxy_define_own_property(v0 int32, v1 int64, v2 int32, v3,
 							goto l1
 						}
 						t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t12, v16)
+						m.___JS_FreeValueRT(t12, v16)
 					}
 				l1:
 				}
@@ -75683,7 +75679,7 @@ func (m *Module) _js_proxy_define_own_property(v0 int32, v1 int64, v2 int32, v3,
 					goto l0
 				}
 				t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t14, v15)
+				m.___JS_FreeValueRT(t14, v15)
 				goto l0
 			}
 			v12 = v6 & i32(2048)
@@ -75740,7 +75736,7 @@ func (m *Module) _js_proxy_define_own_property(v0 int32, v1 int64, v2 int32, v3,
 						goto l2
 					}
 					t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t28, v16)
+					m.___JS_FreeValueRT(t28, v16)
 				}
 			l2:
 			}
@@ -75754,7 +75750,7 @@ func (m *Module) _js_proxy_define_own_property(v0 int32, v1 int64, v2 int32, v3,
 						goto l3
 					}
 					t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t30, v1)
+					m.___JS_FreeValueRT(t30, v1)
 				}
 			l3:
 			}
@@ -75899,7 +75895,7 @@ func (m *Module) _js_proxy_has(v0 int32, v1 int64, v2 int32) int32 {
 					goto l0
 				}
 				t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t7, v1)
+				m.___JS_FreeValueRT(t7, v1)
 				goto l0
 			}
 			t8 := int64(load64(m.memory, uint32(v5)))
@@ -75918,7 +75914,7 @@ func (m *Module) _js_proxy_has(v0 int32, v1 int64, v2 int32) int32 {
 						goto l1
 					}
 					t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t12, v8)
+					m.___JS_FreeValueRT(t12, v8)
 				}
 			l1:
 			}
@@ -75997,7 +75993,7 @@ func (m *Module) _js_proxy_get(v0 int32, v1 int64, v2 int32, v3 int64) int64 {
 						goto l0
 					}
 					t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t7, v8)
+					m.___JS_FreeValueRT(t7, v8)
 					goto l0
 				}
 				t8 := int64(load64(m.memory, uint32(v5)))
@@ -76018,7 +76014,7 @@ func (m *Module) _js_proxy_get(v0 int32, v1 int64, v2 int32, v3 int64) int64 {
 							goto l1
 						}
 						t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t12, v9)
+						m.___JS_FreeValueRT(t12, v9)
 					}
 				l1:
 				}
@@ -76041,7 +76037,7 @@ func (m *Module) _js_proxy_get(v0 int32, v1 int64, v2 int32, v3 int64) int64 {
 						goto l2
 					}
 					t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t16, v1)
+					m.___JS_FreeValueRT(t16, v1)
 					goto l2
 				}
 				if v2 == 0 {
@@ -76086,7 +76082,7 @@ func (m *Module) _js_proxy_get(v0 int32, v1 int64, v2 int32, v3 int64) int64 {
 							goto l5
 						}
 						t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t22, v1)
+						m.___JS_FreeValueRT(t22, v1)
 					}
 				l5:
 				}
@@ -76139,7 +76135,7 @@ func (m *Module) _js_proxy_set(v0 int32, v1 int64, v2 int32, v3, v4 int64, v5 in
 					goto l0
 				}
 				t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t8, v1)
+				m.___JS_FreeValueRT(t8, v1)
 				goto l0
 			}
 			t9 := int64(load64(m.memory, uint32(v8)))
@@ -76161,7 +76157,7 @@ func (m *Module) _js_proxy_set(v0 int32, v1 int64, v2 int32, v3, v4 int64, v5 in
 						goto l1
 					}
 					t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t13, v11)
+					m.___JS_FreeValueRT(t13, v11)
 				}
 			l1:
 			}
@@ -76271,7 +76267,7 @@ func (m *Module) _js_proxy_get_prototype(v0 int32, v1 int64) int64 {
 								goto l0
 							}
 							t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t10, v5)
+							m.___JS_FreeValueRT(t10, v5)
 							goto l0
 						}
 						if v3 != 0 {
@@ -76293,7 +76289,7 @@ func (m *Module) _js_proxy_get_prototype(v0 int32, v1 int64) int64 {
 								goto l0
 							}
 							t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t14, v5)
+							m.___JS_FreeValueRT(t14, v5)
 							goto l0
 						}
 						t15 := m._js_same_value(v0, v6, v5)
@@ -76309,7 +76305,7 @@ func (m *Module) _js_proxy_get_prototype(v0 int32, v1 int64) int64 {
 								goto l3
 							}
 							t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t17, v6)
+							m.___JS_FreeValueRT(t17, v6)
 							goto l3
 						} else {
 							if uint64(v6) < uint64(i64(-0x900000000)) {
@@ -76323,7 +76319,7 @@ func (m *Module) _js_proxy_get_prototype(v0 int32, v1 int64) int64 {
 								goto l2
 							}
 							t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t19, v6)
+							m.___JS_FreeValueRT(t19, v6)
 						}
 					}
 				l2:
@@ -76337,7 +76333,7 @@ func (m *Module) _js_proxy_get_prototype(v0 int32, v1 int64) int64 {
 								goto l4
 							}
 							t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t21, v5)
+							m.___JS_FreeValueRT(t21, v5)
 						}
 					l4:
 					}
@@ -76420,7 +76416,7 @@ func (m *Module) _js_proxy_set_prototype(v0 int32, v1, v2 int64) int32 {
 					goto l0
 				}
 				t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t14, v1)
+				m.___JS_FreeValueRT(t14, v1)
 				goto l0
 			}
 			if uint64(v1) >= uint64(i64(-0x900000000)) {
@@ -76433,7 +76429,7 @@ func (m *Module) _js_proxy_set_prototype(v0 int32, v1, v2 int64) int32 {
 						goto l1
 					}
 					t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t16, v1)
+					m.___JS_FreeValueRT(t16, v1)
 				}
 			l1:
 			}
@@ -76576,7 +76572,7 @@ func (m *Module) _js_proxy_revocable(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l1
 					}
 					t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t10, v5)
+					m.___JS_FreeValueRT(t10, v5)
 				}
 			l1:
 			}
@@ -76592,7 +76588,7 @@ func (m *Module) _js_proxy_revocable(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l0
 			}
 			t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t12, v1)
+			m.___JS_FreeValueRT(t12, v1)
 		}
 	l0:
 	}
@@ -76627,7 +76623,7 @@ func (m *Module) _js_proxy_revoke(v0 int32, v1 int64, v2, v3, v4, v5 int32) int6
 						goto l1
 					}
 					t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t5, v1)
+					m.___JS_FreeValueRT(t5, v1)
 				}
 			l1:
 			}
@@ -76698,7 +76694,7 @@ func (m *Module) _js_object_groupBy(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 												goto l14
 											}
 											t42 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t42, v10)
+											m.___JS_FreeValueRT(t42, v10)
 										}
 									l14:
 									}
@@ -76751,7 +76747,7 @@ func (m *Module) _js_object_groupBy(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 												goto l4
 											}
 											t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t22, v8)
+											m.___JS_FreeValueRT(t22, v8)
 										}
 									l4:
 									}
@@ -76808,7 +76804,7 @@ func (m *Module) _js_object_groupBy(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 											goto l7
 										}
 										t31 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t31, v13)
+										m.___JS_FreeValueRT(t31, v13)
 									}
 								l7:
 								} else {
@@ -76830,7 +76826,7 @@ func (m *Module) _js_object_groupBy(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 											goto l8
 										}
 										t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t34, v1)
+										m.___JS_FreeValueRT(t34, v1)
 									}
 								l8:
 								}
@@ -76844,7 +76840,7 @@ func (m *Module) _js_object_groupBy(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 											goto l9
 										}
 										t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t36, v8)
+										m.___JS_FreeValueRT(t36, v8)
 									}
 								l9:
 								}
@@ -76859,7 +76855,7 @@ func (m *Module) _js_object_groupBy(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 											goto l10
 										}
 										t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t38, v11)
+										m.___JS_FreeValueRT(t38, v11)
 									}
 								l10:
 								}
@@ -76884,7 +76880,7 @@ func (m *Module) _js_object_groupBy(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 								goto l13
 							}
 							t40 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t40, v1)
+							m.___JS_FreeValueRT(t40, v1)
 							goto l13
 						}
 					l12:
@@ -76905,7 +76901,7 @@ func (m *Module) _js_object_groupBy(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 							goto l16
 						}
 						t47 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t47, v8)
+						m.___JS_FreeValueRT(t47, v8)
 						goto l16
 					} else {
 						p7 = i64(0x300000000)
@@ -76925,7 +76921,7 @@ func (m *Module) _js_object_groupBy(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 							goto l17
 						}
 						t49 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t49, v11)
+						m.___JS_FreeValueRT(t49, v11)
 					}
 				l17:
 				}
@@ -76939,7 +76935,7 @@ func (m *Module) _js_object_groupBy(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 							goto l18
 						}
 						t51 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t51, v9)
+						m.___JS_FreeValueRT(t51, v9)
 					}
 				l18:
 				}
@@ -76953,7 +76949,7 @@ func (m *Module) _js_object_groupBy(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 							goto l19
 						}
 						t53 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t53, v10)
+						m.___JS_FreeValueRT(t53, v10)
 					}
 				l19:
 				}
@@ -76972,7 +76968,7 @@ func (m *Module) _js_object_groupBy(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 			}
 		l15:
 			t55 := int32(load32(m.memory, uint32(v7)))
-			m.X__JS_FreeValueRT(t55, v12)
+			m.___JS_FreeValueRT(t55, v12)
 		}
 	l0:
 	}
@@ -77105,7 +77101,7 @@ func (m *Module) _js_map_set(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 						goto l3
 					}
 					t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t16, v5)
+					m.___JS_FreeValueRT(t16, v5)
 				}
 			l3:
 			} else {
@@ -77436,7 +77432,7 @@ func (m *Module) _js_map_getOrInsert(v0 int32, v1 int64, v2, v3, v4 int32) int64
 						goto l2
 					}
 					t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t30, v5)
+					m.___JS_FreeValueRT(t30, v5)
 					goto l2
 				}
 			l5:
@@ -77750,7 +77746,7 @@ func (m *Module) _js_map_forEach(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 										goto l3
 									}
 									t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t19, v10)
+									m.___JS_FreeValueRT(t19, v10)
 								}
 							l3:
 							}
@@ -77769,7 +77765,7 @@ func (m *Module) _js_map_forEach(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 										goto l4
 									}
 									t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t22, v10)
+									m.___JS_FreeValueRT(t22, v10)
 								}
 							l4:
 							}
@@ -77791,7 +77787,7 @@ func (m *Module) _js_map_forEach(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 								goto l6
 							}
 							t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t26, v9)
+							m.___JS_FreeValueRT(t26, v9)
 						}
 					l6:
 					}
@@ -77864,7 +77860,7 @@ func (m *Module) _js_create_map_iterator(v0 int32, v1 int64, v2, v3, v4 int32) i
 							goto l1
 						}
 						t11 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t11, v5)
+						m.___JS_FreeValueRT(t11, v5)
 						return i64(0x600000000)
 					}
 					v6 = p8
@@ -77954,7 +77950,7 @@ func (m *Module) _js_set_isDisjointFrom(v0 int32, v1 int64, v2, v3 int32) int64 
 										goto l3
 									}
 									t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t20, v1)
+									m.___JS_FreeValueRT(t20, v1)
 								}
 							l3:
 							}
@@ -78003,7 +77999,7 @@ func (m *Module) _js_set_isDisjointFrom(v0 int32, v1 int64, v2, v3 int32) int64 
 									goto l8
 								}
 								t31 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t31, v7)
+								m.___JS_FreeValueRT(t31, v7)
 							}
 						l8:
 						}
@@ -78043,7 +78039,7 @@ func (m *Module) _js_set_isDisjointFrom(v0 int32, v1 int64, v2, v3 int32) int64 
 						goto l11
 					}
 					t35 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t35, v1)
+					m.___JS_FreeValueRT(t35, v1)
 				}
 			l11:
 			}
@@ -78059,7 +78055,7 @@ func (m *Module) _js_set_isDisjointFrom(v0 int32, v1 int64, v2, v3 int32) int64 
 						goto l12
 					}
 					t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t38, v1)
+					m.___JS_FreeValueRT(t38, v1)
 				}
 			l12:
 			}
@@ -78073,7 +78069,7 @@ func (m *Module) _js_set_isDisjointFrom(v0 int32, v1 int64, v2, v3 int32) int64 
 						goto l13
 					}
 					t40 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t40, v7)
+					m.___JS_FreeValueRT(t40, v7)
 				}
 			l13:
 			}
@@ -78088,7 +78084,7 @@ func (m *Module) _js_set_isDisjointFrom(v0 int32, v1 int64, v2, v3 int32) int64 
 				goto l14
 			}
 			t42 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t42, v9)
+			m.___JS_FreeValueRT(t42, v9)
 			goto l14
 		}
 	l0:
@@ -78264,7 +78260,7 @@ func (m *Module) _get_set_record(v0 int32, v1 int64, v2, v3, v4 int32) int32 {
 		store32(m.memory, uint32(v5), uint32(v6-i32(1)))
 		if v6 <= i32(1) {
 			t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t33, v11)
+			m.___JS_FreeValueRT(t33, v11)
 		}
 		v11 = i64(0x300000000)
 		v10 = i64(0)
@@ -78279,7 +78275,7 @@ func (m *Module) _get_set_record(v0 int32, v1 int64, v2, v3, v4 int32) int32 {
 			goto l7
 		}
 		t35 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t35, v1)
+		m.___JS_FreeValueRT(t35, v1)
 		goto l7
 	}
 l2:
@@ -78414,7 +78410,7 @@ func (m *Module) _js_map_iterator_next(v0 int32, v1 int64, v2, v3, v4, v5 int32)
 							goto l4
 						}
 						t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t25, v9)
+						m.___JS_FreeValueRT(t25, v9)
 					}
 				l4:
 				}
@@ -78498,7 +78494,7 @@ func (m *Module) _js_set_isSubsetOf(v0 int32, v1 int64, v2, v3 int32) int64 {
 									goto l4
 								}
 								t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t16, v6)
+								m.___JS_FreeValueRT(t16, v6)
 							}
 						l4:
 						}
@@ -78536,7 +78532,7 @@ func (m *Module) _js_set_isSubsetOf(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l7
 					}
 					t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t20, v1)
+					m.___JS_FreeValueRT(t20, v1)
 				}
 			l7:
 			}
@@ -78552,7 +78548,7 @@ func (m *Module) _js_set_isSubsetOf(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l8
 					}
 					t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t23, v1)
+					m.___JS_FreeValueRT(t23, v1)
 				}
 			l8:
 			}
@@ -78567,7 +78563,7 @@ func (m *Module) _js_set_isSubsetOf(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l9
 			}
 			t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t25, v6)
+			m.___JS_FreeValueRT(t25, v6)
 			goto l9
 		}
 	l0:
@@ -78658,7 +78654,7 @@ func (m *Module) _js_set_isSupersetOf(v0 int32, v1 int64, v2, v3 int32) int64 {
 												goto l4
 											}
 											t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t22, v4)
+											m.___JS_FreeValueRT(t22, v4)
 										}
 									l4:
 									}
@@ -78695,7 +78691,7 @@ func (m *Module) _js_set_isSupersetOf(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l8
 					}
 					t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t26, v4)
+					m.___JS_FreeValueRT(t26, v4)
 				}
 			l8:
 			}
@@ -78711,7 +78707,7 @@ func (m *Module) _js_set_isSupersetOf(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l9
 					}
 					t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t29, v4)
+					m.___JS_FreeValueRT(t29, v4)
 				}
 			l9:
 			}
@@ -78725,7 +78721,7 @@ func (m *Module) _js_set_isSupersetOf(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l10
 					}
 					t31 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t31, v5)
+					m.___JS_FreeValueRT(t31, v5)
 				}
 			l10:
 			}
@@ -78740,7 +78736,7 @@ func (m *Module) _js_set_isSupersetOf(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l11
 			}
 			t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t33, v6)
+			m.___JS_FreeValueRT(t33, v6)
 			goto l11
 		}
 	l0:
@@ -78833,7 +78829,7 @@ func (m *Module) _js_set_intersection(v0 int32, v1 int64, v2, v3 int32) int64 {
 														goto l5
 													}
 													t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-													m.X__JS_FreeValueRT(t21, v4)
+													m.___JS_FreeValueRT(t21, v4)
 												}
 											l5:
 											}
@@ -78868,7 +78864,7 @@ func (m *Module) _js_set_intersection(v0 int32, v1 int64, v2, v3 int32) int64 {
 														goto l6
 													}
 													t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-													m.X__JS_FreeValueRT(t28, v4)
+													m.___JS_FreeValueRT(t28, v4)
 													goto l6
 												}
 												t29 := m._map_add_record(v0, v10, v4)
@@ -78888,7 +78884,7 @@ func (m *Module) _js_set_intersection(v0 int32, v1 int64, v2, v3 int32) int64 {
 															goto l7
 														}
 														t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-														m.X__JS_FreeValueRT(t32, v4)
+														m.___JS_FreeValueRT(t32, v4)
 													}
 												l7:
 												}
@@ -78992,7 +78988,7 @@ func (m *Module) _js_set_intersection(v0 int32, v1 int64, v2, v3 int32) int64 {
 																goto l11
 															}
 															t53 := int32(load32(m.memory, uint64(uint32(v0))+8))
-															m.X__JS_FreeValueRT(t53, v4)
+															m.___JS_FreeValueRT(t53, v4)
 														}
 													l11:
 													}
@@ -79015,7 +79011,7 @@ func (m *Module) _js_set_intersection(v0 int32, v1 int64, v2, v3 int32) int64 {
 												}
 											}
 											t55 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t55, v4)
+											m.___JS_FreeValueRT(t55, v4)
 										}
 									l9:
 										t56 := m._JS_IteratorNext(v0, v1, v6, v2+i32(12))
@@ -79046,7 +79042,7 @@ func (m *Module) _js_set_intersection(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l2
 						}
 						t60 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t60, v5)
+						m.___JS_FreeValueRT(t60, v5)
 					}
 				l2:
 				} else {
@@ -79069,7 +79065,7 @@ func (m *Module) _js_set_intersection(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l13
 					}
 					t63 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t63, v1)
+					m.___JS_FreeValueRT(t63, v1)
 				}
 			l13:
 			}
@@ -79085,7 +79081,7 @@ func (m *Module) _js_set_intersection(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l14
 					}
 					t66 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t66, v1)
+					m.___JS_FreeValueRT(t66, v1)
 				}
 			l14:
 			}
@@ -79099,7 +79095,7 @@ func (m *Module) _js_set_intersection(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l15
 					}
 					t68 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t68, v4)
+					m.___JS_FreeValueRT(t68, v4)
 				}
 			l15:
 			}
@@ -79114,7 +79110,7 @@ func (m *Module) _js_set_intersection(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l16
 			}
 			t70 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t70, v6)
+			m.___JS_FreeValueRT(t70, v6)
 			goto l16
 		}
 	l0:
@@ -79203,7 +79199,7 @@ func (m *Module) _js_set_difference(v0 int32, v1 int64, v2, v3 int32) int64 {
 												goto l4
 											}
 											t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t19, v7)
+											m.___JS_FreeValueRT(t19, v7)
 										}
 									l4:
 									}
@@ -79256,7 +79252,7 @@ func (m *Module) _js_set_difference(v0 int32, v1 int64, v2, v3 int32) int64 {
 											goto l2
 										}
 										t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t39, v7)
+										m.___JS_FreeValueRT(t39, v7)
 										goto l2
 									}
 									if v4 != 0 {
@@ -79275,7 +79271,7 @@ func (m *Module) _js_set_difference(v0 int32, v1 int64, v2, v3 int32) int64 {
 												goto l7
 											}
 											t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t34, v7)
+											m.___JS_FreeValueRT(t34, v7)
 										}
 									l7:
 									}
@@ -79305,7 +79301,7 @@ func (m *Module) _js_set_difference(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l9
 						}
 						t41 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t41, v8)
+						m.___JS_FreeValueRT(t41, v8)
 						goto l9
 					}
 				l1:
@@ -79326,7 +79322,7 @@ func (m *Module) _js_set_difference(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l10
 					}
 					t44 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t44, v8)
+					m.___JS_FreeValueRT(t44, v8)
 				}
 			l10:
 			}
@@ -79342,7 +79338,7 @@ func (m *Module) _js_set_difference(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l11
 					}
 					t47 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t47, v8)
+					m.___JS_FreeValueRT(t47, v8)
 				}
 			l11:
 			}
@@ -79356,7 +79352,7 @@ func (m *Module) _js_set_difference(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l12
 					}
 					t49 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t49, v1)
+					m.___JS_FreeValueRT(t49, v1)
 				}
 			l12:
 			}
@@ -79371,7 +79367,7 @@ func (m *Module) _js_set_difference(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l13
 			}
 			t51 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t51, v9)
+			m.___JS_FreeValueRT(t51, v9)
 			goto l13
 		}
 	l0:
@@ -79433,7 +79429,7 @@ func (m *Module) _js_copy_set(v0 int32, v1 int64) int64 {
 											goto l4
 										}
 										t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t13, v1)
+										m.___JS_FreeValueRT(t13, v1)
 										goto l4
 									}
 									store64(m.memory, uint64(uint32(v5))+32, uint64(i64(0x300000000)))
@@ -79495,7 +79491,7 @@ func (m *Module) _js_set_symmetricDifference(v0 int32, v1 int64, v2, v3 int32) i
 						goto l2
 					}
 					t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t7, v8)
+					m.___JS_FreeValueRT(t7, v8)
 				}
 			l2:
 			}
@@ -79592,7 +79588,7 @@ func (m *Module) _js_set_symmetricDifference(v0 int32, v1 int64, v2, v3 int32) i
 																		goto l6
 																	}
 																	t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																	m.X__JS_FreeValueRT(t29, v1)
+																	m.___JS_FreeValueRT(t29, v1)
 																}
 															l6:
 															}
@@ -79604,7 +79600,7 @@ func (m *Module) _js_set_symmetricDifference(v0 int32, v1 int64, v2, v3 int32) i
 													l5:
 													}
 													t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-													m.X__JS_FreeValueRT(t30, v1)
+													m.___JS_FreeValueRT(t30, v1)
 												}
 											l4:
 												t31 := m._JS_IteratorNext(v0, v9, v10, v2+i32(4))
@@ -79630,7 +79626,7 @@ func (m *Module) _js_set_symmetricDifference(v0 int32, v1 int64, v2, v3 int32) i
 										goto l9
 									}
 									t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t33, v8)
+									m.___JS_FreeValueRT(t33, v8)
 								}
 							l9:
 							}
@@ -79645,7 +79641,7 @@ func (m *Module) _js_set_symmetricDifference(v0 int32, v1 int64, v2, v3 int32) i
 								goto l10
 							}
 							t35 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t35, v10)
+							m.___JS_FreeValueRT(t35, v10)
 						}
 					l10:
 					}
@@ -79660,7 +79656,7 @@ func (m *Module) _js_set_symmetricDifference(v0 int32, v1 int64, v2, v3 int32) i
 						goto l11
 					}
 					t37 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t37, v9)
+					m.___JS_FreeValueRT(t37, v9)
 				}
 			l11:
 			}
@@ -79675,7 +79671,7 @@ func (m *Module) _js_set_symmetricDifference(v0 int32, v1 int64, v2, v3 int32) i
 				goto l12
 			}
 			t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t39, v12)
+			m.___JS_FreeValueRT(t39, v12)
 			goto l12
 		}
 	l0:
@@ -79721,7 +79717,7 @@ func (m *Module) _js_set_union(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l2
 					}
 					t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t7, v6)
+					m.___JS_FreeValueRT(t7, v6)
 				}
 			l2:
 			}
@@ -79763,7 +79759,7 @@ func (m *Module) _js_set_union(v0 int32, v1 int64, v2, v3 int32) int64 {
 															goto l3
 														}
 														t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-														m.X__JS_FreeValueRT(t19, v1)
+														m.___JS_FreeValueRT(t19, v1)
 													}
 												l3:
 												}
@@ -79780,7 +79776,7 @@ func (m *Module) _js_set_union(v0 int32, v1 int64, v2, v3 int32) int64 {
 															goto l5
 														}
 														t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-														m.X__JS_FreeValueRT(t21, v9)
+														m.___JS_FreeValueRT(t21, v9)
 													}
 												l5:
 												}
@@ -79809,7 +79805,7 @@ func (m *Module) _js_set_union(v0 int32, v1 int64, v2, v3 int32) int64 {
 										goto l7
 									}
 									t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t25, v6)
+									m.___JS_FreeValueRT(t25, v6)
 								}
 							l7:
 							}
@@ -79824,7 +79820,7 @@ func (m *Module) _js_set_union(v0 int32, v1 int64, v2, v3 int32) int64 {
 								goto l8
 							}
 							t27 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t27, v8)
+							m.___JS_FreeValueRT(t27, v8)
 						}
 					l8:
 					}
@@ -79839,7 +79835,7 @@ func (m *Module) _js_set_union(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l9
 					}
 					t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t29, v7)
+					m.___JS_FreeValueRT(t29, v7)
 				}
 			l9:
 			}
@@ -79854,7 +79850,7 @@ func (m *Module) _js_set_union(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l10
 			}
 			t31 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t31, v11)
+			m.___JS_FreeValueRT(t31, v11)
 			goto l10
 		}
 	l0:
@@ -79919,7 +79915,7 @@ func (m *Module) _js_promise_finalizer(v0 int32, v1 int64) {
 					if v2 > i32(1) {
 						goto l3
 					}
-					m.X__JS_FreeValueRT(v0, v1)
+					m.___JS_FreeValueRT(v0, v1)
 				}
 			l3:
 			}
@@ -80016,7 +80012,7 @@ func (m *Module) _js_promise_resolve_function_finalizer(v0 int32, v1 int64) {
 				if v2 > i32(1) {
 					goto l0
 				}
-				m.X__JS_FreeValueRT(v0, v1)
+				m.___JS_FreeValueRT(v0, v1)
 			}
 		l0:
 		}
@@ -80056,7 +80052,7 @@ func (m *Module) _js_async_from_sync_iterator_finalizer(v0 int32, v1 int64) {
 					if v3 > i32(1) {
 						goto l1
 					}
-					m.X__JS_FreeValueRT(v0, v1)
+					m.___JS_FreeValueRT(v0, v1)
 				}
 			l1:
 			}
@@ -80071,7 +80067,7 @@ func (m *Module) _js_async_from_sync_iterator_finalizer(v0 int32, v1 int64) {
 					if v3 > i32(1) {
 						goto l2
 					}
-					m.X__JS_FreeValueRT(v0, v1)
+					m.___JS_FreeValueRT(v0, v1)
 				}
 			l2:
 			}
@@ -80227,7 +80223,7 @@ func (m *Module) _js_promise_resolve(v0 int32, v1 int64, v2, v3, v4 int32) int64
 								goto l2
 							}
 							t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t7, v5)
+							m.___JS_FreeValueRT(t7, v5)
 						}
 					l2:
 					}
@@ -80266,7 +80262,7 @@ func (m *Module) _js_promise_resolve(v0 int32, v1 int64, v2, v3, v4 int32) int64
 						goto l4
 					}
 					t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t15, v6)
+					m.___JS_FreeValueRT(t15, v6)
 				}
 			l4:
 			}
@@ -80282,7 +80278,7 @@ func (m *Module) _js_promise_resolve(v0 int32, v1 int64, v2, v3, v4 int32) int64
 						goto l5
 					}
 					t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t18, v6)
+					m.___JS_FreeValueRT(t18, v6)
 				}
 			l5:
 			}
@@ -80298,7 +80294,7 @@ func (m *Module) _js_promise_resolve(v0 int32, v1 int64, v2, v3, v4 int32) int64
 					goto l3
 				}
 				t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t20, v5)
+				m.___JS_FreeValueRT(t20, v5)
 			} else {
 				if uint64(v1) < uint64(i64(-0x900000000)) {
 					goto l1
@@ -80311,7 +80307,7 @@ func (m *Module) _js_promise_resolve(v0 int32, v1 int64, v2, v3, v4 int32) int64
 					goto l1
 				}
 				t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t22, v1)
+				m.___JS_FreeValueRT(t22, v1)
 				goto l1
 			}
 		}
@@ -80427,7 +80423,7 @@ func (m *Module) _js_promise_all(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 														goto l2
 													}
 													t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-													m.X__JS_FreeValueRT(t25, v5)
+													m.___JS_FreeValueRT(t25, v5)
 												}
 											l2:
 											}
@@ -80518,7 +80514,7 @@ func (m *Module) _js_promise_all(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 														goto l8
 													}
 													t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-													m.X__JS_FreeValueRT(t36, v9)
+													m.___JS_FreeValueRT(t36, v9)
 												}
 											l8:
 											}
@@ -80532,7 +80528,7 @@ func (m *Module) _js_promise_all(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 														goto l9
 													}
 													t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-													m.X__JS_FreeValueRT(t38, v5)
+													m.___JS_FreeValueRT(t38, v5)
 												}
 											l9:
 											}
@@ -80578,7 +80574,7 @@ func (m *Module) _js_promise_all(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 													goto l12
 												}
 												t47 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t47, v1)
+												m.___JS_FreeValueRT(t47, v1)
 											}
 										l12:
 										}
@@ -80603,7 +80599,7 @@ func (m *Module) _js_promise_all(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 											goto l14
 										}
 										t54 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t54, v6)
+										m.___JS_FreeValueRT(t54, v6)
 									}
 								l14:
 								}
@@ -80617,7 +80613,7 @@ func (m *Module) _js_promise_all(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 											goto l15
 										}
 										t56 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t56, v9)
+										m.___JS_FreeValueRT(t56, v9)
 									}
 								l15:
 								}
@@ -80635,7 +80631,7 @@ func (m *Module) _js_promise_all(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 							}
 						l13:
 							t58 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t58, v6)
+							m.___JS_FreeValueRT(t58, v6)
 						}
 					l3:
 						_ = m._JS_IteratorClose(v0, v8, i32(1))
@@ -80665,7 +80661,7 @@ func (m *Module) _js_promise_all(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 							goto l16
 						}
 						t67 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t67, v5)
+						m.___JS_FreeValueRT(t67, v5)
 					}
 				l16:
 				}
@@ -80697,7 +80693,7 @@ func (m *Module) _js_promise_all(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 					}
 				}
 				t70 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t70, v1)
+				m.___JS_FreeValueRT(t70, v1)
 			}
 		l11:
 			if uint64(v12) >= uint64(i64(-0x900000000)) {
@@ -80710,7 +80706,7 @@ func (m *Module) _js_promise_all(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 						goto l18
 					}
 					t72 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t72, v12)
+					m.___JS_FreeValueRT(t72, v12)
 				}
 			l18:
 			}
@@ -80724,7 +80720,7 @@ func (m *Module) _js_promise_all(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 						goto l19
 					}
 					t74 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t74, v7)
+					m.___JS_FreeValueRT(t74, v7)
 				}
 			l19:
 			}
@@ -80740,7 +80736,7 @@ func (m *Module) _js_promise_all(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 						goto l20
 					}
 					t77 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t77, v1)
+					m.___JS_FreeValueRT(t77, v1)
 				}
 			l20:
 			}
@@ -80754,7 +80750,7 @@ func (m *Module) _js_promise_all(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 						goto l21
 					}
 					t79 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t79, v11)
+					m.___JS_FreeValueRT(t79, v11)
 				}
 			l21:
 			}
@@ -80768,7 +80764,7 @@ func (m *Module) _js_promise_all(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 						goto l22
 					}
 					t81 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t81, v8)
+					m.___JS_FreeValueRT(t81, v8)
 				}
 			l22:
 			}
@@ -80784,7 +80780,7 @@ func (m *Module) _js_promise_all(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 						goto l23
 					}
 					t84 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t84, v1)
+					m.___JS_FreeValueRT(t84, v1)
 				}
 			l23:
 			}
@@ -80799,7 +80795,7 @@ func (m *Module) _js_promise_all(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 				goto l0
 			}
 			t86 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t86, v13)
+			m.___JS_FreeValueRT(t86, v13)
 		}
 	l0:
 	} else {
@@ -80906,7 +80902,7 @@ func (m *Module) _js_promise_all_resolve_element(v0 int32, v1 int64, v2, v3, v4,
 							goto l1
 						}
 						t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t26, v7)
+						m.___JS_FreeValueRT(t26, v7)
 						goto l1
 					}
 				l0:
@@ -80965,7 +80961,7 @@ func (m *Module) _js_promise_all_resolve_element(v0 int32, v1 int64, v2, v3, v4,
 								goto l4
 							}
 							t40 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t40, v1)
+							m.___JS_FreeValueRT(t40, v1)
 						}
 					l4:
 					}
@@ -80983,7 +80979,7 @@ func (m *Module) _js_promise_all_resolve_element(v0 int32, v1 int64, v2, v3, v4,
 						goto l3
 					}
 					t42 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t42, v6)
+					m.___JS_FreeValueRT(t42, v6)
 				}
 			l3:
 			}
@@ -81044,7 +81040,7 @@ func (m *Module) _JS_InvokeFree(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 				goto l0
 			}
 			t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t2, v1)
+			m.___JS_FreeValueRT(t2, v1)
 		}
 	l0:
 	}
@@ -81111,7 +81107,7 @@ func (m *Module) _js_promise_try(v0 int32, v1 int64, v2, v3 int32) int64 {
 								goto l0
 							}
 							t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t13, v6)
+							m.___JS_FreeValueRT(t13, v6)
 						}
 					l0:
 					}
@@ -81127,7 +81123,7 @@ func (m *Module) _js_promise_try(v0 int32, v1 int64, v2, v3 int32) int64 {
 								goto l1
 							}
 							t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t16, v6)
+							m.___JS_FreeValueRT(t16, v6)
 						}
 					l1:
 					}
@@ -81143,7 +81139,7 @@ func (m *Module) _js_promise_try(v0 int32, v1 int64, v2, v3 int32) int64 {
 								goto l2
 							}
 							t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t19, v6)
+							m.___JS_FreeValueRT(t19, v6)
 						}
 					l2:
 					}
@@ -81159,7 +81155,7 @@ func (m *Module) _js_promise_try(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l3
 						}
 						t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t21, v1)
+						m.___JS_FreeValueRT(t21, v1)
 					} else {
 						if uint64(v7) < uint64(i64(-0x900000000)) {
 							goto l4
@@ -81172,7 +81168,7 @@ func (m *Module) _js_promise_try(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l4
 						}
 						t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t23, v7)
+						m.___JS_FreeValueRT(t23, v7)
 						goto l4
 					}
 				}
@@ -81251,7 +81247,7 @@ func (m *Module) _js_promise_race(v0 int32, v1 int64, v2, v3 int32) int64 {
 										goto l3
 									}
 									t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t13, v10)
+									m.___JS_FreeValueRT(t13, v10)
 								}
 							l3:
 							}
@@ -81290,7 +81286,7 @@ func (m *Module) _js_promise_race(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l6
 						}
 						t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t23, v7)
+						m.___JS_FreeValueRT(t23, v7)
 					}
 				l6:
 				}
@@ -81322,7 +81318,7 @@ func (m *Module) _js_promise_race(v0 int32, v1 int64, v2, v3 int32) int64 {
 					}
 				}
 				t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t26, v1)
+				m.___JS_FreeValueRT(t26, v1)
 			}
 		l2:
 			if uint64(v9) >= uint64(i64(-0x900000000)) {
@@ -81335,7 +81331,7 @@ func (m *Module) _js_promise_race(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l8
 					}
 					t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t28, v9)
+					m.___JS_FreeValueRT(t28, v9)
 				}
 			l8:
 			}
@@ -81349,7 +81345,7 @@ func (m *Module) _js_promise_race(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l9
 					}
 					t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t30, v8)
+					m.___JS_FreeValueRT(t30, v8)
 				}
 			l9:
 			}
@@ -81363,7 +81359,7 @@ func (m *Module) _js_promise_race(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l10
 					}
 					t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t32, v5)
+					m.___JS_FreeValueRT(t32, v5)
 				}
 			l10:
 			}
@@ -81379,7 +81375,7 @@ func (m *Module) _js_promise_race(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l11
 					}
 					t35 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t35, v1)
+					m.___JS_FreeValueRT(t35, v1)
 				}
 			l11:
 			}
@@ -81396,7 +81392,7 @@ func (m *Module) _js_promise_race(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l0
 			}
 			t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t38, v1)
+			m.___JS_FreeValueRT(t38, v1)
 		}
 	l0:
 	} else {
@@ -81463,7 +81459,7 @@ func (m *Module) _js_promise_withResolvers(v0 int32, v1 int64, v2, v3 int32) int
 					goto l2
 				}
 				t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t14, v5)
+				m.___JS_FreeValueRT(t14, v5)
 			}
 		l2:
 			t15 := int64(load64(m.memory, uint64(uint32(v2))+8))
@@ -81478,7 +81474,7 @@ func (m *Module) _js_promise_withResolvers(v0 int32, v1 int64, v2, v3 int32) int
 						goto l3
 					}
 					t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t17, v5)
+					m.___JS_FreeValueRT(t17, v5)
 				}
 			l3:
 			}
@@ -81492,7 +81488,7 @@ func (m *Module) _js_promise_withResolvers(v0 int32, v1 int64, v2, v3 int32) int
 						goto l4
 					}
 					t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t19, v1)
+					m.___JS_FreeValueRT(t19, v1)
 				}
 			l4:
 			}
@@ -81508,7 +81504,7 @@ func (m *Module) _js_promise_withResolvers(v0 int32, v1 int64, v2, v3 int32) int
 				goto l0
 			}
 			t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t21, v4)
+			m.___JS_FreeValueRT(t21, v4)
 		}
 	l0:
 	} else {
@@ -81609,7 +81605,7 @@ func (m *Module) _js_promise_finally(v0 int32, v1 int64, v2, v3 int32) int64 {
 									goto l3
 								}
 								t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t18, v1)
+								m.___JS_FreeValueRT(t18, v1)
 							}
 						l3:
 						}
@@ -81624,7 +81620,7 @@ func (m *Module) _js_promise_finally(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l4
 						}
 						t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t20, v5)
+						m.___JS_FreeValueRT(t20, v5)
 						goto l4
 					}
 				l1:
@@ -81649,7 +81645,7 @@ func (m *Module) _js_promise_finally(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l5
 					}
 					t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t24, v5)
+					m.___JS_FreeValueRT(t24, v5)
 				}
 			l5:
 			}
@@ -81667,7 +81663,7 @@ func (m *Module) _js_promise_finally(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l6
 					}
 					t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t28, v1)
+					m.___JS_FreeValueRT(t28, v1)
 				}
 			l6:
 			}
@@ -81684,7 +81680,7 @@ func (m *Module) _js_promise_finally(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l4
 			}
 			t31 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t31, v1)
+			m.___JS_FreeValueRT(t31, v1)
 		}
 	l4:
 	} else {
@@ -81722,7 +81718,7 @@ func (m *Module) _js_promise_then_finally_func(v0 int32, v1 int64, v2, v3, v4, v
 						goto l0
 					}
 					t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t8, v6)
+					m.___JS_FreeValueRT(t8, v6)
 				}
 			l0:
 			}
@@ -81768,7 +81764,7 @@ func (m *Module) _js_promise_then_finally_func(v0 int32, v1 int64, v2, v3, v4, v
 				}
 			}
 			t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t17, v1)
+			m.___JS_FreeValueRT(t17, v1)
 		}
 	l1:
 	}
@@ -81901,7 +81897,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 									store32(m.memory, uint32(v3), uint32(v2-i32(1)))
 									if v2 <= i32(1) {
 										t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t26, v8)
+										m.___JS_FreeValueRT(t26, v8)
 									}
 									t27 := int64(load64(m.memory, uint64(uint32(v5))+24))
 									v1 = t27
@@ -81923,7 +81919,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 												goto l4
 											}
 											t31 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t31, v1)
+											m.___JS_FreeValueRT(t31, v1)
 										}
 									l4:
 									}
@@ -81948,7 +81944,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 												goto l5
 											}
 											t37 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t37, v1)
+											m.___JS_FreeValueRT(t37, v1)
 										}
 									l5:
 									}
@@ -82004,7 +82000,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 																	goto l7
 																}
 																t51 := int32(load32(m.memory, uint64(uint32(v0))+8))
-																m.X__JS_FreeValueRT(t51, v8)
+																m.___JS_FreeValueRT(t51, v8)
 															}
 														l7:
 														}
@@ -82037,7 +82033,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 															goto l10
 														}
 														t55 := int32(load32(m.memory, uint64(uint32(v0))+8))
-														m.X__JS_FreeValueRT(t55, v11)
+														m.___JS_FreeValueRT(t55, v11)
 													}
 												l10:
 												}
@@ -82052,7 +82048,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 															goto l11
 														}
 														t58 := int32(load32(m.memory, uint64(uint32(v0))+8))
-														m.X__JS_FreeValueRT(t58, v1)
+														m.___JS_FreeValueRT(t58, v1)
 													}
 												l11:
 												}
@@ -82066,7 +82062,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 															goto l12
 														}
 														t60 := int32(load32(m.memory, uint64(uint32(v0))+8))
-														m.X__JS_FreeValueRT(t60, v10)
+														m.___JS_FreeValueRT(t60, v10)
 													}
 												l12:
 												}
@@ -82080,7 +82076,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 															goto l13
 														}
 														t62 := int32(load32(m.memory, uint64(uint32(v0))+8))
-														m.X__JS_FreeValueRT(t62, v8)
+														m.___JS_FreeValueRT(t62, v8)
 													}
 												l13:
 												}
@@ -82096,7 +82092,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 															goto l14
 														}
 														t65 := int32(load32(m.memory, uint64(uint32(v0))+8))
-														m.X__JS_FreeValueRT(t65, v1)
+														m.___JS_FreeValueRT(t65, v1)
 													}
 												l14:
 												}
@@ -82112,7 +82108,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 															goto l15
 														}
 														t68 := int32(load32(m.memory, uint64(uint32(v0))+8))
-														m.X__JS_FreeValueRT(t68, v1)
+														m.___JS_FreeValueRT(t68, v1)
 													}
 												l15:
 												}
@@ -82147,7 +82143,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 											}
 										}
 										t71 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t71, v8)
+										m.___JS_FreeValueRT(t71, v8)
 									}
 								l8:
 									t72 := int64(load64(m.memory, uint64(uint32(v5))+24))
@@ -82162,7 +82158,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 												goto l20
 											}
 											t74 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t74, v1)
+											m.___JS_FreeValueRT(t74, v1)
 										}
 									l20:
 									}
@@ -82178,7 +82174,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 												goto l21
 											}
 											t77 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t77, v1)
+											m.___JS_FreeValueRT(t77, v1)
 										}
 									l21:
 									}
@@ -82194,7 +82190,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 												goto l22
 											}
 											t80 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t80, v1)
+											m.___JS_FreeValueRT(t80, v1)
 										}
 									l22:
 									}
@@ -82245,7 +82241,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 								goto l23
 							}
 							t89 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t89, v8)
+							m.___JS_FreeValueRT(t89, v8)
 						}
 					l23:
 					}
@@ -82259,7 +82255,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 								goto l24
 							}
 							t91 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t91, v1)
+							m.___JS_FreeValueRT(t91, v1)
 						}
 					l24:
 					}
@@ -82275,7 +82271,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 								goto l25
 							}
 							t94 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t94, v1)
+							m.___JS_FreeValueRT(t94, v1)
 						}
 					l25:
 					}
@@ -82295,7 +82291,7 @@ func (m *Module) _js_async_from_sync_iterator_next(v0 int32, v1 int64, v2, v3, v
 				}
 			l19:
 				t97 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t97, v1)
+				m.___JS_FreeValueRT(t97, v1)
 				goto l18
 			}
 		l16:
@@ -82385,7 +82381,7 @@ l0:
 								goto l1
 							}
 							t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t12, v7)
+							m.___JS_FreeValueRT(t12, v7)
 						}
 					l1:
 					}
@@ -82399,7 +82395,7 @@ l0:
 								goto l2
 							}
 							t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t14, v6)
+							m.___JS_FreeValueRT(t14, v6)
 						}
 					l2:
 					}
@@ -82415,7 +82411,7 @@ l0:
 								goto l3
 							}
 							t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t17, v6)
+							m.___JS_FreeValueRT(t17, v6)
 						}
 					l3:
 					}
@@ -82430,7 +82426,7 @@ l0:
 						goto l4
 					}
 					t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t19, v5)
+					m.___JS_FreeValueRT(t19, v5)
 					goto l4
 				}
 				t20 := m.Xjs_mallocz(v0, i32(48))
@@ -82480,7 +82476,7 @@ l0:
 							goto l5
 						}
 						t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t30, v5)
+						m.___JS_FreeValueRT(t30, v5)
 					}
 				l5:
 				}
@@ -82496,7 +82492,7 @@ l0:
 							goto l6
 						}
 						t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t33, v5)
+						m.___JS_FreeValueRT(t33, v5)
 					}
 				l6:
 				}
@@ -82511,7 +82507,7 @@ l0:
 					goto l7
 				}
 				t35 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t35, v1)
+				m.___JS_FreeValueRT(t35, v1)
 			}
 		l7:
 		}
@@ -82644,7 +82640,7 @@ func (m *Module) _js_async_generator_resume_next(v0, v1 int32) {
 									goto l6
 								}
 								t51 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t51, v10)
+								m.___JS_FreeValueRT(t51, v10)
 								goto l6
 							}
 							var p27 int32
@@ -82669,7 +82665,7 @@ func (m *Module) _js_async_generator_resume_next(v0, v1 int32) {
 												goto l10
 											}
 											t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t33, v9)
+											m.___JS_FreeValueRT(t33, v9)
 											goto l10
 										}
 										store64(m.memory, uint64(uint32(v5))+8, uint64(i64(0x300000000)))
@@ -82685,7 +82681,7 @@ func (m *Module) _js_async_generator_resume_next(v0, v1 int32) {
 													goto l11
 												}
 												t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t36, v9)
+												m.___JS_FreeValueRT(t36, v9)
 											}
 										l11:
 										}
@@ -82705,7 +82701,7 @@ func (m *Module) _js_async_generator_resume_next(v0, v1 int32) {
 														goto l12
 													}
 													t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-													m.X__JS_FreeValueRT(t39, v9)
+													m.___JS_FreeValueRT(t39, v9)
 												}
 											l12:
 											}
@@ -82737,7 +82733,7 @@ func (m *Module) _js_async_generator_resume_next(v0, v1 int32) {
 										goto l15
 									}
 									t42 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t42, v10)
+									m.___JS_FreeValueRT(t42, v10)
 								}
 							l15:
 							}
@@ -82796,7 +82792,7 @@ func (m *Module) _js_async_generator_resume_next(v0, v1 int32) {
 					goto l6
 				}
 				t60 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t60, v9)
+				m.___JS_FreeValueRT(t60, v9)
 			}
 		l6:
 			t61 := int32(load32(m.memory, uint64(uint32(v1))+16))
@@ -82848,7 +82844,7 @@ func (m *Module) _js_async_generator_resume_next(v0, v1 int32) {
 									goto l22
 								}
 								t74 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t74, v10)
+								m.___JS_FreeValueRT(t74, v10)
 							}
 						l22:
 						}
@@ -82885,7 +82881,7 @@ func (m *Module) _js_async_generator_resume_next(v0, v1 int32) {
 									goto l24
 								}
 								t81 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t81, v10)
+								m.___JS_FreeValueRT(t81, v10)
 							}
 						l24:
 						}
@@ -82901,7 +82897,7 @@ func (m *Module) _js_async_generator_resume_next(v0, v1 int32) {
 									goto l25
 								}
 								t84 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t84, v10)
+								m.___JS_FreeValueRT(t84, v10)
 							}
 						l25:
 						}
@@ -82917,7 +82913,7 @@ func (m *Module) _js_async_generator_resume_next(v0, v1 int32) {
 						}
 					}
 					t86 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t86, v9)
+					m.___JS_FreeValueRT(t86, v9)
 				}
 			l23:
 				m.___stack_pointer = v2 + i32(48)
@@ -82953,7 +82949,7 @@ func (m *Module) _js_async_generator_resolve(v0, v1 int32, v2 int64, v3 int32) {
 				goto l0
 			}
 			t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t5, v2)
+			m.___JS_FreeValueRT(t5, v2)
 		}
 	l0:
 	}
@@ -82989,7 +82985,7 @@ func (m *Module) _js_async_generator_resolve_or_reject(v0, v1 int32, v2 int64, v
 				goto l0
 			}
 			t9 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t9, v2)
+			m.___JS_FreeValueRT(t9, v2)
 		}
 	l0:
 	}
@@ -83005,7 +83001,7 @@ func (m *Module) _js_async_generator_resolve_or_reject(v0, v1 int32, v2 int64, v
 				goto l1
 			}
 			t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t12, v2)
+			m.___JS_FreeValueRT(t12, v2)
 		}
 	l1:
 	}
@@ -83021,7 +83017,7 @@ func (m *Module) _js_async_generator_resolve_or_reject(v0, v1 int32, v2 int64, v
 				goto l2
 			}
 			t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t15, v2)
+			m.___JS_FreeValueRT(t15, v2)
 		}
 	l2:
 	}
@@ -83037,7 +83033,7 @@ func (m *Module) _js_async_generator_resolve_or_reject(v0, v1 int32, v2 int64, v
 				goto l3
 			}
 			t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t18, v2)
+			m.___JS_FreeValueRT(t18, v2)
 		}
 	l3:
 	}
@@ -83053,7 +83049,7 @@ func (m *Module) _js_async_generator_resolve_or_reject(v0, v1 int32, v2 int64, v
 				goto l4
 			}
 			t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t21, v2)
+			m.___JS_FreeValueRT(t21, v2)
 		}
 	l4:
 	}
@@ -83097,7 +83093,7 @@ func (m *Module) _js_async_generator_resolve_function_create(v0 int32, v1 int64,
 				goto l0
 			}
 			t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t7, v1)
+			m.___JS_FreeValueRT(t7, v1)
 		}
 	l0:
 	}
@@ -83873,7 +83869,7 @@ func (m *Module) _JS_SetThisTimeValue(v0 int32, v1 int64, v2 float64) int64 {
 						goto l0
 					}
 					t3 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t3, v1)
+					m.___JS_FreeValueRT(t3, v1)
 				}
 			l0:
 			}
@@ -84163,7 +84159,7 @@ func (m *Module) _js_date_toJSON(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l1
 			}
 			t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t19, v6)
+			m.___JS_FreeValueRT(t19, v6)
 		}
 	l1:
 	}
@@ -84177,7 +84173,7 @@ func (m *Module) _js_date_toJSON(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l3
 			}
 			t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t21, v1)
+			m.___JS_FreeValueRT(t21, v1)
 		}
 	l3:
 	}
@@ -84191,7 +84187,7 @@ func (m *Module) _js_date_toJSON(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l4
 			}
 			t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t23, v5)
+			m.___JS_FreeValueRT(t23, v5)
 		}
 	l4:
 	}
@@ -86174,7 +86170,7 @@ func (m *Module) _js_atom_concat_str(v0, v1, v2 int32) int32 {
 						v0 = v1 + i32(8)
 						if v2 <= i32(1) {
 							t13 := int32(load32(m.memory, uint64(uint32(v1))+8))
-							m.X__JS_FreeValueRT(t13, int64(uint32(v4-i32(12)))|i64(-0x700000000))
+							m.___JS_FreeValueRT(t13, int64(uint32(v4-i32(12)))|i64(-0x700000000))
 						}
 						if uint64(v7) < uint64(i64(-0x900000000)) {
 							goto l1
@@ -86205,7 +86201,7 @@ func (m *Module) _js_atom_concat_str(v0, v1, v2 int32) int32 {
 			}
 		l2:
 			t16 := int32(load32(m.memory, uint32(v0)))
-			m.X__JS_FreeValueRT(t16, v7)
+			m.___JS_FreeValueRT(t16, v7)
 		}
 	l1:
 	}
@@ -94420,7 +94416,7 @@ func (m *Module) _cpool_add(v0 int32, v1 int64) int32 {
 						goto l1
 					}
 					t8 := int32(load32(m.memory, uint64(uint32(t6))+8))
-					m.X__JS_FreeValueRT(t8, v1)
+					m.___JS_FreeValueRT(t8, v1)
 				}
 			l1:
 			}
@@ -94644,7 +94640,7 @@ func (m *Module) _js_parse_regexp(v0 int32) int32 {
 															goto l29
 														}
 														t55 := int32(load32(m.memory, uint64(uint32(t53))+8))
-														m.X__JS_FreeValueRT(t55, v9)
+														m.___JS_FreeValueRT(t55, v9)
 													}
 												l29:
 												}
@@ -94660,7 +94656,7 @@ func (m *Module) _js_parse_regexp(v0 int32) int32 {
 													goto l19
 												}
 												t58 := int32(load32(m.memory, uint64(uint32(t56))+8))
-												m.X__JS_FreeValueRT(t58, v10)
+												m.___JS_FreeValueRT(t58, v10)
 												goto l19
 											}
 										}
@@ -96040,7 +96036,7 @@ func (m *Module) _js_parse_postfix_expr(v0, v1 int32) int32 {
 						goto l50
 					}
 					t141 := int32(load32(m.memory, uint64(uint32(t139))+8))
-					m.X__JS_FreeValueRT(t141, v13)
+					m.___JS_FreeValueRT(t141, v13)
 				}
 			l50:
 			}
@@ -96314,7 +96310,7 @@ l6:
 												goto l63
 											}
 											t189 := int32(load32(m.memory, uint64(uint32(t187))+8))
-											m.X__JS_FreeValueRT(t189, v13)
+											m.___JS_FreeValueRT(t189, v13)
 										}
 									l63:
 									}
@@ -97306,7 +97302,7 @@ func (m *Module) _js_parse_template(v0, v1, v2 int32) int32 {
 						goto l1
 					}
 					t7 := int32(load32(m.memory, uint64(uint32(v8))+8))
-					m.X__JS_FreeValueRT(t7, v12)
+					m.___JS_FreeValueRT(t7, v12)
 				}
 			l1:
 			}
@@ -97421,7 +97417,7 @@ func (m *Module) _js_parse_template(v0, v1, v2 int32) int32 {
 									goto l4
 								}
 								t35 := int32(load32(m.memory, uint64(uint32(v8))+8))
-								m.X__JS_FreeValueRT(t35, v11)
+								m.___JS_FreeValueRT(t35, v11)
 							}
 						l4:
 						}
@@ -97449,7 +97445,7 @@ func (m *Module) _js_parse_template(v0, v1, v2 int32) int32 {
 										goto l5
 									}
 									t41 := int32(load32(m.memory, uint64(uint32(t39))+8))
-									m.X__JS_FreeValueRT(t41, v11)
+									m.___JS_FreeValueRT(t41, v11)
 									goto l5
 								}
 							}
@@ -97465,7 +97461,7 @@ func (m *Module) _js_parse_template(v0, v1, v2 int32) int32 {
 										goto l6
 									}
 									t45 := int32(load32(m.memory, uint64(uint32(t43))+8))
-									m.X__JS_FreeValueRT(t45, v11)
+									m.___JS_FreeValueRT(t45, v11)
 								}
 							l6:
 							}
@@ -98138,7 +98134,7 @@ func (m *Module) _js_parse_unary(v0, v1 int32) int32 {
 												goto l17
 											}
 											t27 := int32(load32(m.memory, uint64(uint32(t25))+8))
-											m.X__JS_FreeValueRT(t27, v9)
+											m.___JS_FreeValueRT(t27, v9)
 										}
 									l17:
 									}
@@ -99146,7 +99142,7 @@ func (m *Module) _js_error_toString(v0 int32, v1 int64, v2, v3 int32) int64 {
 					goto l0
 				}
 				t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t10, v4)
+				m.___JS_FreeValueRT(t10, v4)
 				return i64(0x600000000)
 			}
 			{
@@ -99331,7 +99327,7 @@ func (m *Module) _js_array_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 															goto l9
 														}
 														t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-														m.X__JS_FreeValueRT(t28, v4)
+														m.___JS_FreeValueRT(t28, v4)
 													}
 												l9:
 												}
@@ -99417,7 +99413,7 @@ func (m *Module) _js_array_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 											goto l14
 										}
 										t44 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t44, v4)
+										m.___JS_FreeValueRT(t44, v4)
 									}
 								l14:
 								}
@@ -99453,7 +99449,7 @@ func (m *Module) _js_array_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 													goto l18
 												}
 												t48 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t48, v5)
+												m.___JS_FreeValueRT(t48, v5)
 											}
 										l18:
 										}
@@ -99528,7 +99524,7 @@ func (m *Module) _js_array_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l23
 					}
 					t58 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t58, v1)
+					m.___JS_FreeValueRT(t58, v1)
 				}
 			l23:
 			}
@@ -99544,7 +99540,7 @@ func (m *Module) _js_array_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l24
 					}
 					t60 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t60, v10)
+					m.___JS_FreeValueRT(t60, v10)
 				}
 			l24:
 			}
@@ -99562,7 +99558,7 @@ func (m *Module) _js_array_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l25
 			}
 			t62 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t62, v9)
+			m.___JS_FreeValueRT(t62, v9)
 		}
 	l25:
 		if uint64(v6) >= uint64(i64(-0x900000000)) {
@@ -99575,7 +99571,7 @@ func (m *Module) _js_array_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 					goto l26
 				}
 				t64 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t64, v6)
+				m.___JS_FreeValueRT(t64, v6)
 			}
 		l26:
 		}
@@ -99590,7 +99586,7 @@ func (m *Module) _js_array_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 			goto l1
 		}
 		t66 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t66, v8)
+		m.___JS_FreeValueRT(t66, v8)
 	}
 l1:
 	m.___stack_pointer = v13 + i32(32)
@@ -99687,7 +99683,7 @@ l1:
 				goto l4
 			}
 			t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t17, v4)
+			m.___JS_FreeValueRT(t17, v4)
 		}
 	l4:
 	}
@@ -99785,7 +99781,7 @@ func (m *Module) _js_array_at(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l4
 					}
 					t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t19, v1)
+					m.___JS_FreeValueRT(t19, v1)
 				}
 			l4:
 				t20 := int64(load64(m.memory, uint64(uint32(v2))+24))
@@ -99806,7 +99802,7 @@ func (m *Module) _js_array_at(v0 int32, v1 int64, v2, v3 int32) int64 {
 			goto l5
 		}
 		t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t22, v1)
+		m.___JS_FreeValueRT(t22, v1)
 	}
 l5:
 	m.___stack_pointer = v2 + i32(32)
@@ -99989,7 +99985,7 @@ func (m *Module) _js_array_with(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l0
 					}
 					t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t29, v8)
+					m.___JS_FreeValueRT(t29, v8)
 					goto l0
 				}
 			l4:
@@ -100012,7 +100008,7 @@ func (m *Module) _js_array_with(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l9
 			}
 			t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t32, v6)
+			m.___JS_FreeValueRT(t32, v6)
 		}
 	l9:
 	}
@@ -100056,7 +100052,7 @@ func (m *Module) _js_allocate_fast_array(v0 int32, v1 int64) int64 {
 					goto l1
 				}
 				t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t8, v5)
+				m.___JS_FreeValueRT(t8, v5)
 				return i64(0x600000000)
 			}
 			store32(m.memory, uint64(uint32(v2))+32, uint32(v3))
@@ -100088,7 +100084,7 @@ func (m *Module) _js_allocate_fast_array(v0 int32, v1 int64) int64 {
 				goto l0
 			}
 			t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t13, v4)
+			m.___JS_FreeValueRT(t13, v4)
 		}
 	l0:
 	}
@@ -100281,7 +100277,7 @@ func (m *Module) _js_array_concat(v0 int32, v1 int64, v2, v3 int32) int64 {
 								goto l12
 							}
 							t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t32, v5)
+							m.___JS_FreeValueRT(t32, v5)
 						}
 					l12:
 					}
@@ -100299,7 +100295,7 @@ func (m *Module) _js_array_concat(v0 int32, v1 int64, v2, v3 int32) int64 {
 				}
 			l10:
 				t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t34, v7)
+				m.___JS_FreeValueRT(t34, v7)
 			}
 		l9:
 			v8 = v5
@@ -100350,7 +100346,7 @@ func (m *Module) _JS_ArraySpeciesCreate(v0 int32, v1, v2 int64) int64 {
 									goto l0
 								}
 								t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t8, v2)
+								m.___JS_FreeValueRT(t8, v2)
 								goto l0
 							}
 							if v0 == v4 {
@@ -100369,7 +100365,7 @@ func (m *Module) _JS_ArraySpeciesCreate(v0 int32, v1, v2 int64) int64 {
 								goto l2
 							}
 							t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t12, v2)
+							m.___JS_FreeValueRT(t12, v2)
 							goto l2
 						}
 					l1:
@@ -100382,7 +100378,7 @@ func (m *Module) _JS_ArraySpeciesCreate(v0 int32, v1, v2 int64) int64 {
 					store32(m.memory, uint32(v4), uint32(v3-i32(1)))
 					if v3 <= i32(1) {
 						t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t15, v2)
+						m.___JS_FreeValueRT(t15, v2)
 					}
 					v2 = v1 & i64(-0x100000000)
 					if v2 == i64(0x600000000) {
@@ -100411,7 +100407,7 @@ func (m *Module) _JS_ArraySpeciesCreate(v0 int32, v1, v2 int64) int64 {
 					goto l0
 				}
 				t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t19, v2)
+				m.___JS_FreeValueRT(t19, v2)
 				goto l0
 			}
 		l2:
@@ -100596,7 +100592,7 @@ func (m *Module) _js_array_every(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 												goto l10
 											}
 											t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t34, v7)
+											m.___JS_FreeValueRT(t34, v7)
 										}
 									l10:
 									}
@@ -100683,7 +100679,7 @@ func (m *Module) _js_array_every(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 											goto l17
 										}
 										t51 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t51, v8)
+										m.___JS_FreeValueRT(t51, v8)
 									}
 								l17:
 									if uint64(v9) >= uint64(i64(-0x900000000)) {
@@ -100696,7 +100692,7 @@ func (m *Module) _js_array_every(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 												goto l20
 											}
 											t53 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t53, v9)
+											m.___JS_FreeValueRT(t53, v9)
 										}
 									l20:
 									}
@@ -100747,7 +100743,7 @@ func (m *Module) _js_array_every(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 								goto l8
 							}
 							t60 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t60, v5)
+							m.___JS_FreeValueRT(t60, v5)
 						} else {
 							if uint64(v6) < uint64(i64(-0x900000000)) {
 								goto l23
@@ -100760,7 +100756,7 @@ func (m *Module) _js_array_every(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 								goto l23
 							}
 							t62 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t62, v6)
+							m.___JS_FreeValueRT(t62, v6)
 							goto l23
 						}
 					}
@@ -100776,7 +100772,7 @@ func (m *Module) _js_array_every(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 						goto l0
 					}
 					t64 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t64, v6)
+					m.___JS_FreeValueRT(t64, v6)
 					goto l0
 				}
 			l23:
@@ -100792,7 +100788,7 @@ func (m *Module) _js_array_every(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 							goto l24
 						}
 						t67 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t67, v6)
+						m.___JS_FreeValueRT(t67, v6)
 					}
 				l24:
 				}
@@ -100821,7 +100817,7 @@ func (m *Module) _js_array_every(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 						goto l27
 					}
 					t71 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t71, v5)
+					m.___JS_FreeValueRT(t71, v5)
 				}
 			l27:
 			}
@@ -100839,7 +100835,7 @@ func (m *Module) _js_array_every(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 		}
 	l26:
 		t73 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t73, v1)
+		m.___JS_FreeValueRT(t73, v1)
 	}
 l25:
 	m.___stack_pointer = v14 + i32(48)
@@ -100902,7 +100898,7 @@ func (m *Module) _js_typed_array___speciesCreate(v0, v1, v2 int32) int64 {
 						goto l0
 					}
 					t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t10, v3)
+					m.___JS_FreeValueRT(t10, v3)
 				}
 			l0:
 			}
@@ -101084,7 +101080,7 @@ func (m *Module) _js_array_reduce(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 												goto l9
 											}
 											t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t32, v9)
+											m.___JS_FreeValueRT(t32, v9)
 										}
 									l9:
 									}
@@ -101098,7 +101094,7 @@ func (m *Module) _js_array_reduce(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 												goto l10
 											}
 											t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t34, v13)
+											m.___JS_FreeValueRT(t34, v13)
 										}
 									l10:
 									}
@@ -101116,7 +101112,7 @@ func (m *Module) _js_array_reduce(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 												goto l11
 											}
 											t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t36, v8)
+											m.___JS_FreeValueRT(t36, v8)
 										}
 									l11:
 									}
@@ -101158,7 +101154,7 @@ func (m *Module) _js_array_reduce(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 					goto l5
 				}
 				t40 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t40, v8)
+				m.___JS_FreeValueRT(t40, v8)
 			}
 		l5:
 			t41 := int64(load64(m.memory, uint64(uint32(v5))+56))
@@ -101173,7 +101169,7 @@ func (m *Module) _js_array_reduce(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 						goto l15
 					}
 					t43 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t43, v10)
+					m.___JS_FreeValueRT(t43, v10)
 				}
 			l15:
 			}
@@ -101191,7 +101187,7 @@ func (m *Module) _js_array_reduce(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 		}
 	l14:
 		t45 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t45, v1)
+		m.___JS_FreeValueRT(t45, v1)
 	}
 l13:
 	m.___stack_pointer = v5 - i32(-64)
@@ -101288,7 +101284,7 @@ func (m *Module) _js_array_fill(v0 int32, v1 int64, v2, v3 int32) int64 {
 			goto l3
 		}
 		t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t20, v6)
+		m.___JS_FreeValueRT(t20, v6)
 	}
 l3:
 	m.___stack_pointer = v4 + i32(32)
@@ -101392,7 +101388,7 @@ func (m *Module) _js_array_find(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 													goto l10
 												}
 												t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t29, v7)
+												m.___JS_FreeValueRT(t29, v7)
 											}
 										l10:
 										}
@@ -101407,7 +101403,7 @@ func (m *Module) _js_array_find(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 											goto l11
 										}
 										t31 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t31, v6)
+										m.___JS_FreeValueRT(t31, v6)
 										goto l11
 									default:
 										if uint64(v5) >= uint64(i64(-0x900000000)) {
@@ -101420,7 +101416,7 @@ func (m *Module) _js_array_find(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 													goto l12
 												}
 												t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t33, v5)
+												m.___JS_FreeValueRT(t33, v5)
 											}
 										l12:
 										}
@@ -101434,7 +101430,7 @@ func (m *Module) _js_array_find(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 													goto l13
 												}
 												t35 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t35, v6)
+												m.___JS_FreeValueRT(t35, v6)
 											}
 										l13:
 										}
@@ -101452,7 +101448,7 @@ func (m *Module) _js_array_find(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 											goto l4
 										}
 										t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t22, v7)
+										m.___JS_FreeValueRT(t22, v7)
 									}
 								l4:
 								}
@@ -101466,7 +101462,7 @@ func (m *Module) _js_array_find(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 											goto l5
 										}
 										t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t24, v5)
+										m.___JS_FreeValueRT(t24, v5)
 									}
 								l5:
 								}
@@ -101489,7 +101485,7 @@ func (m *Module) _js_array_find(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 								goto l1
 							}
 							t27 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t27, v5)
+							m.___JS_FreeValueRT(t27, v5)
 							goto l1
 						}
 					l1:
@@ -101504,7 +101500,7 @@ func (m *Module) _js_array_find(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 							goto l0
 						}
 						t37 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t37, v7)
+						m.___JS_FreeValueRT(t37, v7)
 						goto l0
 					}
 				l7:
@@ -101519,7 +101515,7 @@ func (m *Module) _js_array_find(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 							goto l14
 						}
 						t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t39, v6)
+						m.___JS_FreeValueRT(t39, v6)
 					}
 				l14:
 				}
@@ -101544,7 +101540,7 @@ func (m *Module) _js_array_find(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 			goto l11
 		}
 		t42 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t42, v6)
+		m.___JS_FreeValueRT(t42, v6)
 	}
 l11:
 	m.___stack_pointer = v14 + i32(48)
@@ -101686,7 +101682,7 @@ func (m *Module) _js_array_indexOf(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l8
 					}
 					t31 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t31, v6)
+					m.___JS_FreeValueRT(t31, v6)
 				}
 			l8:
 			}
@@ -101715,7 +101711,7 @@ func (m *Module) _js_array_indexOf(v0 int32, v1 int64, v2, v3 int32) int64 {
 			goto l9
 		}
 		t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t34, v6)
+		m.___JS_FreeValueRT(t34, v6)
 	}
 l9:
 	m.___stack_pointer = v4 + i32(32)
@@ -101803,7 +101799,7 @@ func (m *Module) _js_array_lastIndexOf(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l5
 					}
 					t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t17, v5)
+					m.___JS_FreeValueRT(t17, v5)
 				}
 			l5:
 			}
@@ -101832,7 +101828,7 @@ func (m *Module) _js_array_lastIndexOf(v0 int32, v1 int64, v2, v3 int32) int64 {
 			goto l6
 		}
 		t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t20, v5)
+		m.___JS_FreeValueRT(t20, v5)
 	}
 l6:
 	m.___stack_pointer = v6 + i32(32)
@@ -101970,7 +101966,7 @@ func (m *Module) _js_array_join(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 							goto l1
 						}
 						t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t29, v8)
+						m.___JS_FreeValueRT(t29, v8)
 						goto l1
 					}
 				l6:
@@ -101985,7 +101981,7 @@ func (m *Module) _js_array_join(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 							goto l7
 						}
 						t31 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t31, v8)
+						m.___JS_FreeValueRT(t31, v8)
 					}
 				l7:
 				}
@@ -101999,7 +101995,7 @@ func (m *Module) _js_array_join(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 							goto l8
 						}
 						t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t33, v9)
+						m.___JS_FreeValueRT(t33, v9)
 					}
 				l8:
 				}
@@ -102021,7 +102017,7 @@ func (m *Module) _js_array_join(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 			goto l9
 		}
 		t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t36, v9)
+		m.___JS_FreeValueRT(t36, v9)
 	}
 l9:
 	m.___stack_pointer = v5 + i32(32)
@@ -102096,7 +102092,7 @@ func (m *Module) _js_array_toString(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l0
 						}
 						t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t14, v1)
+						m.___JS_FreeValueRT(t14, v1)
 					}
 				l0:
 					t15 := m._js_object_toString(v0, v4, v0, v0)
@@ -102119,7 +102115,7 @@ func (m *Module) _js_array_toString(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l3
 			}
 			t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t17, v4)
+			m.___JS_FreeValueRT(t17, v4)
 		}
 	l3:
 	}
@@ -102162,7 +102158,7 @@ func (m *Module) _js_object_toString(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l1
 					}
 					t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t7, v4)
+					m.___JS_FreeValueRT(t7, v4)
 					return i64(0x600000000)
 				}
 				v3 = i32(166)
@@ -102232,7 +102228,7 @@ func (m *Module) _js_object_toString(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l5
 					}
 					t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t23, v4)
+					m.___JS_FreeValueRT(t23, v4)
 				}
 			l5:
 				v5 = i64(0x600000000)
@@ -102252,7 +102248,7 @@ func (m *Module) _js_object_toString(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l6
 						}
 						t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t25, v1)
+						m.___JS_FreeValueRT(t25, v1)
 					}
 				l6:
 				}
@@ -102412,7 +102408,7 @@ func (m *Module) _js_array_reverse(v0 int32, v1 int64, v2, v3 int32) int64 {
 					goto l5
 				}
 				t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t28, v4)
+				m.___JS_FreeValueRT(t28, v4)
 				goto l5
 			}
 		l2:
@@ -102432,7 +102428,7 @@ func (m *Module) _js_array_reverse(v0 int32, v1 int64, v2, v3 int32) int64 {
 			goto l8
 		}
 		t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t30, v1)
+		m.___JS_FreeValueRT(t30, v1)
 	}
 l8:
 	m.___stack_pointer = v2 + i32(32)
@@ -102528,7 +102524,7 @@ func (m *Module) _js_array_toReversed(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l0
 					}
 					t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t19, v8)
+					m.___JS_FreeValueRT(t19, v8)
 					goto l0
 				}
 			l3:
@@ -102547,7 +102543,7 @@ l0:
 				goto l5
 			}
 			t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t21, v7)
+			m.___JS_FreeValueRT(t21, v7)
 		}
 	l5:
 	}
@@ -102658,7 +102654,7 @@ func (m *Module) _js_array_sort(v0 int32, v1 int64, v2, v3 int32) int64 {
 										goto l3
 									}
 									t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t23, int64(uint32(v13))|i64(-0x700000000))
+									m.___JS_FreeValueRT(t23, int64(uint32(v13))|i64(-0x700000000))
 								}
 							l3:
 							}
@@ -102683,7 +102679,7 @@ func (m *Module) _js_array_sort(v0 int32, v1 int64, v2, v3 int32) int64 {
 										goto l4
 									}
 									t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t28, v6)
+									m.___JS_FreeValueRT(t28, v6)
 								}
 							l4:
 							}
@@ -102754,7 +102750,7 @@ func (m *Module) _js_array_sort(v0 int32, v1 int64, v2, v3 int32) int64 {
 								goto l10
 							}
 							t37 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t37, v1)
+							m.___JS_FreeValueRT(t37, v1)
 						}
 					l10:
 					}
@@ -102770,7 +102766,7 @@ func (m *Module) _js_array_sort(v0 int32, v1 int64, v2, v3 int32) int64 {
 								goto l11
 							}
 							t40 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t40, int64(uint32(v13))|i64(-0x700000000))
+							m.___JS_FreeValueRT(t40, int64(uint32(v13))|i64(-0x700000000))
 						}
 					l11:
 					}
@@ -102798,7 +102794,7 @@ func (m *Module) _js_array_sort(v0 int32, v1 int64, v2, v3 int32) int64 {
 			goto l9
 		}
 		t43 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t43, v5)
+		m.___JS_FreeValueRT(t43, v5)
 	}
 l9:
 	m.___stack_pointer = v10 + i32(48)
@@ -103085,7 +103081,7 @@ func (m *Module) _js_array_toSorted(v0 int32, v1 int64, v2, v3 int32) int64 {
 					}
 				l9:
 					t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t29, v5)
+					m.___JS_FreeValueRT(t29, v5)
 				}
 			l8:
 				v4 = v1
@@ -103103,7 +103099,7 @@ func (m *Module) _js_array_toSorted(v0 int32, v1 int64, v2, v3 int32) int64 {
 			goto l1
 		}
 		t31 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t31, v6)
+		m.___JS_FreeValueRT(t31, v6)
 	}
 l1:
 	m.___stack_pointer = v8 + i32(16)
@@ -103209,7 +103205,7 @@ func (m *Module) _js_array_slice(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 									goto l6
 								}
 								t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t26, v6)
+								m.___JS_FreeValueRT(t26, v6)
 								goto l6
 							}
 						l5:
@@ -103461,7 +103457,7 @@ func (m *Module) _js_array_slice(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 						goto l17
 					}
 					t77 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t77, v1)
+					m.___JS_FreeValueRT(t77, v1)
 				}
 			l17:
 			}
@@ -103480,7 +103476,7 @@ func (m *Module) _js_array_slice(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 		}
 	l16:
 		t79 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t79, v1)
+		m.___JS_FreeValueRT(t79, v1)
 	}
 l15:
 	m.___stack_pointer = v14 + i32(32)
@@ -103717,7 +103713,7 @@ func (m *Module) _js_array_toSpliced(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l11
 						}
 						t40 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t40, v8)
+						m.___JS_FreeValueRT(t40, v8)
 						goto l11
 					}
 				l5:
@@ -103742,7 +103738,7 @@ l0:
 				goto l12
 			}
 			t42 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t42, v9)
+			m.___JS_FreeValueRT(t42, v9)
 		}
 	l12:
 	}
@@ -103848,7 +103844,7 @@ func (m *Module) _js_array_copyWithin(v0 int32, v1 int64, v2, v3 int32) int64 {
 			goto l2
 		}
 		t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t32, v6)
+		m.___JS_FreeValueRT(t32, v6)
 	}
 l2:
 	m.___stack_pointer = v4 + i32(32)
@@ -103943,7 +103939,7 @@ func (m *Module) _js_array_flatten(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 						goto l4
 					}
 					t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t17, v1)
+					m.___JS_FreeValueRT(t17, v1)
 				}
 			l4:
 			}
@@ -103962,7 +103958,7 @@ func (m *Module) _js_array_flatten(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 		}
 	l3:
 		t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t19, v1)
+		m.___JS_FreeValueRT(t19, v1)
 	}
 l2:
 	m.___stack_pointer = v9 + i32(16)
@@ -104036,7 +104032,7 @@ func (m *Module) _JS_FlattenIntoArray(v0 int32, v1, v2, v3, v4 int64, v5 int32, 
 										goto l1
 									}
 									t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t15, v8)
+									m.___JS_FreeValueRT(t15, v8)
 								}
 							l1:
 							}
@@ -104052,7 +104048,7 @@ func (m *Module) _JS_FlattenIntoArray(v0 int32, v1, v2, v3, v4 int64, v5 int32, 
 										goto l2
 									}
 									t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t18, v8)
+									m.___JS_FreeValueRT(t18, v8)
 								}
 							l2:
 							}
@@ -104095,7 +104091,7 @@ func (m *Module) _JS_FlattenIntoArray(v0 int32, v1, v2, v3, v4 int64, v5 int32, 
 												goto l5
 											}
 											t27 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t27, v8)
+											m.___JS_FreeValueRT(t27, v8)
 										}
 									l5:
 									}
@@ -104157,7 +104153,7 @@ func (m *Module) _JS_FlattenIntoArray(v0 int32, v1, v2, v3, v4 int64, v5 int32, 
 				goto l0
 			}
 			t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t38, v8)
+			m.___JS_FreeValueRT(t38, v8)
 		}
 	l0:
 	}
@@ -104213,7 +104209,7 @@ func (m *Module) _js_typed_array_create(v0 int32, v1 int64, v2, v3 int32) int64 
 					goto l2
 				}
 				t9 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t9, v1)
+				m.___JS_FreeValueRT(t9, v1)
 				goto l2
 			}
 		l0:
@@ -104254,7 +104250,7 @@ func (m *Module) _js_object_create(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l0
 					}
 					t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t6, v1)
+					m.___JS_FreeValueRT(t6, v1)
 					goto l0
 				}
 			}
@@ -104308,7 +104304,7 @@ func (m *Module) _JS_ObjectDefineProperties(v0 int32, v1, v2 int64) int32 {
 											goto l1
 										}
 										t11 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t11, v2)
+										m.___JS_FreeValueRT(t11, v2)
 									}
 								l1:
 								}
@@ -104361,7 +104357,7 @@ func (m *Module) _JS_ObjectDefineProperties(v0 int32, v1, v2 int64) int32 {
 						goto l6
 					}
 					t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t19, v11)
+					m.___JS_FreeValueRT(t19, v11)
 				}
 			l6:
 			}
@@ -104376,7 +104372,7 @@ func (m *Module) _JS_ObjectDefineProperties(v0 int32, v1, v2 int64) int32 {
 				goto l0
 			}
 			t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t21, v2)
+			m.___JS_FreeValueRT(t21, v2)
 		}
 	l0:
 	} else {
@@ -104712,7 +104708,7 @@ func (m *Module) _js_object_getOwnPropertyDescriptor(v0 int32, v1 int64, v2, v3,
 										goto l2
 									}
 									t31 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t31, v5)
+									m.___JS_FreeValueRT(t31, v5)
 									goto l2
 								}
 							l4:
@@ -104734,7 +104730,7 @@ func (m *Module) _js_object_getOwnPropertyDescriptor(v0 int32, v1 int64, v2, v3,
 				store32(m.memory, uint32(v4), uint32(v3-i32(1)))
 				if v3 <= i32(1) {
 					t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t33, v1)
+					m.___JS_FreeValueRT(t33, v1)
 				}
 				v1 = v5
 				goto l1
@@ -104755,7 +104751,7 @@ func (m *Module) _js_object_getOwnPropertyDescriptor(v0 int32, v1 int64, v2, v3,
 			goto l0
 		}
 		t35 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t35, v1)
+		m.___JS_FreeValueRT(t35, v1)
 	}
 l0:
 	v1 = i64(0x600000000)
@@ -104827,7 +104823,7 @@ func (m *Module) _js_object_getOwnPropertyDescriptors(v0 int32, v1 int64, v2, v3
 												goto l1
 											}
 											t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t18, v11)
+											m.___JS_FreeValueRT(t18, v11)
 										}
 									l1:
 									}
@@ -104876,7 +104872,7 @@ func (m *Module) _js_object_getOwnPropertyDescriptors(v0 int32, v1 int64, v2, v3
 								goto l6
 							}
 							t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t23, v10)
+							m.___JS_FreeValueRT(t23, v10)
 						}
 					l6:
 					}
@@ -104895,7 +104891,7 @@ func (m *Module) _js_object_getOwnPropertyDescriptors(v0 int32, v1 int64, v2, v3
 				}
 			l5:
 				t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t25, v10)
+				m.___JS_FreeValueRT(t25, v10)
 			}
 		l3:
 			v12 = v1
@@ -104948,7 +104944,7 @@ func (m *Module) _js_object_assign(v0 int32, v1 int64, v2, v3 int32) int64 {
 								goto l1
 							}
 							t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t6, v1)
+							m.___JS_FreeValueRT(t6, v1)
 						}
 					l1:
 					}
@@ -104970,7 +104966,7 @@ func (m *Module) _js_object_assign(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l4
 						}
 						t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t8, v4)
+						m.___JS_FreeValueRT(t8, v4)
 					}
 				l4:
 				}
@@ -104985,7 +104981,7 @@ func (m *Module) _js_object_assign(v0 int32, v1 int64, v2, v3 int32) int64 {
 					goto l5
 				}
 				t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t10, v1)
+				m.___JS_FreeValueRT(t10, v1)
 				goto l5
 			}
 		l3:
@@ -105149,7 +105145,7 @@ func (m *Module) _js_object_fromEntries(v0 int32, v1 int64, v2, v3 int32) int64 
 													store32(m.memory, uint32(v5), uint32(v4-i32(1)))
 													if v4 <= i32(1) {
 														t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-														m.X__JS_FreeValueRT(t13, v7)
+														m.___JS_FreeValueRT(t13, v7)
 													}
 													t14 := m._JS_IteratorNext(v0, v6, v8, v2+i32(12))
 													v7 = t14
@@ -105169,7 +105165,7 @@ func (m *Module) _js_object_fromEntries(v0 int32, v1 int64, v2, v3 int32) int64 
 														goto l5
 													}
 													t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-													m.X__JS_FreeValueRT(t16, v8)
+													m.___JS_FreeValueRT(t16, v8)
 												}
 											l5:
 											}
@@ -105198,7 +105194,7 @@ func (m *Module) _js_object_fromEntries(v0 int32, v1 int64, v2, v3 int32) int64 
 											goto l2
 										}
 										t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t20, v10)
+										m.___JS_FreeValueRT(t20, v10)
 									}
 								l2:
 									v4 = int32(v7) - i32(4)
@@ -105209,7 +105205,7 @@ func (m *Module) _js_object_fromEntries(v0 int32, v1 int64, v2, v3 int32) int64 
 										goto l0
 									}
 									t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t22, v7)
+									m.___JS_FreeValueRT(t22, v7)
 								}
 							l0:
 							}
@@ -105226,7 +105222,7 @@ func (m *Module) _js_object_fromEntries(v0 int32, v1 int64, v2, v3 int32) int64 
 										goto l9
 									}
 									t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t25, v8)
+									m.___JS_FreeValueRT(t25, v8)
 								}
 							l9:
 							}
@@ -105241,7 +105237,7 @@ func (m *Module) _js_object_fromEntries(v0 int32, v1 int64, v2, v3 int32) int64 
 								goto l10
 							}
 							t27 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t27, v6)
+							m.___JS_FreeValueRT(t27, v6)
 						}
 					l10:
 					}
@@ -105261,7 +105257,7 @@ func (m *Module) _js_object_fromEntries(v0 int32, v1 int64, v2, v3 int32) int64 
 				}
 			l8:
 				t29 := int32(load32(m.memory, uint32(v3)))
-				m.X__JS_FreeValueRT(t29, v6)
+				m.___JS_FreeValueRT(t29, v6)
 			}
 		l6:
 			v9 = v1
@@ -105299,7 +105295,7 @@ func (m *Module) _js_object_hasOwn(v0 int32, v1 int64, v2, v3 int32) int64 {
 					goto l0
 				}
 				t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t7, v1)
+				m.___JS_FreeValueRT(t7, v1)
 			}
 		l0:
 		}
@@ -105328,7 +105324,7 @@ func (m *Module) _js_object_hasOwn(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l1
 			}
 			t11 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t11, v1)
+			m.___JS_FreeValueRT(t11, v1)
 			return i64(0x600000000)
 		}
 	l1:
@@ -105371,7 +105367,7 @@ func (m *Module) _js_object_hasOwnProperty(v0 int32, v1 int64, v2, v3 int32) int
 						goto l0
 					}
 					t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t6, v1)
+					m.___JS_FreeValueRT(t6, v1)
 				}
 			l0:
 			}
@@ -105450,7 +105446,7 @@ func (m *Module) _js_object_isPrototypeOf(v0 int32, v1 int64, v2, v3 int32) int6
 								goto l5
 							}
 							t9 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t9, v4)
+							m.___JS_FreeValueRT(t9, v4)
 						}
 					l5:
 					}
@@ -105464,7 +105460,7 @@ func (m *Module) _js_object_isPrototypeOf(v0 int32, v1 int64, v2, v3 int32) int6
 								goto l6
 							}
 							t11 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t11, v1)
+							m.___JS_FreeValueRT(t11, v1)
 						}
 					l6:
 					}
@@ -105487,7 +105483,7 @@ func (m *Module) _js_object_isPrototypeOf(v0 int32, v1 int64, v2, v3 int32) int6
 					goto l1
 				}
 				t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t14, v4)
+				m.___JS_FreeValueRT(t14, v4)
 			}
 		l1:
 			v5 = i64(0x600000000)
@@ -105502,7 +105498,7 @@ func (m *Module) _js_object_isPrototypeOf(v0 int32, v1 int64, v2, v3 int32) int6
 				goto l0
 			}
 			t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t16, v1)
+			m.___JS_FreeValueRT(t16, v1)
 			return i64(0x600000000)
 		}
 	l0:
@@ -105555,7 +105551,7 @@ func (m *Module) _js_object_propertyIsEnumerable(v0 int32, v1 int64, v2, v3 int3
 				goto l0
 			}
 			t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t10, v1)
+			m.___JS_FreeValueRT(t10, v1)
 		}
 	l0:
 	} else {
@@ -105584,7 +105580,7 @@ func (m *Module) _js_object_get___proto__(v0 int32, v1 int64) int64 {
 				goto l0
 			}
 			t3 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t3, v1)
+			m.___JS_FreeValueRT(t3, v1)
 		}
 	l0:
 	}
@@ -105684,7 +105680,7 @@ func (m *Module) _js_object___defineGetter__(v0 int32, v1 int64, v2, v3, v4 int3
 								goto l2
 							}
 							t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t15, v1)
+							m.___JS_FreeValueRT(t15, v1)
 						}
 					l2:
 					}
@@ -105699,7 +105695,7 @@ func (m *Module) _js_object___defineGetter__(v0 int32, v1 int64, v2, v3, v4 int3
 			l1:
 			}
 			t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t17, v1)
+			m.___JS_FreeValueRT(t17, v1)
 			return i64(0x600000000)
 		}
 	l0:
@@ -105793,7 +105789,7 @@ func (m *Module) _js_object___lookupGetter__(v0 int32, v1 int64, v2, v3, v4 int3
 				goto l5
 			}
 			t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t16, v1)
+			m.___JS_FreeValueRT(t16, v1)
 		}
 	l5:
 	} else {
@@ -105920,7 +105916,7 @@ func (m *Module) _js_function_bind(v0 int32, v1 int64, v2, v3 int32) int64 {
 								goto l3
 							}
 							t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t19, v5)
+							m.___JS_FreeValueRT(t19, v5)
 							goto l3
 						}
 						v8 = math.Float64frombits(uint64(v5 + i64(0x7ff8000a00000000)))
@@ -105977,7 +105973,7 @@ func (m *Module) _js_function_bind(v0 int32, v1 int64, v2, v3 int32) int64 {
 									goto l5
 								}
 								t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t28, v1)
+								m.___JS_FreeValueRT(t28, v1)
 							}
 						l5:
 						}
@@ -106005,7 +106001,7 @@ func (m *Module) _js_function_bind(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l0
 			}
 			t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t33, v6)
+			m.___JS_FreeValueRT(t33, v6)
 		}
 	l0:
 	}
@@ -106253,7 +106249,7 @@ func (m *Module) _js_iterator_concat(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l0
 					}
 					t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t20, v1)
+					m.___JS_FreeValueRT(t20, v1)
 					goto l0
 				}
 			l4:
@@ -106289,7 +106285,7 @@ func (m *Module) _js_iterator_concat(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l6
 						}
 						t27 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t27, v1)
+						m.___JS_FreeValueRT(t27, v1)
 					}
 				l6:
 				}
@@ -106341,7 +106337,7 @@ func (m *Module) _js_iterator_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 								goto l2
 							}
 							t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t5, v5)
+							m.___JS_FreeValueRT(t5, v5)
 						}
 					l2:
 					}
@@ -106382,7 +106378,7 @@ func (m *Module) _js_iterator_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 										goto l4
 									}
 									t11 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t11, v6)
+									m.___JS_FreeValueRT(t11, v6)
 								}
 							l4:
 							}
@@ -106423,7 +106419,7 @@ func (m *Module) _js_iterator_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 					goto l6
 				}
 				t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t17, v6)
+				m.___JS_FreeValueRT(t17, v6)
 			}
 		l6:
 		}
@@ -106437,7 +106433,7 @@ func (m *Module) _js_iterator_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 					goto l7
 				}
 				t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t19, v4)
+				m.___JS_FreeValueRT(t19, v4)
 			}
 		l7:
 		}
@@ -106453,7 +106449,7 @@ func (m *Module) _js_iterator_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 			goto l0
 		}
 		t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t21, v5)
+		m.___JS_FreeValueRT(t21, v5)
 		return i64(0x600000000)
 	}
 l0:
@@ -106511,7 +106507,7 @@ func (m *Module) _js_create_iterator_helper(v0 int32, v1 int64, v2, v3, v4 int32
 							goto l0
 						}
 						t9 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t9, v5)
+						m.___JS_FreeValueRT(t9, v5)
 						goto l0
 					}
 					{
@@ -106529,7 +106525,7 @@ func (m *Module) _js_create_iterator_helper(v0 int32, v1 int64, v2, v3, v4 int32
 											goto l1
 										}
 										t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t12, v5)
+										m.___JS_FreeValueRT(t12, v5)
 									}
 								l1:
 								}
@@ -106636,7 +106632,7 @@ func (m *Module) _js_create_iterator_helper(v0 int32, v1 int64, v2, v3, v4 int32
 								goto l2
 							}
 							t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t25, v5)
+							m.___JS_FreeValueRT(t25, v5)
 						}
 					}
 				l2:
@@ -106666,7 +106662,7 @@ func (m *Module) _js_create_iterator_helper(v0 int32, v1 int64, v2, v3, v4 int32
 					goto l0
 				}
 				t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t32, v6)
+				m.___JS_FreeValueRT(t32, v6)
 				goto l0
 			}
 			t33 := m.Xjs_malloc(v0, i32(48))
@@ -106704,7 +106700,7 @@ func (m *Module) _js_create_iterator_helper(v0 int32, v1 int64, v2, v3, v4 int32
 						goto l12
 					}
 					t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t38, v5)
+					m.___JS_FreeValueRT(t38, v5)
 				}
 			l12:
 			}
@@ -106719,7 +106715,7 @@ func (m *Module) _js_create_iterator_helper(v0 int32, v1 int64, v2, v3, v4 int32
 				goto l0
 			}
 			t40 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t40, v6)
+			m.___JS_FreeValueRT(t40, v6)
 		}
 	l0:
 		_ = m._JS_IteratorClose(v0, v1, i32(1))
@@ -106791,7 +106787,7 @@ func (m *Module) _js_iterator_proto_func(v0 int32, v1 int64, v2, v3, v4 int32) i
 												goto l6
 											}
 											t11 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t11, v5)
+											m.___JS_FreeValueRT(t11, v5)
 										}
 									l6:
 									}
@@ -106805,7 +106801,7 @@ func (m *Module) _js_iterator_proto_func(v0 int32, v1 int64, v2, v3, v4 int32) i
 												goto l7
 											}
 											t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t13, v6)
+											m.___JS_FreeValueRT(t13, v6)
 										}
 									l7:
 									}
@@ -106877,7 +106873,7 @@ func (m *Module) _js_iterator_proto_func(v0 int32, v1 int64, v2, v3, v4 int32) i
 											goto l8
 										}
 										t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t29, v5)
+										m.___JS_FreeValueRT(t29, v5)
 										goto l8
 									}
 									t24 := m._JS_ToBoolFree(v0, v9)
@@ -106899,7 +106895,7 @@ func (m *Module) _js_iterator_proto_func(v0 int32, v1 int64, v2, v3, v4 int32) i
 											goto l11
 										}
 										t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t32, v5)
+										m.___JS_FreeValueRT(t32, v5)
 										goto l11
 									}
 									if uint64(v5) >= uint64(i64(-0x900000000)) {
@@ -106912,7 +106908,7 @@ func (m *Module) _js_iterator_proto_func(v0 int32, v1 int64, v2, v3, v4 int32) i
 												goto l14
 											}
 											t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t26, v5)
+											m.___JS_FreeValueRT(t26, v5)
 										}
 									l14:
 									}
@@ -106961,7 +106957,7 @@ func (m *Module) _js_iterator_proto_func(v0 int32, v1 int64, v2, v3, v4 int32) i
 											goto l16
 										}
 										t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t38, v9)
+										m.___JS_FreeValueRT(t38, v9)
 									}
 								l16:
 								}
@@ -106975,7 +106971,7 @@ func (m *Module) _js_iterator_proto_func(v0 int32, v1 int64, v2, v3, v4 int32) i
 											goto l17
 										}
 										t40 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t40, v5)
+										m.___JS_FreeValueRT(t40, v5)
 									}
 								l17:
 								}
@@ -106992,7 +106988,7 @@ func (m *Module) _js_iterator_proto_func(v0 int32, v1 int64, v2, v3, v4 int32) i
 											goto l18
 										}
 										t42 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t42, v11)
+										m.___JS_FreeValueRT(t42, v11)
 									}
 								l18:
 								}
@@ -107037,7 +107033,7 @@ func (m *Module) _js_iterator_proto_func(v0 int32, v1 int64, v2, v3, v4 int32) i
 												goto l20
 											}
 											t49 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t49, v5)
+											m.___JS_FreeValueRT(t49, v5)
 										}
 									l20:
 									}
@@ -107051,7 +107047,7 @@ func (m *Module) _js_iterator_proto_func(v0 int32, v1 int64, v2, v3, v4 int32) i
 												goto l21
 											}
 											t51 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t51, v6)
+											m.___JS_FreeValueRT(t51, v6)
 										}
 									l21:
 									}
@@ -107093,7 +107089,7 @@ func (m *Module) _js_iterator_proto_func(v0 int32, v1 int64, v2, v3, v4 int32) i
 									goto l24
 								}
 								t57 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t57, v10)
+								m.___JS_FreeValueRT(t57, v10)
 							}
 						l24:
 						}
@@ -107108,7 +107104,7 @@ func (m *Module) _js_iterator_proto_func(v0 int32, v1 int64, v2, v3, v4 int32) i
 							goto l25
 						}
 						t59 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t59, v8)
+						m.___JS_FreeValueRT(t59, v8)
 						goto l25
 					}
 				l8:
@@ -107126,7 +107122,7 @@ func (m *Module) _js_iterator_proto_func(v0 int32, v1 int64, v2, v3, v4 int32) i
 						goto l26
 					}
 					t62 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t62, v10)
+					m.___JS_FreeValueRT(t62, v10)
 				}
 			l26:
 			}
@@ -107142,7 +107138,7 @@ func (m *Module) _js_iterator_proto_func(v0 int32, v1 int64, v2, v3, v4 int32) i
 				goto l25
 			}
 			t64 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t64, v8)
+			m.___JS_FreeValueRT(t64, v8)
 		}
 	l25:
 	} else {
@@ -107226,7 +107222,7 @@ func (m *Module) _js_iterator_proto_reduce(v0 int32, v1 int64, v2, v3 int32) int
 											goto l9
 										}
 										t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t25, v6)
+										m.___JS_FreeValueRT(t25, v6)
 									}
 								l9:
 								}
@@ -107241,7 +107237,7 @@ func (m *Module) _js_iterator_proto_reduce(v0 int32, v1 int64, v2, v3 int32) int
 									goto l10
 								}
 								t27 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t27, v5)
+								m.___JS_FreeValueRT(t27, v5)
 								goto l10
 							}
 							v8 = v10
@@ -107268,7 +107264,7 @@ func (m *Module) _js_iterator_proto_reduce(v0 int32, v1 int64, v2, v3 int32) int
 										goto l4
 									}
 									t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t18, v9)
+									m.___JS_FreeValueRT(t18, v9)
 								}
 							l4:
 							}
@@ -107282,7 +107278,7 @@ func (m *Module) _js_iterator_proto_reduce(v0 int32, v1 int64, v2, v3 int32) int
 										goto l5
 									}
 									t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t20, v8)
+									m.___JS_FreeValueRT(t20, v8)
 								}
 							l5:
 							}
@@ -107300,7 +107296,7 @@ func (m *Module) _js_iterator_proto_reduce(v0 int32, v1 int64, v2, v3 int32) int
 										goto l7
 									}
 									t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t22, v7)
+									m.___JS_FreeValueRT(t22, v7)
 								}
 							l7:
 							}
@@ -107329,7 +107325,7 @@ func (m *Module) _js_iterator_proto_reduce(v0 int32, v1 int64, v2, v3 int32) int
 					goto l1
 				}
 				t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t30, v4)
+				m.___JS_FreeValueRT(t30, v4)
 			}
 		l1:
 			if uint64(v6) >= uint64(i64(-0x900000000)) {
@@ -107342,7 +107338,7 @@ func (m *Module) _js_iterator_proto_reduce(v0 int32, v1 int64, v2, v3 int32) int
 						goto l11
 					}
 					t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t32, v6)
+					m.___JS_FreeValueRT(t32, v6)
 				}
 			l11:
 			}
@@ -107358,7 +107354,7 @@ func (m *Module) _js_iterator_proto_reduce(v0 int32, v1 int64, v2, v3 int32) int
 				goto l10
 			}
 			t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t34, v5)
+			m.___JS_FreeValueRT(t34, v5)
 		}
 	l10:
 	} else {
@@ -107455,7 +107451,7 @@ func (m *Module) _js_iterator_proto_toArray(v0 int32, v1 int64, v2, v3 int32) in
 								goto l0
 							}
 							t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t19, v5)
+							m.___JS_FreeValueRT(t19, v5)
 							goto l0
 						}
 					l1:
@@ -107471,7 +107467,7 @@ func (m *Module) _js_iterator_proto_toArray(v0 int32, v1 int64, v2, v3 int32) in
 						goto l3
 					}
 					t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t21, v4)
+					m.___JS_FreeValueRT(t21, v4)
 				}
 			l3:
 			}
@@ -107486,7 +107482,7 @@ func (m *Module) _js_iterator_proto_toArray(v0 int32, v1 int64, v2, v3 int32) in
 				goto l4
 			}
 			t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t23, v5)
+			m.___JS_FreeValueRT(t23, v5)
 		}
 	l4:
 	} else {
@@ -107632,7 +107628,7 @@ func (m *Module) _js_iterator_concat_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 											goto l3
 										}
 										t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t34, v1)
+										m.___JS_FreeValueRT(t34, v1)
 										goto l3
 									}
 									t16 := m._JS_ToBoolFree(v0, v11)
@@ -107651,7 +107647,7 @@ func (m *Module) _js_iterator_concat_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 													goto l15
 												}
 												t37 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t37, v1)
+												m.___JS_FreeValueRT(t37, v1)
 											}
 										l15:
 										}
@@ -107670,7 +107666,7 @@ func (m *Module) _js_iterator_concat_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 												goto l8
 											}
 											t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t19, v1)
+											m.___JS_FreeValueRT(t19, v1)
 										}
 									l8:
 									}
@@ -107684,7 +107680,7 @@ func (m *Module) _js_iterator_concat_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 												goto l9
 											}
 											t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t21, v9)
+											m.___JS_FreeValueRT(t21, v9)
 										}
 									l9:
 									}
@@ -107698,7 +107694,7 @@ func (m *Module) _js_iterator_concat_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 												goto l10
 											}
 											t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t23, v10)
+											m.___JS_FreeValueRT(t23, v10)
 										}
 									l10:
 									}
@@ -107716,7 +107712,7 @@ func (m *Module) _js_iterator_concat_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 												goto l11
 											}
 											t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t26, v1)
+											m.___JS_FreeValueRT(t26, v1)
 										}
 									l11:
 									}
@@ -107732,7 +107728,7 @@ func (m *Module) _js_iterator_concat_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 												goto l12
 											}
 											t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t29, v1)
+											m.___JS_FreeValueRT(t29, v1)
 										}
 									l12:
 									}
@@ -107826,7 +107822,7 @@ func (m *Module) _js_iterator_concat_return(v0 int32, v1 int64, v2, v3 int32) in
 								goto l1
 							}
 							t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t12, v4)
+							m.___JS_FreeValueRT(t12, v4)
 						}
 					l1:
 					}
@@ -107850,7 +107846,7 @@ func (m *Module) _js_iterator_concat_return(v0 int32, v1 int64, v2, v3 int32) in
 						goto l3
 					}
 					t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t17, v4)
+					m.___JS_FreeValueRT(t17, v4)
 				}
 			l3:
 			}
@@ -107866,7 +107862,7 @@ func (m *Module) _js_iterator_concat_return(v0 int32, v1 int64, v2, v3 int32) in
 						goto l4
 					}
 					t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t20, v4)
+					m.___JS_FreeValueRT(t20, v4)
 				}
 			l4:
 			}
@@ -107959,7 +107955,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 								goto l10
 							}
 							t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t18, v1)
+							m.___JS_FreeValueRT(t18, v1)
 						}
 					l10:
 					}
@@ -108010,7 +108006,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 										goto l17
 									}
 									t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t36, v9)
+									m.___JS_FreeValueRT(t36, v9)
 									goto l17
 								}
 								if uint64(v1) >= uint64(i64(-0x900000000)) {
@@ -108023,7 +108019,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 											goto l12
 										}
 										t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t29, v1)
+										m.___JS_FreeValueRT(t29, v1)
 									}
 								l12:
 								}
@@ -108050,7 +108046,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 									goto l16
 								}
 								t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t34, v9)
+								m.___JS_FreeValueRT(t34, v9)
 							}
 						l16:
 						}
@@ -108074,7 +108070,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 						goto l8
 					}
 					t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t38, v9)
+					m.___JS_FreeValueRT(t38, v9)
 					goto l8
 				case 2:
 					if v5 != 0 {
@@ -108149,7 +108145,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 												goto l19
 											}
 											t56 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t56, v9)
+											m.___JS_FreeValueRT(t56, v9)
 										}
 									l19:
 									}
@@ -108164,7 +108160,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 													goto l24
 												}
 												t65 := int32(load32(m.memory, uint64(uint32(v0))+8))
-												m.X__JS_FreeValueRT(t65, v1)
+												m.___JS_FreeValueRT(t65, v1)
 											}
 										l24:
 										}
@@ -108179,7 +108175,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 											goto l9
 										}
 										t67 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t67, v10)
+										m.___JS_FreeValueRT(t67, v10)
 										goto l9
 									}
 									t57 := m._JS_ToBoolFree(v0, v11)
@@ -108196,7 +108192,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 												goto l21
 											}
 											t59 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t59, v1)
+											m.___JS_FreeValueRT(t59, v1)
 										}
 									l21:
 									}
@@ -108220,7 +108216,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 									goto l8
 								}
 								t63 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t63, v10)
+								m.___JS_FreeValueRT(t63, v10)
 								goto l8
 							}
 						}
@@ -108237,7 +108233,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 						goto l17
 					}
 					t69 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t69, v10)
+					m.___JS_FreeValueRT(t69, v10)
 					goto l17
 				case 4:
 					t70 := int64(load64(m.memory, uint64(uint32(v3))+24))
@@ -108290,7 +108286,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 									goto l25
 								}
 								t84 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t84, v9)
+								m.___JS_FreeValueRT(t84, v9)
 							}
 						l25:
 							if v1&i64(-0x100000000) == i64(0x600000000) {
@@ -108335,7 +108331,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 										goto l26
 									}
 									t94 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t94, v1)
+									m.___JS_FreeValueRT(t94, v1)
 								}
 							l26:
 							}
@@ -108349,7 +108345,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 										goto l27
 									}
 									t96 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t96, v10)
+									m.___JS_FreeValueRT(t96, v10)
 								}
 							l27:
 							}
@@ -108380,7 +108376,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 										goto l9
 									}
 									t123 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t123, v9)
+									m.___JS_FreeValueRT(t123, v9)
 									goto l9
 								}
 								t100 := m._JS_GetIterator2(v0, v9, v10)
@@ -108395,7 +108391,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 											goto l30
 										}
 										t102 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t102, v10)
+										m.___JS_FreeValueRT(t102, v10)
 									}
 								l30:
 								}
@@ -108405,7 +108401,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 								store32(m.memory, uint32(v7), uint32(v6-i32(1)))
 								if v6 <= i32(1) {
 									t104 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t104, v9)
+									m.___JS_FreeValueRT(t104, v9)
 								}
 								if v1&i64(-0x100000000) == i64(0x600000000) {
 									goto l9
@@ -108421,7 +108417,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 											goto l31
 										}
 										t106 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t106, v10)
+										m.___JS_FreeValueRT(t106, v10)
 									}
 								l31:
 								}
@@ -108466,7 +108462,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 										goto l35
 									}
 									t112 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t112, v9)
+									m.___JS_FreeValueRT(t112, v9)
 								}
 							l35:
 							}
@@ -108494,7 +108490,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 									goto l36
 								}
 								t118 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t118, v1)
+								m.___JS_FreeValueRT(t118, v1)
 							}
 						l36:
 						}
@@ -108513,7 +108509,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 								goto l38
 							}
 							t120 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t120, v9)
+							m.___JS_FreeValueRT(t120, v9)
 						}
 					l38:
 					}
@@ -108534,7 +108530,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 								goto l39
 							}
 							t128 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t128, v1)
+							m.___JS_FreeValueRT(t128, v1)
 						}
 					l39:
 					}
@@ -108586,7 +108582,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 							goto l40
 						}
 						t142 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t142, v1)
+						m.___JS_FreeValueRT(t142, v1)
 					}
 				l40:
 					v1 = i64(0x600000000)
@@ -108630,7 +108626,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 										goto l41
 									}
 									t152 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t152, v10)
+									m.___JS_FreeValueRT(t152, v10)
 								}
 							l41:
 							}
@@ -108644,7 +108640,7 @@ func (m *Module) _js_iterator_helper_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 										goto l42
 									}
 									t154 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t154, v9)
+									m.___JS_FreeValueRT(t154, v9)
 								}
 							l42:
 							}
@@ -108732,7 +108728,7 @@ func (m *Module) _js_iterator_wrap_next(v0 int32, v1 int64, v2, v3, v4, v5 int32
 							goto l2
 						}
 						t9 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t9, v6)
+						m.___JS_FreeValueRT(t9, v6)
 					}
 				l2:
 				}
@@ -108800,7 +108796,7 @@ func (m *Module) _js_parseInt(v0 int32, v1 int64, v2, v3 int32) int64 {
 				}
 			}
 			t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t12, int64(uint32(v2-i32(12)))|i64(-0x700000000))
+			m.___JS_FreeValueRT(t12, int64(uint32(v2-i32(12)))|i64(-0x700000000))
 		}
 	l0:
 	} else {
@@ -108825,7 +108821,7 @@ func (m *Module) _js_parseFloat(v0 int32, v1 int64, v2, v3 int32) int64 {
 	store32(m.memory, uint32(v4), uint32(v3-i32(1)))
 	if v3 <= i32(1) {
 		t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t5, int64(uint32(v2-i32(12)))|i64(-0x700000000))
+		m.___JS_FreeValueRT(t5, int64(uint32(v2-i32(12)))|i64(-0x700000000))
 	}
 	return t3
 }
@@ -109068,7 +109064,7 @@ func (m *Module) _js_global_decodeURI(v0 int32, v1 int64, v2, v3, v4 int32) int6
 								goto l10
 							}
 							t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t32, v1)
+							m.___JS_FreeValueRT(t32, v1)
 						}
 					l10:
 					}
@@ -109091,7 +109087,7 @@ func (m *Module) _js_global_decodeURI(v0 int32, v1 int64, v2, v3, v4 int32) int6
 						goto l12
 					}
 					t37 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t37, v1)
+					m.___JS_FreeValueRT(t37, v1)
 				}
 			l12:
 			}
@@ -109299,7 +109295,7 @@ func (m *Module) _js_global_encodeURI(v0 int32, v1 int64, v2, v3, v4 int32) int6
 								goto l7
 							}
 							t27 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t27, v1)
+							m.___JS_FreeValueRT(t27, v1)
 						}
 					l7:
 					}
@@ -109322,7 +109318,7 @@ func (m *Module) _js_global_encodeURI(v0 int32, v1 int64, v2, v3, v4 int32) int6
 						goto l9
 					}
 					t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t32, v1)
+					m.___JS_FreeValueRT(t32, v1)
 				}
 			l9:
 			}
@@ -109437,7 +109433,7 @@ func (m *Module) _js_global_escape(v0 int32, v1 int64, v2, v3 int32) int64 {
 					goto l4
 				}
 				t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t14, v1)
+				m.___JS_FreeValueRT(t14, v1)
 			}
 		l4:
 		}
@@ -109560,7 +109556,7 @@ func (m *Module) _js_global_unescape(v0 int32, v1 int64, v2, v3 int32) int64 {
 					goto l3
 				}
 				t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t22, v1)
+				m.___JS_FreeValueRT(t22, v1)
 			}
 		l3:
 		}
@@ -110033,7 +110029,7 @@ func (m *Module) _js_number_toString(v0 int32, v1 int64, v2, v3, v4 int32) int64
 						goto l1
 					}
 					t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t6, v1)
+					m.___JS_FreeValueRT(t6, v1)
 					goto l1
 				}
 			l0:
@@ -110402,7 +110398,7 @@ func (m *Module) _js_string_raw(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l0
 						}
 						t9 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t9, v1)
+						m.___JS_FreeValueRT(t9, v1)
 					}
 				l0:
 				}
@@ -110463,7 +110459,7 @@ func (m *Module) _js_string_raw(v0 int32, v1 int64, v2, v3 int32) int64 {
 									goto l4
 								}
 								t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t21, v8)
+								m.___JS_FreeValueRT(t21, v8)
 							}
 						l4:
 						}
@@ -110477,7 +110473,7 @@ func (m *Module) _js_string_raw(v0 int32, v1 int64, v2, v3 int32) int64 {
 									goto l5
 								}
 								t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t23, v7)
+								m.___JS_FreeValueRT(t23, v7)
 							}
 						l5:
 						}
@@ -110497,7 +110493,7 @@ func (m *Module) _js_string_raw(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l7
 						}
 						t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t26, v8)
+						m.___JS_FreeValueRT(t26, v8)
 					}
 				l7:
 				}
@@ -110512,7 +110508,7 @@ func (m *Module) _js_string_raw(v0 int32, v1 int64, v2, v3 int32) int64 {
 					goto l8
 				}
 				t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t28, v7)
+				m.___JS_FreeValueRT(t28, v7)
 			}
 		l8:
 		}
@@ -110611,7 +110607,7 @@ func (m *Module) _js_string_charAt(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 				}
 			}
 			t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t18, v5)
+			m.___JS_FreeValueRT(t18, v5)
 		}
 	l0:
 	} else {
@@ -110688,7 +110684,7 @@ func (m *Module) _js_string_charCodeAt(v0 int32, v1 int64, v2, v3 int32) int64 {
 				}
 			}
 			t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t13, v4)
+			m.___JS_FreeValueRT(t13, v4)
 		}
 	l0:
 	} else {
@@ -110789,7 +110785,7 @@ func (m *Module) _js_string_codePointAt(v0 int32, v1 int64, v2, v3 int32) int64 
 				}
 			}
 			t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t10, v1)
+			m.___JS_FreeValueRT(t10, v1)
 		}
 	l0:
 	} else {
@@ -110816,7 +110812,7 @@ func (m *Module) _js_string_isWellFormed(v0 int32, v1 int64, v2, v3 int32) int64
 					goto l0
 				}
 				t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t4, v1)
+				m.___JS_FreeValueRT(t4, v1)
 			}
 		l0:
 		}
@@ -110864,7 +110860,7 @@ func (m *Module) _js_string_toWellFormed(v0 int32, v1 int64, v2, v3 int32) int64
 							goto l0
 						}
 						t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t8, v8)
+						m.___JS_FreeValueRT(t8, v8)
 					}
 				l0:
 				}
@@ -111034,7 +111030,7 @@ func (m *Module) _js_string_indexOf(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 								goto l5
 							}
 							t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t22, v1)
+							m.___JS_FreeValueRT(t22, v1)
 						}
 					l5:
 					}
@@ -111048,7 +111044,7 @@ func (m *Module) _js_string_indexOf(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 								goto l6
 							}
 							t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t24, v12)
+							m.___JS_FreeValueRT(t24, v12)
 						}
 					l6:
 					}
@@ -111067,7 +111063,7 @@ func (m *Module) _js_string_indexOf(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 						goto l8
 					}
 					t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t26, v1)
+					m.___JS_FreeValueRT(t26, v1)
 				}
 			l8:
 			}
@@ -111083,7 +111079,7 @@ func (m *Module) _js_string_indexOf(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 				goto l7
 			}
 			t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t28, v12)
+			m.___JS_FreeValueRT(t28, v12)
 		}
 	l7:
 	}
@@ -111264,7 +111260,7 @@ func (m *Module) _js_string_includes(v0 int32, v1 int64, v2, v3, v4 int32) int64
 									goto l7
 								}
 								t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t21, v1)
+								m.___JS_FreeValueRT(t21, v1)
 							}
 						l7:
 						}
@@ -111292,7 +111288,7 @@ func (m *Module) _js_string_includes(v0 int32, v1 int64, v2, v3, v4 int32) int64
 							goto l10
 						}
 						t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t24, v1)
+						m.___JS_FreeValueRT(t24, v1)
 					}
 				l10:
 				}
@@ -111310,7 +111306,7 @@ func (m *Module) _js_string_includes(v0 int32, v1 int64, v2, v3, v4 int32) int64
 			}
 		l9:
 			t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t26, v6)
+			m.___JS_FreeValueRT(t26, v6)
 		}
 	l8:
 	} else {
@@ -111353,7 +111349,7 @@ func (m *Module) _js_string_match(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 								goto l0
 							}
 							t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t5, v6)
+							m.___JS_FreeValueRT(t5, v6)
 							goto l0
 						}
 					}
@@ -111401,7 +111397,7 @@ func (m *Module) _js_string_match(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 							goto l3
 						}
 						t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t15, v5)
+						m.___JS_FreeValueRT(t15, v5)
 					}
 				l3:
 				} else {
@@ -111429,7 +111425,7 @@ func (m *Module) _js_string_match(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 					goto l0
 				}
 				t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t22, v1)
+				m.___JS_FreeValueRT(t22, v1)
 				goto l0
 			}
 		l2:
@@ -111444,7 +111440,7 @@ func (m *Module) _js_string_match(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 				goto l0
 			}
 			t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t24, v1)
+			m.___JS_FreeValueRT(t24, v1)
 		}
 	l0:
 	} else {
@@ -111494,7 +111490,7 @@ func (m *Module) _check_regexp_g_flag(v0 int32, v1 int64) int32 {
 								goto l3
 							}
 							t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t5, v1)
+							m.___JS_FreeValueRT(t5, v1)
 						}
 					l3:
 					}
@@ -111672,7 +111668,7 @@ func (m *Module) _js_string_split(v0 int32, v1 int64, v2, v3 int32) int64 {
 									goto l6
 								}
 								t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t25, v9)
+								m.___JS_FreeValueRT(t25, v9)
 							}
 						l6:
 						}
@@ -111687,7 +111683,7 @@ func (m *Module) _js_string_split(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l1
 						}
 						t27 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t27, v7)
+						m.___JS_FreeValueRT(t27, v7)
 						goto l1
 					}
 				l2:
@@ -111702,7 +111698,7 @@ func (m *Module) _js_string_split(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l7
 					}
 					t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t29, v4)
+					m.___JS_FreeValueRT(t29, v4)
 				}
 			l7:
 			}
@@ -111716,7 +111712,7 @@ func (m *Module) _js_string_split(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l8
 					}
 					t31 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t31, v9)
+					m.___JS_FreeValueRT(t31, v9)
 				}
 			l8:
 			}
@@ -111732,7 +111728,7 @@ func (m *Module) _js_string_split(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l1
 			}
 			t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t33, v7)
+			m.___JS_FreeValueRT(t33, v7)
 		}
 	l1:
 	} else {
@@ -111881,7 +111877,7 @@ func (m *Module) _js_string_substring(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l4
 			l2:
 				t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t21, v1)
+				m.___JS_FreeValueRT(t21, v1)
 				goto l1
 			}
 		l4:
@@ -111976,7 +111972,7 @@ func (m *Module) _js_string_substr(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l4
 			l2:
 				t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t17, v1)
+				m.___JS_FreeValueRT(t17, v1)
 				goto l1
 			}
 		l4:
@@ -112075,7 +112071,7 @@ func (m *Module) _js_string_slice(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l4
 			l2:
 				t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t19, v1)
+				m.___JS_FreeValueRT(t19, v1)
 				goto l1
 			}
 		l4:
@@ -112170,7 +112166,7 @@ func (m *Module) _js_string_repeat(v0 int32, v1 int64, v2, v3 int32) int64 {
 											goto l3
 										}
 										t19 := int32(load32(m.memory, uint64(uint32(v0))+8))
-										m.X__JS_FreeValueRT(t19, v1)
+										m.___JS_FreeValueRT(t19, v1)
 									}
 								l3:
 								}
@@ -112200,7 +112196,7 @@ func (m *Module) _js_string_repeat(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l4
 			}
 			t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t23, v1)
+			m.___JS_FreeValueRT(t23, v1)
 		}
 	l4:
 	}
@@ -112357,7 +112353,7 @@ func (m *Module) _js_string_replace(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 												goto l10
 											}
 											t37 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t37, v1)
+											m.___JS_FreeValueRT(t37, v1)
 										}
 									l10:
 									}
@@ -112372,7 +112368,7 @@ func (m *Module) _js_string_replace(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 										goto l2
 									}
 									t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t39, v11)
+									m.___JS_FreeValueRT(t39, v11)
 									goto l2
 								}
 							} else {
@@ -112437,7 +112433,7 @@ func (m *Module) _js_string_replace(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 								goto l11
 							}
 							t43 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t43, v1)
+							m.___JS_FreeValueRT(t43, v1)
 						}
 					l11:
 					}
@@ -112451,7 +112447,7 @@ func (m *Module) _js_string_replace(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 								goto l12
 							}
 							t45 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t45, v11)
+							m.___JS_FreeValueRT(t45, v11)
 						}
 					l12:
 					}
@@ -112465,7 +112461,7 @@ func (m *Module) _js_string_replace(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 								goto l13
 							}
 							t47 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t47, v10)
+							m.___JS_FreeValueRT(t47, v10)
 						}
 					l13:
 					}
@@ -112492,7 +112488,7 @@ func (m *Module) _js_string_replace(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 						goto l14
 					}
 					t51 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t51, v1)
+					m.___JS_FreeValueRT(t51, v1)
 				}
 			l14:
 			}
@@ -112506,7 +112502,7 @@ func (m *Module) _js_string_replace(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 						goto l15
 					}
 					t53 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t53, v11)
+					m.___JS_FreeValueRT(t53, v11)
 				}
 			l15:
 			}
@@ -112521,7 +112517,7 @@ func (m *Module) _js_string_replace(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 				goto l0
 			}
 			t55 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t55, v10)
+			m.___JS_FreeValueRT(t55, v10)
 		}
 	l0:
 	} else {
@@ -112594,7 +112590,7 @@ func (m *Module) _js_string_pad(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 										goto l0
 									}
 									t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t12, v11)
+									m.___JS_FreeValueRT(t12, v11)
 									goto l0
 								case 1:
 									var p13 int32
@@ -112680,7 +112676,7 @@ func (m *Module) _js_string_pad(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 												goto l9
 											}
 											t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t28, v11)
+											m.___JS_FreeValueRT(t28, v11)
 										}
 									l9:
 									}
@@ -112694,7 +112690,7 @@ func (m *Module) _js_string_pad(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 												goto l10
 											}
 											t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t30, v1)
+											m.___JS_FreeValueRT(t30, v1)
 										}
 									l10:
 									}
@@ -112723,7 +112719,7 @@ func (m *Module) _js_string_pad(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 							goto l2
 						}
 						t37 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t37, v11)
+						m.___JS_FreeValueRT(t37, v11)
 					}
 				l2:
 				}
@@ -112738,7 +112734,7 @@ func (m *Module) _js_string_pad(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 					goto l11
 				}
 				t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t39, v1)
+				m.___JS_FreeValueRT(t39, v1)
 			}
 		l11:
 		}
@@ -112846,7 +112842,7 @@ l0:
 				goto l6
 			}
 			t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t17, v1)
+			m.___JS_FreeValueRT(t17, v1)
 		}
 	l6:
 	}
@@ -113097,7 +113093,7 @@ func (m *Module) _js_string_toLowerCase(v0 int32, v1 int64, v2, v3, v4 int32) in
 								goto l16
 							}
 							t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t36, v1)
+							m.___JS_FreeValueRT(t36, v1)
 						}
 					l16:
 					}
@@ -113117,7 +113113,7 @@ func (m *Module) _js_string_toLowerCase(v0 int32, v1 int64, v2, v3, v4 int32) in
 						goto l17
 					}
 					t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t39, v1)
+					m.___JS_FreeValueRT(t39, v1)
 				}
 			l17:
 			}
@@ -113185,7 +113181,7 @@ func (m *Module) _js_string_CreateHTML(v0 int32, v1 int64, v2, v3, v4 int32) int
 								goto l0
 							}
 							t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t20, v1)
+							m.___JS_FreeValueRT(t20, v1)
 						}
 					l0:
 					}
@@ -113243,7 +113239,7 @@ func (m *Module) _js_string_CreateHTML(v0 int32, v1 int64, v2, v3, v4 int32) int
 							goto l3
 						}
 						t35 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t35, v8)
+						m.___JS_FreeValueRT(t35, v8)
 					}
 				l3:
 				}
@@ -113328,7 +113324,7 @@ func (m *Module) _js_string_iterator_next(v0 int32, v1 int64, v2, v3, v4, v5 int
 								goto l3
 							}
 							t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t14, v8)
+							m.___JS_FreeValueRT(t14, v8)
 						}
 					l3:
 					}
@@ -113917,7 +113913,7 @@ func (m *Module) _js_math_sumPrecise(v0 int32, v1 int64, v2, v3 int32) int64 {
 								goto l7
 							}
 							t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t33, v1)
+							m.___JS_FreeValueRT(t33, v1)
 						}
 					l7:
 					}
@@ -114115,7 +114111,7 @@ func (m *Module) _js_math_sumPrecise(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l22
 					}
 					t60 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t60, v9)
+					m.___JS_FreeValueRT(t60, v9)
 				}
 			l22:
 			}
@@ -114130,7 +114126,7 @@ func (m *Module) _js_math_sumPrecise(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l23
 			}
 			t62 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t62, v10)
+			m.___JS_FreeValueRT(t62, v10)
 		}
 	l23:
 	}
@@ -114438,7 +114434,7 @@ func (m *Module) _js_symbol_toString(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l0
 			}
 			t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t5, v1)
+			m.___JS_FreeValueRT(t5, v1)
 		}
 	l0:
 	} else {
@@ -114515,7 +114511,7 @@ func (m *Module) _js_symbol_get_description(v0 int32, v1 int64) int64 {
 				goto l0
 			}
 			t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t6, v1)
+			m.___JS_FreeValueRT(t6, v1)
 		}
 	l0:
 	}
@@ -114697,7 +114693,7 @@ func (m *Module) _js_bigint_asUintN(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 					goto l0
 				}
 				t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t8, v1)
+				m.___JS_FreeValueRT(t8, v1)
 				goto l0
 			}
 			if v7 != i64(0x700000000) {
@@ -114722,7 +114718,7 @@ func (m *Module) _js_bigint_asUintN(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 						goto l0
 					}
 					t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t13, v1)
+					m.___JS_FreeValueRT(t13, v1)
 					goto l0
 				}
 				store32(m.memory, uint32(v8), uint32(v2))
@@ -114766,7 +114762,7 @@ func (m *Module) _js_bigint_asUintN(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 							goto l3
 						}
 						t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t21, v1)
+						m.___JS_FreeValueRT(t21, v1)
 					}
 				l3:
 				}
@@ -114855,7 +114851,7 @@ func (m *Module) _js_bigint_toString(v0 int32, v1 int64, v2, v3 int32) int64 {
 		}
 	l2:
 		t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t6, v1)
+		m.___JS_FreeValueRT(t6, v1)
 	}
 l1:
 	return v4
@@ -115236,7 +115232,7 @@ func (m *Module) _js_array_buffer_slice(v0 int32, v1 int64, v2, v3, v4 int32) in
 								goto l2
 							}
 							t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t21, v6)
+							m.___JS_FreeValueRT(t21, v6)
 						}
 					l2:
 					}
@@ -115253,7 +115249,7 @@ func (m *Module) _js_array_buffer_slice(v0 int32, v1 int64, v2, v3, v4 int32) in
 						goto l3
 					}
 					t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t24, v6)
+					m.___JS_FreeValueRT(t24, v6)
 				}
 			l3:
 			} else {
@@ -115320,7 +115316,7 @@ func (m *Module) _js_array_buffer_slice(v0 int32, v1 int64, v2, v3, v4 int32) in
 						goto l1
 					}
 					t41 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t41, v5)
+					m.___JS_FreeValueRT(t41, v5)
 					goto l1
 				}
 			l5:
@@ -115504,7 +115500,7 @@ func (m *Module) _js_array_buffer_transfer(v0 int32, v1 int64, v2, v3, v4 int32)
 							goto l1
 						}
 						t44 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t44, v8)
+						m.___JS_FreeValueRT(t44, v8)
 						goto l1
 					}
 					if uint64(v1) < uint64(v9) {
@@ -115676,7 +115672,7 @@ func (m *Module) _js_typed_array_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l8
 						}
 						t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t25, v5)
+						m.___JS_FreeValueRT(t25, v5)
 						goto l8
 					}
 				l7:
@@ -115719,7 +115715,7 @@ func (m *Module) _js_typed_array_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 										goto l10
 									}
 									t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t30, v5)
+									m.___JS_FreeValueRT(t30, v5)
 								}
 							l10:
 							}
@@ -115751,7 +115747,7 @@ func (m *Module) _js_typed_array_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l6
 					}
 					t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t34, v1)
+					m.___JS_FreeValueRT(t34, v1)
 					goto l6
 				}
 			l12:
@@ -115769,7 +115765,7 @@ func (m *Module) _js_typed_array_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l2
 			}
 			t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t36, v7)
+			m.___JS_FreeValueRT(t36, v7)
 		}
 	l2:
 		if uint64(v6) < uint64(i64(-0x900000000)) {
@@ -115783,7 +115779,7 @@ func (m *Module) _js_typed_array_from(v0 int32, v1 int64, v2, v3 int32) int64 {
 			goto l1
 		}
 		t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.X__JS_FreeValueRT(t38, v6)
+		m.___JS_FreeValueRT(t38, v6)
 	}
 l1:
 	m.___stack_pointer = v12 + i32(32)
@@ -115830,7 +115826,7 @@ func (m *Module) _js_typed_array_of(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l3
 						}
 						t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t8, v4)
+						m.___JS_FreeValueRT(t8, v4)
 						goto l3
 					}
 					v3 = v3 + i32(8)
@@ -116000,7 +115996,7 @@ func (m *Module) _js_typed_array_with(v0 int32, v1 int64, v2, v3 int32) int64 {
 							goto l1
 						}
 						t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t17, v4)
+						m.___JS_FreeValueRT(t17, v4)
 						goto l1
 					}
 					t18 := m.XJS_SetPropertyInt64(v0, v1, v5, v4)
@@ -116019,7 +116015,7 @@ func (m *Module) _js_typed_array_with(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l1
 					}
 					t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t20, v1)
+					m.___JS_FreeValueRT(t20, v1)
 					goto l1
 				}
 			l2:
@@ -116297,7 +116293,7 @@ func (m *Module) _js_typed_array_set(v0 int32, v1 int64, v2, v3 int32) int64 {
 									goto l1
 								}
 								t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t39, v5)
+								m.___JS_FreeValueRT(t39, v5)
 								goto l1
 							}
 						l4:
@@ -116321,7 +116317,7 @@ func (m *Module) _js_typed_array_set(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l0
 			}
 			t43 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t43, v5)
+			m.___JS_FreeValueRT(t43, v5)
 			goto l0
 		}
 	}
@@ -116793,7 +116789,7 @@ func (m *Module) _js_typed_array_find(v0 int32, v1 int64, v2, v3, v4 int32) int6
 									goto l1
 								}
 								t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.X__JS_FreeValueRT(t21, v5)
+								m.___JS_FreeValueRT(t21, v5)
 								goto l1
 							}
 							t16 := m._JS_ToBoolFree(v0, v9)
@@ -116812,7 +116808,7 @@ func (m *Module) _js_typed_array_find(v0 int32, v1 int64, v2, v3, v4 int32) int6
 												goto l8
 											}
 											t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-											m.X__JS_FreeValueRT(t23, v5)
+											m.___JS_FreeValueRT(t23, v5)
 										}
 									l8:
 									}
@@ -116830,7 +116826,7 @@ func (m *Module) _js_typed_array_find(v0 int32, v1 int64, v2, v3, v4 int32) int6
 										goto l4
 									}
 									t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.X__JS_FreeValueRT(t18, v5)
+									m.___JS_FreeValueRT(t18, v5)
 								}
 							l4:
 							}
@@ -117000,7 +116996,7 @@ func (m *Module) _js_typed_array_toReversed(v0 int32, v1 int64, v2, v3 int32) in
 						goto l0
 					}
 					t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t5, v1)
+					m.___JS_FreeValueRT(t5, v1)
 				}
 			l0:
 			}
@@ -117182,7 +117178,7 @@ func (m *Module) _js_typed_array_slice(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l1
 			}
 			t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t39, v4)
+			m.___JS_FreeValueRT(t39, v4)
 			goto l1
 		}
 	l0:
@@ -117275,7 +117271,7 @@ func (m *Module) _js_typed_array_subarray(v0 int32, v1 int64, v2, v3 int32) int6
 				goto l1
 			}
 			t23 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t23, v9)
+			m.___JS_FreeValueRT(t23, v9)
 			goto l1
 		}
 	l0:
@@ -117616,7 +117612,7 @@ func (m *Module) _js_TA_cmp_generic(v0, v1, v2 int32) int32 {
 						goto l1
 					}
 					t32 := int32(load32(m.memory, uint64(uint32(v1))+8))
-					m.X__JS_FreeValueRT(t32, v3)
+					m.___JS_FreeValueRT(t32, v3)
 				}
 			l1:
 			}
@@ -117633,7 +117629,7 @@ func (m *Module) _js_TA_cmp_generic(v0, v1, v2 int32) int32 {
 				goto l2
 			}
 			t35 := int32(load32(m.memory, uint64(uint32(v1))+8))
-			m.X__JS_FreeValueRT(t35, v3)
+			m.___JS_FreeValueRT(t35, v3)
 		}
 	l2:
 	}
@@ -117667,7 +117663,7 @@ func (m *Module) _js_typed_array_toSorted(v0 int32, v1 int64, v2, v3 int32) int6
 						goto l0
 					}
 					t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t5, v1)
+					m.___JS_FreeValueRT(t5, v1)
 				}
 			l0:
 			}
@@ -117851,7 +117847,7 @@ func (m *Module) _js_typed_array_join(v0 int32, v1 int64, v2, v3, v4 int32) int6
 							goto l7
 						}
 						t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t33, v11)
+						m.___JS_FreeValueRT(t33, v11)
 					}
 				l7:
 				}
@@ -117876,7 +117872,7 @@ func (m *Module) _js_typed_array_join(v0 int32, v1 int64, v2, v3, v4 int32) int6
 				goto l1
 			}
 			t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t39, v11)
+			m.___JS_FreeValueRT(t39, v11)
 			goto l1
 		}
 	l0:
@@ -118883,7 +118879,7 @@ func (m *Module) _js_uint8array_from_base64(v0 int32, v1 int64, v2, v3 int32) in
 						goto l0
 					}
 					t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t6, int64(uint32(v4-i32(12)))|i64(-0x700000000))
+					m.___JS_FreeValueRT(t6, int64(uint32(v4-i32(12)))|i64(-0x700000000))
 					goto l0
 				}
 			l1:
@@ -118899,7 +118895,7 @@ func (m *Module) _js_uint8array_from_base64(v0 int32, v1 int64, v2, v3 int32) in
 					goto l0
 				}
 				t9 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t9, int64(uint32(v4-i32(12)))|i64(-0x700000000))
+				m.___JS_FreeValueRT(t9, int64(uint32(v4-i32(12)))|i64(-0x700000000))
 				goto l0
 			}
 			t10 := m._parse_last_chunk_option(v0, v1)
@@ -118913,7 +118909,7 @@ func (m *Module) _js_uint8array_from_base64(v0 int32, v1 int64, v2, v3 int32) in
 					goto l0
 				}
 				t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t12, int64(uint32(v4-i32(12)))|i64(-0x700000000))
+				m.___JS_FreeValueRT(t12, int64(uint32(v4-i32(12)))|i64(-0x700000000))
 				goto l0
 			}
 			t13 := int32(load32(m.memory, uint64(uint32(v5))+12))
@@ -118930,7 +118926,7 @@ func (m *Module) _js_uint8array_from_base64(v0 int32, v1 int64, v2, v3 int32) in
 					goto l0
 				}
 				t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t17, int64(uint32(v4-i32(12)))|i64(-0x700000000))
+				m.___JS_FreeValueRT(t17, int64(uint32(v4-i32(12)))|i64(-0x700000000))
 				goto l0
 			}
 			t18 := int32(load32(m.memory, uint64(uint32(v5))+12))
@@ -118949,7 +118945,7 @@ func (m *Module) _js_uint8array_from_base64(v0 int32, v1 int64, v2, v3 int32) in
 			store32(m.memory, uint32(v7), uint32(v3-i32(1)))
 			if v3 <= i32(1) {
 				t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t25, int64(uint32(v4-i32(12)))|i64(-0x700000000))
+				m.___JS_FreeValueRT(t25, int64(uint32(v4-i32(12)))|i64(-0x700000000))
 			}
 			t26 := int32(load32(m.memory, uint64(uint32(v5))+4))
 			if t26 != 0 {
@@ -118997,7 +118993,7 @@ func (m *Module) _parse_alphabet_option(v0 int32, v1 int64) int32 {
 							goto l1
 						}
 						t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t2, v1)
+						m.___JS_FreeValueRT(t2, v1)
 					}
 				l1:
 				}
@@ -119016,7 +119012,7 @@ func (m *Module) _parse_alphabet_option(v0 int32, v1 int64) int32 {
 						goto l2
 					}
 					t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t6, v1)
+					m.___JS_FreeValueRT(t6, v1)
 				}
 			l2:
 			}
@@ -119047,7 +119043,7 @@ func (m *Module) _parse_alphabet_option(v0 int32, v1 int64) int32 {
 				goto l0
 			}
 			t13 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t13, int64(uint32(v2-i32(12)))|i64(-0x700000000))
+			m.___JS_FreeValueRT(t13, int64(uint32(v2-i32(12)))|i64(-0x700000000))
 		}
 	l0:
 	}
@@ -119079,7 +119075,7 @@ func (m *Module) _parse_last_chunk_option(v0 int32, v1 int64) int32 {
 							goto l1
 						}
 						t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t2, v1)
+						m.___JS_FreeValueRT(t2, v1)
 					}
 				l1:
 				}
@@ -119098,7 +119094,7 @@ func (m *Module) _parse_last_chunk_option(v0 int32, v1 int64) int32 {
 						goto l2
 					}
 					t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t6, v1)
+					m.___JS_FreeValueRT(t6, v1)
 				}
 			l2:
 			}
@@ -119136,7 +119132,7 @@ func (m *Module) _parse_last_chunk_option(v0 int32, v1 int64) int32 {
 				goto l0
 			}
 			t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t15, int64(uint32(v2-i32(12)))|i64(-0x700000000))
+			m.___JS_FreeValueRT(t15, int64(uint32(v2-i32(12)))|i64(-0x700000000))
 		}
 	l0:
 	}
@@ -119450,7 +119446,7 @@ func (m *Module) _JS_NewUint8ArrayCopy(v0, v1, v2 int32) int64 {
 				}
 			}
 			t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t8, v3)
+			m.___JS_FreeValueRT(t8, v3)
 		}
 	l0:
 	}
@@ -119486,7 +119482,7 @@ func (m *Module) _js_uint8array_from_hex(v0 int32, v1 int64, v2, v3 int32) int64
 					goto l0
 				}
 				t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t7, int64(uint32(v3-i32(12)))|i64(-0x700000000))
+				m.___JS_FreeValueRT(t7, int64(uint32(v3-i32(12)))|i64(-0x700000000))
 				goto l0
 			}
 			t8 := int32(load32(m.memory, uint64(uint32(v2))+12))
@@ -119498,7 +119494,7 @@ func (m *Module) _js_uint8array_from_hex(v0 int32, v1 int64, v2, v3 int32) int64
 			store32(m.memory, uint32(v7), uint32(v5-i32(1)))
 			if v5 <= i32(1) {
 				t11 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t11, int64(uint32(v3-i32(12)))|i64(-0x700000000))
+				m.___JS_FreeValueRT(t11, int64(uint32(v3-i32(12)))|i64(-0x700000000))
 			}
 			t12 := int32(load32(m.memory, uint64(uint32(v2))+4))
 			if t12 != 0 {
@@ -119651,7 +119647,7 @@ func (m *Module) _js_uint8array_to_base64(v0 int32, v1 int64, v2, v3 int32) int6
 							goto l2
 						}
 						t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.X__JS_FreeValueRT(t12, v1)
+						m.___JS_FreeValueRT(t12, v1)
 					}
 				l2:
 				}
@@ -119883,7 +119879,7 @@ func (m *Module) _js_uint8array_set_from_base64(v0 int32, v1 int64, v2, v3 int32
 						goto l1
 					}
 					t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.X__JS_FreeValueRT(t8, int64(uint32(v4-i32(12)))|i64(-0x700000000))
+					m.___JS_FreeValueRT(t8, int64(uint32(v4-i32(12)))|i64(-0x700000000))
 					goto l1
 				}
 			l2:
@@ -119899,7 +119895,7 @@ func (m *Module) _js_uint8array_set_from_base64(v0 int32, v1 int64, v2, v3 int32
 					goto l1
 				}
 				t11 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t11, int64(uint32(v4-i32(12)))|i64(-0x700000000))
+				m.___JS_FreeValueRT(t11, int64(uint32(v4-i32(12)))|i64(-0x700000000))
 				goto l1
 			}
 			t12 := m._parse_last_chunk_option(v0, v7)
@@ -119913,7 +119909,7 @@ func (m *Module) _js_uint8array_set_from_base64(v0 int32, v1 int64, v2, v3 int32
 					goto l1
 				}
 				t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t14, int64(uint32(v4-i32(12)))|i64(-0x700000000))
+				m.___JS_FreeValueRT(t14, int64(uint32(v4-i32(12)))|i64(-0x700000000))
 				goto l1
 			}
 			t15 := m._typed_array_is_oob(v6)
@@ -119927,7 +119923,7 @@ func (m *Module) _js_uint8array_set_from_base64(v0 int32, v1 int64, v2, v3 int32
 					goto l1
 				}
 				t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t18, int64(uint32(v4-i32(12)))|i64(-0x700000000))
+				m.___JS_FreeValueRT(t18, int64(uint32(v4-i32(12)))|i64(-0x700000000))
 				goto l1
 			}
 			t19 := int32(load32(m.memory, uint64(uint32(v5))+12))
@@ -119946,7 +119942,7 @@ func (m *Module) _js_uint8array_set_from_base64(v0 int32, v1 int64, v2, v3 int32
 			store32(m.memory, uint32(v6), uint32(v2-i32(1)))
 			if v2 <= i32(1) {
 				t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t26, int64(uint32(v4-i32(12)))|i64(-0x700000000))
+				m.___JS_FreeValueRT(t26, int64(uint32(v4-i32(12)))|i64(-0x700000000))
 			}
 			t27 := int32(load32(m.memory, uint64(uint32(v5))+4))
 			if t27 != 0 {
@@ -120018,7 +120014,7 @@ func (m *Module) _js_make_read_written(v0, v1, v2 int32) int64 {
 				goto l0
 			}
 			t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.X__JS_FreeValueRT(t14, v3)
+			m.___JS_FreeValueRT(t14, v3)
 		}
 	l0:
 	}
@@ -120061,7 +120057,7 @@ func (m *Module) _js_uint8array_set_from_hex(v0 int32, v1 int64, v2, v3 int32) i
 					goto l1
 				}
 				t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t8, int64(uint32(v3-i32(12)))|i64(-0x700000000))
+				m.___JS_FreeValueRT(t8, int64(uint32(v3-i32(12)))|i64(-0x700000000))
 				goto l1
 			}
 			t9 := int32(load32(m.memory, uint64(uint32(v2))+12))
@@ -120075,7 +120071,7 @@ func (m *Module) _js_uint8array_set_from_hex(v0 int32, v1 int64, v2, v3 int32) i
 			store32(m.memory, uint32(v6), uint32(v4-i32(1)))
 			if v4 <= i32(1) {
 				t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.X__JS_FreeValueRT(t14, int64(uint32(v3-i32(12)))|i64(-0x700000000))
+				m.___JS_FreeValueRT(t14, int64(uint32(v3-i32(12)))|i64(-0x700000000))
 			}
 			t15 := int32(load32(m.memory, uint64(uint32(v2))+4))
 			if t15 != 0 {
@@ -120725,7 +120721,7 @@ func (m *Module) _js_finrec_finalizer(v0 int32, v1 int64) {
 							if v5 > i32(1) {
 								goto l1
 							}
-							m.X__JS_FreeValueRT(v0, v1)
+							m.___JS_FreeValueRT(v0, v1)
 						}
 					l1:
 					}
@@ -120746,7 +120742,7 @@ func (m *Module) _js_finrec_finalizer(v0 int32, v1 int64) {
 					if v2 > i32(1) {
 						goto l3
 					}
-					m.X__JS_FreeValueRT(v0, v1)
+					m.___JS_FreeValueRT(v0, v1)
 				}
 			l3:
 			}
@@ -120976,7 +120972,7 @@ func (m *Module) _js_finrec_unregister(v0 int32, v1 int64, v2, v3 int32) int64 {
 								goto l3
 							}
 							t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							m.X__JS_FreeValueRT(t17, v7)
+							m.___JS_FreeValueRT(t17, v7)
 						}
 					l3:
 					}
@@ -133077,15 +133073,6 @@ func (m *Module) _exchange_bytes(v0, v1, v2 int32) {
 func (m *Module) XJS_VALUE_GET_FLOAT64(v0 int64) float64 {
 	return math.Float64frombits(uint64(v0 + i64(0x7ff8000a00000000)))
 }
-func (m *Module) X__JS_NewFloat64(v0 int32, v1 float64) int64 {
-	var v2 int64
-	v2 = int64(math.Float64bits(v1))
-	p0 := v2 - i64(0x7ff8000a00000000)
-	if uint64(v2&i64(0x7fffffffffffffff)) > uint64(i64(0x7ff0000000000000)) {
-		p0 = i64(-0xa00000000)
-	}
-	return p0
-}
 func (m *Module) XJS_VALUE_GET_NORM_TAG(v0 int64) int32 {
 	var v1 int32
 	v1 = int32(int64(uint64(v0) >> 32))
@@ -133101,9 +133088,6 @@ func (m *Module) XJS_VALUE_IS_NAN(v0 int64) int32 {
 		p0 = 1
 	}
 	return p0
-}
-func (m *Module) X__JS_NewShortBigInt(v0, v1 int32) int64 {
-	return int64(uint32(v1)) | i64(0x700000000)
 }
 func (m *Module) XJS_AtomToCString(v0, v1 int32) int32 {
 	t0 := m.XJS_AtomToCStringLen(v0, i32(0), v1)
@@ -133260,9 +133244,6 @@ func (m *Module) XJS_IsObject(v0 int64) int32 {
 	}
 	return p0
 }
-func (m *Module) X__js_rc(v0 int32) int32 {
-	return v0 - i32(4)
-}
 func (m *Module) XJS_FreeValue(v0 int32, v1 int64) {
 	var v2, v3 int32
 	if uint64(v1) >= uint64(i64(-0x900000000)) {
@@ -133274,7 +133255,8 @@ func (m *Module) XJS_FreeValue(v0 int32, v1 int64) {
 			if v2 > i32(1) {
 				goto l0
 			}
-			m.X__JS_FreeValue(v0, v1)
+			t1 := int32(load32(m.memory, uint64(uint32(v0))+8))
+			m.___JS_FreeValueRT(t1, v1)
 		}
 	l0:
 	}
@@ -133290,7 +133272,7 @@ func (m *Module) XJS_FreeValueRT(v0 int32, v1 int64) {
 			if v2 > i32(1) {
 				goto l0
 			}
-			m.X__JS_FreeValueRT(v0, v1)
+			m.___JS_FreeValueRT(v0, v1)
 		}
 	l0:
 	}
