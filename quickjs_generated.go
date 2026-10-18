@@ -62834,7 +62834,7 @@ func (m *Module) _js_def_malloc(v0, v1 int32) int32 {
 	t0 := int32(load32(m.memory, uint64(uint32(v0))+8))
 	t1 := int32(load32(m.memory, uint64(uint32(v0))+4))
 	if uint32(t0) >= uint32(t1+v1) {
-		t2 := m._malloc(v1)
+		t2 := m.Xmalloc(v1)
 		v1 = t2
 		if v1 != 0 {
 			t3 := int32(load32(m.memory, uint32(v0)))
@@ -62854,7 +62854,7 @@ func (m *Module) _js_def_free(v0, v1 int32) {
 		t1 := int32(load32(m.memory, uint64(uint32(v0))+4))
 		t2 := m._malloc_usable_size(v1)
 		store32(m.memory, uint64(uint32(v0))+4, uint32(t1-t2-i32(8)))
-		m._free(v1)
+		m.Xfree(v1)
 	}
 }
 func (m *Module) _js_def_realloc(v0, v1, v2 int32) int32 {
@@ -62867,13 +62867,13 @@ func (m *Module) _js_def_realloc(v0, v1, v2 int32) int32 {
 			store32(m.memory, uint32(v0), uint32(t1-i32(1)))
 			t2 := int32(load32(m.memory, uint64(uint32(v0))+4))
 			store32(m.memory, uint64(uint32(v0))+4, uint32(t2-v3-i32(8)))
-			m._free(v1)
+			m.Xfree(v1)
 			goto l0
 		}
 		t3 := int32(load32(m.memory, uint64(uint32(v0))+8))
 		t4 := int32(load32(m.memory, uint64(uint32(v0))+4))
 		if uint32(t3) >= uint32(t4+(v2-v3)) {
-			t5 := m._realloc(v1, v2)
+			t5 := m.Xrealloc(v1, v2)
 			v1 = t5
 			if v1 != 0 {
 				t6 := int32(load32(m.memory, uint64(uint32(v0))+4))
@@ -130083,7 +130083,7 @@ func (m *Module) _get_index_pos(v0, v1, v2, v3 int32) int32 {
 	return p6
 }
 func (m *Module) _cr_default_realloc(v0, v1, v2 int32) int32 {
-	t0 := m._realloc(v1, v2)
+	t0 := m.Xrealloc(v1, v2)
 	return t0
 }
 func (m *Module) _cr_realloc(v0, v1 int32) int32 {
@@ -136702,7 +136702,7 @@ func (m *Module) _snprintf(v0, v1, v2, v3 int32) int32 {
 	m.___stack_pointer = v4 + i32(16)
 	return t1
 }
-func (m *Module) _malloc(v0 int32) int32 {
+func (m *Module) Xmalloc(v0 int32) int32 {
 	var v1, v2, v3, v4 int32
 	if v0 > i32(0) {
 		{
@@ -136958,7 +136958,7 @@ func (m *Module) _tlsf_remove_free_block(v0 int32) {
 l0:
 	store32(m.memory, uint64(uint32(v3))+4, uint32(v0))
 }
-func (m *Module) _free(v0 int32) {
+func (m *Module) Xfree(v0 int32) {
 	if v0 != 0 {
 		if v0&i32(15) != 0 {
 			panic("unreachable")
@@ -136972,10 +136972,10 @@ func (m *Module) _free(v0 int32) {
 		}
 	}
 }
-func (m *Module) _realloc(v0, v1 int32) int32 {
+func (m *Module) Xrealloc(v0, v1 int32) int32 {
 	var v2, v3, v4, v5, v6, v7 int32
 	if v0 == 0 {
-		t0 := m._malloc(v1)
+		t0 := m.Xmalloc(v1)
 		return t0
 	}
 	if v1 != 0 {
@@ -137024,7 +137024,7 @@ func (m *Module) _realloc(v0, v1 int32) int32 {
 							goto l1
 						}
 					}
-					t9 := m._malloc(v1)
+					t9 := m.Xmalloc(v1)
 					v1 = t9
 					if v1 == 0 {
 						goto l0

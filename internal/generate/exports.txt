@@ -1,3 +1,6 @@
+malloc
+free
+realloc
 JS_NewRuntime
 JS_SetRuntimeInfo
 JS_SetMemoryLimit
