@@ -44,6 +44,7 @@ RUN awk '{print "--export=" $0}' generate/exports.txt > .build/exports.txt
 # -g, which discards names/DWARF before our explicitly configured optimizer runs.
 RUN src=".build/quickjs-${QUICKJS_VERSION}" \
     && clang --target=wasm32-unknown-unknown -ffreestanding -nostdlib -mbulk-memory \
+        -mmultivalue -Xclang -target-abi -Xclang experimental-mv \
         -Os -g -c -fno-strict-aliasing -ffunction-sections -fdata-sections \
         -I.build/libc -I"$src" -DCONFIG_VERSION=\"${QUICKJS_VERSION}\" \
         "$src/quickjs.c" "$src/dtoa.c" "$src/libregexp.c" \

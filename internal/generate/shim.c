@@ -138,3 +138,194 @@ __attribute__((export_name("JS_ALIAS_DEF")))
 void qjs_api_JS_ALIAS_DEF(JSCFunctionListEntry *out, const char * a0, const char * a1) { *out = (JSCFunctionListEntry)JS_ALIAS_DEF(a0, a1); }
 __attribute__((export_name("JS_ALIAS_BASE_DEF")))
 void qjs_api_JS_ALIAS_BASE_DEF(JSCFunctionListEntry *out, const char * a0, const char * a1, int a2) { *out = (JSCFunctionListEntry)JS_ALIAS_BASE_DEF(a0, a1, a2); }
+
+/* Multi-value adapters: original return value, then output arguments. */
+typedef struct { int status; int32_t value; } JS_ToInt32Result;
+
+__attribute__((export_name("JS_ToInt32MV")))
+JS_ToInt32Result qjs_mv_JS_ToInt32(JSContext *ctx, JSValueConst value)
+{
+    JS_ToInt32Result r = {0};
+    r.status = JS_ToInt32(ctx, &r.value, value);
+    return r;
+}
+
+typedef struct { int status; uint32_t value; } JS_ToUint32Result;
+
+__attribute__((export_name("JS_ToUint32MV")))
+JS_ToUint32Result qjs_mv_JS_ToUint32(JSContext *ctx, JSValueConst value)
+{
+    JS_ToUint32Result r = {0};
+    r.status = JS_ToUint32(ctx, &r.value, value);
+    return r;
+}
+
+typedef struct { int status; int64_t value; } JS_ToInt64Result;
+
+__attribute__((export_name("JS_ToInt64MV")))
+JS_ToInt64Result qjs_mv_JS_ToInt64(JSContext *ctx, JSValueConst value)
+{
+    JS_ToInt64Result r = {0};
+    r.status = JS_ToInt64(ctx, &r.value, value);
+    return r;
+}
+
+typedef struct { int status; uint64_t value; } JS_ToIndexResult;
+
+__attribute__((export_name("JS_ToIndexMV")))
+JS_ToIndexResult qjs_mv_JS_ToIndex(JSContext *ctx, JSValueConst value)
+{
+    JS_ToIndexResult r = {0};
+    r.status = JS_ToIndex(ctx, &r.value, value);
+    return r;
+}
+
+typedef struct { int status; double value; } JS_ToFloat64Result;
+
+__attribute__((export_name("JS_ToFloat64MV")))
+JS_ToFloat64Result qjs_mv_JS_ToFloat64(JSContext *ctx, JSValueConst value)
+{
+    JS_ToFloat64Result r = {0};
+    r.status = JS_ToFloat64(ctx, &r.value, value);
+    return r;
+}
+
+typedef struct { int status; int64_t value; } JS_ToBigInt64Result;
+
+__attribute__((export_name("JS_ToBigInt64MV")))
+JS_ToBigInt64Result qjs_mv_JS_ToBigInt64(JSContext *ctx, JSValueConst value)
+{
+    JS_ToBigInt64Result r = {0};
+    r.status = JS_ToBigInt64(ctx, &r.value, value);
+    return r;
+}
+
+typedef struct { int status; int64_t value; } JS_ToInt64ExtResult;
+
+__attribute__((export_name("JS_ToInt64ExtMV")))
+JS_ToInt64ExtResult qjs_mv_JS_ToInt64Ext(JSContext *ctx, JSValueConst value)
+{
+    JS_ToInt64ExtResult r = {0};
+    r.status = JS_ToInt64Ext(ctx, &r.value, value);
+    return r;
+}
+
+typedef struct { const char *ptr; size_t len; } CStringResult;
+
+__attribute__((export_name("JS_ToCStringLen2MV")))
+CStringResult qjs_mv_JS_ToCStringLen2(JSContext *ctx, JSValueConst value, JS_BOOL cesu8)
+{
+    CStringResult r = {0};
+    r.ptr = JS_ToCStringLen2(ctx, &r.len, value, cesu8);
+    return r;
+}
+
+__attribute__((export_name("JS_ToCStringLenMV")))
+CStringResult qjs_mv_JS_ToCStringLen(JSContext *ctx, JSValueConst value)
+{
+    return qjs_mv_JS_ToCStringLen2(ctx, value, 0);
+}
+
+__attribute__((export_name("JS_AtomToCStringLenMV")))
+CStringResult qjs_mv_JS_AtomToCStringLen(JSContext *ctx, JSAtom atom)
+{
+    CStringResult r = {0};
+    r.ptr = JS_AtomToCStringLen(ctx, &r.len, atom);
+    return r;
+}
+
+typedef struct { void *ptr; size_t size; } BufferResult;
+
+__attribute__((export_name("JS_GetArrayBufferMV")))
+BufferResult qjs_mv_JS_GetArrayBuffer(JSContext *ctx, JSValueConst obj)
+{
+    BufferResult r = {0};
+    r.ptr = JS_GetArrayBuffer(ctx, &r.size, obj);
+    return r;
+}
+
+typedef struct { JSValue buffer; size_t byte_offset, byte_length, bytes_per_element; } TypedArrayResult;
+
+__attribute__((export_name("JS_GetTypedArrayBufferMV")))
+TypedArrayResult qjs_mv_JS_GetTypedArrayBuffer(JSContext *ctx, JSValueConst obj)
+{
+    TypedArrayResult r = {0};
+    r.buffer = JS_GetTypedArrayBuffer(ctx, obj, &r.byte_offset, &r.byte_length, &r.bytes_per_element);
+    return r;
+}
+
+typedef struct { int status; JSPropertyEnum *tab; uint32_t len; } PropertyNamesResult;
+
+__attribute__((export_name("JS_GetOwnPropertyNamesMV")))
+PropertyNamesResult qjs_mv_JS_GetOwnPropertyNames(JSContext *ctx, JSValueConst obj, int flags)
+{
+    PropertyNamesResult r = {0};
+    r.status = JS_GetOwnPropertyNames(ctx, &r.tab, &r.len, obj, flags);
+    return r;
+}
+
+typedef struct { int status, flags; JSValue value, getter, setter; } PropertyResult;
+
+__attribute__((export_name("JS_GetOwnPropertyMV")))
+PropertyResult qjs_mv_JS_GetOwnProperty(JSContext *ctx, JSValueConst obj, JSAtom prop)
+{
+    JSPropertyDescriptor desc = {0, JS_UNDEFINED, JS_UNDEFINED, JS_UNDEFINED};
+    int status = JS_GetOwnProperty(ctx, &desc, obj, prop);
+    return (PropertyResult){status, desc.flags, desc.value, desc.getter, desc.setter};
+}
+
+typedef struct { JSValue promise, resolve, reject; } PromiseResult;
+
+__attribute__((export_name("JS_NewPromiseCapabilityMV")))
+PromiseResult qjs_mv_JS_NewPromiseCapability(JSContext *ctx)
+{
+    JSValue funcs[2] = {JS_UNDEFINED, JS_UNDEFINED};
+    JSValue promise = JS_NewPromiseCapability(ctx, funcs);
+    return (PromiseResult){promise, funcs[0], funcs[1]};
+}
+
+typedef struct { int status; JSContext *ctx; } JobResult;
+
+__attribute__((export_name("JS_ExecutePendingJobMV")))
+JobResult qjs_mv_JS_ExecutePendingJob(JSRuntime *rt)
+{
+    JobResult r = {0};
+    r.status = JS_ExecutePendingJob(rt, &r.ctx);
+    return r;
+}
+
+__attribute__((export_name("JS_WriteObjectMV")))
+BufferResult qjs_mv_JS_WriteObject(JSContext *ctx, JSValueConst obj, int flags)
+{
+    BufferResult r = {0};
+    r.ptr = JS_WriteObject(ctx, &r.size, obj, flags);
+    return r;
+}
+
+typedef struct { uint8_t *ptr; size_t size; uint8_t **sab_tab; size_t sab_tab_len; } WriteObjectResult;
+
+__attribute__((export_name("JS_WriteObject2MV")))
+WriteObjectResult qjs_mv_JS_WriteObject2(JSContext *ctx, JSValueConst obj, int flags)
+{
+    WriteObjectResult r = {0};
+    r.ptr = JS_WriteObject2(ctx, &r.size, obj, flags, &r.sab_tab, &r.sab_tab_len);
+    return r;
+}
+
+__attribute__((export_name("js_realloc2MV")))
+BufferResult qjs_mv_js_realloc2(JSContext *ctx, void *ptr, size_t size)
+{
+    BufferResult r = {0};
+    r.ptr = js_realloc2(ctx, ptr, size, &r.size);
+    return r;
+}
+
+typedef struct { void *ptr; JSClassID class_id; } OpaqueResult;
+
+__attribute__((export_name("JS_GetAnyOpaqueMV")))
+OpaqueResult qjs_mv_JS_GetAnyOpaque(JSValueConst obj)
+{
+    OpaqueResult r = {0};
+    r.ptr = JS_GetAnyOpaque(obj, &r.class_id);
+    return r;
+}

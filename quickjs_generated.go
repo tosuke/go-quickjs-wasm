@@ -27,8 +27,8 @@ func New() *Module {
 	m.elements = [][]any{{m._js_call_c_function, m._js_c_function_data_call, m._js_call_bound_function, m._js_generator_function_call, m._js_create_array_iterator, m._js_array_iterator_next, m._js_dynamic_import_job, m._js_finrec_job, m._gc_decref_child, m._gc_scan_incref_child, m._gc_scan_incref_child2, _js_function_proto, m._js_error_constructor, m._js_array_constructor, m.___JS_EvalInternal, m._js_throw_type_error, m._js_object_constructor, m._js_function_constructor, m._js_iterator_constructor, m._js_iterator_constructor_getset, m._js_number_constructor, m._js_boolean_constructor, m._js_string_constructor, m._js_symbol_constructor, m._js_date_constructor, m._js_compile_regexp, m._js_regexp_constructor, m._js_proxy_call, m._js_proxy_constructor, m._js_map_constructor, m._js_array_buffer_constructor, m._js_shared_array_buffer_constructor, m._js_typed_array_base_constructor, m._js_typed_array_constructor, m._js_dataview_constructor, m._js_promise_resolve_function_call, m._js_async_function_call, m._js_async_function_resolve_call, m._js_async_generator_function_call, m._js_promise_constructor, m._js_weakref_constructor, m._js_finrec_constructor, m._js_bigint_constructor, m._js_array_buffer_free, m._js_promise_resolve_thenable_job, m._num_keys_cmp, m.Xjs_realloc_rt, m._js_promise_executor, m._exported_names_cmp, m._js_load_module_fulfilled, m._js_load_module_rejected, m._promise_reaction_job, m._js_realloc_bytecode_rt, m._js_async_module_execution_fulfilled, m._js_async_module_execution_rejected, m._exec_module_list_cmp, m._js_regexp_exec, m._js_regexp_get_flags, m._js_regexp_get_flag, m._js_proxy_revoke, m._js_promise_all_resolve_element, m._js_promise_then_finally_func, m._js_promise_finally_thrower, m._js_promise_finally_value_thunk, m._js_async_from_sync_iterator_close_wrap, m._js_async_from_sync_iterator_unwrap, m._js_async_generator_resolve_function, m._js_array_cmp_generic, m._js_TA_cmp_generic, m._js_array_finalizer, m._js_array_mark, m._js_object_data_finalizer, m._js_object_data_mark, m._js_mapped_arguments_finalizer, m._js_mapped_arguments_mark, m._js_c_function_finalizer, m._js_c_function_mark, m._js_bytecode_function_finalizer, m._js_bytecode_function_mark, m._js_bound_function_finalizer, m._js_bound_function_mark, m._js_c_function_data_finalizer, m._js_c_function_data_mark, m._js_for_in_iterator_finalizer, m._js_for_in_iterator_mark, m._js_regexp_finalizer, m._js_array_buffer_finalizer, m._js_typed_array_finalizer, m._js_typed_array_mark, m._js_map_finalizer, m._js_map_mark, m._js_iterator_concat_finalizer, m._js_iterator_concat_mark, m._js_iterator_helper_finalizer, m._js_iterator_helper_mark, m._js_iterator_wrap_finalizer, m._js_iterator_wrap_mark, m._js_map_iterator_finalizer, m._js_map_iterator_mark, m._js_array_iterator_finalizer, m._js_map_iterator_mark, m._js_iterator_wrap_finalizer, m._js_iterator_wrap_mark, m._js_generator_finalizer, m._js_generator_mark, m._js_global_object_finalizer, m._js_object_data_mark, m._js_arguments_define_own_property, m._js_string_get_own_property, m._js_string_delete_property, m._js_string_define_own_property, m._js_module_ns_has, m._js_def_malloc, m._js_def_free, m._js_def_realloc, m._js_def_malloc_usable_size, m._js_proxy_finalizer, m._js_proxy_mark, m._js_proxy_get_own_property, m._js_proxy_get_own_property_names, m._js_proxy_delete_property, m._js_proxy_define_own_property, m._js_proxy_has, m._js_proxy_get, m._js_proxy_set, m._js_proxy_get_prototype, m._js_proxy_set_prototype, m._js_proxy_is_extensible, m._js_proxy_prevent_extensions, m._js_promise_finalizer, m._js_promise_mark, m._js_promise_resolve_function_finalizer, m._js_map_iterator_mark, m._js_async_function_resolve_finalizer, m._js_c_function_mark, m._js_async_from_sync_iterator_finalizer, m._js_async_from_sync_iterator_mark, m._js_async_generator_finalizer, m._js_async_generator_mark, m._js_weakref_finalizer, m._js_finrec_finalizer, m._js_finrec_mark, m._js_instantiate_prototype, m._js_module_ns_autoinit, m._JS_InstantiateFunctionListItem2, m._js_string_normalize, m._js_string_localeCompare, m._js_regexp_escape, m.XJS_DupValueRT, m._js_regexp_get_source, m._js_regexp_compile, m._js_regexp_test, m._js_regexp_toString, m._js_regexp_Symbol_replace, m._js_regexp_Symbol_match, m._js_regexp_Symbol_matchAll, m._js_regexp_Symbol_search, m._js_regexp_Symbol_split, m._js_regexp_string_iterator_next, m._js_json_isRawJSON, m._js_json_parse, m._js_json_rawJSON, m._js_json_stringify, m._js_proxy_revocable, m._js_object_groupBy, m._js_map_set, m._js_map_get, m._js_map_getOrInsert, m._js_map_has, m._js_map_delete, m._js_map_clear, m._js_map_get_size, m._js_map_forEach, m._js_create_map_iterator, m._js_set_isDisjointFrom, m._js_set_isSubsetOf, m._js_set_isSupersetOf, m._js_set_intersection, m._js_set_difference, m._js_set_symmetricDifference, m._js_set_union, m._js_map_iterator_next, m._js_promise_resolve, m._js_promise_all, m._js_promise_try, m._js_promise_race, m._js_promise_withResolvers, m._js_promise_then, m._js_promise_catch, m._js_promise_finally, m._js_iterator_proto_iterator, m._js_async_from_sync_iterator_next, m._js_async_generator_next, m._js_Date_now, m._js_Date_parse, m._js_Date_UTC, m._js_date_getTime, m._get_date_string, m._js_date_Symbol_toPrimitive, m._js_date_getTimezoneOffset, m._get_date_field, m._js_date_setTime, m._set_date_field, m._js_date_setYear, m._js_date_toJSON, m._js_error_isError, m._js_error_toString, m._js_array_isArray, m._js_array_from, m._js_array_of, m._js_array_at, m._js_array_with, m._js_array_concat, m._js_array_every, m._js_array_reduce, m._js_array_fill, m._js_array_find, m._js_array_indexOf, m._js_array_lastIndexOf, m._js_array_includes, m._js_array_join, m._js_array_toString, m._js_array_pop, m._js_array_push, m._js_array_reverse, m._js_array_toReversed, m._js_array_sort, m._js_array_toSorted, m._js_array_slice, m._js_array_toSpliced, m._js_array_copyWithin, m._js_array_flatten, m._js_object_create, m._js_object_getPrototypeOf, m._js_object_setPrototypeOf, m._js_object_defineProperty, m._js_object_defineProperties, m._js_object_getOwnPropertyNames, m._js_object_getOwnPropertySymbols, m._js_object_keys, m._js_object_isExtensible, m._js_object_preventExtensions, m._js_object_getOwnPropertyDescriptor, m._js_object_getOwnPropertyDescriptors, m._js_object_is, m._js_object_assign, m._js_object_seal, m._js_object_isSealed, m._js_object_fromEntries, m._js_object_hasOwn, m._js_object_toString, m._js_object_toLocaleString, m._js_object_valueOf, m._js_object_hasOwnProperty, m._js_object_isPrototypeOf, m._js_object_propertyIsEnumerable, m._js_object_get___proto__, m._js_object_set___proto__, m._js_object___defineGetter__, m._js_object___lookupGetter__, m._js_function_call, m._js_function_apply, m._js_function_bind, m._js_function_toString, m._js_function_hasInstance, m._js_function_proto_fileName, m._js_function_proto_lineNumber, m._js_iterator_concat, m._js_iterator_from, m._js_create_iterator_helper, m._js_iterator_proto_func, m._js_iterator_proto_reduce, m._js_iterator_proto_toArray, m._js_iterator_proto_get_toStringTag, m._js_iterator_proto_set_toStringTag, m._js_iterator_concat_next, m._js_iterator_concat_return, m._js_iterator_helper_next, m._js_iterator_wrap_next, m._js_parseInt, m._js_parseFloat, m._js_global_isNaN, m._js_global_isFinite, m._js_global_decodeURI, m._js_global_encodeURI, m._js_global_escape, m._js_global_unescape, m._js_global_eval, m._js_number_isNaN, m._js_number_isFinite, m._js_number_isInteger, m._js_number_isSafeInteger, m._js_number_toExponential, m._js_number_toFixed, m._js_number_toPrecision, m._js_number_toString, m._js_number_valueOf, m._js_boolean_toString, m._js_boolean_valueOf, m._js_string_fromCharCode, m._js_string_fromCodePoint, m._js_string_raw, m._js_string_charAt, m._js_string_charCodeAt, m._js_string_concat, m._js_string_codePointAt, m._js_string_isWellFormed, m._js_string_toWellFormed, m._js_string_indexOf, m._js_string_includes, m._js_string_match, m._js_string_split, m._js_string_substring, m._js_string_substr, m._js_string_slice, m._js_string_repeat, m._js_string_replace, m._js_string_pad, m._js_string_trim, m._js_string_toString, m._js_string_toLowerCase, m._js_string_CreateHTML, m._js_string_iterator_next, m._js_math_min_max, _fabs, _floor, _ceil, _js_math_round, _sqrt, m._acos, m._asin, m._atan, m._atan2, m._cos, m._exp, m._log, m._js_pow, m._sin, m._tan, _trunc, _js_math_sign, m._cosh, m._sinh, m._tanh, m._acosh, m._asinh, m._atanh, m._expm1, m._log1p, m._log2, m._log10, m._cbrt, m._js_math_hypot, m._js_math_random, _js_math_f16round, _js_math_fround, m._js_math_imul, m._js_math_clz32, m._js_math_sumPrecise, m._js_reflect_apply, m._js_reflect_construct, m._js_reflect_deleteProperty, m._js_reflect_get, m._js_reflect_has, m._js_reflect_ownKeys, m._js_reflect_set, m._js_reflect_setPrototypeOf, m._js_symbol_for, m._js_symbol_keyFor, m._js_symbol_toString, m._js_symbol_valueOf, m._js_symbol_get_description, m._js_generator_next, m._js_bigint_asUintN, m._js_bigint_toString, m._js_bigint_valueOf, m._js_array_buffer_isView, m._js_array_buffer_get_byteLength, m._js_array_buffer_get_maxByteLength, m._js_array_buffer_get_resizable, m._js_array_buffer_get_detached, m._js_array_buffer_resize, m._js_array_buffer_slice, m._js_array_buffer_transfer, m._js_typed_array_from, m._js_typed_array_of, m._js_typed_array_get_length, m._js_typed_array_at, m._js_typed_array_with, m._js_typed_array_get_buffer, m._js_typed_array_get_byteLength, m._js_typed_array_get_byteOffset, m._js_typed_array_set, m._js_create_typed_array_iterator, m._js_typed_array_get_toStringTag, m._js_typed_array_copyWithin, m._js_typed_array_fill, m._js_typed_array_find, m._js_typed_array_reverse, m._js_typed_array_toReversed, m._js_typed_array_slice, m._js_typed_array_subarray, m._js_typed_array_sort, m._js_typed_array_toSorted, m._js_typed_array_join, m._js_typed_array_indexOf, m._js_uint8array_from_base64, m._js_uint8array_from_hex, m._js_uint8array_to_base64, m._js_uint8array_to_hex, m._js_uint8array_set_from_base64, m._js_uint8array_set_from_hex, m._js_dataview_get_buffer, m._js_dataview_get_byteLength, m._js_dataview_get_byteOffset, m._js_dataview_getValue, m._js_dataview_setValue, m._js_weakref_deref, m._js_finrec_register, m._js_finrec_unregister, m._js_TA_get_uint8, m._js_TA_get_int8, m._js_TA_get_int16, m._js_TA_get_uint16, m._js_TA_get_int32, m._js_TA_get_uint32, m._js_TA_get_int64, m._js_TA_get_uint64, m._js_TA_get_float16, m._js_TA_get_float32, m._js_TA_get_float64, m._js_TA_cmp_uint8, m._js_TA_cmp_int8, m._js_TA_cmp_int16, m._js_TA_cmp_uint16, m._js_TA_cmp_int32, m._js_TA_cmp_uint32, m._js_TA_cmp_int64, m._js_TA_cmp_uint64, m._js_TA_cmp_float16, m._js_TA_cmp_float32, m._js_TA_cmp_float64, m._lre_bytecode_realloc, m._lre_realloc, m._re_string_cmp_len, m._seq_prop_cb, m._cr_default_realloc, m._js_TA_cmp_uint32, m._cr_default_realloc, m._exchange_int128s, m._exchange_one_int128, m._exchange_int64s, m._exchange_one_int64, m._exchange_one_int32, m._exchange_int32s, m._exchange_one_int16, m._exchange_int16s, m._exchange_one_byte, m._exchange_bytes, m._stbsp__count_clamp_callback, m._stbsp__clamp_callback}}
 	table_init(m.t0, m.elements[0], i32(1), 0, len(m.elements[0]))
 	m.elements[0] = nil
-	memory_init(m.memory, data[0:77822], uint32(i32(1024)), 0, len(data[0:77822]))
-	m.___stack_pointer = i32(2177712)
+	memory_init(m.memory, data[0:77870], uint32(i32(1024)), 0, len(data[0:77870]))
+	m.___stack_pointer = i32(2177760)
 	return m
 }
 
@@ -23592,9 +23592,9 @@ func (m *Module) XJS_NewClassID(v0 int32) int32 {
 	t0 := int32(load32(m.memory, uint32(v0)))
 	v1 = t0
 	if v1 == 0 {
-		t1 := int32(load32(m.memory, uint32(i32(78840))))
+		t1 := int32(load32(m.memory, uint32(i32(78888))))
 		v1 = t1
-		store32(m.memory, uint32(i32(78840)), uint32(v1+i32(1)))
+		store32(m.memory, uint32(i32(78888)), uint32(v1+i32(1)))
 		store32(m.memory, uint32(v0), uint32(v1))
 	}
 	return v1
@@ -133482,6 +133482,275 @@ func (m *Module) XJS_ALIAS_BASE_DEF(v0, v1, v2, v3 int32) {
 	store32(m.memory, uint64(uint32(v0))+4, uint32(i32(2307)))
 	store32(m.memory, uint32(v0), uint32(v1))
 }
+func (m *Module) XJS_ToUint32MV(v0 int32, v1 int64) (int32, int32) {
+	var v2, _ int32
+	t0 := m.___stack_pointer
+	v2 = t0 - i32(16)
+	m.___stack_pointer = v2
+	store64(m.memory, uint64(uint32(v2))+8, uint64(i64(0)))
+	t1 := m.XJS_ToInt32(v0, v2+i32(8)|i32(4), v1)
+	t2 := int32(load32(m.memory, uint64(uint32(v2))+12))
+	m.___stack_pointer = v2 + i32(16)
+	return t1, t2
+}
+func (m *Module) XJS_ToInt64MV(v0 int32, v1 int64) (int32, int64) {
+	var v2, v3 int32
+	t0 := m.___stack_pointer
+	v2 = t0 - i32(16)
+	m.___stack_pointer = v2
+	v3 = v2 + i32(8)
+	store64(m.memory, uint32(v3), uint64(i64(0)))
+	store64(m.memory, uint32(v2), uint64(i64(0)))
+	t1 := m.XJS_ToInt64(v0, v3, v1)
+	t2 := int64(load64(m.memory, uint32(v3)))
+	m.___stack_pointer = v2 + i32(16)
+	return t1, t2
+}
+func (m *Module) XJS_ToIndexMV(v0 int32, v1 int64) (int32, int64) {
+	var v2, v3 int32
+	t0 := m.___stack_pointer
+	v2 = t0 - i32(16)
+	m.___stack_pointer = v2
+	v3 = v2 + i32(8)
+	store64(m.memory, uint32(v3), uint64(i64(0)))
+	store64(m.memory, uint32(v2), uint64(i64(0)))
+	t1 := m.XJS_ToIndex(v0, v3, v1)
+	t2 := int64(load64(m.memory, uint32(v3)))
+	m.___stack_pointer = v2 + i32(16)
+	return t1, t2
+}
+func (m *Module) XJS_ToFloat64MV(v0 int32, v1 int64) (int32, float64) {
+	var v2, v3 int32
+	var _ float64
+	t0 := m.___stack_pointer
+	v2 = t0 - i32(16)
+	m.___stack_pointer = v2
+	v3 = v2 + i32(8)
+	store64(m.memory, uint32(v3), uint64(i64(0)))
+	store64(m.memory, uint32(v2), uint64(i64(0)))
+	t1 := m.XJS_ToFloat64(v0, v3, v1)
+	t2 := math.Float64frombits(load64(m.memory, uint32(v3)))
+	m.___stack_pointer = v2 + i32(16)
+	return t1, t2
+}
+func (m *Module) XJS_ToBigInt64MV(v0 int32, v1 int64) (int32, int64) {
+	var v2, v3 int32
+	t0 := m.___stack_pointer
+	v2 = t0 - i32(16)
+	m.___stack_pointer = v2
+	v3 = v2 + i32(8)
+	store64(m.memory, uint32(v3), uint64(i64(0)))
+	store64(m.memory, uint32(v2), uint64(i64(0)))
+	t1 := m.XJS_ToBigInt64(v0, v3, v1)
+	t2 := int64(load64(m.memory, uint32(v3)))
+	m.___stack_pointer = v2 + i32(16)
+	return t1, t2
+}
+func (m *Module) XJS_ToInt64ExtMV(v0 int32, v1 int64) (int32, int64) {
+	var v2, v3 int32
+	t0 := m.___stack_pointer
+	v2 = t0 - i32(16)
+	m.___stack_pointer = v2
+	v3 = v2 + i32(8)
+	store64(m.memory, uint32(v3), uint64(i64(0)))
+	store64(m.memory, uint32(v2), uint64(i64(0)))
+	t1 := m.XJS_ToInt64Ext(v0, v3, v1)
+	t2 := int64(load64(m.memory, uint32(v3)))
+	m.___stack_pointer = v2 + i32(16)
+	return t1, t2
+}
+func (m *Module) XJS_ToCStringLen2MV(v0 int32, v1 int64, v2 int32) (int32, int32) {
+	var v3 int32
+	t0 := m.___stack_pointer
+	v3 = t0 - i32(16)
+	m.___stack_pointer = v3
+	store64(m.memory, uint64(uint32(v3))+8, uint64(i64(0)))
+	t1 := m.XJS_ToCStringLen2(v0, v3+i32(8)|i32(4), v1, v2)
+	t2 := int32(load32(m.memory, uint64(uint32(v3))+12))
+	m.___stack_pointer = v3 + i32(16)
+	return t1, t2
+}
+func (m *Module) XJS_ToCStringLenMV(v0 int32, v1 int64) (int32, int32) {
+	var v2, _ int32
+	t0 := m.___stack_pointer
+	v2 = t0 - i32(16)
+	m.___stack_pointer = v2
+	store64(m.memory, uint64(uint32(v2))+8, uint64(i64(0)))
+	t1 := m.XJS_ToCStringLen2(v0, v2+i32(8)|i32(4), v1, i32(0))
+	t2 := int32(load32(m.memory, uint64(uint32(v2))+12))
+	m.___stack_pointer = v2 + i32(16)
+	return t1, t2
+}
+func (m *Module) XJS_AtomToCStringLenMV(v0, v1 int32) (int32, int32) {
+	var v2 int32
+	t0 := m.___stack_pointer
+	v2 = t0 - i32(16)
+	m.___stack_pointer = v2
+	store64(m.memory, uint64(uint32(v2))+8, uint64(i64(0)))
+	t1 := m.XJS_AtomToCStringLen(v0, v2+i32(8)|i32(4), v1)
+	t2 := int32(load32(m.memory, uint64(uint32(v2))+12))
+	m.___stack_pointer = v2 + i32(16)
+	return t1, t2
+}
+func (m *Module) XJS_GetArrayBufferMV(v0 int32, v1 int64) (int32, int32) {
+	var v2, _ int32
+	t0 := m.___stack_pointer
+	v2 = t0 - i32(16)
+	m.___stack_pointer = v2
+	store64(m.memory, uint64(uint32(v2))+8, uint64(i64(0)))
+	t1 := m.XJS_GetArrayBuffer(v0, v2+i32(8)|i32(4), v1)
+	t2 := int32(load32(m.memory, uint64(uint32(v2))+12))
+	m.___stack_pointer = v2 + i32(16)
+	return t1, t2
+}
+func (m *Module) XJS_GetTypedArrayBufferMV(v0 int32, v1 int64) (int64, int32, int32, int32) {
+	var v2, v3, v4 int32
+	t0 := m.___stack_pointer
+	v2 = t0 - i32(32)
+	m.___stack_pointer = v2
+	v3 = v2 + i32(24)
+	store64(m.memory, uint32(v3), uint64(i64(0)))
+	v4 = v2 + i32(16)
+	store64(m.memory, uint32(v4), uint64(i64(0)))
+	store64(m.memory, uint64(uint32(v2))+8, uint64(i64(0)))
+	t1 := m.XJS_GetTypedArrayBuffer(v0, v1, v4, v2+i32(20), v3)
+	t2 := int32(load32(m.memory, uint32(v3)))
+	v0 = t2
+	t3 := int32(load32(m.memory, uint32(v4)))
+	t4 := int32(load32(m.memory, uint64(uint32(v2))+20))
+	m.___stack_pointer = v2 + i32(32)
+	return t1, t3, t4, v0
+}
+func (m *Module) XJS_GetOwnPropertyNamesMV(v0 int32, v1 int64, v2 int32) (int32, int32, int32) {
+	var v3, v4 int32
+	t0 := m.___stack_pointer
+	v3 = t0 - i32(16)
+	m.___stack_pointer = v3
+	v4 = v3 + i32(8)
+	store32(m.memory, uint32(v4), uint32(i32(0)))
+	store64(m.memory, uint32(v3), uint64(i64(0)))
+	t1 := m.XJS_GetOwnPropertyNames(v0, v3|i32(4), v4, v1, v2)
+	t2 := int32(load32(m.memory, uint32(v4)))
+	v2 = t2
+	t3 := int32(load32(m.memory, uint64(uint32(v3))+4))
+	m.___stack_pointer = v3 + i32(16)
+	return t1, t3, v2
+}
+func (m *Module) XJS_GetOwnPropertyMV(v0 int32, v1 int64, v2 int32) (int32, int32, int64, int64, int64) {
+	var v3 int32
+	var v4, v5 int64
+	t0 := m.___stack_pointer
+	v3 = t0 - i32(32)
+	m.___stack_pointer = v3
+	t1 := int64(load64(m.memory, uint32(i32(77464))))
+	store64(m.memory, uint64(uint32(v3))+24, uint64(t1))
+	t2 := int64(load64(m.memory, uint32(i32(77456))))
+	store64(m.memory, uint64(uint32(v3))+16, uint64(t2))
+	t3 := int64(load64(m.memory, uint32(i32(77448))))
+	store64(m.memory, uint64(uint32(v3))+8, uint64(t3))
+	t4 := int64(load64(m.memory, uint32(i32(77440))))
+	store64(m.memory, uint32(v3), uint64(t4))
+	t5 := m.XJS_GetOwnProperty(v0, v3, v1, v2)
+	t6 := int64(load64(m.memory, uint64(uint32(v3))+24))
+	v1 = t6
+	t7 := int64(load64(m.memory, uint64(uint32(v3))+16))
+	v4 = t7
+	t8 := int64(load64(m.memory, uint64(uint32(v3))+8))
+	v5 = t8
+	t9 := int32(load32(m.memory, uint32(v3)))
+	m.___stack_pointer = v3 + i32(32)
+	return t5, t9, v5, v4, v1
+}
+func (m *Module) XJS_NewPromiseCapabilityMV(v0 int32) (int64, int64, int64) {
+	var v1 int32
+	var _, v3, _ int64
+	t0 := m.___stack_pointer
+	v1 = t0 - i32(16)
+	m.___stack_pointer = v1
+	t1 := int64(load64(m.memory, uint32(i32(77480))))
+	store64(m.memory, uint64(uint32(v1))+8, uint64(t1))
+	t2 := int64(load64(m.memory, uint32(i32(77472))))
+	store64(m.memory, uint32(v1), uint64(t2))
+	t3 := m._js_new_promise_capability(v0, v1, i64(0x300000000))
+	t4 := int64(load64(m.memory, uint64(uint32(v1))+8))
+	v3 = t4
+	t5 := int64(load64(m.memory, uint32(v1)))
+	m.___stack_pointer = v1 + i32(16)
+	return t3, t5, v3
+}
+func (m *Module) XJS_ExecutePendingJobMV(v0 int32) (int32, int32) {
+	var v1, _ int32
+	t0 := m.___stack_pointer
+	v1 = t0 - i32(16)
+	m.___stack_pointer = v1
+	store64(m.memory, uint64(uint32(v1))+8, uint64(i64(0)))
+	t1 := m.XJS_ExecutePendingJob(v0, v1+i32(8)|i32(4))
+	t2 := int32(load32(m.memory, uint64(uint32(v1))+12))
+	m.___stack_pointer = v1 + i32(16)
+	return t1, t2
+}
+func (m *Module) XJS_WriteObjectMV(v0 int32, v1 int64, v2 int32) (int32, int32) {
+	var v3 int32
+	t0 := m.___stack_pointer
+	v3 = t0 - i32(16)
+	m.___stack_pointer = v3
+	store64(m.memory, uint64(uint32(v3))+8, uint64(i64(0)))
+	t1 := m.XJS_WriteObject2(v0, v3+i32(8)|i32(4), v1, v2, i32(0), i32(0))
+	t2 := int32(load32(m.memory, uint64(uint32(v3))+12))
+	m.___stack_pointer = v3 + i32(16)
+	return t1, t2
+}
+func (m *Module) XJS_WriteObject2MV(v0 int32, v1 int64, v2 int32) (int32, int32, int32, int32) {
+	var v3, v4, _ int32
+	t0 := m.___stack_pointer
+	v3 = t0 - i32(16)
+	m.___stack_pointer = v3
+	v4 = v3 + i32(8)
+	store64(m.memory, uint32(v4), uint64(i64(0)))
+	store64(m.memory, uint32(v3), uint64(i64(0)))
+	t1 := m.XJS_WriteObject2(v0, v3|i32(4), v1, v2, v4, v3+i32(12))
+	t2 := int32(load32(m.memory, uint32(v4)))
+	v2 = t2
+	t3 := int32(load32(m.memory, uint64(uint32(v3))+12))
+	v4 = t3
+	t4 := int32(load32(m.memory, uint64(uint32(v3))+4))
+	m.___stack_pointer = v3 + i32(16)
+	return t1, t4, v2, v4
+}
+func (m *Module) Xjs_realloc2MV(v0, v1, v2 int32) (int32, int32) {
+	var v3 int32
+	t0 := m.___stack_pointer
+	v3 = t0 - i32(16)
+	m.___stack_pointer = v3
+	store64(m.memory, uint64(uint32(v3))+8, uint64(i64(0)))
+	t1 := m.Xjs_realloc2(v0, v1, v2, v3+i32(8)|i32(4))
+	t2 := int32(load32(m.memory, uint64(uint32(v3))+12))
+	m.___stack_pointer = v3 + i32(16)
+	return t1, t2
+}
+func (m *Module) XJS_GetAnyOpaqueMV(v0 int64) (int32, int32) {
+	var v1, v2, _ int32
+	t0 := m.___stack_pointer
+	v2 = t0 - i32(16)
+	m.___stack_pointer = v2
+	store64(m.memory, uint64(uint32(v2))+8, uint64(i64(0)))
+	v1 = v2 + i32(8) | i32(4)
+	var p1 int32
+	if uint64(v0) > uint64(i64(-0x100000001)) {
+		t2 := v1
+		v1 = int32(v0)
+		t3 := int32(load16(m.memory, uint64(uint32(v1))+10))
+		store32(m.memory, uint32(t2), uint32(t3))
+		t4 := int32(load32(m.memory, uint64(uint32(v1))+24))
+		p1 = t4
+	} else {
+		store32(m.memory, uint32(v1), uint32(i32(0)))
+		p1 = i32(0)
+	}
+	t5 := int32(load32(m.memory, uint64(uint32(v2))+12))
+	m.___stack_pointer = v2 + i32(16)
+	return p1, t5
+}
 func (m *Module) _stbsp_vsprintfcb(v0, v1, v2, v3, v4 int32) {
 	var v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30 int32
 	var v31, v32 int64
@@ -133822,7 +134091,7 @@ l140:
 														}
 														v8 = v9 & i32(64)
 														v7 = i32(0)
-														t30 := int32(m.memory[uint32(i32(78845))])
+														t30 := int32(m.memory[uint32(i32(78893))])
 														v11 = t30
 														v5 = i32(512)
 													l48:
@@ -133873,7 +134142,7 @@ l140:
 																t38 := v5 + v28
 																t39 := v3
 																v4 = t37
-																t40 := int32(load16(m.memory, uint32((t39-v4*i32(100))<<1+i32(77494))))
+																t40 := int32(load16(m.memory, uint32((t39-v4*i32(100))<<1+i32(77542))))
 																store16(m.memory, uint32(t38), uint16(t40))
 																v5 = v5 - i32(2)
 																var p41 int32
@@ -133994,7 +134263,7 @@ l140:
 														}
 														v3 = i32(816)
 														store32(m.memory, uint64(uint32(v6))+12, uint32(i32(816)))
-														v4 = i32(77472)
+														v4 = i32(77520)
 														goto l56
 													case 24:
 														v9 = v9 & i32(-17)
@@ -134175,9 +134444,9 @@ l140:
 													p71 = 1
 												}
 												v5 = p71
-												p72 := i32(77440)
+												p72 := i32(77488)
 												if v5 != 0 {
-													p72 = i32(77472)
+													p72 = i32(77520)
 												}
 												v4 = p72
 												if v9&i32(8) == 0 {
@@ -134208,9 +134477,9 @@ l140:
 												}
 												m.memory[uint64(uint32(t77))+26] = byte(p76)
 											}
-											p78 := i32(77440)
+											p78 := i32(77488)
 											if v3 != 0 {
-												p78 = i32(77472)
+												p78 = i32(77520)
 											}
 											v4 = p78
 											v3 = i32(384)
@@ -134237,9 +134506,9 @@ l140:
 											p88 = t79
 										}
 										v9 = p88
-										p89 := i32(77472)
+										p89 := i32(77520)
 										if v7 != i32(69) {
-											p89 = i32(77440)
+											p89 = i32(77488)
 										}
 										v12 = p89
 										v15 = v3 + i32(8)
@@ -134340,9 +134609,9 @@ l140:
 										v12 = p112
 										goto l70
 									}
-									p113 := i32(77472)
+									p113 := i32(77520)
 									if v7 != i32(71) {
-										p113 = i32(77440)
+										p113 = i32(77488)
 									}
 									v12 = p113
 									var p114 int32
@@ -134425,9 +134694,9 @@ l140:
 									p127 = i32(6)
 								}
 								v4 = p127
-								p128 := i32(77440)
+								p128 := i32(77488)
 								if v15 != 0 {
-									p128 = i32(77472)
+									p128 = i32(77520)
 								}
 								v8 = p128
 								v31 = v31 & i64(0xfffffffffffff)
@@ -134457,7 +134726,7 @@ l140:
 								m.memory[uint64(uint32(t132))+96] = byte(t135)
 								if v4 != 0 {
 									store32(m.memory, uint64(uint32(v6))+4, uint32(v21))
-									t136 := int32(m.memory[uint32(i32(78844))])
+									t136 := int32(m.memory[uint32(i32(78892))])
 									m.memory[uint64(uint32(v6))+97] = byte(t136)
 									t138 := v4
 									p137 := v4
@@ -134640,7 +134909,7 @@ l140:
 								goto l79
 							}
 							v5 = v7 - i32(2)
-							t171 := int32(m.memory[uint32(i32(78845))])
+							t171 := int32(m.memory[uint32(i32(78893))])
 							m.memory[uint32(v5)] = byte(t171)
 							t172 := v6
 							v3 = v3 & i32(-16)
@@ -134687,7 +134956,7 @@ l140:
 					m.memory[uint64(uint32(v6))+96] = byte(t178)
 					v3 = v23
 					if v8 != 0 {
-						t179 := int32(m.memory[uint32(i32(78844))])
+						t179 := int32(m.memory[uint32(i32(78892))])
 						m.memory[uint64(uint32(v6))+97] = byte(t179)
 						v3 = v21
 					}
@@ -134817,7 +135086,7 @@ l140:
 										goto l87
 									}
 									v5 = i32(0)
-									t198 := int32(m.memory[uint32(i32(78845))])
+									t198 := int32(m.memory[uint32(i32(78893))])
 									m.memory[uint32(v7)] = byte(t198)
 									v11 = v11 + i32(1)
 									v3 = v3 + i32(1)
@@ -134836,7 +135105,7 @@ l140:
 								}
 							}
 							if v12 != 0 {
-								t203 := int32(m.memory[uint32(i32(78844))])
+								t203 := int32(m.memory[uint32(i32(78892))])
 								m.memory[uint32(v3)] = byte(t203)
 								t204 := int32(load32(m.memory, uint64(uint32(v6))+8))
 								v7 = t204
@@ -134889,7 +135158,7 @@ l140:
 									goto l92
 								}
 								v5 = i32(0)
-								t213 := int32(m.memory[uint32(i32(78845))])
+								t213 := int32(m.memory[uint32(i32(78893))])
 								m.memory[uint32(v7)] = byte(t213)
 								v4 = v4 + i32(1)
 								v14 = v14 + i32(1)
@@ -134959,7 +135228,7 @@ l140:
 								v5 = v5 + i32(1)
 								if v5 == i32(4) {
 									v5 = i32(0)
-									t220 := int32(m.memory[uint32(i32(78845))])
+									t220 := int32(m.memory[uint32(i32(78893))])
 									m.memory[uint32(v3)] = byte(t220)
 									goto l100
 								}
@@ -134975,7 +135244,7 @@ l140:
 						}
 						v11 = v3 - v19 + i32(0x3000000)
 						if v12 != 0 {
-							t221 := int32(m.memory[uint32(i32(78844))])
+							t221 := int32(m.memory[uint32(i32(78892))])
 							m.memory[uint32(v3)] = byte(t221)
 							v3 = v3 + i32(1)
 						} else {
@@ -134987,7 +135256,7 @@ l140:
 					m.memory[uint64(uint32(v6))+96] = byte(i32(48))
 					v3 = v23
 					if v12 != 0 {
-						t222 := int32(m.memory[uint32(i32(78844))])
+						t222 := int32(m.memory[uint32(i32(78892))])
 						m.memory[uint64(uint32(v6))+97] = byte(t222)
 						v3 = v21
 					}
@@ -135401,7 +135670,7 @@ l140:
 									p281 = i32(0)
 								}
 								v8 = p281
-								t282 := int32(m.memory[uint32(i32(78845))])
+								t282 := int32(m.memory[uint32(i32(78893))])
 								p283 := i32(48)
 								if v4 != 0 {
 									p283 = t282
@@ -135917,7 +136186,7 @@ l0:
 						store64(m.memory, uint64(uint32(v7))+48, uint64(i64(0)))
 						store64(m.memory, uint64(uint32(v7))+40, uint64(i64(0)))
 						v9 = v9 - i32(1)
-						v12 = v9<<3 + i32(78048)
+						v12 = v9<<3 + i32(78096)
 						t13 := math.Float64frombits(load64(m.memory, uint32(v12)))
 						v15 = t13
 						v6 = i32(0)
@@ -135966,7 +136235,7 @@ l0:
 								goto l8
 							}
 						}
-						t21 := math.Float64frombits(load64(m.memory, uint32(v9<<3+i32(78224))))
+						t21 := math.Float64frombits(load64(m.memory, uint32(v9<<3+i32(78272))))
 						t22 := float64(v4 * t21)
 						v17 = float64(v4 - v14)
 						t23 := math.Float64frombits(load64(m.memory, uint64(uint32(v7))+40))
@@ -135993,7 +136262,7 @@ l0:
 					store64(m.memory, uint64(uint32(v7))+40, uint64(i64(0)))
 					store64(m.memory, uint64(uint32(v7))+32, uint64(i64(0)))
 					v9 = v11 - i32(1)
-					v10 = v9<<3 + i32(78400)
+					v10 = v9<<3 + i32(78448)
 					t31 := math.Float64frombits(load64(m.memory, uint32(v10)))
 					v16 = t31
 					v6 = i32(0)
@@ -136055,7 +136324,7 @@ l0:
 					t44 := float64(v4 * v19)
 					t45 := float64(v4 * v14)
 					v4 = float64(v15 * v16)
-					t46 := math.Float64frombits(load64(m.memory, uint32(v9<<3+i32(78512))))
+					t46 := math.Float64frombits(load64(m.memory, uint32(v9<<3+i32(78560))))
 					v14 = float64(float64(t42+float64(t43+float64(t44+float64(t45-v4)))) + float64(float64(v15*t46)+float64(v17*v16)))
 					goto l9
 				}
@@ -136068,7 +136337,7 @@ l0:
 							p47 = i32(22)
 						}
 						v12 = p47
-						v13 = v12<<3 + i32(77856)
+						v13 = v12<<3 + i32(77904)
 						t48 := math.Float64frombits(load64(m.memory, uint32(v13)))
 						v16 = t48
 						v6 = i32(0)
@@ -136134,7 +136403,7 @@ l0:
 						store64(m.memory, uint64(uint32(t59))+48, math.Float64bits(v4))
 						store64(m.memory, uint64(uint32(v7))+40, uint64(i64(0)))
 						store64(m.memory, uint64(uint32(v7))+32, uint64(i64(0)))
-						v9 = (v9-v12)<<3 + i32(77856)
+						v9 = (v9-v12)<<3 + i32(77904)
 						t60 := math.Float64frombits(load64(m.memory, uint32(v9)))
 						v16 = t60
 						v6 = i32(0)
@@ -136210,7 +136479,7 @@ l0:
 				store64(m.memory, uint64(uint32(v7))+40, uint64(i64(0)))
 				store64(m.memory, uint64(uint32(v7))+32, uint64(i64(0)))
 				v9 = v11 - i32(1)
-				v10 = v9<<3 + i32(78624)
+				v10 = v9<<3 + i32(78672)
 				t77 := math.Float64frombits(load64(m.memory, uint32(v10)))
 				v16 = t77
 				v6 = i32(0)
@@ -136272,12 +136541,12 @@ l0:
 				t90 := float64(v4 * v19)
 				t91 := float64(v4 * v14)
 				v4 = float64(v15 * v16)
-				t92 := math.Float64frombits(load64(m.memory, uint32(v9<<3+i32(78736))))
+				t92 := math.Float64frombits(load64(m.memory, uint32(v9<<3+i32(78784))))
 				p9 = float64(float64(t88+float64(t89+float64(t90+float64(t91-v4)))) + float64(float64(v15*t92)+float64(v17*v16)))
 			} else {
 				store64(m.memory, uint64(uint32(v7))+48, uint64(i64(0)))
 				store64(m.memory, uint64(uint32(v7))+40, uint64(i64(0)))
-				v9 = v6<<3 + i32(77856)
+				v9 = v6<<3 + i32(77904)
 				t93 := math.Float64frombits(load64(m.memory, uint32(v9)))
 				v15 = t93
 				v6 = i32(0)
@@ -136384,7 +136653,7 @@ l0:
 				}
 				v8 = p117
 				v6 = i32(0) - v8
-				v7 = v8<<3 + i32(77696)
+				v7 = v8<<3 + i32(77744)
 			l31:
 				{
 					t118 := int64(load64(m.memory, uint32(v7)))
@@ -136499,7 +136768,7 @@ l0:
 						t135 := v5 + v6
 						t136 := v7
 						v2 = t134
-						t137 := int32(load16(m.memory, uint32((t136-v2*i32(100))<<1+i32(77494))))
+						t137 := int32(load16(m.memory, uint32((t136-v2*i32(100))<<1+i32(77542))))
 						store16(m.memory, uint32(t135), uint16(t137))
 						v6 = v6 - i32(2)
 						var p138 int32
@@ -136725,7 +136994,7 @@ func (m *Module) Xmalloc(v0 int32) int32 {
 						goto l0
 					}
 					v4 = v0 << 16
-					t3 := int32(load32(m.memory, uint32(i32(80552))))
+					t3 := int32(load32(m.memory, uint32(i32(80600))))
 					var p4 int32
 					if v4 != t3 {
 						p4 = 1
@@ -136747,7 +137016,7 @@ func (m *Module) Xmalloc(v0 int32) int32 {
 							t6 := int32(load32(m.memory, uint32(v0)))
 							store32(m.memory, uint32(v0), uint32(t6&i32(15)|v1))
 							m._tlsf_block_free(v0)
-							store32(m.memory, uint32(i32(80552)), uint32(v3))
+							store32(m.memory, uint32(i32(80600)), uint32(v3))
 						}
 					}
 					t7 := m._tlsf_find_free_block(v2)
@@ -136825,20 +137094,20 @@ func (m *Module) _tlsf_find_free_block(v0 int32) int32 {
 	{
 		t5 := int32(load32(m.memory, uint64(uint32(v1))+12))
 		v0 = t5
-		t6 := int32(load32(m.memory, uint32(v0<<2+i32(78852))))
+		t6 := int32(load32(m.memory, uint32(v0<<2+i32(78900))))
 		t7 := int32(load32(m.memory, uint64(uint32(v1))+8))
 		v2 = t6 & i32_shl(i32(-1), t7)
 		if v2 == 0 {
-			t8 := int32(load32(m.memory, uint32(i32(78848))))
+			t8 := int32(load32(m.memory, uint32(i32(78896))))
 			v0 = t8 & i32_shl(i32(-1), v0+i32(1))
 			if v0 == 0 {
 				goto l1
 			}
 			v0 = int32(bits.TrailingZeros32(uint32(v0)))
-			t9 := int32(load32(m.memory, uint32(v0<<2+i32(78852))))
+			t9 := int32(load32(m.memory, uint32(v0<<2+i32(78900))))
 			v2 = t9
 		}
-		t10 := int32(load32(m.memory, uint32(v0<<6+int32(bits.TrailingZeros32(uint32(v2)))<<2+i32(78952))))
+		t10 := int32(load32(m.memory, uint32(v0<<6+int32(bits.TrailingZeros32(uint32(v2)))<<2+i32(79000))))
 		v5 = t10
 	}
 l1:
@@ -136897,7 +137166,7 @@ func (m *Module) _tlsf_block_free(v0 int32) {
 		p15 = i32(0)
 	}
 	v0 = p15
-	v4 = v0<<6 + v2<<2 + i32(78952)
+	v4 = v0<<6 + v2<<2 + i32(79000)
 	t16 := int32(load32(m.memory, uint32(v4)))
 	v3 = t16
 	store32(m.memory, uint64(uint32(v1))+8, uint32(i32(0)))
@@ -136906,9 +137175,9 @@ func (m *Module) _tlsf_block_free(v0 int32) {
 	if v3 != 0 {
 		store32(m.memory, uint64(uint32(v3))+8, uint32(v1))
 	}
-	t17 := int32(load32(m.memory, uint32(i32(78848))))
-	store32(m.memory, uint32(i32(78848)), uint32(t17|i32_shl(i32(1), v0)))
-	v0 = v0<<2 + i32(78852)
+	t17 := int32(load32(m.memory, uint32(i32(78896))))
+	store32(m.memory, uint32(i32(78896)), uint32(t17|i32_shl(i32(1), v0)))
+	v0 = v0<<2 + i32(78900)
 	t18 := int32(load32(m.memory, uint32(v0)))
 	store32(m.memory, uint32(v0), uint32(t18|i32_shl(i32(1), v2)))
 }
@@ -136937,20 +137206,20 @@ func (m *Module) _tlsf_remove_free_block(v0 int32) {
 			if v3 != 0 {
 				goto l0
 			}
-			store32(m.memory, uint32(v1<<6+v2<<2+i32(78952)), uint32(v0))
+			store32(m.memory, uint32(v1<<6+v2<<2+i32(79000)), uint32(v0))
 			return
 		} else {
 			if v3 != 0 {
 				goto l0
 			}
-			store32(m.memory, uint32(v1<<6+v2<<2+i32(78952)), uint32(v0))
-			v3 = v1<<2 + i32(78852)
+			store32(m.memory, uint32(v1<<6+v2<<2+i32(79000)), uint32(v0))
+			v3 = v1<<2 + i32(78900)
 			t4 := int32(load32(m.memory, uint32(v3)))
 			v0 = t4 & i32_rotl(i32(-2), v2)
 			store32(m.memory, uint32(v3), uint32(v0))
 			if v0 == 0 {
-				t5 := int32(load32(m.memory, uint32(i32(78848))))
-				store32(m.memory, uint32(i32(78848)), uint32(t5&i32_rotl(i32(-2), v1)))
+				t5 := int32(load32(m.memory, uint32(i32(78896))))
+				store32(m.memory, uint32(i32(78896)), uint32(t5&i32_rotl(i32(-2), v1)))
 			}
 			return
 		}
@@ -137085,6 +137354,9 @@ func (m *Module) XJS_DupValue(v0 int32, v1 int64) int64 {
 }
 func (m *Module) XJS_MKVAL(v0, v1 int32) int64 {
 	return m.XJS_MKPTR(v0, v1)
+}
+func (m *Module) XJS_ToInt32MV(v0 int32, v1 int64) (int32, int32) {
+	return m.XJS_ToUint32MV(v0, v1)
 }
 func (m *Module) XJS_VALUE_GET_BOOL(v0 int64) int32 {
 	return m.XJS_VALUE_GET_PTR(v0)
