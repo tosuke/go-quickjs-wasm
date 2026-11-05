@@ -409,7 +409,7 @@ func (m *Module) Xjs_realloc(v0, v1, v2 int32) int32 {
 	}
 	return v1
 }
-func (m *Module) Xjs_realloc2(v0, v1, v2, v3 int32) int32 {
+func (m *Module) _js_realloc2(v0, v1, v2, v3 int32) int32 {
 	t0 := int32(load32(m.memory, uint64(uint32(v0))+8))
 	t1 := m.Xjs_realloc_rt(t0, v1, v2)
 	v1 = t1
@@ -438,28 +438,6 @@ func (m *Module) Xjs_realloc2(v0, v1, v2, v3 int32) int32 {
 func (m *Module) Xjs_malloc_usable_size(v0, v1 int32) int32 {
 	t0 := int32(load32(m.memory, uint64(uint32(v0))+8))
 	return m.Xjs_malloc_usable_size_rt(t0, v1)
-}
-func (m *Module) Xjs_strndup(v0, v1, v2 int32) int32 {
-	t0 := m.Xjs_malloc(v0, v2+i32(1))
-	v0 = t0
-	if v0 != 0 {
-		memory_copy(m.memory, uint32(v0), uint32(v1), uint32(v2))
-		m.memory[uint32(v0+v2)] = byte(i32(0))
-	}
-	return v0
-}
-func (m *Module) Xjs_strdup(v0, v1 int32) int32 {
-	var v2 int32
-	t0 := m._strlen(v1)
-	t1 := v0
-	v2 = t0
-	t2 := m.Xjs_malloc(t1, v2+i32(1))
-	v0 = t2
-	if v0 != 0 {
-		memory_copy(m.memory, uint32(v0), uint32(v1), uint32(v2))
-		m.memory[uint32(v0+v2)] = byte(i32(0))
-	}
-	return v0
 }
 func (m *Module) XJS_NewRuntime2(v0, v1 int32) int32 {
 	var v2, v3, v4, v5 int32
@@ -782,12 +760,12 @@ func (m *Module) _js_call_c_function(v0 int32, v1, v2 int64, v3, v4, v5 int32) i
 				case 7:
 					v1 = i64(0x600000000)
 					t10 := int64(load64(m.memory, uint32(v0)))
-					t11 := m.XJS_ToFloat64(v7, v6+i32(8), t10)
+					t11 := m._JS_ToFloat64(v7, v6+i32(8), t10)
 					if t11 != 0 {
 						goto l14
 					}
 					t12 := int64(load64(m.memory, uint64(uint32(v0))+8))
-					t13 := m.XJS_ToFloat64(v7, v6, t12)
+					t13 := m._JS_ToFloat64(v7, v6, t12)
 					if t13 != 0 {
 						goto l14
 					}
@@ -875,7 +853,7 @@ func (m *Module) _js_call_c_function(v0 int32, v1, v2 int64, v3, v4, v5 int32) i
 					goto l3
 				case 6:
 					t33 := int64(load64(m.memory, uint32(v0)))
-					t34 := m.XJS_ToFloat64(v7, v6+i32(8), t33)
+					t34 := m._JS_ToFloat64(v7, v6+i32(8), t33)
 					if t34 != 0 {
 						goto l16
 					}
@@ -1376,7 +1354,7 @@ func (m *Module) _JS_NewClass1(v0, v1, v2, v3 int32) int32 {
 l3:
 	return v7
 }
-func (m *Module) XJS_ToFloat64(v0, v1 int32, v2 int64) int32 {
+func (m *Module) _JS_ToFloat64(v0, v1 int32, v2 int64) int32 {
 	var v3 int32
 	if uint64(v2) < uint64(i64(-0x900000000)) {
 		if uint64(v2) <= uint64(i64(0x2ffffffff)) {
@@ -8647,7 +8625,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																				}
 																				goto l284
 																			case 6:
-																				t1407 := m.XJS_GetScriptOrModuleName(v19, i32(0))
+																				t1407 := m._JS_GetScriptOrModuleName(v19)
 																				v20 = t1407
 																				if v20 == 0 {
 																					goto l504
@@ -9824,7 +9802,7 @@ func (m *Module) _JS_CallInternal(v0 int32, v1, v2, v3 int64, v4, v5, v6 int32) 
 																	v17 = v16 - i32(16)
 																	t1667 := int64(load64(m.memory, uint32(v17)))
 																	v10 = t1667
-																	t1668 := m.XJS_GetScriptOrModuleName(v19, i32(0))
+																	t1668 := m._JS_GetScriptOrModuleName(v19)
 																	v20 = t1668
 																	if v20 != 0 {
 																		t1669 := m.___JS_AtomToValue(v19, v20, i32(0))
@@ -12007,22 +11985,6 @@ func (m *Module) _async_func_free(v0, v1 int32) {
 		}
 	}
 }
-func (m *Module) XJS_UpdateStackTop(v0 int32) {
-	var v1 int32
-	t0 := m.___stack_pointer
-	t1 := v0
-	v1 = t0
-	store32(m.memory, uint64(uint32(t1))+628, uint32(v1))
-	t2 := int32(load32(m.memory, uint64(uint32(v0))+624))
-	t3 := v0
-	t4 := v1
-	v0 = t2
-	p5 := i32(0)
-	if v0 != 0 {
-		p5 = t4 - v0
-	}
-	store32(m.memory, uint64(uint32(t3))+632, uint32(p5))
-}
 func (m *Module) XJS_FreeContext(v0 int32) {
 	var v1, v2, v3, v4, v5 int32
 	var v6 int64
@@ -12764,13 +12726,6 @@ func (m *Module) XJS_FreeAtomRT(v0, v1 int32) {
 	l0:
 	}
 }
-func (m *Module) XJS_GetRuntimeOpaque(v0 int32) int32 {
-	t0 := int32(load32(m.memory, uint64(uint32(v0))+752))
-	return t0
-}
-func (m *Module) XJS_SetRuntimeOpaque(v0, v1 int32) {
-	store32(m.memory, uint64(uint32(v0))+752, uint32(v1))
-}
 func (m *Module) XJS_NewRuntime() int32 {
 	return m.XJS_NewRuntime2(i32(1756), i32(0))
 }
@@ -12783,15 +12738,6 @@ func (m *Module) XJS_SetGCThreshold(v0, v1 int32) {
 func (m *Module) XJS_SetInterruptHandler(v0, v1, v2 int32) {
 	store32(m.memory, uint64(uint32(v0))+660, uint32(v2))
 	store32(m.memory, uint64(uint32(v0))+656, uint32(v1))
-}
-func (m *Module) XJS_SetCanBlock(v0, v1 int32) {
-	m.memory[uint64(uint32(v0))+712] = byte(v1)
-}
-func (m *Module) XJS_SetSharedArrayBufferFunctions(v0, v1 int32) {
-	t0 := int64(load64(m.memory, uint32(v1)))
-	store64(m.memory, uint64(uint32(v0))+716, uint64(t0))
-	t1 := int64(load64(m.memory, uint64(uint32(v1))+8))
-	store64(m.memory, uint64(uint32(v0))+724, uint64(t1))
 }
 func (m *Module) XJS_SetStripInfo(v0, v1 int32) {
 	m.memory[uint64(uint32(v0))+732] = byte(v1)
@@ -12862,104 +12808,6 @@ func (m *Module) XJS_IsJobPending(v0 int32) int32 {
 		p1 = 1
 	}
 	return p1
-}
-func (m *Module) XJS_ExecutePendingJob(v0, v1 int32) int32 {
-	var v2, v3, v4, v5, v6 int32
-	var v7, v8 int64
-	t0 := int32(load32(m.memory, uint64(uint32(v0))+676))
-	v2 = t0
-	if v2 != v0+i32(672) {
-		t1 := int32(load32(m.memory, uint32(v2)))
-		v0 = t1
-		t2 := int32(load32(m.memory, uint64(uint32(v2))+4))
-		t3 := v0
-		v3 = t2
-		store32(m.memory, uint64(uint32(t3))+4, uint32(v3))
-		store32(m.memory, uint32(v3), uint32(v0))
-		store64(m.memory, uint32(v2), uint64(i64(0)))
-		t4 := int32(load32(m.memory, uint64(uint32(v2))+8))
-		v3 = t4
-		t5 := int32(load32(m.memory, uint64(uint32(v2))+16))
-		t6 := v3
-		v0 = v2 + i32(24)
-		t7 := int32(load32(m.memory, uint64(uint32(v2))+12))
-		t8 := m.t0[uint(t7)].(func(int32, int32, int32) int64)(t6, t5, v0)
-		v7 = t8
-		t9 := int32(load32(m.memory, uint64(uint32(v2))+16))
-		if t9 > i32(0) {
-		l1:
-			{
-				t10 := int64(load64(m.memory, uint32(v0)))
-				v8 = t10
-				if uint64(v8) >= uint64(i64(-0x900000000)) {
-					{
-						v5 = int32(v8) - i32(4)
-						t11 := int32(load32(m.memory, uint32(v5)))
-						v4 = t11
-						store32(m.memory, uint32(v5), uint32(v4-i32(1)))
-						if v4 > i32(1) {
-							goto l0
-						}
-						t12 := int32(load32(m.memory, uint64(uint32(v3))+8))
-						m.___JS_FreeValueRT(t12, v8)
-					}
-				l0:
-				}
-				v0 = v0 + i32(8)
-				v6 = v6 + i32(1)
-				t13 := int32(load32(m.memory, uint64(uint32(v2))+16))
-				if v6 < t13 {
-					goto l1
-				}
-			}
-		}
-		t14 := v7 & i64(-0x100000000)
-		if uint64(v7) >= uint64(i64(-0x900000000)) {
-			{
-				v4 = int32(v7) - i32(4)
-				t15 := int32(load32(m.memory, uint32(v4)))
-				v0 = t15
-				store32(m.memory, uint32(v4), uint32(v0-i32(1)))
-				if v0 > i32(1) {
-					goto l2
-				}
-				t16 := int32(load32(m.memory, uint64(uint32(v3))+8))
-				m.___JS_FreeValueRT(t16, v7)
-			}
-		l2:
-		}
-		var p17 int32
-		if t14 == i64(0x600000000) {
-			p17 = 1
-		}
-		v0 = p17
-		t18 := int32(load32(m.memory, uint64(uint32(v3))+8))
-		m.___js_free(t18, v2)
-		if v1 != 0 {
-			t19 := int32(load32(m.memory, uint32(v3-i32(4))))
-			t21 := v1
-			p20 := i32(0)
-			if t19 > i32(1) {
-				p20 = v3
-			}
-			store32(m.memory, uint32(t21), uint32(p20))
-		}
-		p22 := i32(1)
-		if v0 != 0 {
-			p22 = i32(-1)
-		}
-		v0 = p22
-		m.XJS_FreeContext(v3)
-	} else {
-		v0 = i32(0)
-		if v1 == 0 {
-			goto l3
-		}
-		store32(m.memory, uint32(v1), uint32(i32(0)))
-		return i32(0)
-	l3:
-	}
-	return v0
 }
 func (m *Module) _js_free_modules(v0, v1 int32) {
 	var v2, v3, v4, v5, v6 int32
@@ -13070,11 +12918,6 @@ func (m *Module) _js_free_shape0(v0, v1 int32) {
 	store32(m.memory, uint32(v3), uint32(v2))
 	store64(m.memory, uint32(v1), uint64(i64(0)))
 	m.___js_free(v0, v1)
-}
-func (m *Module) XJS_SetRuntimeInfo(v0, v1 int32) {
-	if v0 != 0 {
-		store32(m.memory, uint64(uint32(v0))+536, uint32(v1))
-	}
 }
 func (m *Module) _map_hash_key(v0 int64, v1 int32) int32 {
 	var v2, v3, v4, v5, v6 int32
@@ -14345,299 +14188,6 @@ l2:
 	if v0 <= i32(0) {
 		panic("unreachable")
 	}
-}
-func (m *Module) XJS_NewContextRaw(v0 int32) int32 {
-	var v1, v2, v3, v4, v5, v6 int32
-	var v7, v8 int64
-	t0 := m.___stack_pointer
-	v5 = t0 + i32(-64)
-	m.___stack_pointer = v5
-	{
-		t1 := m.___js_malloc(v0, i32(248))
-		v1 = t1
-		if v1 != 0 {
-			memory_zero(m.memory, uint32(v1), uint32(i32(248)))
-			m.memory[uint32(v1-i32(5))] = byte(i32(5))
-			store32(m.memory, uint32(v1-i32(4)), uint32(i32(1)))
-			t2 := int32(load32(m.memory, uint64(uint32(v0))+584))
-			v3 = t2
-			store32(m.memory, uint64(uint32(v3))+4, uint32(v1))
-			store32(m.memory, uint64(uint32(v1))+4, uint32(v0+i32(584)))
-			store32(m.memory, uint32(v1), uint32(v3))
-			store32(m.memory, uint64(uint32(v0))+584, uint32(v1))
-			t3 := int32(load32(m.memory, uint64(uint32(v0))+568))
-			t4 := m.___js_malloc(v0, t3<<3)
-			t5 := v1
-			v3 = t4
-			store32(m.memory, uint64(uint32(t5))+48, uint32(v3))
-			if v3 == 0 {
-				m.___js_free(v0, v1)
-				goto l0
-			}
-			store32(m.memory, uint64(uint32(v1))+8, uint32(v0))
-			t6 := int32(load32(m.memory, uint64(uint32(v0))+576))
-			v2 = t6
-			t7 := v2
-			v3 = v1 + i32(12)
-			store32(m.memory, uint64(uint32(t7))+4, uint32(v3))
-			store32(m.memory, uint64(uint32(v1))+16, uint32(v0+i32(576)))
-			store32(m.memory, uint64(uint32(v1))+12, uint32(v2))
-			store32(m.memory, uint64(uint32(v0))+576, uint32(v3))
-			t8 := int32(load32(m.memory, uint64(uint32(v0))+568))
-			if t8 > i32(0) {
-				v2 = i32(0)
-			l1:
-				{
-					t9 := int32(load32(m.memory, uint64(uint32(v1))+48))
-					store64(m.memory, uint32(t9+v2), uint64(i64(0x200000000)))
-					v2 = v2 + i32(8)
-					v4 = v4 + i32(1)
-					t10 := int32(load32(m.memory, uint64(uint32(v0))+568))
-					if v4 < t10 {
-						goto l1
-					}
-				}
-			}
-			store64(m.memory, uint64(uint32(v1))+160, uint64(i64(0x200000000)))
-			store64(m.memory, uint64(uint32(v1))+72, uint64(i64(0x200000000)))
-			store64(m.memory, uint64(uint32(v1))+88, uint64(i64(0x200000000)))
-			store64(m.memory, uint64(uint32(v1))+80, uint64(i64(0x200000000)))
-			t11 := v1
-			v0 = v1 + i32(228)
-			store32(m.memory, uint64(uint32(t11))+232, uint32(v0))
-			store32(m.memory, uint64(uint32(v1))+228, uint32(v0))
-			t12 := m._JS_NewObjectProtoClassAlloc(v1, i64(0x200000000), i32(1), i32(12))
-			v7 = t12
-			t13 := int32(load32(m.memory, uint64(uint32(v1))+48))
-			store64(m.memory, uint64(uint32(t13))+8, uint64(v7))
-			t14 := int32(load32(m.memory, uint64(uint32(v1))+48))
-			t15 := int64(load64(m.memory, uint64(uint32(t14))+8))
-			v7 = t15
-			if v7&i64(-0x100000000) != i64(0x600000000) {
-				{
-					if uint64(v7) >= uint64(i64(-0x100000000)) {
-						v0 = int32(v7)
-						t16 := int32(load16(m.memory, uint64(uint32(v0))+8))
-						store16(m.memory, uint64(uint32(v0))+8, uint16(t16|i32(64)))
-						t17 := int32(load32(m.memory, uint64(uint32(v1))+48))
-						t18 := int64(load64(m.memory, uint64(uint32(t17))+8))
-						v7 = t18
-					}
-					t19 := m._JS_NewCFunction3(v1, i32(12), i32(17540), i32(0), i32(0), i32(0), v7, i32(13))
-					t20 := v1
-					v7 = t19
-					store64(m.memory, uint64(uint32(t20))+56, uint64(v7))
-					if v7&i64(-0x100000000) == i64(0x600000000) {
-						goto l2
-					}
-					if uint64(v7) >= uint64(i64(-0x900000000)) {
-						v0 = int32(v7) - i32(4)
-						t21 := int32(load32(m.memory, uint32(v0)))
-						store32(m.memory, uint32(v0), uint32(t21+i32(1)))
-					}
-					t22 := int32(load32(m.memory, uint64(uint32(v1))+48))
-					store64(m.memory, uint64(uint32(t22))+104, uint64(v7))
-					t23 := int32(load32(m.memory, uint64(uint32(v1))+48))
-					t24 := int64(load64(m.memory, uint64(uint32(t23))+8))
-					t25 := m._JS_NewObjectProtoClassAlloc(v1, t24, i32(49), i32(64))
-					t26 := v1
-					v7 = t25
-					store64(m.memory, uint64(uint32(t26))+200, uint64(v7))
-					if v7&i64(-0x100000000) == i64(0x600000000) {
-						goto l2
-					}
-					t27 := m._JS_NewObjectProtoClassAlloc(v1, i64(0x200000000), i32(1), i32(4))
-					v7 = t27
-					t28 := int32(load32(m.memory, uint64(uint32(v1))+200))
-					store64(m.memory, uint64(uint32(t28))+24, uint64(v7))
-					t29 := m._JS_NewObjectProtoClassAlloc(v1, i64(0x200000000), i32(1), i32(16))
-					t30 := v1
-					v7 = t29
-					store64(m.memory, uint64(uint32(t30))+208, uint64(v7))
-					if v7&i64(-0x100000000) == i64(0x600000000) {
-						goto l2
-					}
-					t31 := m._JS_NewCConstructor(v1, i32(3), i32(6480), i32(13), i32(1), i32(5), i32(-1), i64(0x300000000), i32(25584), i32(1), i32(25600), i32(3), i32(0))
-					v7 = t31
-					if v7&i64(-0x100000000) == i64(0x600000000) {
-						goto l2
-					}
-					v4 = v1 + i32(96)
-					v0 = i32(25648)
-					v2 = i32(0)
-					{
-					l5:
-						{
-							t32 := int32(load32(m.memory, uint64(uint32(v1))+8))
-							t33 := m._JS_AtomGetStrRT(t32, v5, v2+i32(221))
-							t35 := v1
-							p34 := i32(1)
-							if v2 == i32(7) {
-								p34 = i32(2)
-							}
-							t36 := m._JS_NewCConstructor(t35, i32(-1), t33, i32(13), p34, i32(5), v2, v7, i32(0), i32(0), v0, i32(2), i32(0))
-							v8 = t36
-							if v8&i64(-0x100000000) == i64(0x600000000) {
-								goto l3
-							}
-							t37 := m.XJS_GetPropertyInternal(v1, v8, i32(63), v8, i32(0))
-							store64(m.memory, uint32(v4), uint64(t37))
-							if uint64(v8) >= uint64(i64(-0x900000000)) {
-								{
-									v6 = int32(v8) - i32(4)
-									t38 := int32(load32(m.memory, uint32(v6)))
-									v3 = t38
-									store32(m.memory, uint32(v6), uint32(v3-i32(1)))
-									if v3 > i32(1) {
-										goto l4
-									}
-									t39 := int32(load32(m.memory, uint64(uint32(v1))+8))
-									m.___JS_FreeValueRT(t39, v8)
-								}
-							l4:
-							}
-							t40 := int64(load32(m.memory, uint64(uint32(v4))+4))
-							if t40<<32 == i64(0x600000000) {
-								goto l3
-							}
-							v0 = v0 + i32(32)
-							v4 = v4 + i32(8)
-							v2 = v2 + i32(1)
-							if v2 != i32(8) {
-								goto l5
-							}
-							{
-								if uint64(v7) >= uint64(i64(-0x900000000)) {
-									{
-										v2 = int32(v7) - i32(4)
-										t43 := int32(load32(m.memory, uint32(v2)))
-										v0 = t43
-										store32(m.memory, uint32(v2), uint32(v0-i32(1)))
-										if v0 > i32(1) {
-											goto l7
-										}
-										t44 := int32(load32(m.memory, uint64(uint32(v1))+8))
-										m.___JS_FreeValueRT(t44, v7)
-									}
-								l7:
-								}
-								t45 := m._JS_NewCConstructor(v1, i32(2), i32(2648), i32(14), i32(1), i32(4), i32(0), i64(0x300000000), i32(25904), i32(4), i32(25968), i32(40), i32(2))
-								v7 = t45
-								if v7&i64(-0x100000000) == i64(0x600000000) {
-									goto l2
-								}
-								store64(m.memory, uint64(uint32(v1))+72, uint64(v7))
-								t46 := int32(load32(m.memory, uint64(uint32(v1))+48))
-								t47 := int32(load32(m.memory, uint64(uint32(t46))+16))
-								v0 = t47
-								t48 := int32(load16(m.memory, uint64(uint32(v0))+8))
-								store16(m.memory, uint64(uint32(v0))+8, uint16(t48|i32(1)))
-								t49 := int32(load32(m.memory, uint64(uint32(v1))+48))
-								t50 := int64(load64(m.memory, uint64(uint32(t49))+16))
-								t51 := v1
-								t52 := v1
-								v7 = t50
-								p53 := i32(0)
-								if uint64(v7) > uint64(i64(-0x100000001)) {
-									p53 = int32(v7)
-								}
-								t54 := m._js_new_shape2(t52, p53, i32(1))
-								v0 = t54
-								store32(m.memory, uint64(uint32(t51))+28, uint32(v0))
-								if v0 == 0 {
-									goto l2
-								}
-								t55 := m._add_shape_property(v1, v1+i32(28), i32(0), i32(50), i32(10))
-								if t55 != 0 {
-									goto l2
-								}
-								t56 := int32(load32(m.memory, uint64(uint32(v1))+48))
-								t57 := int64(load64(m.memory, uint64(uint32(t56))+8))
-								t58 := v1
-								t59 := v1
-								v7 = t57
-								p60 := i32(0)
-								if uint64(v7) > uint64(i64(-0x100000001)) {
-									p60 = int32(v7)
-								}
-								t61 := m._js_new_shape2(t59, p60, i32(3))
-								v0 = t61
-								store32(m.memory, uint64(uint32(t58))+32, uint32(v0))
-								if v0 == 0 {
-									goto l2
-								}
-								t62 := v1
-								v0 = v1 + i32(32)
-								t63 := m._add_shape_property(t62, v0, i32(0), i32(50), i32(3))
-								if t63 != 0 {
-									goto l2
-								}
-								t64 := m._add_shape_property(v1, v0, i32(0), i32(231), i32(3))
-								if t64 != 0 {
-									goto l2
-								}
-								t65 := m._add_shape_property(v1, v0, i32(0), i32(82), i32(16))
-								if t65 != 0 {
-									goto l2
-								}
-								t66 := int32(load32(m.memory, uint64(uint32(v1))+48))
-								t67 := int64(load64(m.memory, uint64(uint32(t66))+8))
-								t68 := v1
-								t69 := v1
-								v7 = t67
-								p70 := i32(0)
-								if uint64(v7) > uint64(i64(-0x100000001)) {
-									p70 = int32(v7)
-								}
-								t71 := m._js_new_shape2(t69, p70, i32(3))
-								v0 = t71
-								store32(m.memory, uint64(uint32(t68))+36, uint32(v0))
-								if v0 == 0 {
-									goto l2
-								}
-								t72 := v1
-								v0 = v1 + i32(36)
-								t73 := m._add_shape_property(t72, v0, i32(0), i32(50), i32(3))
-								if t73 != 0 {
-									goto l2
-								}
-								t74 := m._add_shape_property(v1, v0, i32(0), i32(231), i32(3))
-								if t74 != 0 {
-									goto l2
-								}
-								t75 := m._add_shape_property(v1, v0, i32(0), i32(82), i32(3))
-								if t75 != 0 {
-									goto l2
-								}
-								v2 = v1
-								goto l0
-							}
-						}
-					l3:
-						if uint64(v7) < uint64(i64(-0x900000000)) {
-							goto l2
-						}
-						v2 = int32(v7) - i32(4)
-						t41 := int32(load32(m.memory, uint32(v2)))
-						v0 = t41
-						store32(m.memory, uint32(v2), uint32(v0-i32(1)))
-						if v0 >= i32(2) {
-							goto l2
-						}
-						t42 := int32(load32(m.memory, uint64(uint32(v1))+8))
-						m.___JS_FreeValueRT(t42, v7)
-						goto l2
-					}
-				}
-			l2:
-			}
-			m.XJS_FreeContext(v1)
-		}
-		v2 = i32(0)
-	}
-l0:
-	m.___stack_pointer = v5 - i32(-64)
-	return v2
 }
 func (m *Module) _JS_NewObjectProtoClassAlloc(v0 int32, v1 int64, v2, v3 int32) int64 {
 	var v4, v5, v6, v7, v8 int32
@@ -15952,505 +15502,1361 @@ l2:
 	return p11
 }
 func (m *Module) XJS_NewContext(v0 int32) int32 {
-	t0 := m.XJS_NewContextRaw(v0)
-	v0 = t0
+	var v1, v2, v3 int64
+	var v4, v5, v6, v7, v8, v9 int32
+	t0 := m.___stack_pointer
+	v8 = t0 + i32(-64)
+	m.___stack_pointer = v8
+	{
+		t1 := m.___js_malloc(v0, i32(248))
+		v4 = t1
+		if v4 != 0 {
+			memory_zero(m.memory, uint32(v4), uint32(i32(248)))
+			m.memory[uint32(v4-i32(5))] = byte(i32(5))
+			store32(m.memory, uint32(v4-i32(4)), uint32(i32(1)))
+			t2 := int32(load32(m.memory, uint64(uint32(v0))+584))
+			v7 = t2
+			store32(m.memory, uint64(uint32(v7))+4, uint32(v4))
+			store32(m.memory, uint64(uint32(v4))+4, uint32(v0+i32(584)))
+			store32(m.memory, uint32(v4), uint32(v7))
+			store32(m.memory, uint64(uint32(v0))+584, uint32(v4))
+			t3 := int32(load32(m.memory, uint64(uint32(v0))+568))
+			t4 := m.___js_malloc(v0, t3<<3)
+			t5 := v4
+			v7 = t4
+			store32(m.memory, uint64(uint32(t5))+48, uint32(v7))
+			if v7 == 0 {
+				m.___js_free(v0, v4)
+				goto l0
+			}
+			store32(m.memory, uint64(uint32(v4))+8, uint32(v0))
+			t6 := int32(load32(m.memory, uint64(uint32(v0))+576))
+			v5 = t6
+			t7 := v5
+			v7 = v4 + i32(12)
+			store32(m.memory, uint64(uint32(t7))+4, uint32(v7))
+			store32(m.memory, uint64(uint32(v4))+16, uint32(v0+i32(576)))
+			store32(m.memory, uint64(uint32(v4))+12, uint32(v5))
+			store32(m.memory, uint64(uint32(v0))+576, uint32(v7))
+			t8 := int32(load32(m.memory, uint64(uint32(v0))+568))
+			if t8 > i32(0) {
+				v5 = i32(0)
+			l1:
+				{
+					t9 := int32(load32(m.memory, uint64(uint32(v4))+48))
+					store64(m.memory, uint32(t9+v5), uint64(i64(0x200000000)))
+					v5 = v5 + i32(8)
+					v6 = v6 + i32(1)
+					t10 := int32(load32(m.memory, uint64(uint32(v0))+568))
+					if v6 < t10 {
+						goto l1
+					}
+				}
+			}
+			store64(m.memory, uint64(uint32(v4))+160, uint64(i64(0x200000000)))
+			store64(m.memory, uint64(uint32(v4))+72, uint64(i64(0x200000000)))
+			store64(m.memory, uint64(uint32(v4))+88, uint64(i64(0x200000000)))
+			store64(m.memory, uint64(uint32(v4))+80, uint64(i64(0x200000000)))
+			t11 := v4
+			v0 = v4 + i32(228)
+			store32(m.memory, uint64(uint32(t11))+232, uint32(v0))
+			store32(m.memory, uint64(uint32(v4))+228, uint32(v0))
+			t12 := m._JS_NewObjectProtoClassAlloc(v4, i64(0x200000000), i32(1), i32(12))
+			v1 = t12
+			t13 := int32(load32(m.memory, uint64(uint32(v4))+48))
+			store64(m.memory, uint64(uint32(t13))+8, uint64(v1))
+			t14 := int32(load32(m.memory, uint64(uint32(v4))+48))
+			t15 := int64(load64(m.memory, uint64(uint32(t14))+8))
+			v1 = t15
+			if v1&i64(-0x100000000) != i64(0x600000000) {
+				{
+					if uint64(v1) >= uint64(i64(-0x100000000)) {
+						v0 = int32(v1)
+						t16 := int32(load16(m.memory, uint64(uint32(v0))+8))
+						store16(m.memory, uint64(uint32(v0))+8, uint16(t16|i32(64)))
+						t17 := int32(load32(m.memory, uint64(uint32(v4))+48))
+						t18 := int64(load64(m.memory, uint64(uint32(t17))+8))
+						v1 = t18
+					}
+					t19 := m._JS_NewCFunction3(v4, i32(12), i32(17540), i32(0), i32(0), i32(0), v1, i32(13))
+					t20 := v4
+					v1 = t19
+					store64(m.memory, uint64(uint32(t20))+56, uint64(v1))
+					if v1&i64(-0x100000000) == i64(0x600000000) {
+						goto l2
+					}
+					if uint64(v1) >= uint64(i64(-0x900000000)) {
+						v0 = int32(v1) - i32(4)
+						t21 := int32(load32(m.memory, uint32(v0)))
+						store32(m.memory, uint32(v0), uint32(t21+i32(1)))
+					}
+					t22 := int32(load32(m.memory, uint64(uint32(v4))+48))
+					store64(m.memory, uint64(uint32(t22))+104, uint64(v1))
+					t23 := int32(load32(m.memory, uint64(uint32(v4))+48))
+					t24 := int64(load64(m.memory, uint64(uint32(t23))+8))
+					t25 := m._JS_NewObjectProtoClassAlloc(v4, t24, i32(49), i32(64))
+					t26 := v4
+					v1 = t25
+					store64(m.memory, uint64(uint32(t26))+200, uint64(v1))
+					if v1&i64(-0x100000000) == i64(0x600000000) {
+						goto l2
+					}
+					t27 := m._JS_NewObjectProtoClassAlloc(v4, i64(0x200000000), i32(1), i32(4))
+					v1 = t27
+					t28 := int32(load32(m.memory, uint64(uint32(v4))+200))
+					store64(m.memory, uint64(uint32(t28))+24, uint64(v1))
+					t29 := m._JS_NewObjectProtoClassAlloc(v4, i64(0x200000000), i32(1), i32(16))
+					t30 := v4
+					v1 = t29
+					store64(m.memory, uint64(uint32(t30))+208, uint64(v1))
+					if v1&i64(-0x100000000) == i64(0x600000000) {
+						goto l2
+					}
+					t31 := m._JS_NewCConstructor(v4, i32(3), i32(6480), i32(13), i32(1), i32(5), i32(-1), i64(0x300000000), i32(25584), i32(1), i32(25600), i32(3), i32(0))
+					v1 = t31
+					if v1&i64(-0x100000000) == i64(0x600000000) {
+						goto l2
+					}
+					v6 = v4 + i32(96)
+					v7 = i32(25648)
+					v5 = i32(0)
+					{
+					l5:
+						{
+							t32 := int32(load32(m.memory, uint64(uint32(v4))+8))
+							t33 := m._JS_AtomGetStrRT(t32, v8, v5+i32(221))
+							t35 := v4
+							p34 := i32(1)
+							if v5 == i32(7) {
+								p34 = i32(2)
+							}
+							t36 := m._JS_NewCConstructor(t35, i32(-1), t33, i32(13), p34, i32(5), v5, v1, i32(0), i32(0), v7, i32(2), i32(0))
+							v2 = t36
+							if v2&i64(-0x100000000) == i64(0x600000000) {
+								goto l3
+							}
+							t37 := m.XJS_GetPropertyInternal(v4, v2, i32(63), v2, i32(0))
+							store64(m.memory, uint32(v6), uint64(t37))
+							if uint64(v2) >= uint64(i64(-0x900000000)) {
+								{
+									v9 = int32(v2) - i32(4)
+									t38 := int32(load32(m.memory, uint32(v9)))
+									v0 = t38
+									store32(m.memory, uint32(v9), uint32(v0-i32(1)))
+									if v0 > i32(1) {
+										goto l4
+									}
+									t39 := int32(load32(m.memory, uint64(uint32(v4))+8))
+									m.___JS_FreeValueRT(t39, v2)
+								}
+							l4:
+							}
+							t40 := int64(load32(m.memory, uint64(uint32(v6))+4))
+							if t40<<32 == i64(0x600000000) {
+								goto l3
+							}
+							v7 = v7 + i32(32)
+							v6 = v6 + i32(8)
+							v5 = v5 + i32(1)
+							if v5 != i32(8) {
+								goto l5
+							}
+							{
+								if uint64(v1) >= uint64(i64(-0x900000000)) {
+									{
+										v5 = int32(v1) - i32(4)
+										t43 := int32(load32(m.memory, uint32(v5)))
+										v0 = t43
+										store32(m.memory, uint32(v5), uint32(v0-i32(1)))
+										if v0 > i32(1) {
+											goto l7
+										}
+										t44 := int32(load32(m.memory, uint64(uint32(v4))+8))
+										m.___JS_FreeValueRT(t44, v1)
+									}
+								l7:
+								}
+								t45 := m._JS_NewCConstructor(v4, i32(2), i32(2648), i32(14), i32(1), i32(4), i32(0), i64(0x300000000), i32(25904), i32(4), i32(25968), i32(40), i32(2))
+								v1 = t45
+								if v1&i64(-0x100000000) == i64(0x600000000) {
+									goto l2
+								}
+								store64(m.memory, uint64(uint32(v4))+72, uint64(v1))
+								t46 := int32(load32(m.memory, uint64(uint32(v4))+48))
+								t47 := int32(load32(m.memory, uint64(uint32(t46))+16))
+								v0 = t47
+								t48 := int32(load16(m.memory, uint64(uint32(v0))+8))
+								store16(m.memory, uint64(uint32(v0))+8, uint16(t48|i32(1)))
+								t49 := int32(load32(m.memory, uint64(uint32(v4))+48))
+								t50 := int64(load64(m.memory, uint64(uint32(t49))+16))
+								t51 := v4
+								t52 := v4
+								v1 = t50
+								p53 := i32(0)
+								if uint64(v1) > uint64(i64(-0x100000001)) {
+									p53 = int32(v1)
+								}
+								t54 := m._js_new_shape2(t52, p53, i32(1))
+								v0 = t54
+								store32(m.memory, uint64(uint32(t51))+28, uint32(v0))
+								if v0 == 0 {
+									goto l2
+								}
+								t55 := m._add_shape_property(v4, v4+i32(28), i32(0), i32(50), i32(10))
+								if t55 != 0 {
+									goto l2
+								}
+								t56 := int32(load32(m.memory, uint64(uint32(v4))+48))
+								t57 := int64(load64(m.memory, uint64(uint32(t56))+8))
+								t58 := v4
+								t59 := v4
+								v1 = t57
+								p60 := i32(0)
+								if uint64(v1) > uint64(i64(-0x100000001)) {
+									p60 = int32(v1)
+								}
+								t61 := m._js_new_shape2(t59, p60, i32(3))
+								v0 = t61
+								store32(m.memory, uint64(uint32(t58))+32, uint32(v0))
+								if v0 == 0 {
+									goto l2
+								}
+								t62 := v4
+								v0 = v4 + i32(32)
+								t63 := m._add_shape_property(t62, v0, i32(0), i32(50), i32(3))
+								if t63 != 0 {
+									goto l2
+								}
+								t64 := m._add_shape_property(v4, v0, i32(0), i32(231), i32(3))
+								if t64 != 0 {
+									goto l2
+								}
+								t65 := m._add_shape_property(v4, v0, i32(0), i32(82), i32(16))
+								if t65 != 0 {
+									goto l2
+								}
+								t66 := int32(load32(m.memory, uint64(uint32(v4))+48))
+								t67 := int64(load64(m.memory, uint64(uint32(t66))+8))
+								t68 := v4
+								t69 := v4
+								v1 = t67
+								p70 := i32(0)
+								if uint64(v1) > uint64(i64(-0x100000001)) {
+									p70 = int32(v1)
+								}
+								t71 := m._js_new_shape2(t69, p70, i32(3))
+								v0 = t71
+								store32(m.memory, uint64(uint32(t68))+36, uint32(v0))
+								if v0 == 0 {
+									goto l2
+								}
+								t72 := v4
+								v0 = v4 + i32(36)
+								t73 := m._add_shape_property(t72, v0, i32(0), i32(50), i32(3))
+								if t73 != 0 {
+									goto l2
+								}
+								t74 := m._add_shape_property(v4, v0, i32(0), i32(231), i32(3))
+								if t74 != 0 {
+									goto l2
+								}
+								t75 := m._add_shape_property(v4, v0, i32(0), i32(82), i32(3))
+								if t75 != 0 {
+									goto l2
+								}
+								v5 = v4
+								goto l0
+							}
+						}
+					l3:
+						if uint64(v1) < uint64(i64(-0x900000000)) {
+							goto l2
+						}
+						v5 = int32(v1) - i32(4)
+						t41 := int32(load32(m.memory, uint32(v5)))
+						v0 = t41
+						store32(m.memory, uint32(v5), uint32(v0-i32(1)))
+						if v0 >= i32(2) {
+							goto l2
+						}
+						t42 := int32(load32(m.memory, uint64(uint32(v4))+8))
+						m.___JS_FreeValueRT(t42, v1)
+						goto l2
+					}
+				}
+			l2:
+			}
+			m.XJS_FreeContext(v4)
+		}
+		v5 = i32(0)
+	}
+l0:
+	m.___stack_pointer = v8 - i32(-64)
+	v0 = v5
 	if v0 != 0 {
-		t1 := m.XJS_AddIntrinsicBaseObjects(v0)
-		if t1 == 0 {
+		t76 := m.___stack_pointer
+		v5 = t76 - i32(32)
+		m.___stack_pointer = v5
+		t77 := int64(load64(m.memory, uint64(uint32(v0))+56))
+		t78 := m._JS_NewCFunction3(v0, i32(16), i32(0), i32(0), i32(0), i32(0), t77, i32(0))
+		t79 := v0
+		v1 = t78
+		store64(m.memory, uint64(uint32(t79))+184, uint64(v1))
+		v7 = i32(-1)
+		if v1&i64(-0x100000000) != i64(0x600000000) {
+			t80 := int64(load64(m.memory, uint64(uint32(v0))+56))
+			t81 := m.XJS_DefineProperty(v0, t80, i32(83), i64(0x300000000), v1, v1, i32(6401))
+			if t81 < i32(0) {
+				goto l8
+			}
+			t82 := int64(load64(m.memory, uint64(uint32(v0))+56))
+			t83 := int64(load64(m.memory, uint64(uint32(v0))+184))
+			t84 := v0
+			v1 = t83
+			t85 := m.XJS_DefineProperty(t84, t82, i32(81), i64(0x300000000), v1, v1, i32(6401))
+			if t85 < i32(0) {
+				goto l8
+			}
+			t86 := m._js_object_seal(v0, v1, v0, v0+i32(184), i32(1))
+			v1 = t86
+			if uint64(v1) >= uint64(i64(-0x900000000)) {
+				{
+					v6 = int32(v1) - i32(4)
+					t87 := int32(load32(m.memory, uint32(v6)))
+					v4 = t87
+					store32(m.memory, uint32(v6), uint32(v4-i32(1)))
+					if v4 > i32(1) {
+						goto l9
+					}
+					t88 := int32(load32(m.memory, uint64(uint32(v0))+8))
+					m.___JS_FreeValueRT(t88, v1)
+				}
+			l9:
+			}
+			t89 := m._JS_NewCConstructor(v0, i32(1), i32(4654), i32(17), i32(1), i32(4), i32(0), i64(0x300000000), i32(26864), i32(23), i32(27232), i32(11), i32(4))
+			v1 = t89
+			if v1&i64(-0x100000000) == i64(0x600000000) {
+				goto l8
+			}
+			if uint64(v1) >= uint64(i64(-0x900000000)) {
+				{
+					v6 = int32(v1) - i32(4)
+					t90 := int32(load32(m.memory, uint32(v6)))
+					v4 = t90
+					store32(m.memory, uint32(v6), uint32(v4-i32(1)))
+					if v4 > i32(1) {
+						goto l10
+					}
+					t91 := int32(load32(m.memory, uint64(uint32(v0))+8))
+					m.___JS_FreeValueRT(t91, v1)
+				}
+			l10:
+			}
+			t92 := m._JS_NewCConstructor(v0, i32(13), i32(8253), i32(18), i32(1), i32(5), i32(0), i64(0x300000000), i32(0), i32(0), i32(27408), i32(8), i32(4))
+			v1 = t92
+			if v1&i64(-0x100000000) == i64(0x600000000) {
+				goto l8
+			}
+			store64(m.memory, uint64(uint32(v0))+64, uint64(v1))
+			t93 := m._JS_NewCConstructor(v0, i32(39), i32(6391), i32(19), i32(0), i32(4), i32(0), i64(0x300000000), i32(27536), i32(2), i32(27568), i32(13), i32(0))
+			t94 := v5
+			v1 = t93
+			store64(m.memory, uint64(uint32(t94))+8, uint64(v1))
+			if v1&i64(-0x100000000) == i64(0x600000000) {
+				goto l8
+			}
+			t95 := m.XJS_NewCFunctionData(v0, i32(20), i32(0), i32(0), i32(1), v5+i32(8))
+			v2 = t95
+			if v2&i64(-0x100000000) == i64(0x600000000) {
+				if uint64(v1) < uint64(i64(-0x900000000)) {
+					goto l8
+				}
+				v6 = int32(v1) - i32(4)
+				t96 := int32(load32(m.memory, uint32(v6)))
+				v4 = t96
+				store32(m.memory, uint32(v6), uint32(v4-i32(1)))
+				if v4 > i32(1) {
+					goto l8
+				}
+				t97 := int32(load32(m.memory, uint64(uint32(v0))+8))
+				m.___JS_FreeValueRT(t97, v1)
+				goto l8
+			}
+			t98 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			t99 := int64(load64(m.memory, uint64(uint32(t98))+312))
+			t100 := m.XJS_DefineProperty(v0, t99, i32(64), i64(0x300000000), v2, v2, i32(6145))
+			if t100 < i32(0) {
+				if uint64(v1) >= uint64(i64(-0x900000000)) {
+					{
+						v6 = int32(v1) - i32(4)
+						t101 := int32(load32(m.memory, uint32(v6)))
+						v4 = t101
+						store32(m.memory, uint32(v6), uint32(v4-i32(1)))
+						if v4 > i32(1) {
+							goto l11
+						}
+						t102 := int32(load32(m.memory, uint64(uint32(v0))+8))
+						m.___JS_FreeValueRT(t102, v1)
+					}
+				l11:
+				}
+				if uint64(v2) < uint64(i64(-0x900000000)) {
+					goto l8
+				}
+				v6 = int32(v2) - i32(4)
+				t103 := int32(load32(m.memory, uint32(v6)))
+				v4 = t103
+				store32(m.memory, uint32(v6), uint32(v4-i32(1)))
+				if v4 > i32(1) {
+					goto l8
+				}
+				t104 := int32(load32(m.memory, uint64(uint32(v0))+8))
+				m.___JS_FreeValueRT(t104, v2)
+				goto l8
+			}
+			if uint64(v2) >= uint64(i64(-0x900000000)) {
+				{
+					v6 = int32(v2) - i32(4)
+					t105 := int32(load32(m.memory, uint32(v6)))
+					v4 = t105
+					store32(m.memory, uint32(v6), uint32(v4-i32(1)))
+					if v4 > i32(1) {
+						goto l12
+					}
+					t106 := int32(load32(m.memory, uint64(uint32(v0))+8))
+					m.___JS_FreeValueRT(t106, v2)
+				}
+			l12:
+			}
+			store64(m.memory, uint64(uint32(v0))+160, uint64(v1))
+			t107 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			t108 := int64(load64(m.memory, uint64(uint32(t107))+312))
+			t109 := m._JS_NewObjectProtoList(v0, t108, i32(27776), i32(3))
+			v1 = t109
+			t110 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			store64(m.memory, uint64(uint32(t110))+320, uint64(v1))
+			t111 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			v4 = t111
+			t112 := int64(load32(m.memory, uint64(uint32(v4))+324))
+			if t112<<32 == i64(0x600000000) {
+				goto l8
+			}
+			t113 := int64(load64(m.memory, uint64(uint32(v4))+312))
+			t114 := m._JS_NewObjectProtoList(v0, t113, i32(27824), i32(3))
+			v1 = t114
+			t115 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			store64(m.memory, uint64(uint32(t115))+328, uint64(v1))
+			t116 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			v4 = t116
+			t117 := int64(load32(m.memory, uint64(uint32(v4))+332))
+			if t117<<32 == i64(0x600000000) {
+				goto l8
+			}
+			t118 := int64(load64(m.memory, uint64(uint32(v4))+312))
+			t119 := m._JS_NewObjectProtoList(v0, t118, i32(27872), i32(2))
+			v1 = t119
+			t120 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			store64(m.memory, uint64(uint32(t120))+336, uint64(v1))
+			t121 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			v4 = t121
+			t122 := int64(load32(m.memory, uint64(uint32(v4))+340))
+			if t122<<32 == i64(0x600000000) {
+				goto l8
+			}
+			t123 := int64(load64(m.memory, uint64(uint32(v4))+16))
+			t124 := v0
+			t125 := v0
+			v1 = t123
+			t126 := m.XJS_GetPropertyInternal(t125, v1, i32(111), v1, i32(0))
+			v1 = t126
+			store64(m.memory, uint64(uint32(t124))+176, uint64(v1))
+			if v1&i64(-0x100000000) == i64(0x600000000) {
+				goto l8
+			}
+			t127 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			t128 := int64(load64(m.memory, uint64(uint32(t127))+312))
+			t129 := m._JS_NewObjectProtoList(v0, t128, i32(27904), i32(2))
+			v1 = t129
+			t130 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			store64(m.memory, uint64(uint32(t130))+360, uint64(v1))
+			t131 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			t132 := int64(load32(m.memory, uint64(uint32(t131))+364))
+			if t132<<32 == i64(0x600000000) {
+				goto l8
+			}
+			t133 := int64(load64(m.memory, uint64(uint32(v0))+200))
+			t134 := m.XJS_SetPropertyFunctionList(v0, t133, i32(27936), i32(15))
+			if t134 != 0 {
+				goto l8
+			}
+			t135 := m._JS_NewCConstructor(v0, i32(4), i32(7609), i32(21), i32(1), i32(4), i32(0), i64(0x300000000), i32(28256), i32(14), i32(28480), i32(6), i32(2))
+			v1 = t135
+			if v1&i64(-0x100000000) == i64(0x600000000) {
+				goto l8
+			}
+			if uint64(v1) >= uint64(i64(-0x900000000)) {
+				{
+					v6 = int32(v1) - i32(4)
+					t136 := int32(load32(m.memory, uint32(v6)))
+					v4 = t136
+					store32(m.memory, uint32(v6), uint32(v4-i32(1)))
+					if v4 > i32(1) {
+						goto l13
+					}
+					t137 := int32(load32(m.memory, uint64(uint32(v0))+8))
+					m.___JS_FreeValueRT(t137, v1)
+				}
+			l13:
+			}
+			t138 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			t139 := int64(load64(m.memory, uint64(uint32(t138))+32))
+			t140 := m._JS_SetObjectData(v0, t139, i64(0))
+			if t140 != 0 {
+				goto l8
+			}
+			t141 := m._JS_NewCConstructor(v0, i32(6), i32(9066), i32(22), i32(1), i32(4), i32(0), i64(0x300000000), i32(0), i32(0), i32(28576), i32(2), i32(2))
+			v1 = t141
+			if v1&i64(-0x100000000) == i64(0x600000000) {
+				goto l8
+			}
+			if uint64(v1) >= uint64(i64(-0x900000000)) {
+				{
+					v6 = int32(v1) - i32(4)
+					t142 := int32(load32(m.memory, uint32(v6)))
+					v4 = t142
+					store32(m.memory, uint32(v6), uint32(v4-i32(1)))
+					if v4 > i32(1) {
+						goto l14
+					}
+					t143 := int32(load32(m.memory, uint64(uint32(v0))+8))
+					m.___JS_FreeValueRT(t143, v1)
+				}
+			l14:
+			}
+			t144 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			t145 := int64(load64(m.memory, uint64(uint32(t144))+48))
+			t146 := m._JS_SetObjectData(v0, t145, i64(0x100000000))
+			if t146 != 0 {
+				goto l8
+			}
+			t147 := m._JS_NewCConstructor(v0, i32(5), i32(10400), i32(23), i32(1), i32(4), i32(0), i64(0x300000000), i32(28608), i32(3), i32(28656), i32(50), i32(2))
+			v1 = t147
+			if v1&i64(-0x100000000) == i64(0x600000000) {
+				goto l8
+			}
+			if uint64(v1) >= uint64(i64(-0x900000000)) {
+				{
+					v6 = int32(v1) - i32(4)
+					t148 := int32(load32(m.memory, uint32(v6)))
+					v4 = t148
+					store32(m.memory, uint32(v6), uint32(v4-i32(1)))
+					if v4 > i32(1) {
+						goto l15
+					}
+					t149 := int32(load32(m.memory, uint64(uint32(v0))+8))
+					m.___JS_FreeValueRT(t149, v1)
+				}
+			l15:
+			}
+			t150 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			t151 := int64(load64(m.memory, uint64(uint32(t150))+40))
+			t152 := m.___JS_AtomToValue(v0, i32(47), i32(1))
+			t153 := m._JS_SetObjectData(v0, t151, t152)
+			if t153 != 0 {
+				goto l8
+			}
+			t154 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			t155 := int64(load64(m.memory, uint64(uint32(t154))+312))
+			t156 := m._JS_NewObjectProtoList(v0, t155, i32(29568), i32(2))
+			v1 = t156
+			t157 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			store64(m.memory, uint64(uint32(t157))+368, uint64(v1))
+			t158 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			t159 := int64(load32(m.memory, uint64(uint32(t158))+372))
+			if t159<<32 == i64(0x600000000) {
+				goto l8
+			}
+			_ = m._gettimeofday(v5+i32(16), i32(0))
+			t161 := int64(int32(load32(m.memory, uint64(uint32(v5))+24)))
+			t162 := int64(load64(m.memory, uint64(uint32(v5))+16))
+			t163 := v0
+			v1 = t161 + t162*i64(1000000)
+			p164 := v1
+			if uint64(v1) <= uint64(i64(1)) {
+				p164 = i64(1)
+			}
+			store64(m.memory, uint64(uint32(t163))+216, uint64(p164))
+			t165 := int64(load64(m.memory, uint64(uint32(v0))+200))
+			t166 := m.XJS_SetPropertyFunctionList(v0, t165, i32(29600), i32(1))
+			if t166 != 0 {
+				goto l8
+			}
+			t167 := int64(load64(m.memory, uint64(uint32(v0))+200))
+			t168 := m.XJS_SetPropertyFunctionList(v0, t167, i32(30352), i32(1))
+			if t168 != 0 {
+				goto l8
+			}
+			t169 := m._JS_NewCConstructor(v0, i32(7), i32(9157), i32(24), i32(0), i32(4), i32(0), i64(0x300000000), i32(30592), i32(15), i32(30832), i32(5), i32(0))
+			v1 = t169
+			if v1&i64(-0x100000000) == i64(0x600000000) {
+				goto l8
+			}
+			if uint64(v1) >= uint64(i64(-0x900000000)) {
+				{
+					v6 = int32(v1) - i32(4)
+					t170 := int32(load32(m.memory, uint32(v6)))
+					v4 = t170
+					store32(m.memory, uint32(v6), uint32(v4-i32(1)))
+					if v4 > i32(1) {
+						goto l16
+					}
+					t171 := int32(load32(m.memory, uint64(uint32(v0))+8))
+					m.___JS_FreeValueRT(t171, v1)
+				}
+			l16:
+			}
+			t172 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			t173 := int64(load64(m.memory, uint64(uint32(t172))+312))
+			t174 := m._JS_NewObjectProtoList(v0, t173, i32(30912), i32(4))
+			v1 = t174
+			t175 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			store64(m.memory, uint64(uint32(t175))+384, uint64(v1))
+			t176 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			t177 := int64(load32(m.memory, uint64(uint32(t176))+388))
+			if t177<<32 == i64(0x600000000) {
+				goto l8
+			}
+			t178 := int64(load64(m.memory, uint64(uint32(v0))+64))
+			t179 := m._JS_NewCConstructor(v0, i32(16), i32(8220), i32(18), i32(1), i32(5), i32(1), t178, i32(0), i32(0), i32(30976), i32(1), i32(9))
+			v1 = t179
+			if v1&i64(-0x100000000) == i64(0x600000000) {
+				goto l8
+			}
+			if uint64(v1) >= uint64(i64(-0x900000000)) {
+				{
+					v6 = int32(v1) - i32(4)
+					t180 := int32(load32(m.memory, uint32(v6)))
+					v4 = t180
+					store32(m.memory, uint32(v6), uint32(v4-i32(1)))
+					if v4 > i32(1) {
+						goto l17
+					}
+					t181 := int32(load32(m.memory, uint64(uint32(v0))+8))
+					m.___JS_FreeValueRT(t181, v1)
+				}
+			l17:
+			}
+			t182 := int32(load32(m.memory, uint64(uint32(v0))+48))
+			t183 := v0
+			v4 = t182
+			t184 := int64(load64(m.memory, uint64(uint32(v4))+128))
+			t185 := int64(load64(m.memory, uint64(uint32(v4))+384))
+			t186 := m._JS_SetConstructor2(t183, t184, t185, i32(1), i32(1))
+			if t186 != 0 {
+				goto l8
+			}
+			t187 := int64(load64(m.memory, uint64(uint32(v0))+200))
+			t188 := v0
+			t189 := v0
+			v1 = t187
+			t190 := m.XJS_GetPropertyInternal(t189, v1, i32(62), v1, i32(0))
+			v1 = t190
+			store64(m.memory, uint64(uint32(t188))+192, uint64(v1))
+			if v1&i64(-0x100000000) == i64(0x600000000) {
+				goto l8
+			}
+			t191 := int64(load64(m.memory, uint64(uint32(v0))+200))
+			v1 = t191
+			if uint64(v1) >= uint64(i64(-0x900000000)) {
+				v4 = int32(v1) - i32(4)
+				t192 := int32(load32(m.memory, uint32(v4)))
+				store32(m.memory, uint32(v4), uint32(t192+i32(1)))
+			}
+			t193 := m.XJS_DefinePropertyValue(v0, v1, i32(144), v1, i32(3))
+			if t193 < i32(0) {
+				goto l8
+			}
+			t194 := m._JS_NewCConstructor(v0, i32(34), i32(3963), i32(43), i32(1), i32(4), i32(0), i64(0x300000000), i32(30992), i32(2), i32(31024), i32(3), i32(0))
+			v1 = t194
+			var p195 int32
+			if v1&i64(-0x100000000) != i64(0x600000000) {
+				if uint64(v1) >= uint64(i64(-0x900000000)) {
+					{
+						v7 = int32(v1) - i32(4)
+						t196 := int32(load32(m.memory, uint32(v7)))
+						v4 = t196
+						store32(m.memory, uint32(v7), uint32(v4-i32(1)))
+						if v4 > i32(1) {
+							goto l18
+						}
+						t197 := int32(load32(m.memory, uint64(uint32(v0))+8))
+						m.___JS_FreeValueRT(t197, v1)
+					}
+				l18:
+				}
+				p195 = i32(0)
+			} else {
+				p195 = i32(-1)
+			}
+			p198 := i32(0)
+			if p195 != 0 {
+				p198 = i32(-1)
+			}
+			v7 = p198
+		}
+	l8:
+		m.___stack_pointer = v5 + i32(32)
+		if v7 == 0 {
 			{
-				t2 := m.XJS_AddIntrinsicDate(v0)
-				if t2 != 0 {
-					goto l0
+				t199 := m._JS_NewCConstructor(v0, i32(10), i32(11025), i32(25), i32(7), i32(4), i32(0), i64(0x300000000), i32(24768), i32(3), i32(24816), i32(47), i32(0))
+				v1 = t199
+				var p200 int32
+				if v1&i64(-0x100000000) != i64(0x600000000) {
+					if uint64(v1) >= uint64(i64(-0x900000000)) {
+						{
+							v4 = int32(v1) - i32(4)
+							t201 := int32(load32(m.memory, uint32(v4)))
+							v5 = t201
+							store32(m.memory, uint32(v4), uint32(v5-i32(1)))
+							if v5 > i32(1) {
+								goto l19
+							}
+							t202 := int32(load32(m.memory, uint64(uint32(v0))+8))
+							m.___JS_FreeValueRT(t202, v1)
+						}
+					l19:
+					}
+					p200 = i32(0)
+				} else {
+					p200 = i32(-1)
+				}
+				if p200 != 0 {
+					goto l20
 				}
 				store32(m.memory, uint64(uint32(v0))+240, uint32(i32(15)))
-				t3 := int32(load32(m.memory, uint64(uint32(v0))+48))
-				t4 := int64(load64(m.memory, uint64(uint32(t3))+40))
-				t5 := m.XJS_SetPropertyFunctionList(v0, t4, i32(22880), i32(2))
-				if t5 != 0 {
-					goto l0
+				t203 := int32(load32(m.memory, uint64(uint32(v0))+48))
+				t204 := int64(load64(m.memory, uint64(uint32(t203))+40))
+				t205 := m.XJS_SetPropertyFunctionList(v0, t204, i32(22880), i32(2))
+				if t205 != 0 {
+					goto l20
 				}
-				t6 := m.XJS_AddIntrinsicRegExp(v0)
-				if t6 != 0 {
-					goto l0
+				store32(m.memory, uint64(uint32(v0))+236, uint32(i32(26)))
+				v7 = i32(-1)
+				{
+					t206 := m._JS_NewCConstructor(v0, i32(18), i32(7800), i32(27), i32(2), i32(4), i32(0), i64(0x300000000), i32(22912), i32(2), i32(22944), i32(19), i32(0))
+					v1 = t206
+					if v1&i64(-0x100000000) != i64(0x600000000) {
+						store64(m.memory, uint64(uint32(v0))+80, uint64(v1))
+						t207 := int32(load32(m.memory, uint64(uint32(v0))+48))
+						t208 := int64(load64(m.memory, uint64(uint32(t207))+312))
+						t209 := m._JS_NewObjectProtoList(v0, t208, i32(23296), i32(2))
+						v1 = t209
+						t210 := int32(load32(m.memory, uint64(uint32(v0))+48))
+						store64(m.memory, uint64(uint32(t210))+376, uint64(v1))
+						t211 := int32(load32(m.memory, uint64(uint32(v0))+48))
+						v5 = t211
+						t212 := int64(load32(m.memory, uint64(uint32(v5))+380))
+						if t212<<32 == i64(0x600000000) {
+							goto l21
+						}
+						t213 := int64(load64(m.memory, uint64(uint32(v5))+144))
+						t214 := v0
+						t215 := v0
+						v1 = t213
+						p216 := i32(0)
+						if uint64(v1) > uint64(i64(-0x100000001)) {
+							p216 = int32(v1)
+						}
+						t217 := m._js_new_shape2(t215, p216, i32(1))
+						v5 = t217
+						store32(m.memory, uint64(uint32(t214))+40, uint32(v5))
+						if v5 == 0 {
+							goto l21
+						}
+						t218 := m._add_shape_property(v0, v0+i32(40), i32(0), i32(89), i32(2))
+						if t218 != 0 {
+							goto l21
+						}
+						t219 := int32(load32(m.memory, uint64(uint32(v0))+48))
+						t220 := int64(load64(m.memory, uint64(uint32(t219))+16))
+						t221 := v0
+						t222 := v0
+						v1 = t220
+						p223 := i32(0)
+						if uint64(v1) > uint64(i64(-0x100000001)) {
+							p223 = int32(v1)
+						}
+						t224 := m._js_new_shape2(t222, p223, i32(4))
+						v5 = t224
+						store32(m.memory, uint64(uint32(t221))+44, uint32(v5))
+						if v5 == 0 {
+							goto l21
+						}
+						t225 := v0
+						v5 = v0 + i32(44)
+						t226 := m._add_shape_property(t225, v5, i32(0), i32(50), i32(10))
+						if t226 != 0 {
+							goto l21
+						}
+						t227 := m._add_shape_property(v0, v5, i32(0), i32(91), i32(7))
+						if t227 != 0 {
+							goto l21
+						}
+						t228 := m._add_shape_property(v0, v5, i32(0), i32(92), i32(7))
+						if t228 != 0 {
+							goto l21
+						}
+						t229 := m._add_shape_property(v0, v5, i32(0), i32(140), i32(7))
+						p230 := i32(0)
+						if t229 != 0 {
+							p230 = i32(-1)
+						}
+						v7 = p230
+					}
 				}
-				t7 := int64(load64(m.memory, uint64(uint32(v0))+200))
-				t8 := m.XJS_SetPropertyFunctionList(v0, t7, i32(23328), i32(1))
-				if t8 != 0 {
-					goto l0
+			l21:
+				if v7 != 0 {
+					goto l20
 				}
-				t9 := m.XJS_AddIntrinsicProxy(v0)
-				if t9 != 0 {
-					goto l0
+				t231 := int64(load64(m.memory, uint64(uint32(v0))+200))
+				t232 := m.XJS_SetPropertyFunctionList(v0, t231, i32(23328), i32(1))
+				if t232 != 0 {
+					goto l20
 				}
-				t10 := m.XJS_AddIntrinsicMapSet(v0)
-				if t10 != 0 {
-					goto l0
+				var p233 int32
+				{
+					{
+						t234 := int32(load32(m.memory, uint64(uint32(v0))+8))
+						v5 = t234
+						t235 := int32(load32(m.memory, uint64(uint32(v5))+568))
+						if uint32(t235) >= uint32(i32(52)) {
+							t236 := int32(load32(m.memory, uint64(uint32(v5))+572))
+							t237 := int32(load32(m.memory, uint64(uint32(t236))+1224))
+							if t237 != 0 {
+								goto l22
+							}
+						}
+						t238 := m._init_class_range(v5, i32(17544), i32(51), i32(1))
+						if t238 != 0 {
+							p233 = i32(-1)
+							goto l23
+						}
+						t239 := int32(load32(m.memory, uint64(uint32(v5))+572))
+						store32(m.memory, uint64(uint32(t239))+1244, uint32(i32(17556)))
+						t240 := int32(load32(m.memory, uint64(uint32(v5))+572))
+						store32(m.memory, uint64(uint32(t240))+1240, uint32(i32(28)))
+					}
+				l22:
+					t241 := int64(load64(m.memory, uint64(uint32(v0))+56))
+					t242 := m._JS_NewCFunction3(v0, i32(29), i32(1918), i32(2), i32(2), i32(0), t241, i32(3))
+					v1 = t242
+					if v1&i64(-0x100000000) != i64(0x600000000) {
+						{
+							if uint64(v1) >= uint64(i64(-0x100000000)) {
+								v5 = int32(v1)
+								t243 := int32(load16(m.memory, uint64(uint32(v5))+8))
+								store16(m.memory, uint64(uint32(v5))+8, uint16(t243|i32(32)))
+							}
+							t244 := m.XJS_SetPropertyFunctionList(v0, v1, i32(23424), i32(1))
+							if t244 == 0 {
+								t245 := int64(load64(m.memory, uint64(uint32(v0))+200))
+								t246 := m.XJS_DefinePropertyValueStr(v0, t245, i32(1918), v1, i32(3))
+								if t246 >= i32(0) {
+									p233 = i32(0)
+									goto l23
+								}
+							}
+							if uint64(v1) < uint64(i64(-0x900000000)) {
+								goto l24
+							}
+							v4 = int32(v1) - i32(4)
+							t247 := int32(load32(m.memory, uint32(v4)))
+							v5 = t247
+							store32(m.memory, uint32(v4), uint32(v5-i32(1)))
+							if v5 > i32(1) {
+								goto l24
+							}
+							t248 := int32(load32(m.memory, uint64(uint32(v0))+8))
+							m.___JS_FreeValueRT(t248, v1)
+						}
+					l24:
+					}
+					p233 = i32(-1)
 				}
-				t11 := m.XJS_AddIntrinsicTypedArrays(v0)
-				if t11 != 0 {
-					goto l0
+			l23:
+				if p233 != 0 {
+					goto l20
 				}
-				t12 := m.XJS_AddIntrinsicPromise(v0)
-				if t12 != 0 {
-					goto l0
+				v5 = i32(0)
+				t249 := m.___stack_pointer
+				v8 = t249 + i32(-64)
+				m.___stack_pointer = v8
+				v6 = i32(17600)
+				v7 = i32(-1)
+				{
+				l27:
+					{
+						t250 := int32(m.memory[uint32(v5+i32(17624))])
+						v4 = t250
+						t251 := int32(load32(m.memory, uint32(v6)))
+						v9 = t251
+						t252 := int32(load32(m.memory, uint64(uint32(v0))+8))
+						t253 := m._JS_AtomGetStrRT(t252, v8, v5+i32(198))
+						t254 := v0
+						t255 := v5 + i32(35)
+						t256 := v5
+						var p257 int32
+						if uint32(v5) < uint32(i32(2)) {
+							p257 = 1
+						}
+						t258 := m._JS_NewCConstructor(t254, t255, t253, i32(30), i32(0), i32(3), t256, i64(0x300000000), i32(23440), p257<<1, v9, v4, i32(0))
+						v1 = t258
+						if v1&i64(-0x100000000) == i64(0x600000000) {
+							goto l25
+						}
+						if uint64(v1) >= uint64(i64(-0x900000000)) {
+							{
+								v9 = int32(v1) - i32(4)
+								t259 := int32(load32(m.memory, uint32(v9)))
+								v4 = t259
+								store32(m.memory, uint32(v9), uint32(v4-i32(1)))
+								if v4 > i32(1) {
+									goto l26
+								}
+								t260 := int32(load32(m.memory, uint64(uint32(v0))+8))
+								m.___JS_FreeValueRT(t260, v1)
+							}
+						l26:
+						}
+						v6 = v6 + i32(4)
+						v5 = v5 + i32(1)
+						if v5 != i32(4) {
+							goto l27
+						}
+					}
+					t261 := int32(load32(m.memory, uint64(uint32(v0))+48))
+					v6 = t261
+					v5 = i32(0)
+				l29:
+					{
+						t262 := int64(load64(m.memory, uint64(uint32(v6))+312))
+						t263 := int32(load32(m.memory, uint32(v5<<2+i32(17616))))
+						t264 := int32(m.memory[uint32(v5+i32(17628))])
+						t265 := m._JS_NewObjectProtoList(v0, t262, t263, t264)
+						v1 = t265
+						v4 = v5<<3 + i32(344)
+						t266 := int32(load32(m.memory, uint64(uint32(v0))+48))
+						store64(m.memory, uint32(v4+t266), uint64(v1))
+						t267 := int32(load32(m.memory, uint64(uint32(v0))+48))
+						t268 := v4
+						v6 = t267
+						t269 := int64(load32(m.memory, uint64(uint32(t268+v6))+4))
+						v1 = t269 << 32
+						if v1 == i64(0x600000000) {
+							goto l28
+						}
+						t270 := v5
+						v5 = i32(1)
+						if t270 == 0 {
+							goto l29
+						}
+					}
+				l28:
+					p271 := i32(0)
+					if v1 == i64(0x600000000) {
+						p271 = i32(-1)
+					}
+					v7 = p271
 				}
-				t13 := m.XJS_AddIntrinsicWeakRef(v0)
-				if t13 != 0 {
-					goto l0
+			l25:
+				m.___stack_pointer = v8 - i32(-64)
+				if v7 != 0 {
+					goto l20
+				}
+				t272 := m.___stack_pointer
+				v4 = t272 + i32(-64)
+				m.___stack_pointer = v4
+				v7 = i32(-1)
+				t273 := m._JS_NewCConstructor(v0, i32(19), i32(7411), i32(31), i32(1), i32(2), i32(0), i64(0x300000000), i32(31072), i32(2), i32(31104), i32(9), i32(0))
+				v1 = t273
+				if v1&i64(-0x100000000) != i64(0x600000000) {
+					{
+						if uint64(v1) >= uint64(i64(-0x900000000)) {
+							{
+								v6 = int32(v1) - i32(4)
+								t274 := int32(load32(m.memory, uint32(v6)))
+								v5 = t274
+								store32(m.memory, uint32(v6), uint32(v5-i32(1)))
+								if v5 > i32(1) {
+									goto l30
+								}
+								t275 := int32(load32(m.memory, uint64(uint32(v0))+8))
+								m.___JS_FreeValueRT(t275, v1)
+							}
+						l30:
+						}
+						t276 := m._JS_NewCConstructor(v0, i32(20), i32(7372), i32(32), i32(1), i32(2), i32(0), i64(0x300000000), i32(31248), i32(1), i32(31264), i32(6), i32(0))
+						v1 = t276
+						if v1&i64(-0x100000000) == i64(0x600000000) {
+							goto l31
+						}
+						if uint64(v1) >= uint64(i64(-0x900000000)) {
+							{
+								v6 = int32(v1) - i32(4)
+								t277 := int32(load32(m.memory, uint32(v6)))
+								v5 = t277
+								store32(m.memory, uint32(v6), uint32(v5-i32(1)))
+								if v5 > i32(1) {
+									goto l32
+								}
+								t278 := int32(load32(m.memory, uint64(uint32(v0))+8))
+								m.___JS_FreeValueRT(t278, v1)
+							}
+						l32:
+						}
+						t279 := m._JS_NewCConstructor(v0, i32(-1), i32(2626), i32(33), i32(0), i32(4), i32(0), i64(0x300000000), i32(31360), i32(3), i32(31408), i32(36), i32(1))
+						v2 = t279
+						if v2&i64(-0x100000000) == i64(0x600000000) {
+							goto l31
+						}
+						{
+							t280 := int32(load32(m.memory, uint64(uint32(v0))+48))
+							t281 := int64(load64(m.memory, uint64(uint32(t280))+16))
+							t282 := v0
+							v1 = t281
+							t283 := m.XJS_GetPropertyInternal(t282, v1, i32(59), v1, i32(0))
+							v3 = t283
+							if v3&i64(-0x100000000) != i64(0x600000000) {
+								{
+									t284 := m.XJS_GetPropertyInternal(v0, v2, i32(63), v2, i32(0))
+									v1 = t284
+									if v1&i64(-0x100000000) == i64(0x600000000) {
+										goto l33
+									}
+									t285 := m.XJS_DefinePropertyValue(v0, v1, i32(59), v3, i32(3))
+									if uint64(v1) >= uint64(i64(-0x900000000)) {
+										{
+											v8 = int32(v1) - i32(4)
+											t286 := int32(load32(m.memory, uint32(v8)))
+											v5 = t286
+											store32(m.memory, uint32(v8), uint32(v5-i32(1)))
+											if v5 > i32(1) {
+												goto l34
+											}
+											t287 := int32(load32(m.memory, uint64(uint32(v0))+8))
+											m.___JS_FreeValueRT(t287, v1)
+										}
+									l34:
+									}
+									if t285 < i32(0) {
+										goto l33
+									}
+									v6 = v0 + i32(8)
+									v5 = i32(-12)
+								l36:
+									{
+										t288 := int32(load32(m.memory, uint64(uint32(v0))+8))
+										t289 := m._JS_AtomGetStrRT(t288, v4, v5+i32(194))
+										v8 = t289
+										var p290 int64
+										if v5 != i32(-10) {
+											t291 := v0
+											v9 = v5 + i32(33)
+											t292 := int32(m.memory[uint32(v5+i32(17752))])
+											t293 := v9
+											t294 := v8
+											t295 := v9
+											t296 := v2
+											v8 = t292<<4 + i32(32784)
+											t297 := m._JS_NewCConstructor(t291, t293, t294, i32(34), i32(3), i32(3), t295, t296, v8, i32(1), v8, i32(1), i32(0))
+											p290 = t297
+										} else {
+											t298 := m._JS_NewCConstructor(v0, i32(23), v8, i32(34), i32(3), i32(3), i32(23), v2, i32(31984), i32(3), i32(32544), i32(5), i32(0))
+											p290 = t298
+										}
+										v1 = p290
+										if v1&i64(-0x100000000) == i64(0x600000000) {
+											goto l33
+										}
+										if uint64(v1) >= uint64(i64(-0x900000000)) {
+											{
+												v9 = int32(v1) - i32(4)
+												t299 := int32(load32(m.memory, uint32(v9)))
+												v8 = t299
+												store32(m.memory, uint32(v9), uint32(v8-i32(1)))
+												if v8 > i32(1) {
+													goto l35
+												}
+												t300 := int32(load32(m.memory, uint64(uint32(v0))+8))
+												m.___JS_FreeValueRT(t300, v1)
+											}
+										l35:
+										}
+										v5 = v5 + i32(1)
+										if v5 != 0 {
+											goto l36
+										}
+									}
+									if uint64(v2) >= uint64(i64(-0x900000000)) {
+										{
+											v8 = int32(v2) - i32(4)
+											t301 := int32(load32(m.memory, uint32(v8)))
+											v5 = t301
+											store32(m.memory, uint32(v8), uint32(v5-i32(1)))
+											if v5 > i32(1) {
+												goto l37
+											}
+											t302 := int32(load32(m.memory, uint64(uint32(v0))+8))
+											m.___JS_FreeValueRT(t302, v2)
+										}
+									l37:
+									}
+									t303 := m._JS_NewCConstructor(v0, i32(33), i32(2967), i32(35), i32(1), i32(2), i32(0), i64(0x300000000), i32(0), i32(0), i32(32848), i32(26), i32(0))
+									v2 = t303
+									if v2&i64(-0x100000000) == i64(0x600000000) {
+										goto l31
+									}
+									v7 = i32(0)
+									if uint64(v2) < uint64(i64(-0x900000000)) {
+										goto l31
+									}
+									v8 = int32(v2) - i32(4)
+									t304 := int32(load32(m.memory, uint32(v8)))
+									v5 = t304
+									store32(m.memory, uint32(v8), uint32(v5-i32(1)))
+									if v5 > i32(1) {
+										goto l31
+									}
+									goto l38
+								}
+							l33:
+							}
+							if uint64(v2) < uint64(i64(-0x900000000)) {
+								goto l31
+							}
+							v6 = int32(v2) - i32(4)
+							t305 := int32(load32(m.memory, uint32(v6)))
+							v5 = t305
+							store32(m.memory, uint32(v6), uint32(v5-i32(1)))
+							if v5 > i32(1) {
+								goto l31
+							}
+							v6 = v0 + i32(8)
+						}
+					l38:
+						t306 := int32(load32(m.memory, uint32(v6)))
+						m.___JS_FreeValueRT(t306, v2)
+					}
+				l31:
+				}
+				m.___stack_pointer = v4 - i32(-64)
+				if v7 != 0 {
+					goto l20
+				}
+				{
+					{
+						t307 := int32(load32(m.memory, uint64(uint32(v0))+8))
+						v5 = t307
+						t308 := int32(load32(m.memory, uint64(uint32(v5))+568))
+						if uint32(t308) >= uint32(i32(53)) {
+							t309 := int32(load32(m.memory, uint64(uint32(v5))+572))
+							t310 := int32(load32(m.memory, uint64(uint32(t309))+1248))
+							if t310 != 0 {
+								goto l39
+							}
+						}
+						v7 = i32(-1)
+						t311 := m._init_class_range(v5, i32(17632), i32(52), i32(9))
+						if t311 != 0 {
+							goto l40
+						}
+						t312 := int32(load32(m.memory, uint64(uint32(v5))+572))
+						store32(m.memory, uint64(uint32(t312))+1288, uint32(i32(36)))
+						t313 := int32(load32(m.memory, uint64(uint32(v5))+572))
+						store32(m.memory, uint64(uint32(t313))+1312, uint32(i32(36)))
+						t314 := int32(load32(m.memory, uint64(uint32(v5))+572))
+						store32(m.memory, uint64(uint32(t314))+1336, uint32(i32(37)))
+						t315 := int32(load32(m.memory, uint64(uint32(v5))+572))
+						store32(m.memory, uint64(uint32(t315))+1360, uint32(i32(38)))
+						t316 := int32(load32(m.memory, uint64(uint32(v5))+572))
+						store32(m.memory, uint64(uint32(t316))+1384, uint32(i32(38)))
+						t317 := int32(load32(m.memory, uint64(uint32(v5))+572))
+						store32(m.memory, uint64(uint32(t317))+1432, uint32(i32(39)))
+					}
+				l39:
+					v7 = i32(-1)
+					t318 := m._JS_NewCConstructor(v0, i32(52), i32(11147), i32(40), i32(1), i32(2), i32(0), i64(0x300000000), i32(24224), i32(9), i32(24368), i32(4), i32(0))
+					v1 = t318
+					if v1&i64(-0x100000000) == i64(0x600000000) {
+						goto l40
+					}
+					store64(m.memory, uint64(uint32(v0))+88, uint64(v1))
+					t319 := int64(load64(m.memory, uint64(uint32(v0))+64))
+					t320 := m._JS_NewCConstructor(v0, i32(55), i32(8238), i32(18), i32(1), i32(5), i32(2), t319, i32(0), i32(0), i32(24432), i32(1), i32(9))
+					v1 = t320
+					if v1&i64(-0x100000000) == i64(0x600000000) {
+						goto l40
+					}
+					if uint64(v1) >= uint64(i64(-0x900000000)) {
+						{
+							v4 = int32(v1) - i32(4)
+							t321 := int32(load32(m.memory, uint32(v4)))
+							v5 = t321
+							store32(m.memory, uint32(v4), uint32(v5-i32(1)))
+							if v5 > i32(1) {
+								goto l41
+							}
+							t322 := int32(load32(m.memory, uint64(uint32(v0))+8))
+							m.___JS_FreeValueRT(t322, v1)
+						}
+					l41:
+					}
+					t323 := int32(load32(m.memory, uint64(uint32(v0))+48))
+					t324 := int64(load64(m.memory, uint64(uint32(t323))+8))
+					t325 := m._JS_NewObjectProtoList(v0, t324, i32(24448), i32(1))
+					t326 := v0
+					v1 = t325
+					store64(m.memory, uint64(uint32(t326))+168, uint64(v1))
+					if v1&i64(-0x100000000) == i64(0x600000000) {
+						goto l40
+					}
+					t327 := m._JS_NewObjectProtoList(v0, v1, i32(24464), i32(3))
+					v1 = t327
+					t328 := int32(load32(m.memory, uint64(uint32(v0))+48))
+					store64(m.memory, uint64(uint32(t328))+464, uint64(v1))
+					t329 := int32(load32(m.memory, uint64(uint32(v0))+48))
+					t330 := int64(load32(m.memory, uint64(uint32(t329))+468))
+					if t330<<32 == i64(0x600000000) {
+						goto l40
+					}
+					t331 := int64(load64(m.memory, uint64(uint32(v0))+168))
+					t332 := m._JS_NewObjectProtoList(v0, t331, i32(24512), i32(4))
+					v1 = t332
+					t333 := int32(load32(m.memory, uint64(uint32(v0))+48))
+					store64(m.memory, uint64(uint32(t333))+480, uint64(v1))
+					t334 := int32(load32(m.memory, uint64(uint32(v0))+48))
+					t335 := int64(load32(m.memory, uint64(uint32(t334))+484))
+					if t335<<32 == i64(0x600000000) {
+						goto l40
+					}
+					t336 := int64(load64(m.memory, uint64(uint32(v0))+64))
+					t337 := m._JS_NewCConstructor(v0, i32(59), i32(8215), i32(18), i32(1), i32(5), i32(3), t336, i32(0), i32(0), i32(0x6000), i32(1), i32(9))
+					v1 = t337
+					if v1&i64(-0x100000000) == i64(0x600000000) {
+						goto l40
+					}
+					if uint64(v1) >= uint64(i64(-0x900000000)) {
+						{
+							v4 = int32(v1) - i32(4)
+							t338 := int32(load32(m.memory, uint32(v4)))
+							v5 = t338
+							store32(m.memory, uint32(v4), uint32(v5-i32(1)))
+							if v5 > i32(1) {
+								goto l42
+							}
+							t339 := int32(load32(m.memory, uint64(uint32(v0))+8))
+							m.___JS_FreeValueRT(t339, v1)
+						}
+					l42:
+					}
+					t340 := int32(load32(m.memory, uint64(uint32(v0))+48))
+					t341 := v0
+					v5 = t340
+					t342 := int64(load64(m.memory, uint64(uint32(v5))+472))
+					t343 := int64(load64(m.memory, uint64(uint32(v5))+480))
+					t344 := m._JS_SetConstructor2(t341, t342, t343, i32(1), i32(1))
+					v7 = t344
+				}
+			l40:
+				if v7 != 0 {
+					goto l20
+				}
+				{
+					{
+						t345 := int32(load32(m.memory, uint64(uint32(v0))+8))
+						v5 = t345
+						t346 := int32(load32(m.memory, uint64(uint32(v5))+568))
+						if uint32(t346) >= uint32(i32(62)) {
+							t347 := int32(load32(m.memory, uint64(uint32(v5))+572))
+							t348 := int32(load32(m.memory, uint64(uint32(t347))+1464))
+							if t348 != 0 {
+								goto l43
+							}
+						}
+						v7 = i32(-1)
+						t349 := m._init_class_range(v5, i32(17752), i32(61), i32(1))
+						if t349 != 0 {
+							goto l44
+						}
+					}
+				l43:
+					v7 = i32(-1)
+					t350 := m._JS_NewCConstructor(v0, i32(61), i32(10592), i32(41), i32(1), i32(4), i32(0), i64(0x300000000), i32(0), i32(0), i32(33264), i32(2), i32(0))
+					v1 = t350
+					if v1&i64(-0x100000000) == i64(0x600000000) {
+						goto l44
+					}
+					if uint64(v1) >= uint64(i64(-0x900000000)) {
+						{
+							v6 = int32(v1) - i32(4)
+							t351 := int32(load32(m.memory, uint32(v6)))
+							v4 = t351
+							store32(m.memory, uint32(v6), uint32(v4-i32(1)))
+							if v4 > i32(1) {
+								goto l45
+							}
+							t352 := int32(load32(m.memory, uint64(uint32(v0))+8))
+							m.___JS_FreeValueRT(t352, v1)
+						}
+					l45:
+					}
+					{
+						t353 := int32(load32(m.memory, uint64(uint32(v5))+568))
+						if uint32(t353) >= uint32(i32(63)) {
+							t354 := int32(load32(m.memory, uint64(uint32(v5))+572))
+							t355 := int32(load32(m.memory, uint64(uint32(t354))+1488))
+							if t355 != 0 {
+								goto l46
+							}
+						}
+						t356 := m._init_class_range(v5, i32(17764), i32(62), i32(1))
+						if t356 != 0 {
+							goto l44
+						}
+					}
+				l46:
+					t357 := m._JS_NewCConstructor(v0, i32(62), i32(2178), i32(42), i32(1), i32(4), i32(0), i64(0x300000000), i32(0), i32(0), i32(33296), i32(3), i32(0))
+					v1 = t357
+					if v1&i64(-0x100000000) == i64(0x600000000) {
+						goto l44
+					}
+					if uint64(v1) >= uint64(i64(-0x900000000)) {
+						{
+							v4 = int32(v1) - i32(4)
+							t358 := int32(load32(m.memory, uint32(v4)))
+							v5 = t358
+							store32(m.memory, uint32(v4), uint32(v5-i32(1)))
+							if v5 > i32(1) {
+								goto l47
+							}
+							t359 := int32(load32(m.memory, uint64(uint32(v0))+8))
+							m.___JS_FreeValueRT(t359, v1)
+						}
+					l47:
+					}
+					v7 = i32(0)
+				}
+			l44:
+				if v7 != 0 {
+					goto l20
 				}
 				return v0
 			}
-		l0:
+		l20:
 		}
 		m.XJS_FreeContext(v0)
 	}
 	return i32(0)
-}
-func (m *Module) XJS_AddIntrinsicBaseObjects(v0 int32) int32 {
-	var v1, v2 int64
-	var v3, v4, v5, v6 int32
-	t0 := m.___stack_pointer
-	v6 = t0 - i32(32)
-	m.___stack_pointer = v6
-	t1 := int64(load64(m.memory, uint64(uint32(v0))+56))
-	t2 := m._JS_NewCFunction3(v0, i32(16), i32(0), i32(0), i32(0), i32(0), t1, i32(0))
-	t3 := v0
-	v1 = t2
-	store64(m.memory, uint64(uint32(t3))+184, uint64(v1))
-	v5 = i32(-1)
-	if v1&i64(-0x100000000) != i64(0x600000000) {
-		t4 := int64(load64(m.memory, uint64(uint32(v0))+56))
-		t5 := m.XJS_DefineProperty(v0, t4, i32(83), i64(0x300000000), v1, v1, i32(6401))
-		if t5 < i32(0) {
-			goto l0
-		}
-		t6 := int64(load64(m.memory, uint64(uint32(v0))+56))
-		t7 := int64(load64(m.memory, uint64(uint32(v0))+184))
-		t8 := v0
-		v1 = t7
-		t9 := m.XJS_DefineProperty(t8, t6, i32(81), i64(0x300000000), v1, v1, i32(6401))
-		if t9 < i32(0) {
-			goto l0
-		}
-		t10 := m._js_object_seal(v0, v1, v0, v0+i32(184), i32(1))
-		v1 = t10
-		if uint64(v1) >= uint64(i64(-0x900000000)) {
-			{
-				v4 = int32(v1) - i32(4)
-				t11 := int32(load32(m.memory, uint32(v4)))
-				v3 = t11
-				store32(m.memory, uint32(v4), uint32(v3-i32(1)))
-				if v3 > i32(1) {
-					goto l1
-				}
-				t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t12, v1)
-			}
-		l1:
-		}
-		t13 := m._JS_NewCConstructor(v0, i32(1), i32(4654), i32(17), i32(1), i32(4), i32(0), i64(0x300000000), i32(26864), i32(23), i32(27232), i32(11), i32(4))
-		v1 = t13
-		if v1&i64(-0x100000000) == i64(0x600000000) {
-			goto l0
-		}
-		if uint64(v1) >= uint64(i64(-0x900000000)) {
-			{
-				v4 = int32(v1) - i32(4)
-				t14 := int32(load32(m.memory, uint32(v4)))
-				v3 = t14
-				store32(m.memory, uint32(v4), uint32(v3-i32(1)))
-				if v3 > i32(1) {
-					goto l2
-				}
-				t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t15, v1)
-			}
-		l2:
-		}
-		t16 := m._JS_NewCConstructor(v0, i32(13), i32(8253), i32(18), i32(1), i32(5), i32(0), i64(0x300000000), i32(0), i32(0), i32(27408), i32(8), i32(4))
-		v1 = t16
-		if v1&i64(-0x100000000) == i64(0x600000000) {
-			goto l0
-		}
-		store64(m.memory, uint64(uint32(v0))+64, uint64(v1))
-		t17 := m._JS_NewCConstructor(v0, i32(39), i32(6391), i32(19), i32(0), i32(4), i32(0), i64(0x300000000), i32(27536), i32(2), i32(27568), i32(13), i32(0))
-		t18 := v6
-		v1 = t17
-		store64(m.memory, uint64(uint32(t18))+8, uint64(v1))
-		if v1&i64(-0x100000000) == i64(0x600000000) {
-			goto l0
-		}
-		t19 := m.XJS_NewCFunctionData(v0, i32(20), i32(0), i32(0), i32(1), v6+i32(8))
-		v2 = t19
-		if v2&i64(-0x100000000) == i64(0x600000000) {
-			if uint64(v1) < uint64(i64(-0x900000000)) {
-				goto l0
-			}
-			v4 = int32(v1) - i32(4)
-			t20 := int32(load32(m.memory, uint32(v4)))
-			v3 = t20
-			store32(m.memory, uint32(v4), uint32(v3-i32(1)))
-			if v3 > i32(1) {
-				goto l0
-			}
-			t21 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.___JS_FreeValueRT(t21, v1)
-			goto l0
-		}
-		t22 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		t23 := int64(load64(m.memory, uint64(uint32(t22))+312))
-		t24 := m.XJS_DefineProperty(v0, t23, i32(64), i64(0x300000000), v2, v2, i32(6145))
-		if t24 < i32(0) {
-			if uint64(v1) >= uint64(i64(-0x900000000)) {
-				{
-					v3 = int32(v1) - i32(4)
-					t25 := int32(load32(m.memory, uint32(v3)))
-					v5 = t25
-					store32(m.memory, uint32(v3), uint32(v5-i32(1)))
-					if v5 > i32(1) {
-						goto l3
-					}
-					t26 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.___JS_FreeValueRT(t26, v1)
-				}
-			l3:
-			}
-			v5 = i32(-1)
-			if uint64(v2) < uint64(i64(-0x900000000)) {
-				goto l0
-			}
-			v4 = int32(v2) - i32(4)
-			t27 := int32(load32(m.memory, uint32(v4)))
-			v3 = t27
-			store32(m.memory, uint32(v4), uint32(v3-i32(1)))
-			if v3 > i32(1) {
-				goto l0
-			}
-			t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.___JS_FreeValueRT(t28, v2)
-			goto l0
-		}
-		if uint64(v2) >= uint64(i64(-0x900000000)) {
-			{
-				v3 = int32(v2) - i32(4)
-				t29 := int32(load32(m.memory, uint32(v3)))
-				v5 = t29
-				store32(m.memory, uint32(v3), uint32(v5-i32(1)))
-				if v5 > i32(1) {
-					goto l4
-				}
-				t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t30, v2)
-			}
-		l4:
-		}
-		store64(m.memory, uint64(uint32(v0))+160, uint64(v1))
-		t31 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		t32 := int64(load64(m.memory, uint64(uint32(t31))+312))
-		t33 := m._JS_NewObjectProtoList(v0, t32, i32(27776), i32(3))
-		v1 = t33
-		t34 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		store64(m.memory, uint64(uint32(t34))+320, uint64(v1))
-		v5 = i32(-1)
-		t35 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		v3 = t35
-		t36 := int64(load32(m.memory, uint64(uint32(v3))+324))
-		if t36<<32 == i64(0x600000000) {
-			goto l0
-		}
-		t37 := int64(load64(m.memory, uint64(uint32(v3))+312))
-		t38 := m._JS_NewObjectProtoList(v0, t37, i32(27824), i32(3))
-		v1 = t38
-		t39 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		store64(m.memory, uint64(uint32(t39))+328, uint64(v1))
-		t40 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		v3 = t40
-		t41 := int64(load32(m.memory, uint64(uint32(v3))+332))
-		if t41<<32 == i64(0x600000000) {
-			goto l0
-		}
-		t42 := int64(load64(m.memory, uint64(uint32(v3))+312))
-		t43 := m._JS_NewObjectProtoList(v0, t42, i32(27872), i32(2))
-		v1 = t43
-		t44 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		store64(m.memory, uint64(uint32(t44))+336, uint64(v1))
-		t45 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		v3 = t45
-		t46 := int64(load32(m.memory, uint64(uint32(v3))+340))
-		if t46<<32 == i64(0x600000000) {
-			goto l0
-		}
-		t47 := int64(load64(m.memory, uint64(uint32(v3))+16))
-		t48 := v0
-		t49 := v0
-		v1 = t47
-		t50 := m.XJS_GetPropertyInternal(t49, v1, i32(111), v1, i32(0))
-		v1 = t50
-		store64(m.memory, uint64(uint32(t48))+176, uint64(v1))
-		if v1&i64(-0x100000000) == i64(0x600000000) {
-			goto l0
-		}
-		t51 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		t52 := int64(load64(m.memory, uint64(uint32(t51))+312))
-		t53 := m._JS_NewObjectProtoList(v0, t52, i32(27904), i32(2))
-		v1 = t53
-		t54 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		store64(m.memory, uint64(uint32(t54))+360, uint64(v1))
-		t55 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		t56 := int64(load32(m.memory, uint64(uint32(t55))+364))
-		if t56<<32 == i64(0x600000000) {
-			goto l0
-		}
-		t57 := int64(load64(m.memory, uint64(uint32(v0))+200))
-		t58 := m.XJS_SetPropertyFunctionList(v0, t57, i32(27936), i32(15))
-		if t58 != 0 {
-			goto l0
-		}
-		t59 := m._JS_NewCConstructor(v0, i32(4), i32(7609), i32(21), i32(1), i32(4), i32(0), i64(0x300000000), i32(28256), i32(14), i32(28480), i32(6), i32(2))
-		v1 = t59
-		if v1&i64(-0x100000000) == i64(0x600000000) {
-			goto l0
-		}
-		if uint64(v1) >= uint64(i64(-0x900000000)) {
-			{
-				v4 = int32(v1) - i32(4)
-				t60 := int32(load32(m.memory, uint32(v4)))
-				v3 = t60
-				store32(m.memory, uint32(v4), uint32(v3-i32(1)))
-				if v3 > i32(1) {
-					goto l5
-				}
-				t61 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t61, v1)
-			}
-		l5:
-		}
-		t62 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		t63 := int64(load64(m.memory, uint64(uint32(t62))+32))
-		t64 := m._JS_SetObjectData(v0, t63, i64(0))
-		if t64 != 0 {
-			goto l0
-		}
-		t65 := m._JS_NewCConstructor(v0, i32(6), i32(9066), i32(22), i32(1), i32(4), i32(0), i64(0x300000000), i32(0), i32(0), i32(28576), i32(2), i32(2))
-		v1 = t65
-		if v1&i64(-0x100000000) == i64(0x600000000) {
-			goto l0
-		}
-		if uint64(v1) >= uint64(i64(-0x900000000)) {
-			{
-				v4 = int32(v1) - i32(4)
-				t66 := int32(load32(m.memory, uint32(v4)))
-				v3 = t66
-				store32(m.memory, uint32(v4), uint32(v3-i32(1)))
-				if v3 > i32(1) {
-					goto l6
-				}
-				t67 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t67, v1)
-			}
-		l6:
-		}
-		t68 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		t69 := int64(load64(m.memory, uint64(uint32(t68))+48))
-		t70 := m._JS_SetObjectData(v0, t69, i64(0x100000000))
-		if t70 != 0 {
-			goto l0
-		}
-		t71 := m._JS_NewCConstructor(v0, i32(5), i32(10400), i32(23), i32(1), i32(4), i32(0), i64(0x300000000), i32(28608), i32(3), i32(28656), i32(50), i32(2))
-		v1 = t71
-		if v1&i64(-0x100000000) == i64(0x600000000) {
-			goto l0
-		}
-		if uint64(v1) >= uint64(i64(-0x900000000)) {
-			{
-				v4 = int32(v1) - i32(4)
-				t72 := int32(load32(m.memory, uint32(v4)))
-				v3 = t72
-				store32(m.memory, uint32(v4), uint32(v3-i32(1)))
-				if v3 > i32(1) {
-					goto l7
-				}
-				t73 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t73, v1)
-			}
-		l7:
-		}
-		t74 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		t75 := int64(load64(m.memory, uint64(uint32(t74))+40))
-		t76 := m.___JS_AtomToValue(v0, i32(47), i32(1))
-		t77 := m._JS_SetObjectData(v0, t75, t76)
-		if t77 != 0 {
-			goto l0
-		}
-		t78 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		t79 := int64(load64(m.memory, uint64(uint32(t78))+312))
-		t80 := m._JS_NewObjectProtoList(v0, t79, i32(29568), i32(2))
-		v1 = t80
-		t81 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		store64(m.memory, uint64(uint32(t81))+368, uint64(v1))
-		t82 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		t83 := int64(load32(m.memory, uint64(uint32(t82))+372))
-		if t83<<32 == i64(0x600000000) {
-			goto l0
-		}
-		_ = m._gettimeofday(v6+i32(16), i32(0))
-		t85 := int64(int32(load32(m.memory, uint64(uint32(v6))+24)))
-		t86 := int64(load64(m.memory, uint64(uint32(v6))+16))
-		t87 := v0
-		v1 = t85 + t86*i64(1000000)
-		p88 := v1
-		if uint64(v1) <= uint64(i64(1)) {
-			p88 = i64(1)
-		}
-		store64(m.memory, uint64(uint32(t87))+216, uint64(p88))
-		t89 := int64(load64(m.memory, uint64(uint32(v0))+200))
-		t90 := m.XJS_SetPropertyFunctionList(v0, t89, i32(29600), i32(1))
-		if t90 != 0 {
-			goto l0
-		}
-		t91 := int64(load64(m.memory, uint64(uint32(v0))+200))
-		t92 := m.XJS_SetPropertyFunctionList(v0, t91, i32(30352), i32(1))
-		if t92 != 0 {
-			goto l0
-		}
-		t93 := m._JS_NewCConstructor(v0, i32(7), i32(9157), i32(24), i32(0), i32(4), i32(0), i64(0x300000000), i32(30592), i32(15), i32(30832), i32(5), i32(0))
-		v1 = t93
-		if v1&i64(-0x100000000) == i64(0x600000000) {
-			goto l0
-		}
-		if uint64(v1) >= uint64(i64(-0x900000000)) {
-			{
-				v4 = int32(v1) - i32(4)
-				t94 := int32(load32(m.memory, uint32(v4)))
-				v3 = t94
-				store32(m.memory, uint32(v4), uint32(v3-i32(1)))
-				if v3 > i32(1) {
-					goto l8
-				}
-				t95 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t95, v1)
-			}
-		l8:
-		}
-		t96 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		t97 := int64(load64(m.memory, uint64(uint32(t96))+312))
-		t98 := m._JS_NewObjectProtoList(v0, t97, i32(30912), i32(4))
-		v1 = t98
-		t99 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		store64(m.memory, uint64(uint32(t99))+384, uint64(v1))
-		t100 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		t101 := int64(load32(m.memory, uint64(uint32(t100))+388))
-		if t101<<32 == i64(0x600000000) {
-			goto l0
-		}
-		t102 := int64(load64(m.memory, uint64(uint32(v0))+64))
-		t103 := m._JS_NewCConstructor(v0, i32(16), i32(8220), i32(18), i32(1), i32(5), i32(1), t102, i32(0), i32(0), i32(30976), i32(1), i32(9))
-		v1 = t103
-		if v1&i64(-0x100000000) == i64(0x600000000) {
-			goto l0
-		}
-		if uint64(v1) >= uint64(i64(-0x900000000)) {
-			{
-				v4 = int32(v1) - i32(4)
-				t104 := int32(load32(m.memory, uint32(v4)))
-				v3 = t104
-				store32(m.memory, uint32(v4), uint32(v3-i32(1)))
-				if v3 > i32(1) {
-					goto l9
-				}
-				t105 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t105, v1)
-			}
-		l9:
-		}
-		t106 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		t107 := v0
-		v3 = t106
-		t108 := int64(load64(m.memory, uint64(uint32(v3))+128))
-		t109 := int64(load64(m.memory, uint64(uint32(v3))+384))
-		t110 := m._JS_SetConstructor2(t107, t108, t109, i32(1), i32(1))
-		if t110 != 0 {
-			goto l0
-		}
-		t111 := int64(load64(m.memory, uint64(uint32(v0))+200))
-		t112 := v0
-		t113 := v0
-		v1 = t111
-		t114 := m.XJS_GetPropertyInternal(t113, v1, i32(62), v1, i32(0))
-		v1 = t114
-		store64(m.memory, uint64(uint32(t112))+192, uint64(v1))
-		if v1&i64(-0x100000000) == i64(0x600000000) {
-			goto l0
-		}
-		t115 := int64(load64(m.memory, uint64(uint32(v0))+200))
-		v1 = t115
-		if uint64(v1) >= uint64(i64(-0x900000000)) {
-			v3 = int32(v1) - i32(4)
-			t116 := int32(load32(m.memory, uint32(v3)))
-			store32(m.memory, uint32(v3), uint32(t116+i32(1)))
-		}
-		t117 := m.XJS_DefinePropertyValue(v0, v1, i32(144), v1, i32(3))
-		if t117 < i32(0) {
-			goto l0
-		}
-		t118 := m._JS_NewCConstructor(v0, i32(34), i32(3963), i32(43), i32(1), i32(4), i32(0), i64(0x300000000), i32(30992), i32(2), i32(31024), i32(3), i32(0))
-		v1 = t118
-		var p119 int32
-		if v1&i64(-0x100000000) != i64(0x600000000) {
-			if uint64(v1) >= uint64(i64(-0x900000000)) {
-				{
-					v3 = int32(v1) - i32(4)
-					t120 := int32(load32(m.memory, uint32(v3)))
-					v5 = t120
-					store32(m.memory, uint32(v3), uint32(v5-i32(1)))
-					if v5 > i32(1) {
-						goto l10
-					}
-					t121 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.___JS_FreeValueRT(t121, v1)
-				}
-			l10:
-			}
-			p119 = i32(0)
-		} else {
-			p119 = i32(-1)
-		}
-		p122 := i32(0)
-		if p119 != 0 {
-			p122 = i32(-1)
-		}
-		v5 = p122
-	}
-l0:
-	m.___stack_pointer = v6 + i32(32)
-	return v5
-}
-func (m *Module) XJS_AddIntrinsicDate(v0 int32) int32 {
-	var v1 int64
-	var v2, v3 int32
-	t0 := m._JS_NewCConstructor(v0, i32(10), i32(11025), i32(25), i32(7), i32(4), i32(0), i64(0x300000000), i32(24768), i32(3), i32(24816), i32(47), i32(0))
-	v1 = t0
-	var p1 int32
-	if v1&i64(-0x100000000) != i64(0x600000000) {
-		if uint64(v1) >= uint64(i64(-0x900000000)) {
-			{
-				v3 = int32(v1) - i32(4)
-				t2 := int32(load32(m.memory, uint32(v3)))
-				v2 = t2
-				store32(m.memory, uint32(v3), uint32(v2-i32(1)))
-				if v2 > i32(1) {
-					goto l0
-				}
-				t3 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t3, v1)
-			}
-		l0:
-		}
-		p1 = i32(0)
-	} else {
-		p1 = i32(-1)
-	}
-	return p1
 }
 func (m *Module) ___JS_EvalInternal(v0 int32, v1 int64, v2, v3, v4, v5, v6 int32) int64 {
 	var v7, v8, v9, v10, v11, v12, v13, v14 int32
@@ -17171,618 +17577,6 @@ func (m *Module) XJS_SetPropertyFunctionList(v0 int32, v1 int64, v2, v3 int32) i
 l0:
 	m.___stack_pointer = v9 + i32(96)
 	return v10
-}
-func (m *Module) XJS_AddIntrinsicRegExp(v0 int32) int32 {
-	var v1, v2 int32
-	var v3 int64
-	store32(m.memory, uint64(uint32(v0))+236, uint32(i32(26)))
-	v2 = i32(-1)
-	{
-		t0 := m._JS_NewCConstructor(v0, i32(18), i32(7800), i32(27), i32(2), i32(4), i32(0), i64(0x300000000), i32(22912), i32(2), i32(22944), i32(19), i32(0))
-		v3 = t0
-		if v3&i64(-0x100000000) != i64(0x600000000) {
-			store64(m.memory, uint64(uint32(v0))+80, uint64(v3))
-			t1 := int32(load32(m.memory, uint64(uint32(v0))+48))
-			t2 := int64(load64(m.memory, uint64(uint32(t1))+312))
-			t3 := m._JS_NewObjectProtoList(v0, t2, i32(23296), i32(2))
-			v3 = t3
-			t4 := int32(load32(m.memory, uint64(uint32(v0))+48))
-			store64(m.memory, uint64(uint32(t4))+376, uint64(v3))
-			t5 := int32(load32(m.memory, uint64(uint32(v0))+48))
-			v1 = t5
-			t6 := int64(load32(m.memory, uint64(uint32(v1))+380))
-			if t6<<32 == i64(0x600000000) {
-				goto l0
-			}
-			t7 := int64(load64(m.memory, uint64(uint32(v1))+144))
-			t8 := v0
-			t9 := v0
-			v3 = t7
-			p10 := i32(0)
-			if uint64(v3) > uint64(i64(-0x100000001)) {
-				p10 = int32(v3)
-			}
-			t11 := m._js_new_shape2(t9, p10, i32(1))
-			v1 = t11
-			store32(m.memory, uint64(uint32(t8))+40, uint32(v1))
-			if v1 == 0 {
-				goto l0
-			}
-			t12 := m._add_shape_property(v0, v0+i32(40), i32(0), i32(89), i32(2))
-			if t12 != 0 {
-				goto l0
-			}
-			t13 := int32(load32(m.memory, uint64(uint32(v0))+48))
-			t14 := int64(load64(m.memory, uint64(uint32(t13))+16))
-			t15 := v0
-			t16 := v0
-			v3 = t14
-			p17 := i32(0)
-			if uint64(v3) > uint64(i64(-0x100000001)) {
-				p17 = int32(v3)
-			}
-			t18 := m._js_new_shape2(t16, p17, i32(4))
-			v1 = t18
-			store32(m.memory, uint64(uint32(t15))+44, uint32(v1))
-			if v1 == 0 {
-				goto l0
-			}
-			t19 := v0
-			v1 = v0 + i32(44)
-			t20 := m._add_shape_property(t19, v1, i32(0), i32(50), i32(10))
-			if t20 != 0 {
-				goto l0
-			}
-			t21 := m._add_shape_property(v0, v1, i32(0), i32(91), i32(7))
-			if t21 != 0 {
-				goto l0
-			}
-			t22 := m._add_shape_property(v0, v1, i32(0), i32(92), i32(7))
-			if t22 != 0 {
-				goto l0
-			}
-			t23 := m._add_shape_property(v0, v1, i32(0), i32(140), i32(7))
-			p24 := i32(0)
-			if t23 != 0 {
-				p24 = i32(-1)
-			}
-			v2 = p24
-		}
-	}
-l0:
-	return v2
-}
-func (m *Module) XJS_AddIntrinsicProxy(v0 int32) int32 {
-	var v1, v2 int32
-	var v3 int64
-	{
-		t0 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		v1 = t0
-		t1 := int32(load32(m.memory, uint64(uint32(v1))+568))
-		if uint32(t1) >= uint32(i32(52)) {
-			t2 := int32(load32(m.memory, uint64(uint32(v1))+572))
-			t3 := int32(load32(m.memory, uint64(uint32(t2))+1224))
-			if t3 != 0 {
-				goto l0
-			}
-		}
-		t4 := m._init_class_range(v1, i32(17544), i32(51), i32(1))
-		if t4 != 0 {
-			return i32(-1)
-		} else {
-			t5 := int32(load32(m.memory, uint64(uint32(v1))+572))
-			store32(m.memory, uint64(uint32(t5))+1244, uint32(i32(17556)))
-			t6 := int32(load32(m.memory, uint64(uint32(v1))+572))
-			store32(m.memory, uint64(uint32(t6))+1240, uint32(i32(28)))
-		}
-	}
-l0:
-	t7 := int64(load64(m.memory, uint64(uint32(v0))+56))
-	t8 := m._JS_NewCFunction3(v0, i32(29), i32(1918), i32(2), i32(2), i32(0), t7, i32(3))
-	v3 = t8
-	if v3&i64(-0x100000000) != i64(0x600000000) {
-		{
-			if uint64(v3) >= uint64(i64(-0x100000000)) {
-				v1 = int32(v3)
-				t9 := int32(load16(m.memory, uint64(uint32(v1))+8))
-				store16(m.memory, uint64(uint32(v1))+8, uint16(t9|i32(32)))
-			}
-			t10 := m.XJS_SetPropertyFunctionList(v0, v3, i32(23424), i32(1))
-			if t10 == 0 {
-				t11 := int64(load64(m.memory, uint64(uint32(v0))+200))
-				t12 := m.XJS_DefinePropertyValueStr(v0, t11, i32(1918), v3, i32(3))
-				if t12 >= i32(0) {
-					return i32(0)
-				}
-			}
-			if uint64(v3) < uint64(i64(-0x900000000)) {
-				goto l1
-			}
-			v2 = int32(v3) - i32(4)
-			t13 := int32(load32(m.memory, uint32(v2)))
-			v1 = t13
-			store32(m.memory, uint32(v2), uint32(v1-i32(1)))
-			if v1 > i32(1) {
-				goto l1
-			}
-			t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.___JS_FreeValueRT(t14, v3)
-		}
-	l1:
-	}
-	return i32(-1)
-}
-func (m *Module) XJS_AddIntrinsicMapSet(v0 int32) int32 {
-	var v1, v2, v3, v4, v5, v6 int32
-	var v7 int64
-	t0 := m.___stack_pointer
-	v5 = t0 + i32(-64)
-	m.___stack_pointer = v5
-	v3 = i32(17600)
-	v6 = i32(-1)
-	{
-	l2:
-		{
-			t1 := int32(m.memory[uint32(v1+i32(17624))])
-			v4 = t1
-			t2 := int32(load32(m.memory, uint32(v3)))
-			v2 = t2
-			t3 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			t4 := m._JS_AtomGetStrRT(t3, v5, v1+i32(198))
-			t5 := v0
-			t6 := v1 + i32(35)
-			t7 := v1
-			var p8 int32
-			if uint32(v1) < uint32(i32(2)) {
-				p8 = 1
-			}
-			t9 := m._JS_NewCConstructor(t5, t6, t4, i32(30), i32(0), i32(3), t7, i64(0x300000000), i32(23440), p8<<1, v2, v4, i32(0))
-			v7 = t9
-			if v7&i64(-0x100000000) == i64(0x600000000) {
-				goto l0
-			}
-			if uint64(v7) >= uint64(i64(-0x900000000)) {
-				{
-					v2 = int32(v7) - i32(4)
-					t10 := int32(load32(m.memory, uint32(v2)))
-					v4 = t10
-					store32(m.memory, uint32(v2), uint32(v4-i32(1)))
-					if v4 > i32(1) {
-						goto l1
-					}
-					t11 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.___JS_FreeValueRT(t11, v7)
-				}
-			l1:
-			}
-			v3 = v3 + i32(4)
-			v1 = v1 + i32(1)
-			if v1 != i32(4) {
-				goto l2
-			}
-		}
-		t12 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		v3 = t12
-		v1 = i32(0)
-	l4:
-		{
-			t13 := int64(load64(m.memory, uint64(uint32(v3))+312))
-			t14 := int32(load32(m.memory, uint32(v1<<2+i32(17616))))
-			t15 := int32(m.memory[uint32(v1+i32(17628))])
-			t16 := m._JS_NewObjectProtoList(v0, t13, t14, t15)
-			v7 = t16
-			v2 = v1<<3 + i32(344)
-			t17 := int32(load32(m.memory, uint64(uint32(v0))+48))
-			store64(m.memory, uint32(v2+t17), uint64(v7))
-			t18 := int32(load32(m.memory, uint64(uint32(v0))+48))
-			t19 := v2
-			v3 = t18
-			t20 := int64(load32(m.memory, uint64(uint32(t19+v3))+4))
-			v7 = t20 << 32
-			if v7 == i64(0x600000000) {
-				goto l3
-			}
-			t21 := v1
-			v1 = i32(1)
-			if t21 == 0 {
-				goto l4
-			}
-		}
-	l3:
-		p22 := i32(0)
-		if v7 == i64(0x600000000) {
-			p22 = i32(-1)
-		}
-		v6 = p22
-	}
-l0:
-	m.___stack_pointer = v5 - i32(-64)
-	return v6
-}
-func (m *Module) XJS_AddIntrinsicTypedArrays(v0 int32) int32 {
-	var v1, v2, v3, v4, v5, v6 int32
-	var v7, v8, v9 int64
-	t0 := m.___stack_pointer
-	v6 = t0 + i32(-64)
-	m.___stack_pointer = v6
-	v3 = i32(-1)
-	t1 := m._JS_NewCConstructor(v0, i32(19), i32(7411), i32(31), i32(1), i32(2), i32(0), i64(0x300000000), i32(31072), i32(2), i32(31104), i32(9), i32(0))
-	v7 = t1
-	if v7&i64(-0x100000000) != i64(0x600000000) {
-		{
-			if uint64(v7) >= uint64(i64(-0x900000000)) {
-				{
-					v4 = int32(v7) - i32(4)
-					t2 := int32(load32(m.memory, uint32(v4)))
-					v1 = t2
-					store32(m.memory, uint32(v4), uint32(v1-i32(1)))
-					if v1 > i32(1) {
-						goto l0
-					}
-					t3 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.___JS_FreeValueRT(t3, v7)
-				}
-			l0:
-			}
-			t4 := m._JS_NewCConstructor(v0, i32(20), i32(7372), i32(32), i32(1), i32(2), i32(0), i64(0x300000000), i32(31248), i32(1), i32(31264), i32(6), i32(0))
-			v7 = t4
-			if v7&i64(-0x100000000) == i64(0x600000000) {
-				goto l1
-			}
-			if uint64(v7) >= uint64(i64(-0x900000000)) {
-				{
-					v3 = int32(v7) - i32(4)
-					t5 := int32(load32(m.memory, uint32(v3)))
-					v1 = t5
-					store32(m.memory, uint32(v3), uint32(v1-i32(1)))
-					if v1 > i32(1) {
-						goto l2
-					}
-					t6 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.___JS_FreeValueRT(t6, v7)
-				}
-			l2:
-			}
-			v3 = i32(-1)
-			t7 := m._JS_NewCConstructor(v0, i32(-1), i32(2626), i32(33), i32(0), i32(4), i32(0), i64(0x300000000), i32(31360), i32(3), i32(31408), i32(36), i32(1))
-			v8 = t7
-			if v8&i64(-0x100000000) == i64(0x600000000) {
-				goto l1
-			}
-			{
-				t8 := int32(load32(m.memory, uint64(uint32(v0))+48))
-				t9 := int64(load64(m.memory, uint64(uint32(t8))+16))
-				t10 := v0
-				v7 = t9
-				t11 := m.XJS_GetPropertyInternal(t10, v7, i32(59), v7, i32(0))
-				v9 = t11
-				if v9&i64(-0x100000000) != i64(0x600000000) {
-					{
-						t12 := m.XJS_GetPropertyInternal(v0, v8, i32(63), v8, i32(0))
-						v7 = t12
-						if v7&i64(-0x100000000) == i64(0x600000000) {
-							goto l3
-						}
-						t13 := m.XJS_DefinePropertyValue(v0, v7, i32(59), v9, i32(3))
-						if uint64(v7) >= uint64(i64(-0x900000000)) {
-							{
-								v2 = int32(v7) - i32(4)
-								t14 := int32(load32(m.memory, uint32(v2)))
-								v1 = t14
-								store32(m.memory, uint32(v2), uint32(v1-i32(1)))
-								if v1 > i32(1) {
-									goto l4
-								}
-								t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.___JS_FreeValueRT(t15, v7)
-							}
-						l4:
-						}
-						if t13 < i32(0) {
-							goto l3
-						}
-						v4 = v0 + i32(8)
-						v1 = i32(-12)
-					l6:
-						{
-							t16 := int32(load32(m.memory, uint64(uint32(v0))+8))
-							t17 := m._JS_AtomGetStrRT(t16, v6, v1+i32(194))
-							v2 = t17
-							var p18 int64
-							if v1 != i32(-10) {
-								t19 := v0
-								v5 = v1 + i32(33)
-								t20 := int32(m.memory[uint32(v1+i32(17752))])
-								t21 := v5
-								t22 := v2
-								t23 := v5
-								t24 := v8
-								v2 = t20<<4 + i32(32784)
-								t25 := m._JS_NewCConstructor(t19, t21, t22, i32(34), i32(3), i32(3), t23, t24, v2, i32(1), v2, i32(1), i32(0))
-								p18 = t25
-							} else {
-								t26 := m._JS_NewCConstructor(v0, i32(23), v2, i32(34), i32(3), i32(3), i32(23), v8, i32(31984), i32(3), i32(32544), i32(5), i32(0))
-								p18 = t26
-							}
-							v7 = p18
-							if v7&i64(-0x100000000) == i64(0x600000000) {
-								goto l3
-							}
-							if uint64(v7) >= uint64(i64(-0x900000000)) {
-								{
-									v5 = int32(v7) - i32(4)
-									t27 := int32(load32(m.memory, uint32(v5)))
-									v2 = t27
-									store32(m.memory, uint32(v5), uint32(v2-i32(1)))
-									if v2 > i32(1) {
-										goto l5
-									}
-									t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-									m.___JS_FreeValueRT(t28, v7)
-								}
-							l5:
-							}
-							v1 = v1 + i32(1)
-							if v1 != 0 {
-								goto l6
-							}
-						}
-						if uint64(v8) >= uint64(i64(-0x900000000)) {
-							{
-								v3 = int32(v8) - i32(4)
-								t29 := int32(load32(m.memory, uint32(v3)))
-								v1 = t29
-								store32(m.memory, uint32(v3), uint32(v1-i32(1)))
-								if v1 > i32(1) {
-									goto l7
-								}
-								t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-								m.___JS_FreeValueRT(t30, v8)
-							}
-						l7:
-						}
-						v3 = i32(-1)
-						t31 := m._JS_NewCConstructor(v0, i32(33), i32(2967), i32(35), i32(1), i32(2), i32(0), i64(0x300000000), i32(0), i32(0), i32(32848), i32(26), i32(0))
-						v8 = t31
-						if v8&i64(-0x100000000) == i64(0x600000000) {
-							goto l1
-						}
-						v3 = i32(0)
-						if uint64(v8) < uint64(i64(-0x900000000)) {
-							goto l1
-						}
-						v1 = int32(v8) - i32(4)
-						t32 := int32(load32(m.memory, uint32(v1)))
-						v0 = t32
-						store32(m.memory, uint32(v1), uint32(v0-i32(1)))
-						if v0 > i32(1) {
-							goto l1
-						}
-						goto l8
-					}
-				l3:
-				}
-				if uint64(v8) < uint64(i64(-0x900000000)) {
-					goto l1
-				}
-				v4 = int32(v8) - i32(4)
-				t33 := int32(load32(m.memory, uint32(v4)))
-				v1 = t33
-				store32(m.memory, uint32(v4), uint32(v1-i32(1)))
-				if v1 > i32(1) {
-					goto l1
-				}
-				v4 = v0 + i32(8)
-			}
-		l8:
-			t34 := int32(load32(m.memory, uint32(v4)))
-			m.___JS_FreeValueRT(t34, v8)
-		}
-	l1:
-	}
-	m.___stack_pointer = v6 - i32(-64)
-	return v3
-}
-func (m *Module) XJS_AddIntrinsicPromise(v0 int32) int32 {
-	var v1 int64
-	var v2, v3, v4 int32
-	{
-		{
-			t0 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			v2 = t0
-			t1 := int32(load32(m.memory, uint64(uint32(v2))+568))
-			if uint32(t1) >= uint32(i32(53)) {
-				t2 := int32(load32(m.memory, uint64(uint32(v2))+572))
-				t3 := int32(load32(m.memory, uint64(uint32(t2))+1248))
-				if t3 != 0 {
-					goto l0
-				}
-			}
-			v3 = i32(-1)
-			t4 := m._init_class_range(v2, i32(17632), i32(52), i32(9))
-			if t4 != 0 {
-				goto l1
-			}
-			t5 := int32(load32(m.memory, uint64(uint32(v2))+572))
-			store32(m.memory, uint64(uint32(t5))+1288, uint32(i32(36)))
-			t6 := int32(load32(m.memory, uint64(uint32(v2))+572))
-			store32(m.memory, uint64(uint32(t6))+1312, uint32(i32(36)))
-			t7 := int32(load32(m.memory, uint64(uint32(v2))+572))
-			store32(m.memory, uint64(uint32(t7))+1336, uint32(i32(37)))
-			t8 := int32(load32(m.memory, uint64(uint32(v2))+572))
-			store32(m.memory, uint64(uint32(t8))+1360, uint32(i32(38)))
-			t9 := int32(load32(m.memory, uint64(uint32(v2))+572))
-			store32(m.memory, uint64(uint32(t9))+1384, uint32(i32(38)))
-			t10 := int32(load32(m.memory, uint64(uint32(v2))+572))
-			store32(m.memory, uint64(uint32(t10))+1432, uint32(i32(39)))
-		}
-	l0:
-		v3 = i32(-1)
-		t11 := m._JS_NewCConstructor(v0, i32(52), i32(11147), i32(40), i32(1), i32(2), i32(0), i64(0x300000000), i32(24224), i32(9), i32(24368), i32(4), i32(0))
-		v1 = t11
-		if v1&i64(-0x100000000) == i64(0x600000000) {
-			goto l1
-		}
-		store64(m.memory, uint64(uint32(v0))+88, uint64(v1))
-		t12 := int64(load64(m.memory, uint64(uint32(v0))+64))
-		t13 := m._JS_NewCConstructor(v0, i32(55), i32(8238), i32(18), i32(1), i32(5), i32(2), t12, i32(0), i32(0), i32(24432), i32(1), i32(9))
-		v1 = t13
-		if v1&i64(-0x100000000) == i64(0x600000000) {
-			goto l1
-		}
-		if uint64(v1) >= uint64(i64(-0x900000000)) {
-			{
-				v4 = int32(v1) - i32(4)
-				t14 := int32(load32(m.memory, uint32(v4)))
-				v2 = t14
-				store32(m.memory, uint32(v4), uint32(v2-i32(1)))
-				if v2 > i32(1) {
-					goto l2
-				}
-				t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t15, v1)
-			}
-		l2:
-		}
-		t16 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		t17 := int64(load64(m.memory, uint64(uint32(t16))+8))
-		t18 := m._JS_NewObjectProtoList(v0, t17, i32(24448), i32(1))
-		t19 := v0
-		v1 = t18
-		store64(m.memory, uint64(uint32(t19))+168, uint64(v1))
-		if v1&i64(-0x100000000) == i64(0x600000000) {
-			goto l1
-		}
-		t20 := m._JS_NewObjectProtoList(v0, v1, i32(24464), i32(3))
-		v1 = t20
-		t21 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		store64(m.memory, uint64(uint32(t21))+464, uint64(v1))
-		t22 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		t23 := int64(load32(m.memory, uint64(uint32(t22))+468))
-		if t23<<32 == i64(0x600000000) {
-			goto l1
-		}
-		t24 := int64(load64(m.memory, uint64(uint32(v0))+168))
-		t25 := m._JS_NewObjectProtoList(v0, t24, i32(24512), i32(4))
-		v1 = t25
-		t26 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		store64(m.memory, uint64(uint32(t26))+480, uint64(v1))
-		t27 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		t28 := int64(load32(m.memory, uint64(uint32(t27))+484))
-		if t28<<32 == i64(0x600000000) {
-			goto l1
-		}
-		t29 := int64(load64(m.memory, uint64(uint32(v0))+64))
-		t30 := m._JS_NewCConstructor(v0, i32(59), i32(8215), i32(18), i32(1), i32(5), i32(3), t29, i32(0), i32(0), i32(0x6000), i32(1), i32(9))
-		v1 = t30
-		if v1&i64(-0x100000000) == i64(0x600000000) {
-			goto l1
-		}
-		if uint64(v1) >= uint64(i64(-0x900000000)) {
-			{
-				v3 = int32(v1) - i32(4)
-				t31 := int32(load32(m.memory, uint32(v3)))
-				v2 = t31
-				store32(m.memory, uint32(v3), uint32(v2-i32(1)))
-				if v2 > i32(1) {
-					goto l3
-				}
-				t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t32, v1)
-			}
-		l3:
-		}
-		t33 := int32(load32(m.memory, uint64(uint32(v0))+48))
-		t34 := v0
-		v0 = t33
-		t35 := int64(load64(m.memory, uint64(uint32(v0))+472))
-		t36 := int64(load64(m.memory, uint64(uint32(v0))+480))
-		t37 := m._JS_SetConstructor2(t34, t35, t36, i32(1), i32(1))
-		v3 = t37
-	}
-l1:
-	return v3
-}
-func (m *Module) XJS_AddIntrinsicWeakRef(v0 int32) int32 {
-	var v1, v2, v3, v4 int32
-	var v5 int64
-	{
-		{
-			t0 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			v1 = t0
-			t1 := int32(load32(m.memory, uint64(uint32(v1))+568))
-			if uint32(t1) >= uint32(i32(62)) {
-				t2 := int32(load32(m.memory, uint64(uint32(v1))+572))
-				t3 := int32(load32(m.memory, uint64(uint32(t2))+1464))
-				if t3 != 0 {
-					goto l0
-				}
-			}
-			v2 = i32(-1)
-			t4 := m._init_class_range(v1, i32(17752), i32(61), i32(1))
-			if t4 != 0 {
-				goto l1
-			}
-		}
-	l0:
-		v2 = i32(-1)
-		t5 := m._JS_NewCConstructor(v0, i32(61), i32(10592), i32(41), i32(1), i32(4), i32(0), i64(0x300000000), i32(0), i32(0), i32(33264), i32(2), i32(0))
-		v5 = t5
-		if v5&i64(-0x100000000) == i64(0x600000000) {
-			goto l1
-		}
-		if uint64(v5) >= uint64(i64(-0x900000000)) {
-			{
-				v4 = int32(v5) - i32(4)
-				t6 := int32(load32(m.memory, uint32(v4)))
-				v3 = t6
-				store32(m.memory, uint32(v4), uint32(v3-i32(1)))
-				if v3 > i32(1) {
-					goto l2
-				}
-				t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t7, v5)
-			}
-		l2:
-		}
-		{
-			t8 := int32(load32(m.memory, uint64(uint32(v1))+568))
-			if uint32(t8) >= uint32(i32(63)) {
-				t9 := int32(load32(m.memory, uint64(uint32(v1))+572))
-				t10 := int32(load32(m.memory, uint64(uint32(t9))+1488))
-				if t10 != 0 {
-					goto l3
-				}
-			}
-			t11 := m._init_class_range(v1, i32(17764), i32(62), i32(1))
-			if t11 != 0 {
-				goto l1
-			}
-		}
-	l3:
-		t12 := m._JS_NewCConstructor(v0, i32(62), i32(2178), i32(42), i32(1), i32(4), i32(0), i64(0x300000000), i32(0), i32(0), i32(33296), i32(3), i32(0))
-		v5 = t12
-		if v5&i64(-0x100000000) == i64(0x600000000) {
-			goto l1
-		}
-		if uint64(v5) >= uint64(i64(-0x900000000)) {
-			{
-				v2 = int32(v5) - i32(4)
-				t13 := int32(load32(m.memory, uint32(v2)))
-				v1 = t13
-				store32(m.memory, uint32(v2), uint32(v1-i32(1)))
-				if v1 > i32(1) {
-					goto l4
-				}
-				t14 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t14, v5)
-			}
-		l4:
-		}
-		v2 = i32(0)
-	}
-l1:
-	return v2
 }
 func (m *Module) _js_throw_type_error(v0 int32, v1 int64, v2, v3 int32) int64 {
 	var v4 int32
@@ -19494,7 +19288,7 @@ func (m *Module) _js_date_constructor(v0 int32, v1 int64, v2, v3 int32) int64 {
 										goto l5
 									}
 								}
-								t9 := m.XJS_ToFloat64(v0, v7, v5)
+								t9 := m._JS_ToFloat64(v0, v7, v5)
 								if t9 != 0 {
 									goto l6
 								}
@@ -19583,7 +19377,7 @@ func (m *Module) _js_date_constructor(v0 int32, v1 int64, v2, v3 int32) int64 {
 				l9:
 					{
 						t21 := int64(load64(m.memory, uint32(v2+v3)))
-						t22 := m.XJS_ToFloat64(v0, v2+v7, t21)
+						t22 := m._JS_ToFloat64(v0, v2+v7, t21)
 						if t22 != 0 {
 							goto l6
 						}
@@ -19665,15 +19459,6 @@ l10:
 	m.___stack_pointer = v7 - i32(-64)
 	return v4
 }
-func (m *Module) XJS_AddIntrinsicEval(v0 int32) int32 {
-	store32(m.memory, uint64(uint32(v0))+240, uint32(i32(15)))
-	return i32(0)
-}
-func (m *Module) XJS_AddIntrinsicStringNormalize(v0 int32) int32 {
-	t0 := int32(load32(m.memory, uint64(uint32(v0))+48))
-	t1 := int64(load64(m.memory, uint64(uint32(t0))+40))
-	return m.XJS_SetPropertyFunctionList(v0, t1, i32(22880), i32(2))
-}
 func (m *Module) _js_compile_regexp(v0 int32, v1, v2 int64) int64 {
 	var v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16 int32
 	var v17 int64
@@ -19684,7 +19469,7 @@ func (m *Module) _js_compile_regexp(v0 int32, v1, v2 int64) int64 {
 		if v2&i64(-0x100000000) != i64(0x300000000) {
 			{
 				v17 = i64(0x600000000)
-				t1 := m.XJS_ToCStringLen2(v0, v8+i32(92), v2, i32(0))
+				t1 := m._JS_ToCStringLen2(v0, v8+i32(92), v2, i32(0))
 				v5 = t1
 				if v5 == 0 {
 					goto l0
@@ -19784,7 +19569,7 @@ func (m *Module) _js_compile_regexp(v0 int32, v1, v2 int64) int64 {
 		if v7 == 0 {
 			p12 = 1
 		}
-		t13 := m.XJS_ToCStringLen2(t9, t10, t11, p12)
+		t13 := m._JS_ToCStringLen2(t9, t10, t11, p12)
 		v11 = t13
 		if v11 == 0 {
 			goto l0
@@ -20377,10 +20162,6 @@ func (m *Module) _js_regexp_constructor(v0 int32, v1 int64, v2, v3 int32) int64 
 	l13:
 	}
 	return i64(0x600000000)
-}
-func (m *Module) XJS_AddIntrinsicJSON(v0 int32) int32 {
-	t0 := int64(load64(m.memory, uint64(uint32(v0))+200))
-	return m.XJS_SetPropertyFunctionList(v0, t0, i32(23328), i32(1))
 }
 func (m *Module) _js_proxy_call(v0 int32, v1, v2 int64, v3, v4, v5 int32) int64 {
 	var v6, v7 int64
@@ -21086,7 +20867,7 @@ func (m *Module) _js_typed_array_constructor(v0 int32, v1 int64, v2, v3, v4 int3
 						goto l0
 					}
 					t5 := int64(load64(m.memory, uint64(uint32(v3))+8))
-					t6 := m.XJS_ToIndex(v0, v2, t5)
+					t6 := m._JS_ToIndex(v0, v2, t5)
 					if t6 == 0 {
 						{
 							t7 := int64(load64(m.memory, uint32(v2)))
@@ -21101,7 +20882,7 @@ func (m *Module) _js_typed_array_constructor(v0 int32, v1 int64, v2, v3, v4 int3
 										t10 := int64(load64(m.memory, uint64(uint32(v3))+16))
 										v7 = t10
 										if v7&i64(-0x100000000) != i64(0x300000000) {
-											t11 := m.XJS_ToIndex(v0, v2+i32(8), v7)
+											t11 := m._JS_ToIndex(v0, v2+i32(8), v7)
 											if t11 != 0 {
 												goto l1
 											}
@@ -21343,7 +21124,7 @@ func (m *Module) _js_typed_array_constructor(v0 int32, v1 int64, v2, v3, v4 int3
 		l5:
 		} else {
 			v7 = i64(0x600000000)
-			t55 := m.XJS_ToIndex(v0, v2+i32(8), v5)
+			t55 := m._JS_ToIndex(v0, v2+i32(8), v5)
 			if t55 != 0 {
 				goto l0
 			}
@@ -21414,7 +21195,7 @@ func (m *Module) _js_dataview_constructor(v0 int32, v1 int64, v2, v3 int32) int6
 				store64(m.memory, uint64(uint32(v6))+8, uint64(i64(0)))
 				if v2 >= i32(2) {
 					t4 := int64(load64(m.memory, uint64(uint32(v3))+8))
-					t5 := m.XJS_ToIndex(v0, v6+i32(8), t4)
+					t5 := m._JS_ToIndex(v0, v6+i32(8), t4)
 					if t5 != 0 {
 						goto l1
 					}
@@ -21445,7 +21226,7 @@ func (m *Module) _js_dataview_constructor(v0 int32, v1 int64, v2, v3 int32) int6
 							if v11&i64(-0x100000000) == i64(0x300000000) {
 								goto l2
 							}
-							t15 := m.XJS_ToIndex(v0, v6, v11)
+							t15 := m._JS_ToIndex(v0, v6, v11)
 							if t15 != 0 {
 								goto l1
 							}
@@ -22152,13 +21933,6 @@ func (m *Module) _js_finrec_constructor(v0 int32, v1 int64, v2, v3 int32) int64 
 	}
 	_ = m.XJS_ThrowTypeError(v0, i32(8187), i32(0))
 	return i64(0x600000000)
-}
-func (m *Module) XJS_GetContextOpaque(v0 int32) int32 {
-	t0 := int32(load32(m.memory, uint64(uint32(v0))+244))
-	return t0
-}
-func (m *Module) XJS_SetContextOpaque(v0, v1 int32) {
-	store32(m.memory, uint64(uint32(v0))+244, uint32(v1))
 }
 func (m *Module) XJS_SetClassProto(v0, v1 int32, v2 int64) {
 	var v3 int64
@@ -23308,14 +23082,14 @@ func (m *Module) XJS_FreeAtom(v0, v1 int32) {
 	l0:
 	}
 }
-func (m *Module) XJS_AtomToCStringLen(v0, v1, v2 int32) int32 {
+func (m *Module) _JS_AtomToCStringLen(v0, v1, v2 int32) int32 {
 	var v3 int64
 	var v4 int32
 	{
 		t0 := m.___JS_AtomToValue(v0, v2, i32(1))
 		v3 = t0
 		if v3&i64(-0x100000000) != i64(0x600000000) {
-			t1 := m.XJS_ToCStringLen2(v0, v1, v3, i32(0))
+			t1 := m._JS_ToCStringLen2(v0, v1, v3, i32(0))
 			v2 = t1
 			if uint64(v3) < uint64(i64(-0x900000000)) {
 				goto l0
@@ -23341,7 +23115,7 @@ func (m *Module) XJS_AtomToCStringLen(v0, v1, v2 int32) int32 {
 l0:
 	return v2
 }
-func (m *Module) XJS_ToCStringLen2(v0, v1 int32, v2 int64, v3 int32) int32 {
+func (m *Module) _JS_ToCStringLen2(v0, v1 int32, v2 int64, v3 int32) int32 {
 	var v4, v5, v6, v7, v8, v9, v10, v11, v12 int32
 	{
 		if v2&i64(-0x100000000) == i64(-0x700000000) {
@@ -23651,7 +23425,7 @@ func (m *Module) _string_buffer_realloc(v0, v1, v2 int32) int32 {
 				}
 				t8 := int32(load32(m.memory, uint32(v0)))
 				t9 := int32(load32(m.memory, uint64(uint32(v0))+4))
-				t10 := m.Xjs_realloc2(t8, t9, i32_shl(v1, v3)-v3+i32(13), v4+i32(12))
+				t10 := m._js_realloc2(t8, t9, i32_shl(v1, v3)-v3+i32(13), v4+i32(12))
 				v2 = t10
 				if v2 != 0 {
 					store32(m.memory, uint64(uint32(v0))+4, uint32(v2))
@@ -24550,11 +24324,6 @@ func (m *Module) _js_function_set_properties(v0 int32, v1 int64, v2, v3 int32) {
 	t1 := m.___JS_AtomToValue(v0, v2, i32(1))
 	_ = m.XJS_DefinePropertyValue(v0, v1, i32(58), t1, i32(1))
 }
-func (m *Module) XJS_SetOpaque(v0 int64, v1 int32) {
-	if uint64(v0) >= uint64(i64(-0x100000000)) {
-		store32(m.memory, uint64(uint32(int32(v0)))+24, uint32(v1))
-	}
-}
 func (m *Module) XJS_MarkValue(v0 int32, v1 int64, v2 int32) {
 	if uint64(v1) >= uint64(i64(-0x300000000)) {
 		m.t0[uint(v2)].(func(int32, int32))(v0, int32(v1))
@@ -24576,920 +24345,6 @@ func (m *Module) XJS_IsLiveObject(v0 int32, v1 int64) int32 {
 		p2 = 1
 	}
 	return p2
-}
-func (m *Module) XJS_ComputeMemoryUsage(v0, v1 int32) {
-	var v2, v3, v4, v5, v6, v7, v8, v9 int32
-	var v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26 int64
-	var v27, v28, v29, v30, v31 float64
-	memory_zero(m.memory, uint32(v1), uint32(i32(208)))
-	t0 := int64(load32(m.memory, uint64(uint32(v0))+520))
-	store64(m.memory, uint64(uint32(v1))+24, uint64(t0))
-	t1 := int64(load32(m.memory, uint64(uint32(v0))+524))
-	store64(m.memory, uint32(v1), uint64(t1))
-	t2 := int64(load32(m.memory, uint64(uint32(v0))+528))
-	v10 = t2
-	v11 = i64(2)
-	store64(m.memory, uint64(uint32(v1))+32, uint64(i64(2)))
-	store64(m.memory, uint64(uint32(v1))+8, uint64(v10))
-	t3 := int32(load32(m.memory, uint64(uint32(v0))+568))
-	t4 := v1
-	v12 = int64(uint32(t3<<3 + i32(760)))
-	store64(m.memory, uint64(uint32(t4))+16, uint64(v12))
-	t5 := int32(load32(m.memory, uint64(uint32(v0))+580))
-	v4 = t5
-	t6 := v4
-	v8 = v0 + i32(576)
-	if t6 != v8 {
-	l5:
-		{
-			t7 := int32(load32(m.memory, uint64(uint32(v4))+16))
-			v2 = t7
-			t8 := v1
-			v11 = v11 + i64(2)
-			store64(m.memory, uint64(uint32(t8))+32, uint64(v11))
-			t9 := int32(load32(m.memory, uint64(uint32(v0))+568))
-			t10 := v1
-			v12 = v12 + int64(uint32(t9<<3+i32(248)))
-			store64(m.memory, uint64(uint32(t10))+16, uint64(v12))
-			t11 := int64(load16(m.memory, uint64(uint32(v4))+8))
-			t12 := v1
-			v14 = v14 + t11
-			store64(m.memory, uint64(uint32(t12))+192, uint64(v14))
-			t13 := int64(int32(load32(m.memory, uint64(uint32(v4))+12)))
-			t14 := v1
-			v13 = v13 + t13
-			store64(m.memory, uint64(uint32(t14))+200, uint64(v13))
-			if v2 != 0 {
-				{
-					t15 := int32(m.memory[uint64(uint32(v2))+8])
-					if t15 != 0 {
-						goto l0
-					}
-					t16 := int32(load32(m.memory, uint64(uint32(v2))+16))
-					v3 = t16
-					t17 := v1
-					v15 = v15 + i64(1)
-					store64(m.memory, uint64(uint32(t17))+104, uint64(v15))
-					t18 := int32(load32(m.memory, uint64(uint32(v2))+20))
-					t19 := v1
-					v16 = v16 + int64(uint32(v3<<2+t18<<3+i32(44)))
-					store64(m.memory, uint64(uint32(t19))+112, uint64(v16))
-				}
-			l0:
-			}
-			t20 := int32(load32(m.memory, uint64(uint32(v4))+220))
-			v3 = t20
-			t21 := v3
-			v9 = v4 + i32(216)
-			if t21 != v9 {
-			l4:
-				{
-					t22 := v1
-					v12 = v12 + i64(200)
-					store64(m.memory, uint64(uint32(t22))+16, uint64(v12))
-					t23 := v1
-					v10 = v11 + i64(1)
-					store64(m.memory, uint64(uint32(t23))+32, uint64(v10))
-					t24 := int32(load32(m.memory, uint64(uint32(v3))+8))
-					if t24 != 0 {
-						t25 := v1
-						v10 = v11 + i64(2)
-						store64(m.memory, uint64(uint32(t25))+32, uint64(v10))
-						t26 := int32(load32(m.memory, uint64(uint32(v3))+12))
-						t27 := v1
-						v12 = v12 + int64(uint32(t26<<4))
-						store64(m.memory, uint64(uint32(t27))+16, uint64(v12))
-					}
-					t28 := int32(load32(m.memory, uint64(uint32(v3))+20))
-					if t28 != 0 {
-						{
-							t29 := v1
-							v10 = v10 + i64(1)
-							store64(m.memory, uint64(uint32(t29))+32, uint64(v10))
-							t30 := int32(load32(m.memory, uint64(uint32(v3))+24))
-							t31 := v1
-							v12 = v12 + int64(uint32(t30*i32(20)))
-							store64(m.memory, uint64(uint32(t31))+16, uint64(v12))
-							t32 := int32(load32(m.memory, uint64(uint32(v3))+24))
-							if t32 <= i32(0) {
-								goto l1
-							}
-							v2 = i32(0)
-							v5 = i32(4)
-						l3:
-							{
-								t33 := int32(load32(m.memory, uint64(uint32(v3))+20))
-								v6 = t33 + v5
-								t34 := int32(load32(m.memory, uint64(uint32(v6))+4))
-								if t34 == 0 {
-									{
-										t35 := int32(load32(m.memory, uint32(v6)))
-										if t35 == 0 {
-											goto l2
-										}
-										t36 := v1
-										v10 = v10 + i64(1)
-										store64(m.memory, uint64(uint32(t36))+32, uint64(v10))
-										t37 := int32(load32(m.memory, uint32(v6)))
-										t38 := int64(load64(m.memory, uint64(uint32(t37))+16))
-										v11 = t38
-										if v11&i64(-0x100000000) != i64(-0x700000000) {
-											goto l2
-										}
-										v6 = int32(v11)
-										t39 := int32(load32(m.memory, uint64(uint32(v6))+4))
-										if uint32(t39) > uint32(i32(0x3fffffff)) {
-											goto l2
-										}
-										t40 := int32(load32(m.memory, uint32(v6)))
-										t41 := v27
-										v7 = t40
-										t42 := int32(load32(m.memory, uint32(v6-i32(4))))
-										t43 := float64(uint32(i32_shl(v7&i32(0x7fffffff), int32(uint32(v7)>>31)) + v7>>31 + i32(13)))
-										v28 = float64(t42)
-										v27 = float64(t41 + float64(t43/v28))
-										v29 = float64(v29 + float64(float64(1)/v28))
-									}
-								l2:
-								}
-								v5 = v5 + i32(20)
-								v2 = v2 + i32(1)
-								t44 := int32(load32(m.memory, uint64(uint32(v3))+24))
-								if v2 < t44 {
-									goto l3
-								}
-							}
-						}
-					l1:
-					}
-					t45 := int32(load32(m.memory, uint64(uint32(v3))+32))
-					if t45 != 0 {
-						t46 := v1
-						v10 = v10 + i64(1)
-						store64(m.memory, uint64(uint32(t46))+32, uint64(v10))
-						t47 := int32(load32(m.memory, uint64(uint32(v3))+36))
-						t48 := v1
-						v12 = v12 + int64(uint32(t47<<2))
-						store64(m.memory, uint64(uint32(t48))+16, uint64(v12))
-					}
-					t49 := int32(load32(m.memory, uint64(uint32(v3))+44))
-					if t49 != 0 {
-						t50 := v1
-						v11 = v10 + i64(1)
-						store64(m.memory, uint64(uint32(t50))+32, uint64(v11))
-						t51 := int32(load32(m.memory, uint64(uint32(v3))+48))
-						t52 := v1
-						v12 = v12 + int64(uint32(t51<<4))
-						store64(m.memory, uint64(uint32(t52))+16, uint64(v12))
-					} else {
-						v11 = v10
-					}
-					t53 := int64(load64(m.memory, uint64(uint32(v3))+60))
-					v10 = t53
-					if v10&i64(-0x100000000) == i64(-0x700000000) {
-						v2 = int32(v10)
-						t54 := int32(load32(m.memory, uint64(uint32(v2))+4))
-						if uint32(t54) <= uint32(i32(0x3fffffff)) {
-							t55 := int32(load32(m.memory, uint32(v2)))
-							t56 := v27
-							v5 = t55
-							t57 := int32(load32(m.memory, uint32(v2-i32(4))))
-							t58 := float64(uint32(i32_shl(v5&i32(0x7fffffff), int32(uint32(v5)>>31)) + v5>>31 + i32(13)))
-							v28 = float64(t57)
-							v27 = float64(t56 + float64(t58/v28))
-							v29 = float64(v29 + float64(float64(1)/v28))
-						}
-					}
-					t59 := int64(load64(m.memory, uint64(uint32(v3))+68))
-					v10 = t59
-					if v10&i64(-0x100000000) == i64(-0x700000000) {
-						v2 = int32(v10)
-						t60 := int32(load32(m.memory, uint64(uint32(v2))+4))
-						if uint32(t60) <= uint32(i32(0x3fffffff)) {
-							t61 := int32(load32(m.memory, uint32(v2)))
-							t62 := v27
-							v5 = t61
-							t63 := int32(load32(m.memory, uint32(v2-i32(4))))
-							t64 := float64(uint32(i32_shl(v5&i32(0x7fffffff), int32(uint32(v5)>>31)) + v5>>31 + i32(13)))
-							v28 = float64(t63)
-							v27 = float64(t62 + float64(t64/v28))
-							v29 = float64(v29 + float64(float64(1)/v28))
-						}
-					}
-					t65 := int32(load32(m.memory, uint64(uint32(v3))+4))
-					t66 := v9
-					v3 = t65
-					if t66 != v3 {
-						goto l4
-					}
-				}
-			}
-			t67 := int32(load32(m.memory, uint64(uint32(v4))+4))
-			t68 := v8
-			v4 = t67
-			if t68 != v4 {
-				goto l5
-			}
-		}
-	}
-	t69 := int32(load32(m.memory, uint64(uint32(v0))+588))
-	v4 = t69
-	t70 := v4
-	v9 = v0 + i32(584)
-	if t70 != v9 {
-		v14 = i64(0)
-		v13 = i64(0)
-	l33:
-		{
-			{
-				t71 := int32(m.memory[uint32(v4-i32(5))])
-				switch t71 & i32(127) {
-				default:
-					goto l8
-				case 0:
-					t72 := int32(load32(m.memory, uint64(uint32(v4))+16))
-					v6 = t72
-					t73 := v1
-					v14 = v14 + i64(1)
-					store64(m.memory, uint64(uint32(t73))+72, uint64(v14))
-					t74 := int32(load32(m.memory, uint64(uint32(v4))+20))
-					if t74 != 0 {
-						{
-							t75 := v1
-							v11 = v11 + i64(1)
-							store64(m.memory, uint64(uint32(t75))+32, uint64(v11))
-							t76 := int32(load32(m.memory, uint64(uint32(v6))+20))
-							t77 := v1
-							v24 = v24 + int64(uint32(t76<<3))
-							store64(m.memory, uint64(uint32(t77))+96, uint64(v24))
-							t78 := int64(int32(load32(m.memory, uint64(uint32(v6))+24)))
-							t79 := v1
-							v17 = v17 + t78
-							store64(m.memory, uint64(uint32(t79))+88, uint64(v17))
-							t80 := int32(load32(m.memory, uint64(uint32(v6))+24))
-							v2 = t80
-							if v2 <= i32(0) {
-								goto l9
-							}
-							t81 := int32(load32(m.memory, uint64(uint32(v6))+16))
-							v5 = v6 + t81<<2 + i32(44)
-							t82 := int32(load32(m.memory, uint64(uint32(v4))+20))
-							v3 = t82
-						l11:
-							{
-								t83 := int32(load32(m.memory, uint64(uint32(v5))+4))
-								if t83 != 0 {
-									{
-										t84 := int32(load32(m.memory, uint32(v5)))
-										if uint32(t84) > uint32(i32(0x3fffffff)) {
-											goto l10
-										}
-										t85 := int64(load64(m.memory, uint32(v3)))
-										v10 = t85
-										if v10&i64(-0x100000000) != i64(-0x700000000) {
-											goto l10
-										}
-										v7 = int32(v10)
-										t86 := int32(load32(m.memory, uint64(uint32(v7))+4))
-										if uint32(t86) > uint32(i32(0x3fffffff)) {
-											goto l10
-										}
-										t87 := int32(load32(m.memory, uint32(v7)))
-										t88 := v27
-										v8 = t87
-										t89 := int32(load32(m.memory, uint32(v7-i32(4))))
-										t90 := float64(uint32(i32_shl(v8&i32(0x7fffffff), int32(uint32(v8)>>31)) + v8>>31 + i32(13)))
-										v28 = float64(t89)
-										v27 = float64(t88 + float64(t90/v28))
-										v29 = float64(v29 + float64(float64(1)/v28))
-									}
-								l10:
-								}
-								v3 = v3 + i32(8)
-								v5 = v5 + i32(8)
-								v2 = v2 - i32(1)
-								if v2 != 0 {
-									goto l11
-								}
-							}
-						}
-					l9:
-					}
-					t91 := int32(m.memory[uint64(uint32(v6))+8])
-					if t91 == 0 {
-						t92 := int32(load32(m.memory, uint64(uint32(v6))+16))
-						v2 = t92
-						t93 := v1
-						v15 = v15 + i64(1)
-						store64(m.memory, uint64(uint32(t93))+104, uint64(v15))
-						t94 := int32(load32(m.memory, uint64(uint32(v6))+20))
-						t95 := v1
-						v16 = v16 + int64(uint32(v2<<2+t94<<3+i32(44)))
-						store64(m.memory, uint64(uint32(t95))+112, uint64(v16))
-					}
-					{
-						t96 := int32(load16(m.memory, uint64(uint32(v4))+10))
-						switch t96 - i32(2) {
-						case 15:
-							t97 := int32(load32(m.memory, uint64(uint32(v4))+24))
-							v2 = t97
-							if v2 == 0 {
-								goto l8
-							}
-							t98 := int64(load64(m.memory, uint32(v2)))
-							v10 = t98
-							if v10&i64(-0x100000000) == i64(-0x700000000) {
-								v2 = int32(v10)
-								t99 := int32(load32(m.memory, uint64(uint32(v2))+4))
-								if uint32(t99) <= uint32(i32(0x3fffffff)) {
-									t100 := int32(load32(m.memory, uint32(v2)))
-									t101 := v27
-									v3 = t100
-									t102 := int32(load32(m.memory, uint32(v2-i32(4))))
-									t103 := float64(uint32(i32_shl(v3&i32(0x7fffffff), int32(uint32(v3)>>31)) + v3>>31 + i32(13)))
-									v28 = float64(t102)
-									v27 = float64(t101 + float64(t103/v28))
-									v29 = float64(v29 + float64(float64(1)/v28))
-								}
-							}
-							t104 := v1
-							v12 = v12 + i64(24)
-							store64(m.memory, uint64(uint32(t104))+16, uint64(v12))
-							goto l23
-						case 16:
-							t105 := int32(load32(m.memory, uint64(uint32(v4))+24))
-							v2 = t105
-							t106 := int32(load32(m.memory, uint64(uint32(v2))+4))
-							if uint32(t106) <= uint32(i32(0x3fffffff)) {
-								t107 := int32(load32(m.memory, uint32(v2)))
-								t108 := v27
-								v3 = t107
-								t109 := int32(load32(m.memory, uint32(v2-i32(4))))
-								t110 := float64(uint32(i32_shl(v3&i32(0x7fffffff), int32(uint32(v3)>>31)) + v3>>31 + i32(13)))
-								v28 = float64(t109)
-								v27 = float64(t108 + float64(t110/v28))
-								v29 = float64(v29 + float64(float64(1)/v28))
-							}
-							t111 := int32(load32(m.memory, uint64(uint32(v4))+28))
-							v2 = t111
-							t112 := int32(load32(m.memory, uint64(uint32(v2))+4))
-							if uint32(t112) > uint32(i32(0x3fffffff)) {
-								goto l8
-							}
-							t113 := int32(load32(m.memory, uint32(v2)))
-							t114 := v27
-							v3 = t113
-							t115 := int32(load32(m.memory, uint32(v2-i32(4))))
-							t116 := float64(uint32(i32_shl(v3&i32(0x7fffffff), int32(uint32(v3)>>31)) + v3>>31 + i32(13)))
-							v28 = float64(t115)
-							v27 = float64(t114 + float64(t116/v28))
-							v29 = float64(v29 + float64(float64(1)/v28))
-							goto l8
-						case 17, 18:
-							t117 := int32(load32(m.memory, uint64(uint32(v4))+24))
-							v2 = t117
-							if v2 == 0 {
-								goto l8
-							}
-							t118 := v1
-							v12 = v12 + i64(32)
-							store64(m.memory, uint64(uint32(t118))+16, uint64(v12))
-							t119 := v1
-							v10 = v11 + i64(1)
-							store64(m.memory, uint64(uint32(t119))+32, uint64(v10))
-							t120 := int32(load32(m.memory, uint64(uint32(v2))+12))
-							if t120 != 0 {
-								t121 := v1
-								v11 = v11 + i64(2)
-								store64(m.memory, uint64(uint32(t121))+32, uint64(v11))
-								t122 := int64(int32(load32(m.memory, uint32(v2))))
-								t123 := v1
-								v12 = v12 + t122
-								store64(m.memory, uint64(uint32(t123))+16, uint64(v12))
-							} else {
-								v11 = v10
-							}
-							goto l8
-						case 0, 6:
-							t124 := v1
-							v25 = v25 + i64(1)
-							store64(m.memory, uint64(uint32(t124))+168, uint64(v25))
-							t125 := int32(m.memory[uint64(uint32(v4))+8])
-							if t125&i32(16) == 0 {
-								goto l8
-							}
-							t126 := v1
-							v18 = v18 + i64(1)
-							store64(m.memory, uint64(uint32(t126))+176, uint64(v18))
-							t127 := int32(load32(m.memory, uint64(uint32(v4))+28))
-							if t127 == 0 {
-								goto l8
-							}
-							t128 := v1
-							v11 = v11 + i64(1)
-							store64(m.memory, uint64(uint32(t128))+32, uint64(v11))
-							t129 := int32(load32(m.memory, uint64(uint32(v4))+32))
-							t130 := v1
-							v12 = v12 + int64(uint32(t129<<3))
-							store64(m.memory, uint64(uint32(t130))+16, uint64(v12))
-							t131 := int64(load32(m.memory, uint64(uint32(v4))+32))
-							t132 := v1
-							v19 = v19 + t131
-							store64(m.memory, uint64(uint32(t132))+184, uint64(v19))
-							t133 := int32(load32(m.memory, uint64(uint32(v4))+32))
-							v3 = t133
-							if v3 == 0 {
-								goto l8
-							}
-							t134 := int32(load32(m.memory, uint64(uint32(v4))+28))
-							v5 = t134
-						l24:
-							{
-								t135 := int64(load64(m.memory, uint32(v5)))
-								v10 = t135
-								if v10&i64(-0x100000000) == i64(-0x700000000) {
-									v2 = int32(v10)
-									t136 := int32(load32(m.memory, uint64(uint32(v2))+4))
-									if uint32(t136) <= uint32(i32(0x3fffffff)) {
-										t137 := int32(load32(m.memory, uint32(v2)))
-										t138 := v27
-										v6 = t137
-										t139 := int32(load32(m.memory, uint32(v2-i32(4))))
-										t140 := float64(uint32(i32_shl(v6&i32(0x7fffffff), int32(uint32(v6)>>31)) + v6>>31 + i32(13)))
-										v28 = float64(t139)
-										v27 = float64(t138 + float64(t140/v28))
-										v29 = float64(v29 + float64(float64(1)/v28))
-									}
-								}
-								v5 = v5 + i32(8)
-								v3 = v3 - i32(1)
-								if v3 != 0 {
-									goto l24
-								}
-							}
-							goto l8
-						case 2, 3, 4, 5, 8, 32:
-							t141 := int64(load64(m.memory, uint64(uint32(v4))+24))
-							v10 = t141
-							if v10&i64(-0x100000000) != i64(-0x700000000) {
-								goto l8
-							}
-							v2 = int32(v10)
-							t142 := int32(load32(m.memory, uint64(uint32(v2))+4))
-							if uint32(t142) > uint32(i32(0x3fffffff)) {
-								goto l8
-							}
-							t143 := int32(load32(m.memory, uint32(v2)))
-							t144 := v27
-							v3 = t143
-							t145 := int32(load32(m.memory, uint32(v2-i32(4))))
-							t146 := float64(uint32(i32_shl(v3&i32(0x7fffffff), int32(uint32(v3)>>31)) + v3>>31 + i32(13)))
-							v28 = float64(t145)
-							v27 = float64(t144 + float64(t146/v28))
-							v29 = float64(v29 + float64(float64(1)/v28))
-							goto l8
-						case 7:
-							t147 := int32(m.memory[uint64(uint32(v4))+8])
-							if t147&i32(16) == 0 {
-								goto l8
-							}
-							t148 := v1
-							v18 = v18 + i64(1)
-							store64(m.memory, uint64(uint32(t148))+176, uint64(v18))
-							t149 := int32(load32(m.memory, uint64(uint32(v4))+28))
-							if t149 == 0 {
-								goto l8
-							}
-							t150 := v1
-							v11 = v11 + i64(1)
-							store64(m.memory, uint64(uint32(t150))+32, uint64(v11))
-							t151 := int32(load32(m.memory, uint64(uint32(v4))+32))
-							t152 := v1
-							v12 = v12 + int64(uint32(t151<<2))
-							store64(m.memory, uint64(uint32(t152))+16, uint64(v12))
-							t153 := int64(load32(m.memory, uint64(uint32(v4))+32))
-							t154 := v1
-							v19 = v19 + t153
-							store64(m.memory, uint64(uint32(t154))+184, uint64(v19))
-							t155 := int32(load32(m.memory, uint64(uint32(v4))+32))
-							v3 = t155
-							if v3 == 0 {
-								goto l8
-							}
-							t156 := int32(load32(m.memory, uint64(uint32(v4))+28))
-							v5 = t156
-						l25:
-							{
-								t157 := int32(load32(m.memory, uint32(v5)))
-								t158 := int32(load32(m.memory, uint64(uint32(t157))+12))
-								t159 := int64(load64(m.memory, uint32(t158)))
-								v10 = t159
-								if v10&i64(-0x100000000) == i64(-0x700000000) {
-									v2 = int32(v10)
-									t160 := int32(load32(m.memory, uint64(uint32(v2))+4))
-									if uint32(t160) <= uint32(i32(0x3fffffff)) {
-										t161 := int32(load32(m.memory, uint32(v2)))
-										t162 := v27
-										v6 = t161
-										t163 := int32(load32(m.memory, uint32(v2-i32(4))))
-										t164 := float64(uint32(i32_shl(v6&i32(0x7fffffff), int32(uint32(v6)>>31)) + v6>>31 + i32(13)))
-										v28 = float64(t163)
-										v27 = float64(t162 + float64(t164/v28))
-										v29 = float64(v29 + float64(float64(1)/v28))
-									}
-								}
-								v5 = v5 + i32(4)
-								v3 = v3 - i32(1)
-								if v3 != 0 {
-									goto l25
-								}
-							}
-							goto l8
-						case 10:
-							t165 := v1
-							v26 = v26 + i64(1)
-							store64(m.memory, uint64(uint32(t165))+160, uint64(v26))
-							goto l8
-						case 11:
-							t166 := int32(load32(m.memory, uint64(uint32(v4))+28))
-							v5 = t166
-							if v5 == 0 {
-								goto l8
-							}
-							t167 := int32(load32(m.memory, uint64(uint32(v4))+24))
-							v2 = t167
-							t168 := v1
-							v11 = v11 + i64(1)
-							store64(m.memory, uint64(uint32(t168))+32, uint64(v11))
-							t169 := int32(load32(m.memory, uint64(uint32(v2))+56))
-							t170 := v1
-							v20 = v20 + int64(uint32(t169<<2))
-							store64(m.memory, uint64(uint32(t170))+128, uint64(v20))
-							t171 := int32(load32(m.memory, uint64(uint32(v2))+56))
-							if t171 <= i32(0) {
-								goto l8
-							}
-							v3 = i32(0)
-						l27:
-							{
-								t172 := int32(load32(m.memory, uint32(v5)))
-								v6 = t172
-								if v6 != 0 {
-									{
-										t173 := int32(load32(m.memory, uint32(v6-i32(4))))
-										t174 := v1
-										v28 = float64(t173)
-										v20 = i64_trunc_sat_f64_s(float64(float64(float64(24)/v28) + float64(v20)))
-										store64(m.memory, uint64(uint32(t174))+128, uint64(v20))
-										t175 := v1
-										v11 = i64_trunc_sat_f64_s(float64(float64(float64(1)/v28) + float64(v11)))
-										store64(m.memory, uint64(uint32(t175))+32, uint64(v11))
-										t176 := int32(load32(m.memory, uint32(v5)))
-										v7 = t176
-										v6 = v7 + i32(16)
-										t177 := int32(load32(m.memory, uint64(uint32(v7))+12))
-										if v6 != t177 {
-											goto l26
-										}
-										t178 := int64(load64(m.memory, uint32(v6)))
-										v10 = t178
-										if v10&i64(-0x100000000) != i64(-0x700000000) {
-											goto l26
-										}
-										v6 = int32(v10)
-										t179 := int32(load32(m.memory, uint64(uint32(v6))+4))
-										if uint32(t179) > uint32(i32(0x3fffffff)) {
-											goto l26
-										}
-										t180 := int32(load32(m.memory, uint32(v6)))
-										t181 := v27
-										v7 = t180
-										t182 := int32(load32(m.memory, uint32(v6-i32(4))))
-										t183 := float64(uint32(i32_shl(v7&i32(0x7fffffff), int32(uint32(v7)>>31)) + v7>>31 + i32(13)))
-										v28 = float64(t182)
-										v27 = float64(t181 + float64(t183/v28))
-										v29 = float64(v29 + float64(float64(1)/v28))
-									}
-								l26:
-								}
-								v5 = v5 + i32(4)
-								v3 = v3 + i32(1)
-								t184 := int32(load32(m.memory, uint64(uint32(v2))+56))
-								if v3 < t184 {
-									goto l27
-								}
-							}
-							goto l8
-						case 12:
-							t185 := int32(load32(m.memory, uint64(uint32(v4))+24))
-							v2 = t185
-							t186 := int32(load32(m.memory, uint64(uint32(v2))+16))
-							v3 = t186
-							if v3 > i32(0) {
-								v5 = v2 + i32(24)
-							l28:
-								{
-									t187 := int64(load64(m.memory, uint32(v5)))
-									v10 = t187
-									if v10&i64(-0x100000000) == i64(-0x700000000) {
-										v6 = int32(v10)
-										t188 := int32(load32(m.memory, uint64(uint32(v6))+4))
-										if uint32(t188) <= uint32(i32(0x3fffffff)) {
-											t189 := int32(load32(m.memory, uint32(v6)))
-											t190 := v27
-											v7 = t189
-											t191 := int32(load32(m.memory, uint32(v6-i32(4))))
-											t192 := float64(uint32(i32_shl(v7&i32(0x7fffffff), int32(uint32(v7)>>31)) + v7>>31 + i32(13)))
-											v28 = float64(t191)
-											v27 = float64(t190 + float64(t192/v28))
-											v29 = float64(v29 + float64(float64(1)/v28))
-										}
-									}
-									v5 = v5 + i32(8)
-									v3 = v3 - i32(1)
-									if v3 != 0 {
-										goto l28
-									}
-								}
-							}
-							t193 := v1
-							v11 = v11 + i64(1)
-							store64(m.memory, uint64(uint32(t193))+32, uint64(v11))
-							t194 := int32(load32(m.memory, uint64(uint32(v2))+16))
-							t195 := v1
-							v12 = v12 + int64(uint32(t194<<3+i32(24)))
-							store64(m.memory, uint64(uint32(t195))+16, uint64(v12))
-							goto l8
-						case 13:
-							t196 := int32(load32(m.memory, uint64(uint32(v4))+24))
-							v2 = t196
-							if v2 == 0 {
-								goto l8
-							}
-							t197 := int32(m.memory[uint64(uint32(v2))+5])
-							v3 = t197
-							if v3 != 0 {
-								v5 = v2 + i32(8)
-							l29:
-								{
-									t198 := int64(load64(m.memory, uint32(v5)))
-									v10 = t198
-									if v10&i64(-0x100000000) == i64(-0x700000000) {
-										v6 = int32(v10)
-										t199 := int32(load32(m.memory, uint64(uint32(v6))+4))
-										if uint32(t199) <= uint32(i32(0x3fffffff)) {
-											t200 := int32(load32(m.memory, uint32(v6)))
-											t201 := v27
-											v7 = t200
-											t202 := int32(load32(m.memory, uint32(v6-i32(4))))
-											t203 := float64(uint32(i32_shl(v7&i32(0x7fffffff), int32(uint32(v7)>>31)) + v7>>31 + i32(13)))
-											v28 = float64(t202)
-											v27 = float64(t201 + float64(t203/v28))
-											v29 = float64(v29 + float64(float64(1)/v28))
-										}
-									}
-									v5 = v5 + i32(8)
-									v3 = v3 - i32(1)
-									if v3 != 0 {
-										goto l29
-									}
-								}
-							}
-							t204 := v1
-							v11 = v11 + i64(1)
-							store64(m.memory, uint64(uint32(t204))+32, uint64(v11))
-							t205 := int64(m.memory[uint64(uint32(v2))+5])
-							t206 := v1
-							v12 = v12 + t205<<3 + i64(8)
-							store64(m.memory, uint64(uint32(t206))+16, uint64(v12))
-							goto l8
-						default:
-							t207 := int32(load32(m.memory, uint64(uint32(v4))+24))
-							if t207 == 0 {
-								goto l8
-							}
-						}
-					}
-				l23:
-					t208 := v1
-					v11 = v11 + i64(1)
-					store64(m.memory, uint64(uint32(t208))+32, uint64(v11))
-					goto l8
-				case 1:
-					t209 := int32(load32(m.memory, uint64(uint32(v4))+24))
-					var p210 int32
-					if t209 != 0 {
-						t211 := int32(load16(m.memory, uint64(uint32(v4))+34))
-						t212 := int32(load16(m.memory, uint64(uint32(v4))+32))
-						p210 = (t211+t212)*i32(12) + i32(60)
-					} else {
-						p210 = i32(60)
-					}
-					v2 = p210
-					t213 := int32(load32(m.memory, uint64(uint32(v4))+48))
-					v5 = t213
-					if v5 != 0 {
-						{
-							t214 := int32(load32(m.memory, uint64(uint32(v4))+52))
-							v3 = t214
-							v2 = v3<<3 + v2
-							if v3 <= i32(0) {
-								goto l30
-							}
-						l31:
-							{
-								t215 := int64(load64(m.memory, uint32(v5)))
-								v10 = t215
-								if v10&i64(-0x100000000) == i64(-0x700000000) {
-									v6 = int32(v10)
-									t216 := int32(load32(m.memory, uint64(uint32(v6))+4))
-									if uint32(t216) <= uint32(i32(0x3fffffff)) {
-										t217 := int32(load32(m.memory, uint32(v6)))
-										t218 := v27
-										v7 = t217
-										t219 := int32(load32(m.memory, uint32(v6-i32(4))))
-										t220 := float64(uint32(i32_shl(v7&i32(0x7fffffff), int32(uint32(v7)>>31)) + v7>>31 + i32(13)))
-										v28 = float64(t219)
-										v27 = float64(t218 + float64(t220/v28))
-										v29 = float64(v29 + float64(float64(1)/v28))
-									}
-								}
-								v5 = v5 + i32(8)
-								v3 = v3 - i32(1)
-								if v3 != 0 {
-									goto l31
-								}
-							}
-						}
-					l30:
-					}
-					t221 := int32(load32(m.memory, uint64(uint32(v4))+28))
-					if t221 != 0 {
-						t222 := int32(load32(m.memory, uint64(uint32(v4))+56))
-						v2 = t222<<3 + v2
-					}
-					t223 := int32(load16(m.memory, uint64(uint32(v4))+9))
-					v3 = t223
-					if v3&i32(2048) == 0 {
-						t224 := int32(load32(m.memory, uint64(uint32(v4))+12))
-						if t224 != 0 {
-							t225 := int64(int32(load32(m.memory, uint64(uint32(v4))+16)))
-							v21 = v21 + t225
-						}
-					}
-					v13 = v13 + i64(1)
-					{
-						var p226 int32
-						if v3&i32(1024) != 0 {
-							t227 := int32(load32(m.memory, uint64(uint32(v4))+76))
-							var p228 int32
-							if t227 != 0 {
-								v3 = i32(1)
-								t229 := int32(load32(m.memory, uint64(uint32(v4))+64))
-								p228 = v2 + t229 + i32(21)
-							} else {
-								v3 = i32(0)
-								p228 = v2 + i32(20)
-							}
-							v2 = p228
-							t230 := int32(load32(m.memory, uint64(uint32(v4))+68))
-							v5 = t230
-							if v5 == 0 {
-								goto l32
-							}
-							v22 = v22 + i64(1)
-							v23 = v23 + int64(v5)
-							p226 = v3 + i32(1)
-						} else {
-							p226 = i32(0)
-						}
-						v3 = p226
-					}
-				l32:
-					v30 = float64(v30 + float64(uint32(v3)))
-					v31 = float64(v31 + float64(v2))
-				}
-			}
-		l8:
-			t231 := int32(load32(m.memory, uint64(uint32(v4))+4))
-			t232 := v9
-			v4 = t231
-			if t232 != v4 {
-				goto l33
-			}
-		}
-		v17 = v14 * i64(40)
-	} else {
-		v13 = i64(0)
-	}
-	store64(m.memory, uint64(uint32(v1))+80, uint64(v17))
-	store64(m.memory, uint64(uint32(v1))+32, uint64(v11+i64(1)))
-	t233 := int32(load32(m.memory, uint64(uint32(v0))+740))
-	store64(m.memory, uint64(uint32(v1))+16, uint64(v12+int64(uint32(t233<<2))))
-	t234 := int32(load32(m.memory, uint64(uint32(v0))+740))
-	v3 = t234
-	if v3 > i32(0) {
-		v2 = i32(0)
-	l35:
-		{
-			t235 := int32(load32(m.memory, uint64(uint32(v0))+748))
-			t236 := int32(load32(m.memory, uint32(t235+v2<<2)))
-			v5 = t236
-			if v5 != 0 {
-			l34:
-				{
-					t237 := int32(load32(m.memory, uint64(uint32(v5))+16))
-					v3 = t237
-					t238 := v1
-					v15 = v15 + i64(1)
-					store64(m.memory, uint64(uint32(t238))+104, uint64(v15))
-					t239 := int32(load32(m.memory, uint64(uint32(v5))+20))
-					t240 := v1
-					v16 = v16 + int64(uint32(v3<<2+t239<<3+i32(44)))
-					store64(m.memory, uint64(uint32(t240))+112, uint64(v16))
-					t241 := int32(load32(m.memory, uint64(uint32(v5))+32))
-					v5 = t241
-					if v5 != 0 {
-						goto l34
-					}
-				}
-				t242 := int32(load32(m.memory, uint64(uint32(v0))+740))
-				v3 = t242
-			}
-			t243 := v3
-			v2 = v2 + i32(1)
-			if t243 > v2 {
-				goto l35
-			}
-		}
-	}
-	store64(m.memory, uint64(uint32(v1))+32, uint64(v11+i64(3)))
-	t244 := int64(int32(load32(m.memory, uint64(uint32(v0))+544)))
-	store64(m.memory, uint64(uint32(v1))+40, uint64(t244))
-	t245 := int32(load32(m.memory, uint64(uint32(v0))+540))
-	t246 := int32(load32(m.memory, uint64(uint32(v0))+548))
-	t247 := v1
-	v10 = int64(uint32((t245 + t246) << 2))
-	store64(m.memory, uint64(uint32(t247))+48, uint64(v10))
-	t248 := int32(load32(m.memory, uint64(uint32(v0))+548))
-	v2 = t248
-	if v2 > i32(0) {
-		v5 = i32(0)
-		v3 = i32(0)
-	l36:
-		{
-			t249 := int32(load32(m.memory, uint64(uint32(v0))+560))
-			t250 := int32(load32(m.memory, uint32(t249+v5)))
-			v4 = t250
-			if v4&i32(1) == 0 {
-				t251 := int32(load32(m.memory, uint32(v4)))
-				t252 := v1
-				t253 := v10
-				v2 = t251
-				v10 = t253 + int64(uint32(i32_shl(v2&i32(0x7fffffff), int32(uint32(v2)>>31))+v2>>31+i32(13)))
-				store64(m.memory, uint64(uint32(t252))+48, uint64(v10))
-				t254 := int32(load32(m.memory, uint64(uint32(v0))+548))
-				v2 = t254
-			}
-			v5 = v5 + i32(4)
-			v3 = v3 + i32(1)
-			if v3 < v2 {
-				goto l36
-			}
-		}
-	}
-	t255 := m._round(v29)
-	store64(m.memory, uint64(uint32(v1))+56, uint64(i64_trunc_sat_f64_s(t255)))
-	t256 := m._round(v27)
-	v27 = t256
-	store64(m.memory, uint64(uint32(v1))+120, uint64(v13))
-	store64(m.memory, uint64(uint32(v1))+64, uint64(i64_trunc_sat_f64_s(v27)))
-	t257 := m._round(v31)
-	v27 = t257
-	store64(m.memory, uint64(uint32(v1))+152, uint64(v23))
-	store64(m.memory, uint64(uint32(v1))+144, uint64(v22))
-	store64(m.memory, uint64(uint32(v1))+136, uint64(v21))
-	store64(m.memory, uint64(uint32(v1))+128, uint64(i64_trunc_sat_f64_s(v27)))
-	t258 := m._round(v30)
-	v27 = t258
-	t259 := int64(load64(m.memory, uint64(uint32(v1))+16))
-	t260 := int64(load64(m.memory, uint64(uint32(v1))+152))
-	t261 := int64(load64(m.memory, uint64(uint32(v1))+136))
-	t262 := int64(load64(m.memory, uint64(uint32(v1))+128))
-	t263 := int64(load64(m.memory, uint64(uint32(v1))+112))
-	t264 := int64(load64(m.memory, uint64(uint32(v1))+96))
-	t265 := int64(load64(m.memory, uint64(uint32(v1))+80))
-	t266 := int64(load64(m.memory, uint64(uint32(v1))+64))
-	t267 := int64(load64(m.memory, uint64(uint32(v1))+48))
-	store64(m.memory, uint64(uint32(v1))+16, uint64(t259+(t260+(t261+(t262+(t263+(t264+(t265+(t266+t267)))))))))
-	t268 := int64(load64(m.memory, uint64(uint32(v1))+40))
-	t269 := int64(load64(m.memory, uint64(uint32(v1))+56))
-	t270 := int64(load64(m.memory, uint64(uint32(v1))+72))
-	t271 := int64(load64(m.memory, uint64(uint32(v1))+104))
-	t272 := int64(load64(m.memory, uint64(uint32(v1))+120))
-	t273 := int64(load64(m.memory, uint64(uint32(v1))+144))
-	t274 := int64(load64(m.memory, uint64(uint32(v1))+32))
-	store64(m.memory, uint64(uint32(v1))+32, uint64(i64_trunc_sat_f64_s(float64(float64(float64(float64(float64(float64(float64(v27+float64(t268))+float64(t269))+float64(t270))+float64(t271))+float64(t272))+float64(t273))+float64(t274)))))
 }
 func (m *Module) XJS_GetGlobalObject(v0 int32) int64 {
 	var v1 int64
@@ -26956,17 +25811,6 @@ func (m *Module) XJS_FreePropertyEnum(v0, v1, v2 int32) {
 		m.___js_free(t1, v1)
 	}
 }
-func (m *Module) XJS_GetOwnPropertyNames(v0, v1, v2 int32, v3 int64, v4 int32) int32 {
-	var p0 int32
-	if uint64(v3) > uint64(i64(-0x100000001)) {
-		t1 := m._JS_GetOwnPropertyNamesInternal(v0, v1, v2, int32(v3), v4)
-		p0 = t1
-	} else {
-		_ = m.XJS_ThrowTypeError(v0, i32(4521), i32(0))
-		p0 = i32(-1)
-	}
-	return p0
-}
 func (m *Module) _JS_GetOwnPropertyNamesInternal(v0, v1, v2, v3, v4 int32) int32 {
 	var v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21 int32
 	var v22 int64
@@ -27776,7 +26620,7 @@ func (m *Module) _num_keys_cmp(v0, v1, v2 int32) int32 {
 	}
 	return p7
 }
-func (m *Module) XJS_GetOwnProperty(v0, v1 int32, v2 int64, v3 int32) int32 {
+func (m *Module) _JS_GetOwnProperty(v0, v1 int32, v2 int64, v3 int32) int32 {
 	var p0 int32
 	if uint64(v2) > uint64(i64(-0x100000001)) {
 		t1 := m._JS_GetOwnPropertyInternal(v0, v1, int32(v2), v3)
@@ -30076,7 +28920,7 @@ l0:
 		_ = m.XJS_ThrowTypeError(v0, i32(7455), i32(0))
 		goto l9
 	case 2, 3:
-		t9 := m.XJS_ToCStringLen2(v0, v4+i32(8), v1, i32(0))
+		t9 := m._JS_ToCStringLen2(v0, v4+i32(8), v1, i32(0))
 		v2 = t9
 		if uint64(v1) >= uint64(i64(-0x900000000)) {
 			{
@@ -31211,7 +30055,7 @@ func (m *Module) _expand_fast_array(v0, v1, v2 int32) int32 {
 		p5 = t4
 	}
 	v0 = p5
-	t6 := m.Xjs_realloc2(t3, t1, v0<<3, v3+i32(12))
+	t6 := m._js_realloc2(t3, t1, v0<<3, v3+i32(12))
 	v2 = t6
 	var p7 int32
 	if v2 != 0 {
@@ -32070,38 +30914,6 @@ func (m *Module) XJS_SetUncatchableException(v0, v1 int32) {
 	t0 := int32(load32(m.memory, uint64(uint32(v0))+8))
 	m.memory[uint64(uint32(t0))+648] = byte(v1)
 }
-func (m *Module) XJS_GetOpaque(v0 int64, v1 int32) int32 {
-	var v2, v3 int32
-	if uint64(v0) >= uint64(i64(-0x100000000)) {
-		t0 := v1
-		v2 = int32(v0)
-		t1 := int32(load16(m.memory, uint64(uint32(v2))+10))
-		if t0 == t1 {
-			t2 := int32(load32(m.memory, uint64(uint32(v2))+24))
-			v3 = t2
-		}
-	}
-	return v3
-}
-func (m *Module) XJS_GetOpaque2(v0 int32, v1 int64, v2 int32) int32 {
-	var v3 int32
-	if uint64(v1) >= uint64(i64(-0x100000000)) {
-		t0 := v2
-		v3 = int32(v1)
-		t1 := int32(load16(m.memory, uint64(uint32(v3))+10))
-		if t0 == t1 {
-			t2 := int32(load32(m.memory, uint64(uint32(v3))+24))
-			v3 = t2
-			if v3 != 0 {
-				goto l0
-			}
-		}
-	}
-	m._JS_ThrowTypeErrorInvalidClass(v0, v2)
-	v3 = i32(0)
-l0:
-	return v3
-}
 func (m *Module) _JS_ThrowTypeErrorInvalidClass(v0, v1 int32) {
 	var v2, v3 int32
 	t0 := m.___stack_pointer
@@ -32116,21 +30928,6 @@ func (m *Module) _JS_ThrowTypeErrorInvalidClass(v0, v1 int32) {
 	store32(m.memory, uint32(t2), uint32(t5))
 	_ = m.XJS_ThrowTypeError(v0, i32(13938), v2)
 	m.___stack_pointer = v2 + i32(80)
-}
-func (m *Module) XJS_GetAnyOpaque(v0 int64, v1 int32) int32 {
-	var p0 int32
-	if uint64(v0) > uint64(i64(-0x100000001)) {
-		t1 := v1
-		v1 = int32(v0)
-		t2 := int32(load16(m.memory, uint64(uint32(v1))+10))
-		store32(m.memory, uint32(t1), uint32(t2))
-		t3 := int32(load32(m.memory, uint64(uint32(v1))+24))
-		p0 = t3
-	} else {
-		store32(m.memory, uint32(v1), uint32(i32(0)))
-		p0 = i32(0)
-	}
-	return p0
 }
 func (m *Module) XJS_SetIsHTMLDDA(v0 int32, v1 int64) {
 	if uint64(v1) >= uint64(i64(-0x100000000)) {
@@ -32329,15 +31126,6 @@ func (m *Module) _JS_ToInt64Clamp(v0, v1 int32, v2, v3, v4, v5 int64) int32 {
 	}
 	return v0
 }
-func (m *Module) XJS_ToInt64(v0, v1 int32, v2 int64) int32 {
-	var v3 int32
-	if uint64(v2) >= uint64(i64(-0x900000000)) {
-		v3 = int32(v2) - i32(4)
-		t0 := int32(load32(m.memory, uint32(v3)))
-		store32(m.memory, uint32(v3), uint32(t0+i32(1)))
-	}
-	return m._JS_ToInt64Free(v0, v1, v2)
-}
 func (m *Module) _JS_ToInt64Free(v0, v1 int32, v2 int64) int32 {
 	var v3 int64
 	t1 := v1
@@ -32400,47 +31188,7 @@ l5:
 	store64(m.memory, uint32(t1), uint64(p0))
 	return v0
 }
-func (m *Module) XJS_ToInt64Ext(v0, v1 int32, v2 int64) int32 {
-	var v3 int32
-	v3 = int32(int64(uint64(v2) >> 32))
-	if v3 != i32(7) {
-		if v3 != i32(-9) {
-			if uint64(v2) >= uint64(i64(-0x900000000)) {
-				v3 = int32(v2) - i32(4)
-				t0 := int32(load32(m.memory, uint32(v3)))
-				store32(m.memory, uint32(v3), uint32(t0+i32(1)))
-			}
-			t1 := m._JS_ToInt64Free(v0, v1, v2)
-			return t1
-		}
-	}
-	if uint64(v2) >= uint64(i64(-0x900000000)) {
-		v3 = int32(v2) - i32(4)
-		t2 := int32(load32(m.memory, uint32(v3)))
-		store32(m.memory, uint32(v3), uint32(t2+i32(1)))
-	}
-	t3 := m._JS_ToBigInt64Free(v0, v1, v2)
-	return t3
-}
-func (m *Module) XJS_ToBigInt64(v0, v1 int32, v2 int64) int32 {
-	var v3 int32
-	if uint64(v2) >= uint64(i64(-0x900000000)) {
-		v3 = int32(v2) - i32(4)
-		t0 := int32(load32(m.memory, uint32(v3)))
-		store32(m.memory, uint32(v3), uint32(t0+i32(1)))
-	}
-	return m._JS_ToBigInt64Free(v0, v1, v2)
-}
-func (m *Module) XJS_ToInt32(v0, v1 int32, v2 int64) int32 {
-	var v3 int32
-	if uint64(v2) >= uint64(i64(-0x900000000)) {
-		v3 = int32(v2) - i32(4)
-		t0 := int32(load32(m.memory, uint32(v3)))
-		store32(m.memory, uint32(v3), uint32(t0+i32(1)))
-	}
-	return m._JS_ToInt32Free(v0, v1, v2)
-}
-func (m *Module) XJS_ToIndex(v0, v1 int32, v2 int64) int32 {
+func (m *Module) _JS_ToIndex(v0, v1 int32, v2 int64) int32 {
 	var v3, v4 int32
 	t0 := m.___stack_pointer
 	v4 = t0 - i32(16)
@@ -34776,7 +33524,7 @@ func (m *Module) _build_backtrace(v0 int32, v1 int64, v2, v3, v4, v5 int32) {
 								t25 := m._find_line_num(v4, t23+(t24^i32(-1)), v6+i32(68))
 								v5 = t25
 								t26 := int32(load32(m.memory, uint64(uint32(v4))+60))
-								t27 := m.XJS_AtomToCStringLen(v0, i32(0), t26)
+								t27 := m._JS_AtomToCStringLen(v0, i32(0), t26)
 								t28 := v6
 								v4 = t27
 								p29 := i32(15552)
@@ -35089,15 +33837,15 @@ func (m *Module) _get_var_ref(v0, v1, v2, v3 int32) int32 {
 	store32(m.memory, uint64(uint32(v2))+12, uint32(v4))
 	return v2
 }
-func (m *Module) XJS_GetScriptOrModuleName(v0, v1 int32) int32 {
-	var v2, v3, v4 int32
+func (m *Module) _JS_GetScriptOrModuleName(v0 int32) int32 {
+	var v1, v2, v3, v4 int32
 	var v5 int64
 	t0 := int32(load32(m.memory, uint64(uint32(v0))+8))
 	v4 = t0
 	t1 := int32(load32(m.memory, uint64(uint32(v4))+652))
 	v0 = t1
 	if v0 != 0 {
-		v1 = v1 + i32(1)
+		v1 = i32(1)
 	l0:
 		v1 = v1 - i32(1)
 		if v1 > i32(0) {
@@ -35463,7 +34211,7 @@ func (m *Module) _JS_EvalObject(v0 int32, v1, v2 int64, v3, v4 int32) int64 {
 	v5 = t0 - i32(16)
 	m.___stack_pointer = v5
 	if uint64(int64(uint64(v2)>>32)-i64(0xfffffffb)) > uint64(i64(-3)) {
-		t1 := m.XJS_ToCStringLen2(v0, v5+i32(12), v2, i32(0))
+		t1 := m._JS_ToCStringLen2(v0, v5+i32(12), v2, i32(0))
 		v6 = t1
 		if v6 == 0 {
 			v2 = i64(0x600000000)
@@ -39712,102 +38460,251 @@ l8:
 	return i32(73)
 }
 func (m *Module) _js_dynamic_import_job(v0, v1, v2 int32) int64 {
-	var v3, v4, v5 int32
-	var v6, v7, v8 int64
-	t0 := m.___stack_pointer
-	v4 = t0 - i32(16)
-	m.___stack_pointer = v4
+	var v3, v4, v5, v6, v7 int32
+	var v8, v9, v10, v11 int64
 	{
+		var p0 int32
 		{
-			t1 := int64(load64(m.memory, uint64(uint32(v2))+16))
-			v6 = t1
-			var p2 int32
-			if uint64(int64(uint64(v6)>>32)-i64(0xfffffffb)) > uint64(i64(-3)) {
-				t3 := int64(load64(m.memory, uint64(uint32(v2))+32))
-				v7 = t3
-				t4 := int64(load64(m.memory, uint64(uint32(v2))+24))
-				v8 = t4
-				v1 = i32(0)
-				t5 := m.XJS_ToCStringLen2(v0, i32(0), v6, i32(0))
-				v3 = t5
+			t1 := m.___stack_pointer
+			v5 = t1 - i32(16)
+			m.___stack_pointer = v5
+			t2 := int64(load64(m.memory, uint64(uint32(v2))+16))
+			v8 = t2
+			var p3 int32
+			if uint64(int64(uint64(v8)>>32)-i64(0xfffffffb)) > uint64(i64(-3)) {
+				t4 := int64(load64(m.memory, uint64(uint32(v2))+32))
+				v9 = t4
+				t5 := int64(load64(m.memory, uint64(uint32(v2))+24))
+				v10 = t5
+				t6 := m._JS_ToCStringLen2(v0, i32(0), v8, i32(0))
+				v3 = t6
 				if v3 == 0 {
+					p0 = i32(0)
 					goto l0
 				}
 				v1 = v3
-				t6 := m.XJS_ToCStringLen2(v0, i32(0), v8, i32(0))
-				v3 = t6
-				if v3 == 0 {
+				t7 := m._JS_ToCStringLen2(v0, i32(0), v10, i32(0))
+				t8 := v1
+				v6 = t7
+				if v6 == 0 {
+					p0 = t8
 					goto l0
 				}
-				m._JS_LoadModuleInternal(v0, v1, v3, v2, v7)
-				v5 = v3 - i32(16)
-				t7 := int32(load32(m.memory, uint32(v5)))
-				v2 = t7
-				store32(m.memory, uint32(v5), uint32(v2-i32(1)))
+				t9 := m.___stack_pointer
+				v3 = t9 - i32(48)
+				m.___stack_pointer = v3
+				{
+					t10 := m._js_host_resolve_imported_module(v0, v1, v6, v9)
+					v7 = t10
+					if v7 != 0 {
+						{
+							t11 := m._js_resolve_module(v0, v7)
+							if t11 < i32(0) {
+								m._js_free_modules(v0, i32(1))
+								goto l1
+							}
+							v4 = v7 - i32(4)
+							t12 := int32(load32(m.memory, uint32(v4)))
+							store32(m.memory, uint32(v4), uint32(t12+i32(1)))
+							t13 := v0
+							v11 = int64(uint32(v7)) | i64(-0x300000000)
+							t14 := int64(load64(m.memory, uint64(uint32(v0))+200))
+							t15 := m._JS_EvalFunctionInternal(t13, v11, t14, i32(0), i32(0))
+							v8 = t15
+							if v8&i64(-0x100000000) == i64(0x600000000) {
+								goto l1
+							}
+							t16 := int32(load32(m.memory, uint32(v4)))
+							store32(m.memory, uint32(v4), uint32(t16+i32(1)))
+							store64(m.memory, uint64(uint32(v3))+16, uint64(v11))
+							t17 := int64(load64(m.memory, uint32(v2)))
+							store64(m.memory, uint32(v3), uint64(t17))
+							t18 := int64(load64(m.memory, uint64(uint32(v2))+8))
+							store64(m.memory, uint64(uint32(v3))+8, uint64(t18))
+							t19 := m.XJS_NewCFunctionData(v0, i32(50), i32(0), i32(0), i32(3), v3)
+							t20 := v3
+							v10 = t19
+							store64(m.memory, uint64(uint32(t20))+32, uint64(v10))
+							t21 := m.XJS_NewCFunctionData(v0, i32(51), i32(0), i32(0), i32(3), v3)
+							v9 = t21
+							t22 := int32(load32(m.memory, uint32(v4)))
+							t23 := v4
+							v2 = t22
+							store32(m.memory, uint32(t23), uint32(v2-i32(1)))
+							store64(m.memory, uint64(uint32(v3))+40, uint64(v9))
+							if v2 <= i32(1) {
+								t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
+								m.___JS_FreeValueRT(t24, v11)
+							}
+							t25 := m._js_promise_then(v0, v8, v0, v3+i32(32))
+							v11 = t25
+							if uint64(v11) >= uint64(i64(-0x900000000)) {
+								{
+									v4 = int32(v11) - i32(4)
+									t26 := int32(load32(m.memory, uint32(v4)))
+									v2 = t26
+									store32(m.memory, uint32(v4), uint32(v2-i32(1)))
+									if v2 > i32(1) {
+										goto l2
+									}
+									t27 := int32(load32(m.memory, uint64(uint32(v0))+8))
+									m.___JS_FreeValueRT(t27, v11)
+								}
+							l2:
+							}
+							if uint64(v10) >= uint64(i64(-0x900000000)) {
+								{
+									v4 = int32(v10) - i32(4)
+									t28 := int32(load32(m.memory, uint32(v4)))
+									v2 = t28
+									store32(m.memory, uint32(v4), uint32(v2-i32(1)))
+									if v2 > i32(1) {
+										goto l3
+									}
+									t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
+									m.___JS_FreeValueRT(t29, v10)
+								}
+							l3:
+							}
+							if uint64(v9) >= uint64(i64(-0x900000000)) {
+								{
+									v4 = int32(v9) - i32(4)
+									t30 := int32(load32(m.memory, uint32(v4)))
+									v2 = t30
+									store32(m.memory, uint32(v4), uint32(v2-i32(1)))
+									if v2 > i32(1) {
+										goto l4
+									}
+									t31 := int32(load32(m.memory, uint64(uint32(v0))+8))
+									m.___JS_FreeValueRT(t31, v9)
+								}
+							l4:
+							}
+							if uint64(v8) < uint64(i64(-0x900000000)) {
+								goto l5
+							}
+							v4 = int32(v8) - i32(4)
+							t32 := int32(load32(m.memory, uint32(v4)))
+							v2 = t32
+							store32(m.memory, uint32(v4), uint32(v2-i32(1)))
+							if v2 > i32(1) {
+								goto l5
+							}
+							t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
+							m.___JS_FreeValueRT(t33, v8)
+							goto l5
+						}
+					l1:
+					}
+					t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
+					v4 = t34
+					t35 := int64(load64(m.memory, uint64(uint32(v4))+640))
+					v8 = t35
+					store64(m.memory, uint64(uint32(v4))+640, uint64(i64(0x400000000)))
+					store64(m.memory, uint32(v3), uint64(v8))
+					t36 := int64(load64(m.memory, uint64(uint32(v2))+8))
+					t37 := m._JS_CallInternal(v0, t36, i64(0x300000000), i64(0x300000000), i32(1), v3, i32(2))
+					v8 = t37
+					if uint64(v8) >= uint64(i64(-0x900000000)) {
+						{
+							v4 = int32(v8) - i32(4)
+							t38 := int32(load32(m.memory, uint32(v4)))
+							v2 = t38
+							store32(m.memory, uint32(v4), uint32(v2-i32(1)))
+							if v2 > i32(1) {
+								goto l6
+							}
+							t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
+							m.___JS_FreeValueRT(t39, v8)
+						}
+					l6:
+					}
+					t40 := int64(load64(m.memory, uint32(v3)))
+					v8 = t40
+					if uint64(v8) < uint64(i64(-0x900000000)) {
+						goto l5
+					}
+					v4 = int32(v8) - i32(4)
+					t41 := int32(load32(m.memory, uint32(v4)))
+					v2 = t41
+					store32(m.memory, uint32(v4), uint32(v2-i32(1)))
+					if v2 > i32(1) {
+						goto l5
+					}
+					t42 := int32(load32(m.memory, uint64(uint32(v0))+8))
+					m.___JS_FreeValueRT(t42, v8)
+				}
+			l5:
+				m.___stack_pointer = v3 + i32(48)
+				v3 = v6 - i32(16)
+				t43 := int32(load32(m.memory, uint32(v3)))
+				v2 = t43
+				store32(m.memory, uint32(v3), uint32(v2-i32(1)))
 				if v2 <= i32(1) {
-					t8 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.___JS_FreeValueRT(t8, int64(uint32(v3-i32(12)))|i64(-0x700000000))
+					t44 := int32(load32(m.memory, uint64(uint32(v0))+8))
+					m.___JS_FreeValueRT(t44, int64(uint32(v6-i32(12)))|i64(-0x700000000))
 				}
 				v3 = v1 - i32(16)
-				t9 := int32(load32(m.memory, uint32(v3)))
-				v2 = t9
+				t45 := int32(load32(m.memory, uint32(v3)))
+				v2 = t45
 				store32(m.memory, uint32(v3), uint32(v2-i32(1)))
 				if v2 > i32(1) {
-					goto l1
+					goto l7
 				}
-				t10 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t10, int64(uint32(v1-i32(12)))|i64(-0x700000000))
-				goto l1
+				t46 := int32(load32(m.memory, uint64(uint32(v0))+8))
+				m.___JS_FreeValueRT(t46, int64(uint32(v1-i32(12)))|i64(-0x700000000))
+				goto l7
 			} else {
 				_ = m.XJS_ThrowTypeError(v0, i32(16563), i32(0))
-				p2 = i32(0)
+				p3 = i32(0)
 			}
-			v1 = p2
+			p0 = p3
 		}
 	l0:
-		t12 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		v3 = t12
-		t13 := int64(load64(m.memory, uint64(uint32(v3))+640))
-		v6 = t13
+		v1 = p0
+		t48 := int32(load32(m.memory, uint64(uint32(v0))+8))
+		v3 = t48
+		t49 := int64(load64(m.memory, uint64(uint32(v3))+640))
+		v8 = t49
 		store64(m.memory, uint64(uint32(v3))+640, uint64(i64(0x400000000)))
-		store64(m.memory, uint64(uint32(v4))+8, uint64(v6))
-		t14 := int64(load64(m.memory, uint64(uint32(v2))+8))
-		t15 := m._JS_CallInternal(v0, t14, i64(0x300000000), i64(0x300000000), i32(1), v4+i32(8), i32(2))
-		v6 = t15
-		if uint64(v6) >= uint64(i64(-0x900000000)) {
+		store64(m.memory, uint64(uint32(v5))+8, uint64(v8))
+		t50 := int64(load64(m.memory, uint64(uint32(v2))+8))
+		t51 := m._JS_CallInternal(v0, t50, i64(0x300000000), i64(0x300000000), i32(1), v5+i32(8), i32(2))
+		v8 = t51
+		if uint64(v8) >= uint64(i64(-0x900000000)) {
 			{
-				v3 = int32(v6) - i32(4)
-				t16 := int32(load32(m.memory, uint32(v3)))
-				v2 = t16
+				v3 = int32(v8) - i32(4)
+				t52 := int32(load32(m.memory, uint32(v3)))
+				v2 = t52
 				store32(m.memory, uint32(v3), uint32(v2-i32(1)))
 				if v2 > i32(1) {
-					goto l2
+					goto l8
 				}
-				t17 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t17, v6)
+				t53 := int32(load32(m.memory, uint64(uint32(v0))+8))
+				m.___JS_FreeValueRT(t53, v8)
 			}
-		l2:
+		l8:
 		}
-		t18 := int64(load64(m.memory, uint64(uint32(v4))+8))
-		v6 = t18
-		if uint64(v6) >= uint64(i64(-0x900000000)) {
+		t54 := int64(load64(m.memory, uint64(uint32(v5))+8))
+		v8 = t54
+		if uint64(v8) >= uint64(i64(-0x900000000)) {
 			{
-				v3 = int32(v6) - i32(4)
-				t19 := int32(load32(m.memory, uint32(v3)))
-				v2 = t19
+				v3 = int32(v8) - i32(4)
+				t55 := int32(load32(m.memory, uint32(v3)))
+				v2 = t55
 				store32(m.memory, uint32(v3), uint32(v2-i32(1)))
 				if v2 > i32(1) {
-					goto l3
+					goto l9
 				}
-				t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t20, v6)
+				t56 := int32(load32(m.memory, uint64(uint32(v0))+8))
+				m.___JS_FreeValueRT(t56, v8)
 			}
-		l3:
+		l9:
 		}
 		m.XJS_FreeCString(v0, v1)
 	}
-l1:
-	m.___stack_pointer = v4 + i32(16)
+l7:
+	m.___stack_pointer = v5 + i32(16)
 	return i64(0x300000000)
 }
 func (m *Module) _close_var_refs(v0, v1, v2 int32) {
@@ -40480,7 +39377,7 @@ func (m *Module) _js_realloc_array(v0, v1, v2, v3, v4 int32) int32 {
 		p5 = t4
 	}
 	v0 = p5
-	t6 := m.Xjs_realloc2(t3, t1, v0*v2, v5+i32(12))
+	t6 := m._js_realloc2(t3, t1, v0*v2, v5+i32(12))
 	v4 = t6
 	var p7 int32
 	if v4 != 0 {
@@ -41111,349 +40008,153 @@ func (m *Module) XJS_GetModuleName(v0, v1 int32) int32 {
 	}
 	return v1
 }
-func (m *Module) XJS_LoadModule(v0, v1, v2 int32) int64 {
-	var v3, v4 int64
-	var v5 int32
-	t0 := m.___stack_pointer
-	v5 = t0 - i32(16)
-	m.___stack_pointer = v5
-	v3 = i64(0x600000000)
-	t1 := m._js_new_promise_capability(v0, v5, i64(0x300000000))
-	v4 = t1
-	if v4&i64(-0x100000000) != i64(0x600000000) {
-		m._JS_LoadModuleInternal(v0, v1, v2, v5, i64(0x300000000))
-		t2 := int64(load64(m.memory, uint32(v5)))
-		v3 = t2
-		if uint64(v3) >= uint64(i64(-0x900000000)) {
-			{
-				v2 = int32(v3) - i32(4)
-				t3 := int32(load32(m.memory, uint32(v2)))
-				v1 = t3
-				store32(m.memory, uint32(v2), uint32(v1-i32(1)))
-				if v1 > i32(1) {
-					goto l0
-				}
-				t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t4, v3)
-			}
-		l0:
-		}
-		t5 := int64(load64(m.memory, uint64(uint32(v5))+8))
-		v3 = t5
-		if uint64(v3) >= uint64(i64(-0x900000000)) {
-			{
-				v2 = int32(v3) - i32(4)
-				t6 := int32(load32(m.memory, uint32(v2)))
-				v1 = t6
-				store32(m.memory, uint32(v2), uint32(v1-i32(1)))
-				if v1 > i32(1) {
-					goto l1
-				}
-				t7 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t7, v3)
-			}
-		l1:
-		}
-		v3 = v4
-	}
-	m.___stack_pointer = v5 + i32(16)
-	return v3
-}
-func (m *Module) _JS_LoadModuleInternal(v0, v1, v2, v3 int32, v4 int64) {
-	var v5 int32
-	var v6, v7, v8 int64
-	t0 := m.___stack_pointer
-	v5 = t0 - i32(48)
-	m.___stack_pointer = v5
-	{
-		t1 := m._js_host_resolve_imported_module(v0, v1, v2, v4)
-		v2 = t1
-		if v2 != 0 {
-			{
-				t2 := m._js_resolve_module(v0, v2)
-				if t2 < i32(0) {
-					m._js_free_modules(v0, i32(1))
-					goto l0
-				}
-				v1 = v2 - i32(4)
-				t3 := int32(load32(m.memory, uint32(v1)))
-				store32(m.memory, uint32(v1), uint32(t3+i32(1)))
-				t4 := v0
-				v6 = int64(uint32(v2)) | i64(-0x300000000)
-				t5 := int64(load64(m.memory, uint64(uint32(v0))+200))
-				t6 := m._JS_EvalFunctionInternal(t4, v6, t5, i32(0), i32(0))
-				v4 = t6
-				if v4&i64(-0x100000000) == i64(0x600000000) {
-					goto l0
-				}
-				t7 := int32(load32(m.memory, uint32(v1)))
-				store32(m.memory, uint32(v1), uint32(t7+i32(1)))
-				store64(m.memory, uint64(uint32(v5))+16, uint64(v6))
-				t8 := int64(load64(m.memory, uint32(v3)))
-				store64(m.memory, uint32(v5), uint64(t8))
-				t9 := int64(load64(m.memory, uint64(uint32(v3))+8))
-				store64(m.memory, uint64(uint32(v5))+8, uint64(t9))
-				t10 := m.XJS_NewCFunctionData(v0, i32(50), i32(0), i32(0), i32(3), v5)
-				t11 := v5
-				v8 = t10
-				store64(m.memory, uint64(uint32(t11))+32, uint64(v8))
-				t12 := m.XJS_NewCFunctionData(v0, i32(51), i32(0), i32(0), i32(3), v5)
-				v7 = t12
-				t13 := int32(load32(m.memory, uint32(v1)))
-				t14 := v1
-				v1 = t13
-				store32(m.memory, uint32(t14), uint32(v1-i32(1)))
-				store64(m.memory, uint64(uint32(v5))+40, uint64(v7))
-				if v1 <= i32(1) {
-					t15 := int32(load32(m.memory, uint64(uint32(v0))+8))
-					m.___JS_FreeValueRT(t15, v6)
-				}
-				t16 := m._js_promise_then(v0, v4, v0, v5+i32(32))
-				v6 = t16
-				if uint64(v6) >= uint64(i64(-0x900000000)) {
-					{
-						v2 = int32(v6) - i32(4)
-						t17 := int32(load32(m.memory, uint32(v2)))
-						v1 = t17
-						store32(m.memory, uint32(v2), uint32(v1-i32(1)))
-						if v1 > i32(1) {
-							goto l1
-						}
-						t18 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.___JS_FreeValueRT(t18, v6)
-					}
-				l1:
-				}
-				if uint64(v8) >= uint64(i64(-0x900000000)) {
-					{
-						v2 = int32(v8) - i32(4)
-						t19 := int32(load32(m.memory, uint32(v2)))
-						v1 = t19
-						store32(m.memory, uint32(v2), uint32(v1-i32(1)))
-						if v1 > i32(1) {
-							goto l2
-						}
-						t20 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.___JS_FreeValueRT(t20, v8)
-					}
-				l2:
-				}
-				if uint64(v7) >= uint64(i64(-0x900000000)) {
-					{
-						v2 = int32(v7) - i32(4)
-						t21 := int32(load32(m.memory, uint32(v2)))
-						v1 = t21
-						store32(m.memory, uint32(v2), uint32(v1-i32(1)))
-						if v1 > i32(1) {
-							goto l3
-						}
-						t22 := int32(load32(m.memory, uint64(uint32(v0))+8))
-						m.___JS_FreeValueRT(t22, v7)
-					}
-				l3:
-				}
-				if uint64(v4) < uint64(i64(-0x900000000)) {
-					goto l4
-				}
-				v2 = int32(v4) - i32(4)
-				t23 := int32(load32(m.memory, uint32(v2)))
-				v1 = t23
-				store32(m.memory, uint32(v2), uint32(v1-i32(1)))
-				if v1 > i32(1) {
-					goto l4
-				}
-				t24 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t24, v4)
-				goto l4
-			}
-		l0:
-		}
-		t25 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		v1 = t25
-		t26 := int64(load64(m.memory, uint64(uint32(v1))+640))
-		v4 = t26
-		store64(m.memory, uint64(uint32(v1))+640, uint64(i64(0x400000000)))
-		store64(m.memory, uint32(v5), uint64(v4))
-		t27 := int64(load64(m.memory, uint64(uint32(v3))+8))
-		t28 := m._JS_CallInternal(v0, t27, i64(0x300000000), i64(0x300000000), i32(1), v5, i32(2))
-		v4 = t28
-		if uint64(v4) >= uint64(i64(-0x900000000)) {
-			{
-				v2 = int32(v4) - i32(4)
-				t29 := int32(load32(m.memory, uint32(v2)))
-				v1 = t29
-				store32(m.memory, uint32(v2), uint32(v1-i32(1)))
-				if v1 > i32(1) {
-					goto l5
-				}
-				t30 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___JS_FreeValueRT(t30, v4)
-			}
-		l5:
-		}
-		t31 := int64(load64(m.memory, uint32(v5)))
-		v4 = t31
-		if uint64(v4) < uint64(i64(-0x900000000)) {
-			goto l4
-		}
-		v2 = int32(v4) - i32(4)
-		t32 := int32(load32(m.memory, uint32(v2)))
-		v1 = t32
-		store32(m.memory, uint32(v2), uint32(v1-i32(1)))
-		if v1 > i32(1) {
-			goto l4
-		}
-		t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.___JS_FreeValueRT(t33, v4)
-	}
-l4:
-	m.___stack_pointer = v5 + i32(48)
-}
-func (m *Module) XJS_NewPromiseCapability(v0, v1 int32) int64 {
-	return m._js_new_promise_capability(v0, v1, i64(0x300000000))
-}
 func (m *Module) _js_host_resolve_imported_module(v0, v1, v2 int32, v3 int64) int32 {
 	var v4, v5, v6, v7, v8, v9 int32
+	t0 := m.___stack_pointer
+	v7 = t0 - i32(16)
+	m.___stack_pointer = v7
 	{
 		{
-			var p0 int32
-			{
-				t1 := m.___stack_pointer
-				v7 = t1 - i32(16)
-				m.___stack_pointer = v7
-				t2 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				v6 = t2
-				t3 := int32(load32(m.memory, uint64(uint32(v6))+680))
-				v4 = t3
-				var p4 int32
-				if v4 != 0 {
-					t5 := int32(load32(m.memory, uint64(uint32(v6))+696))
-					t6 := m.t0[uint(v4)].(func(int32, int32, int32, int32) int32)(v0, v1, v2, t5)
-					p4 = t6
-				} else {
-					t7 := int32(m.memory[uint32(v2)])
-					if t7 != i32(46) {
-						t8 := m.Xjs_strdup(v0, v2)
-						p0 = t8
+			t1 := int32(load32(m.memory, uint64(uint32(v0))+8))
+			v6 = t1
+			t2 := int32(load32(m.memory, uint64(uint32(v6))+680))
+			v4 = t2
+			var p3 int32
+			if v4 != 0 {
+				t4 := int32(load32(m.memory, uint64(uint32(v6))+696))
+				t5 := m.t0[uint(v4)].(func(int32, int32, int32, int32) int32)(v0, v1, v2, t4)
+				p3 = t5
+			} else {
+				t6 := int32(m.memory[uint32(v2)])
+				if t6 != i32(46) {
+					t7 := m._strlen(v2)
+					t8 := v0
+					v4 = t7
+					t9 := m.Xjs_malloc(t8, v4+i32(1))
+					v1 = t9
+					if v1 == 0 {
 						goto l0
 					}
-					t9 := m._strrchr(v1, i32(47))
-					v4 = t9
-					p10 := i32(0)
-					if v4 != 0 {
-						p10 = v4 - v1
-					}
-					v8 = p10
-					t11 := m._strlen(v2)
-					t12 := v0
-					v9 = t11 + v8 + i32(2)
-					t13 := m.Xjs_malloc(t12, v9)
-					v4 = t13
-					if v4 == 0 {
-						goto l1
-					}
-					memory_copy(m.memory, uint32(v4), uint32(v1), uint32(v8))
-					m.memory[uint32(v4+v8)] = byte(i32(0))
-					{
-						t14 := int32(m.memory[uint32(v2)])
-						if t14 == i32(46) {
-						l6:
-							v1 = i32(2)
-							{
-								t15 := int32(m.memory[uint64(uint32(v2))+1])
-								switch t15 - i32(46) {
-								default:
+					memory_copy(m.memory, uint32(v1), uint32(v2), uint32(v4))
+					m.memory[uint32(v1+v4)] = byte(i32(0))
+					goto l0
+				}
+				t10 := m._strrchr(v1, i32(47))
+				v4 = t10
+				p11 := i32(0)
+				if v4 != 0 {
+					p11 = v4 - v1
+				}
+				v8 = p11
+				t12 := m._strlen(v2)
+				t13 := v0
+				v9 = t12 + v8 + i32(2)
+				t14 := m.Xjs_malloc(t13, v9)
+				v4 = t14
+				if v4 == 0 {
+					goto l1
+				}
+				memory_copy(m.memory, uint32(v4), uint32(v1), uint32(v8))
+				m.memory[uint32(v4+v8)] = byte(i32(0))
+				{
+					t15 := int32(m.memory[uint32(v2)])
+					if t15 == i32(46) {
+					l6:
+						v1 = i32(2)
+						{
+							t16 := int32(m.memory[uint64(uint32(v2))+1])
+							switch t16 - i32(46) {
+							default:
+								goto l4
+							case 0:
+								t17 := int32(m.memory[uint64(uint32(v2))+2])
+								if t17 != i32(47) {
 									goto l4
-								case 0:
-									t16 := int32(m.memory[uint64(uint32(v2))+2])
-									if t16 != i32(47) {
-										goto l4
-									}
-									t17 := int32(m.memory[uint32(v4)])
-									if t17 == 0 {
-										goto l5
-									}
-									t18 := m._strrchr(v4, i32(47))
-									v1 = t18
-									p19 := v4
-									if v1 != 0 {
-										p19 = v1 + i32(1)
-									}
-									v1 = p19
-									t20 := m._strcmp(v1, i32(16022))
-									if t20 == 0 {
-										goto l4
-									}
-									t21 := m._strcmp(v1, i32(16021))
-									if t21 == 0 {
-										goto l4
-									}
-									t22 := v1
-									var p23 int32
-									if uint32(v1) > uint32(v4) {
-										p23 = 1
-									}
-									m.memory[uint32(t22-p23)] = byte(i32(0))
-									v1 = i32(3)
-									fallthrough
-								case 1:
-									v2 = v1 + v2
-									t24 := int32(m.memory[uint32(v2)])
-									if t24 == i32(46) {
-										goto l6
-									}
+								}
+								t18 := int32(m.memory[uint32(v4)])
+								if t18 == 0 {
+									goto l5
+								}
+								t19 := m._strrchr(v4, i32(47))
+								v1 = t19
+								p20 := v4
+								if v1 != 0 {
+									p20 = v1 + i32(1)
+								}
+								v1 = p20
+								t21 := m._strcmp(v1, i32(16022))
+								if t21 == 0 {
+									goto l4
+								}
+								t22 := m._strcmp(v1, i32(16021))
+								if t22 == 0 {
+									goto l4
+								}
+								t23 := v1
+								var p24 int32
+								if uint32(v1) > uint32(v4) {
+									p24 = 1
+								}
+								m.memory[uint32(t23-p24)] = byte(i32(0))
+								v1 = i32(3)
+								fallthrough
+							case 1:
+								v2 = v1 + v2
+								t25 := int32(m.memory[uint32(v2)])
+								if t25 == i32(46) {
+									goto l6
 								}
 							}
-						l4:
 						}
-						t25 := int32(m.memory[uint32(v4)])
-						if t25 == 0 {
-							goto l5
-						}
-						m._pstrcat(v4, v9, i32(15995))
+					l4:
 					}
-				l5:
-					m._pstrcat(v4, v9, v2)
-					goto l7
+					t26 := int32(m.memory[uint32(v4)])
+					if t26 == 0 {
+						goto l5
+					}
+					m._pstrcat(v4, v9, i32(15995))
 				}
-				p0 = p4
+			l5:
+				m._pstrcat(v4, v9, v2)
+				goto l7
 			}
-		l0:
-			v4 = p0
-			if v4 == 0 {
-				goto l8
-			}
+			v1 = p3
 		}
-	l7:
-		t26 := m._strlen(v4)
-		t27 := m.XJS_NewAtomLen(v0, v4, t26)
-		v1 = t27
-		if v1 == 0 {
-			t28 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.___js_free(t28, v4)
+	l0:
+		v4 = v1
+		if v4 == 0 {
 			goto l8
 		}
-		t29 := int32(load32(m.memory, uint64(uint32(v0))+232))
-		v2 = t29
-		t30 := v2
+	l7:
+		t27 := m._strlen(v4)
+		t28 := m.XJS_NewAtomLen(v0, v4, t27)
+		v1 = t28
+		if v1 == 0 {
+			t29 := int32(load32(m.memory, uint64(uint32(v0))+8))
+			m.___js_free(t29, v4)
+			goto l8
+		}
+		t30 := int32(load32(m.memory, uint64(uint32(v0))+232))
+		v2 = t30
+		t31 := v2
 		v5 = v0 + i32(228)
-		if t30 != v5 {
+		if t31 != v5 {
 			{
 			l9:
 				{
-					t31 := int32(load32(m.memory, uint32(v2-i32(4))))
-					if v1 != t31 {
-						t32 := int32(load32(m.memory, uint64(uint32(v2))+4))
-						t33 := v5
-						v2 = t32
-						if t33 != v2 {
+					t32 := int32(load32(m.memory, uint32(v2-i32(4))))
+					if v1 != t32 {
+						t33 := int32(load32(m.memory, uint64(uint32(v2))+4))
+						t34 := v5
+						v2 = t33
+						if t34 != v2 {
 							goto l9
 						}
 						goto l10
 					}
 				}
-				t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				m.___js_free(t34, v4)
+				t35 := int32(load32(m.memory, uint64(uint32(v0))+8))
+				m.___js_free(t35, v4)
 				m.XJS_FreeAtom(v0, v1)
 				v5 = v2 - i32(12)
 				goto l1
@@ -41461,29 +40162,29 @@ func (m *Module) _js_host_resolve_imported_module(v0, v1, v2 int32, v3 int64) in
 		l10:
 		}
 		m.XJS_FreeAtom(v0, v1)
-		t35 := int32(load32(m.memory, uint64(uint32(v6))+688))
-		v1 = t35
+		t36 := int32(load32(m.memory, uint64(uint32(v6))+688))
+		v1 = t36
 		if v1 == 0 {
 			store32(m.memory, uint32(v7), uint32(v4))
 			_ = m.XJS_ThrowReferenceError(v0, i32(16964), v7)
-			t37 := int32(load32(m.memory, uint64(uint32(v0))+8))
-			m.___js_free(t37, v4)
+			t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
+			m.___js_free(t38, v4)
 			goto l8
 		}
-		t38 := int32(load32(m.memory, uint64(uint32(v6))+696))
-		v2 = t38
-		t39 := int32(load32(m.memory, uint64(uint32(v6))+684))
-		var p40 int32
-		if t39 != 0 {
-			t41 := m.t0[uint(v1)].(func(int32, int32, int32, int64) int32)(v0, v4, v2, v3)
-			p40 = t41
+		t39 := int32(load32(m.memory, uint64(uint32(v6))+696))
+		v2 = t39
+		t40 := int32(load32(m.memory, uint64(uint32(v6))+684))
+		var p41 int32
+		if t40 != 0 {
+			t42 := m.t0[uint(v1)].(func(int32, int32, int32, int64) int32)(v0, v4, v2, v3)
+			p41 = t42
 		} else {
-			t42 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v0, v4, v2)
-			p40 = t42
+			t43 := m.t0[uint(v1)].(func(int32, int32, int32) int32)(v0, v4, v2)
+			p41 = t43
 		}
-		v5 = p40
-		t43 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		m.___js_free(t43, v4)
+		v5 = p41
+		t44 := int32(load32(m.memory, uint64(uint32(v0))+8))
+		m.___js_free(t44, v4)
 		goto l1
 	}
 l8:
@@ -41514,13 +40215,13 @@ func (m *Module) _js_resolve_module(v0, v1 int32) int32 {
 				t4 := int32(load32(m.memory, uint32(v8-i32(4))))
 				v2 = t4
 				t5 := int32(load32(m.memory, uint64(uint32(v1))+8))
-				t6 := m.XJS_AtomToCStringLen(v0, i32(0), t5)
+				t6 := m._JS_AtomToCStringLen(v0, i32(0), t5)
 				v3 = t6
 				if v3 == 0 {
 					goto l1
 				}
 				{
-					t7 := m.XJS_AtomToCStringLen(v0, i32(0), v2)
+					t7 := m._JS_AtomToCStringLen(v0, i32(0), v2)
 					v2 = t7
 					if v2 != 0 {
 						t8 := m._js_host_resolve_imported_module(v0, v3, v2, v10)
@@ -42754,158 +41455,6 @@ func (m *Module) XJS_ResolveModule(v0 int32, v1 int64) int32 {
 		}
 	}
 	return v2
-}
-func (m *Module) XJS_WriteObject2(v0, v1 int32, v2 int64, v3, v4, v5 int32) int32 {
-	var v6, v7, v8, v9 int32
-	var p0 int32
-	{
-		t1 := m.___stack_pointer
-		v6 = t1 - i32(112)
-		m.___stack_pointer = v6
-		v7 = v6 + i32(4)
-		memory_zero(m.memory, uint32(v7), uint32(i32(84)))
-		t2 := v6
-		v8 = v3 & i32(1)
-		p3 := i32(1)
-		if v8 != 0 {
-			p3 = i32(243)
-		}
-		store32(m.memory, uint64(uint32(t2))+32, uint32(p3))
-		store32(m.memory, uint32(v6), uint32(v0))
-		store32(m.memory, uint64(uint32(v6))+28, uint32(v3<<13&i32(65536)|v3<<6&i32(256)|v8))
-		t4 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		v3 = t4
-		store64(m.memory, uint32(v7), uint64(i64(0)))
-		store32(m.memory, uint64(uint32(v7))+20, uint32(v3))
-		store64(m.memory, uint64(uint32(v7))+8, uint64(i64(0)))
-		store32(m.memory, uint64(uint32(v7))+16, uint32(i32(47)))
-		store32(m.memory, uint64(uint32(v6))+84, uint32(i32(0)))
-		store64(m.memory, uint64(uint32(v6))+76, uint64(i64(0)))
-		store64(m.memory, uint64(uint32(v6))+68, uint64(i64(0)))
-		t5 := m._JS_WriteObjectRec(v6, v2)
-		if t5 == 0 {
-			{
-				t6 := int32(load32(m.memory, uint32(v6)))
-				t7 := int32(load32(m.memory, uint64(uint32(t6))+8))
-				v8 = t7
-				t8 := int64(load64(m.memory, uint64(uint32(v7))+16))
-				store64(m.memory, uint64(uint32(v6))+104, uint64(t8))
-				t9 := int64(load64(m.memory, uint64(uint32(v7))+8))
-				store64(m.memory, uint64(uint32(v6))+96, uint64(t9))
-				t10 := int64(load64(m.memory, uint32(v7)))
-				store64(m.memory, uint64(uint32(v6))+88, uint64(t10))
-				store64(m.memory, uint32(v7), uint64(i64(0)))
-				store32(m.memory, uint64(uint32(v7))+20, uint32(v8))
-				store64(m.memory, uint64(uint32(v7))+8, uint64(i64(0)))
-				store32(m.memory, uint64(uint32(v7))+16, uint32(i32(47)))
-				t11 := int32(load32(m.memory, uint64(uint32(v6))+8))
-				v3 = t11
-				t12 := int32(load32(m.memory, uint64(uint32(v6))+12))
-				if v3 != t12 {
-					store32(m.memory, uint64(uint32(v6))+8, uint32(v3+i32(1)))
-					t13 := int32(load32(m.memory, uint64(uint32(v6))+4))
-					m.memory[uint32(t13+v3)] = byte(i32(5))
-				} else {
-					m.___dbuf_putc(v7, i32(5))
-				}
-				t14 := int32(load32(m.memory, uint64(uint32(v6))+48))
-				m._dbuf_put_leb128(v7, t14)
-				t15 := int32(load32(m.memory, uint64(uint32(v6))+48))
-				if t15 > i32(0) {
-					v3 = i32(0)
-				l0:
-					{
-						t16 := int32(load32(m.memory, uint64(uint32(v8))+560))
-						t17 := int32(load32(m.memory, uint64(uint32(v6))+44))
-						t18 := int32(load32(m.memory, uint32(t17+v3)))
-						t19 := int32(load32(m.memory, uint32(t16+t18<<2)))
-						m._JS_WriteString(v6, t19)
-						v3 = v3 + i32(4)
-						v9 = v9 + i32(1)
-						t20 := int32(load32(m.memory, uint64(uint32(v6))+48))
-						if v9 < t20 {
-							goto l0
-						}
-					}
-				}
-				v8 = v6 + i32(88)
-				t21 := int32(load32(m.memory, uint64(uint32(v6))+8))
-				t22 := v8
-				v3 = t21
-				t23 := m._dbuf_claim(t22, v3)
-				if t23 != 0 {
-					m._dbuf_free(v8)
-					goto l1
-				}
-				t24 := int32(load32(m.memory, uint64(uint32(v6))+88))
-				v8 = t24
-				t25 := int32(load32(m.memory, uint64(uint32(v6))+92))
-				memory_copy(m.memory, uint32(v8+v3), uint32(v8), uint32(t25))
-				t26 := int32(load32(m.memory, uint64(uint32(v6))+88))
-				t27 := int32(load32(m.memory, uint64(uint32(v6))+4))
-				memory_copy(m.memory, uint32(t26), uint32(t27), uint32(v3))
-				t28 := int32(load32(m.memory, uint64(uint32(v6))+92))
-				store32(m.memory, uint64(uint32(v6))+92, uint32(t28+v3))
-				m._dbuf_free(v7)
-				t29 := int64(load64(m.memory, uint64(uint32(v6))+104))
-				store64(m.memory, uint64(uint32(v7))+16, uint64(t29))
-				t30 := int64(load64(m.memory, uint64(uint32(v6))+96))
-				store64(m.memory, uint64(uint32(v7))+8, uint64(t30))
-				t31 := int64(load64(m.memory, uint64(uint32(v6))+88))
-				store64(m.memory, uint32(v7), uint64(t31))
-				t32 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				t33 := int32(load32(m.memory, uint64(uint32(v6))+68))
-				m.___js_free(t32, t33)
-				t34 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				t35 := int32(load32(m.memory, uint64(uint32(v6))+80))
-				m.___js_free(t34, t35)
-				t36 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				t37 := int32(load32(m.memory, uint64(uint32(v6))+36))
-				m.___js_free(t36, t37)
-				t38 := int32(load32(m.memory, uint64(uint32(v0))+8))
-				t39 := int32(load32(m.memory, uint64(uint32(v6))+44))
-				m.___js_free(t38, t39)
-				t40 := int32(load32(m.memory, uint64(uint32(v6))+8))
-				store32(m.memory, uint32(v1), uint32(t40))
-				if v4 != 0 {
-					t41 := int32(load32(m.memory, uint64(uint32(v6))+56))
-					store32(m.memory, uint32(v4), uint32(t41))
-				}
-				if v5 != 0 {
-					t42 := int32(load32(m.memory, uint64(uint32(v6))+60))
-					store32(m.memory, uint32(v5), uint32(t42))
-				}
-				t43 := int32(load32(m.memory, uint64(uint32(v6))+4))
-				p0 = t43
-				goto l2
-			}
-		l1:
-		}
-		t44 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		t45 := int32(load32(m.memory, uint64(uint32(v6))+68))
-		m.___js_free(t44, t45)
-		t46 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		t47 := int32(load32(m.memory, uint64(uint32(v6))+80))
-		m.___js_free(t46, t47)
-		t48 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		t49 := int32(load32(m.memory, uint64(uint32(v6))+36))
-		m.___js_free(t48, t49)
-		t50 := int32(load32(m.memory, uint64(uint32(v0))+8))
-		t51 := int32(load32(m.memory, uint64(uint32(v6))+44))
-		m.___js_free(t50, t51)
-		m._dbuf_free(v7)
-		store32(m.memory, uint32(v1), uint32(i32(0)))
-		if v4 != 0 {
-			store32(m.memory, uint32(v4), uint32(i32(0)))
-		}
-		if v5 != 0 {
-			store32(m.memory, uint32(v5), uint32(i32(0)))
-		}
-		p0 = i32(0)
-	}
-l2:
-	m.___stack_pointer = v6 + i32(112)
-	return p0
 }
 func (m *Module) _JS_WriteObjectRec(v0 int32, v1 int64) int32 {
 	var v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13 int32
@@ -44353,9 +42902,6 @@ func (m *Module) _bc_put_u8(v0, v1 int32) {
 	} else {
 		m.___dbuf_putc(v0+i32(4), v1)
 	}
-}
-func (m *Module) XJS_WriteObject(v0, v1 int32, v2 int64, v3 int32) int32 {
-	return m.XJS_WriteObject2(v0, v1, v2, v3, i32(0), i32(0))
 }
 func (m *Module) XJS_ReadObject(v0, v1, v2, v3 int32) int64 {
 	var v4, v5 int32
@@ -46349,168 +44895,9 @@ func (m *Module) XJS_SetModuleExportList(v0, v1, v2, v3 int32) int32 {
 func (m *Module) XJS_SetConstructor(v0 int32, v1, v2 int64) int32 {
 	return m._JS_SetConstructor2(v0, v1, v2, i32(0), i32(3))
 }
-func (m *Module) Xjs_string_codePointRange(v0 int32, v1 int64, v2, v3 int32) int64 {
-	var v4, v5, v6, v7 int32
-	var v8 int64
-	t0 := m.___stack_pointer
-	v2 = t0 - i32(32)
-	m.___stack_pointer = v2
-	t1 := int64(load64(m.memory, uint32(v3)))
-	v1 = t1
-	if uint64(v1) >= uint64(i64(-0x900000000)) {
-		v5 = int32(v1) - i32(4)
-		t2 := int32(load32(m.memory, uint32(v5)))
-		store32(m.memory, uint32(v5), uint32(t2+i32(1)))
-	}
-	v8 = i64(0x600000000)
-	{
-		t3 := m._JS_ToInt32Free(v0, v2+i32(28), v1)
-		if t3 == 0 {
-			t4 := int64(load64(m.memory, uint64(uint32(v3))+8))
-			v1 = t4
-			if uint64(v1) >= uint64(i64(-0x900000000)) {
-				v3 = int32(v1) - i32(4)
-				t5 := int32(load32(m.memory, uint32(v3)))
-				store32(m.memory, uint32(v3), uint32(t5+i32(1)))
-			}
-			t6 := m._JS_ToInt32Free(v0, v2+i32(24), v1)
-			if t6 != 0 {
-				goto l0
-			}
-			store32(m.memory, uint32(v2), uint32(v0))
-			store32(m.memory, uint64(uint32(v2))+20, uint32(i32(0)))
-			store32(m.memory, uint64(uint32(v2))+8, uint32(i32(0)))
-			t7 := int32(load32(m.memory, uint64(uint32(v2))+24))
-			t8 := v2
-			v4 = t7
-			var p9 int32
-			if uint32(v4) > uint32(i32(255)) {
-				p9 = 1
-			}
-			v7 = p9
-			store32(m.memory, uint64(uint32(t8))+16, uint32(v7))
-			t10 := int32(load32(m.memory, uint64(uint32(v2))+28))
-			v3 = t10
-			t12 := v3
-			p11 := v4
-			if uint32(v4) >= uint32(i32(1114112)) {
-				p11 = i32(1114112)
-			}
-			v5 = p11
-			var p13 int32
-			if uint32(t12) < uint32(v5) {
-				p13 = 1
-			}
-			v6 = p13
-			t15 := v2
-			t16 := v5
-			p14 := v5
-			if v6 != 0 {
-				p14 = v3
-			}
-			v3 = p14
-			t18 := t16 - v3
-			t19 := v5
-			p17 := v3
-			if uint32(v3) <= uint32(i32(65536)) {
-				p17 = i32(65536)
-			}
-			p20 := i32(0)
-			if uint32(v4) > uint32(i32(65536)) {
-				p20 = t19 - p17
-			}
-			v4 = t18 + p20
-			store32(m.memory, uint64(uint32(t15))+12, uint32(v4))
-			t21 := m._js_alloc_string(v0, v4, v7)
-			t22 := v2
-			v0 = t21
-			store32(m.memory, uint64(uint32(t22))+4, uint32(v0))
-			if v0 == 0 {
-				goto l0
-			}
-			if v6 != 0 {
-			l5:
-				{
-					{
-						t24 := v2
-						var p23 int32
-						{
-							{
-								t25 := int32(load32(m.memory, uint64(uint32(v2))+8))
-								v0 = t25
-								t26 := int32(load32(m.memory, uint64(uint32(v2))+12))
-								t27 := v0
-								v4 = t26
-								if t27 < v4 {
-									{
-										t28 := int32(load32(m.memory, uint64(uint32(v2))+16))
-										if t28 == 0 {
-											if uint32(v3) > uint32(i32(255)) {
-												goto l1
-											}
-											t29 := int32(load32(m.memory, uint64(uint32(v2))+4))
-											m.memory[uint64(uint32(t29+v0))+12] = byte(v3)
-											store32(m.memory, uint64(uint32(v2))+8, uint32(v0+i32(1)))
-											goto l2
-										}
-										if uint32(v3) <= uint32(i32(0xffff)) {
-											t30 := int32(load32(m.memory, uint64(uint32(v2))+4))
-											store16(m.memory, uint64(uint32(t30+v0<<1))+12, uint16(v3))
-											store32(m.memory, uint64(uint32(v2))+8, uint32(v0+i32(1)))
-											goto l2
-										}
-										t31 := v4
-										v4 = v0 + i32(1)
-										if t31 <= v4 {
-											goto l3
-										}
-										t32 := int32(load32(m.memory, uint64(uint32(v2))+4))
-										v6 = t32 + i32(12)
-										store16(m.memory, uint32(v6+v0<<1), uint16(int32(uint32(v3)>>10)-i32(10304)))
-										store16(m.memory, uint32(v6+v4<<1), uint16(v3&i32(1023)|i32(56320)))
-										store32(m.memory, uint64(uint32(v2))+8, uint32(v0+i32(2)))
-										goto l2
-									}
-								l1:
-								}
-								t33 := v3
-								if uint32(v3) < uint32(i32(65536)) {
-									p23 = t33
-									goto l4
-								}
-							}
-						l3:
-							t34 := m._string_buffer_putc16(v2, int32(uint32(v3)>>10)+i32(55232))
-							if t34 != 0 {
-								goto l2
-							}
-							p23 = v3&i32(1023) | i32(56320)
-						}
-					l4:
-						_ = m._string_buffer_putc16(t24, p23)
-					}
-				l2:
-					t36 := v5
-					v3 = v3 + i32(1)
-					if t36 != v3 {
-						goto l5
-					}
-				}
-			}
-			t37 := m._string_buffer_end(v2)
-			v8 = t37
-		}
-	}
-l0:
-	m.___stack_pointer = v2 + i32(32)
-	return v8
-}
 func (m *Module) _lre_realloc(v0, v1, v2 int32) int32 {
 	t0 := int32(load32(m.memory, uint64(uint32(v0))+8))
 	return m.Xjs_realloc_rt(t0, v1, v2)
-}
-func (m *Module) XJS_AddIntrinsicRegExpCompiler(v0 int32) {
-	store32(m.memory, uint64(uint32(v0))+236, uint32(i32(26)))
 }
 func (m *Module) _js_is_regexp(v0 int32, v1 int64) int32 {
 	var v2, v3 int64
@@ -52814,14 +51201,14 @@ func (m *Module) _push_scope(v0 int32) int32 {
 					t10 := int32(load32(m.memory, uint64(uint32(v1))+204))
 					v4 = t10
 					if v4 != v1+i32(208) {
-						t11 := m.Xjs_realloc2(v2, v4, v7, v5+i32(12))
+						t11 := m._js_realloc2(v2, v4, v7, v5+i32(12))
 						v2 = t11
 						if v2 != 0 {
 							goto l0
 						}
 					} else {
 						{
-							t12 := m.Xjs_realloc2(v2, i32(0), v7, v5+i32(12))
+							t12 := m._js_realloc2(v2, i32(0), v7, v5+i32(12))
 							v2 = t12
 							if v2 == 0 {
 								goto l1
@@ -60805,34 +59192,6 @@ func (m *Module) _js_array_buffer_update_typed_arrays(v0 int32) {
 		}
 	}
 }
-func (m *Module) XJS_GetArrayBuffer(v0, v1 int32, v2 int64) int32 {
-	var v3 int32
-	if uint64(v2) >= uint64(i64(-0x100000000)) {
-		v3 = int32(v2)
-		t0 := int32(load16(m.memory, uint64(uint32(v3))+10))
-		if uint32((t0-i32(19))&i32(0xffff)) < uint32(i32(2)) {
-			t1 := int32(load32(m.memory, uint64(uint32(v3))+24))
-			v3 = t1
-			if v3 == 0 {
-				goto l0
-			}
-			t2 := int32(m.memory[uint64(uint32(v3))+8])
-			if t2 != 0 {
-				_ = m.XJS_ThrowTypeError(v0, i32(14485), i32(0))
-				goto l0
-			} else {
-				t4 := int32(load32(m.memory, uint32(v3)))
-				store32(m.memory, uint32(v1), uint32(t4))
-				t5 := int32(load32(m.memory, uint64(uint32(v3))+12))
-				return t5
-			}
-		}
-	}
-	m._JS_ThrowTypeErrorInvalidClass(v0, i32(19))
-l0:
-	store32(m.memory, uint32(v1), uint32(i32(0)))
-	return i32(0)
-}
 func (m *Module) XJS_NewTypedArray(v0, v1, v2, v3 int32) int64 {
 	var p0 int64
 	if uint32(v3) < uint32(i32(12)) {
@@ -61191,43 +59550,6 @@ func (m *Module) _typed_array_init(v0 int32, v1, v2, v3, v4 int64, v5 int32) int
 l0:
 	return p0
 }
-func (m *Module) XJS_GetTypedArrayBuffer(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
-	var v5 int32
-	if uint64(v1) >= uint64(i64(-0x100000000)) {
-		v5 = int32(v1)
-		t0 := int32(load16(m.memory, uint64(uint32(v5))+10))
-		if uint32((t0-i32(21))&i32(0xffff)) < uint32(i32(12)) {
-			t1 := m._typed_array_is_oob(v5)
-			if t1 != 0 {
-				_ = m.XJS_ThrowTypeError(v0, i32(13674), i32(0))
-				return i64(0x600000000)
-			}
-			t3 := int32(load32(m.memory, uint64(uint32(v5))+24))
-			v0 = t3
-			if v2 != 0 {
-				t4 := int32(load32(m.memory, uint64(uint32(v0))+16))
-				store32(m.memory, uint32(v2), uint32(t4))
-			}
-			if v3 != 0 {
-				t5 := int32(load32(m.memory, uint64(uint32(v0))+20))
-				store32(m.memory, uint32(v3), uint32(t5))
-			}
-			if v4 != 0 {
-				t6 := int32(load16(m.memory, uint64(uint32(v5))+10))
-				t7 := int32(m.memory[uint32(t6+i32(17719))])
-				store32(m.memory, uint32(v4), uint32(i32_shl(i32(1), t7)))
-			}
-			t8 := int32(load32(m.memory, uint64(uint32(v0))+12))
-			v0 = t8
-			v2 = v0 - i32(4)
-			t9 := int32(load32(m.memory, uint32(v2)))
-			store32(m.memory, uint32(v2), uint32(t9+i32(1)))
-			return int64(uint32(v0)) | i64(-0x100000000)
-		}
-	}
-	_ = m.XJS_ThrowTypeError(v0, i32(2620), i32(0))
-	return i64(0x600000000)
-}
 func (m *Module) _typed_array_is_oob(v0 int32) int32 {
 	var v1, v2, v3, v4, v5 int32
 	var v6, v7 int64
@@ -61290,7 +59612,7 @@ func (m *Module) _js_array_buffer_constructor0(v0 int32, v1 int64, v2, v3, v4 in
 	v5 = i64(0x600000000)
 	{
 		t1 := int64(load64(m.memory, uint32(v3)))
-		t2 := m.XJS_ToIndex(v0, v8+i32(24), t1)
+		t2 := m._JS_ToIndex(v0, v8+i32(24), t1)
 		if t2 == 0 {
 			if v2 >= i32(2) {
 				{
@@ -62598,7 +60920,7 @@ func (m *Module) _string_buffer_widen(v0, v1 int32) int32 {
 		} else {
 			t4 := int32(load32(m.memory, uint32(v0)))
 			t5 := int32(load32(m.memory, uint64(uint32(v0))+4))
-			t6 := m.Xjs_realloc2(t4, t5, v1<<1+i32(12), v3+i32(12))
+			t6 := m._js_realloc2(t4, t5, v1<<1+i32(12), v3+i32(12))
 			v4 = t6
 			if v4 == 0 {
 				t7 := int32(load32(m.memory, uint32(v0)))
@@ -62843,7 +61165,7 @@ func (m *Module) _get_prop_string(v0 int32, v1 int64, v2 int32) int32 {
 			if v1&i64(-0x100000000) != i64(-0x700000000) {
 				goto l2
 			}
-			t18 := m.XJS_ToCStringLen2(v0, i32(0), v1, i32(0))
+			t18 := m._JS_ToCStringLen2(v0, i32(0), v1, i32(0))
 			v8 = t18
 		}
 	l2:
@@ -64470,7 +62792,7 @@ func (m *Module) _js_print_raw_string(v0 int32, v1 int64) {
 	v2 = t0 - i32(16)
 	m.___stack_pointer = v2
 	t1 := int32(load32(m.memory, uint64(uint32(v0))+4))
-	t2 := m.XJS_ToCStringLen2(t1, v2+i32(12), v1, i32(0))
+	t2 := m._JS_ToCStringLen2(t1, v2+i32(12), v1, i32(0))
 	v3 = t2
 	if v3 != 0 {
 		{
@@ -64974,7 +63296,7 @@ func (m *Module) _JS_ThisTimeValue(v0, v1 int32, v2 int64) int32 {
 					goto l0
 				}
 			}
-			t2 := m.XJS_ToFloat64(v0, v1, v2)
+			t2 := m._JS_ToFloat64(v0, v1, v2)
 			return t2
 		}
 	l0:
@@ -64997,7 +63319,7 @@ func (m *Module) _JS_StringToBigInt(v0 int32, v1 int64) int64 {
 	t0 := m.___stack_pointer
 	v3 = t0 - i32(16)
 	m.___stack_pointer = v3
-	t1 := m.XJS_ToCStringLen2(v0, v3+i32(8), v1, i32(0))
+	t1 := m._JS_ToCStringLen2(v0, v3+i32(8), v1, i32(0))
 	v5 = t1
 	if uint64(v1) >= uint64(i64(-0x900000000)) {
 		{
@@ -68773,7 +67095,7 @@ func (m *Module) _js_string_normalize(v0 int32, v1 int64, v2, v3 int32) int64 {
 					if v10&i64(-0x100000000) == i64(0x300000000) {
 						goto l0
 					}
-					t3 := m.XJS_ToCStringLen2(v0, v4+i32(4), v10, i32(0))
+					t3 := m._JS_ToCStringLen2(v0, v4+i32(4), v10, i32(0))
 					v2 = t3
 					if v2 != 0 {
 						t4 := int32(m.memory[uint32(v2)])
@@ -71336,7 +69658,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 									t115 := int32(load32(m.memory, uint64(uint32(v4))+52))
 									v11 = t115
 									if v11 != v10 {
-										t116 := m.Xjs_realloc2(v7, v11, v3, v4+i32(128))
+										t116 := m._js_realloc2(v7, v11, v3, v4+i32(128))
 										v3 = t116
 										if v3 == 0 {
 											goto l19
@@ -71345,7 +69667,7 @@ func (m *Module) _js_regexp_Symbol_replace(v0 int32, v1 int64, v2, v3 int32) int
 										t117 := int32(load32(m.memory, uint64(uint32(v4))+128))
 										store32(m.memory, uint64(uint32(v4))+92, uint32(int32(uint32(t117)>>3)+v5))
 									} else {
-										t118 := m.Xjs_realloc2(v7, i32(0), v3, v4+i32(128))
+										t118 := m._js_realloc2(v7, i32(0), v3, v4+i32(128))
 										v3 = t118
 										if v3 == 0 {
 											goto l19
@@ -73753,7 +72075,7 @@ func (m *Module) _js_json_parse(v0 int32, v1 int64, v2, v3 int32) int64 {
 	v4 = t0 - i32(48)
 	m.___stack_pointer = v4
 	t1 := int64(load64(m.memory, uint32(v3)))
-	t2 := m.XJS_ToCStringLen2(v0, v4+i32(44), t1, i32(0))
+	t2 := m._JS_ToCStringLen2(v0, v4+i32(44), t1, i32(0))
 	v5 = t2
 	if v5 != 0 {
 		{
@@ -83198,7 +81520,7 @@ func (m *Module) _js_Date_UTC(v0 int32, v1 int64, v2, v3 int32) int64 {
 				l0:
 					{
 						t4 := int64(load64(m.memory, uint32(v3)))
-						t5 := m.XJS_ToFloat64(v0, v2, t4)
+						t5 := m._JS_ToFloat64(v0, v2, t4)
 						if t5 == 0 {
 							v2 = v2 + i32(8)
 							v3 = v3 + i32(8)
@@ -83427,7 +81749,7 @@ func (m *Module) _js_date_setTime(v0 int32, v1 int64, v2, v3 int32) int64 {
 		t2 := m._JS_ThisTimeValue(t1, v5, v1)
 		if t2 == 0 {
 			t3 := int64(load64(m.memory, uint32(v3)))
-			t4 := m.XJS_ToFloat64(v0, v5, t3)
+			t4 := m._JS_ToFloat64(v0, v5, t3)
 			if t4 != 0 {
 				goto l0
 			}
@@ -83547,7 +81869,7 @@ func (m *Module) _set_date_field(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 			l1:
 				{
 					t9 := int64(load64(m.memory, uint32(v3)))
-					t10 := m.XJS_ToFloat64(v0, v5+i32(8), t9)
+					t10 := m._JS_ToFloat64(v0, v5+i32(8), t9)
 					if t10 != 0 {
 						goto l0
 					}
@@ -83603,7 +81925,7 @@ func (m *Module) _js_date_setYear(v0 int32, v1 int64, v2, v3 int32) int64 {
 		t2 := m._JS_ThisTimeValue(t1, v6, v1)
 		if t2 == 0 {
 			t3 := int64(load64(m.memory, uint32(v3)))
-			t4 := m.XJS_ToFloat64(v0, v6, t3)
+			t4 := m._JS_ToFloat64(v0, v6, t3)
 			if t4 != 0 {
 				goto l0
 			}
@@ -83679,7 +82001,7 @@ func (m *Module) _js_date_toJSON(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l0
 					}
 				}
-				t4 := m.XJS_ToFloat64(v0, v2+i32(8), v5)
+				t4 := m._JS_ToFloat64(v0, v2+i32(8), v5)
 				if t4 < i32(0) {
 					goto l1
 				}
@@ -85722,7 +84044,7 @@ func (m *Module) _js_atom_concat_str(v0, v1, v2 int32) int32 {
 	if v7&i64(-0x100000000) != i64(0x600000000) {
 		{
 			{
-				t2 := m.XJS_ToCStringLen2(v0, v3+i32(12), v7, i32(0))
+				t2 := m._JS_ToCStringLen2(v0, v3+i32(12), v7, i32(0))
 				v4 = t2
 				if v4 != 0 {
 					{
@@ -102175,7 +100497,7 @@ func (m *Module) _js_array_sort(v0 int32, v1 int64, v2, v3 int32) int64 {
 								t9 := v0
 								t10 := v11
 								v9 = (v9 + int32(uint32(v9)>>1) + i32(31)) & i32(-16)
-								t11 := m.Xjs_realloc2(t9, t10, v9*i32(24), v10+i32(12))
+								t11 := m._js_realloc2(t9, t10, v9*i32(24), v10+i32(12))
 								v2 = t11
 								if v2 == 0 {
 									goto l1
@@ -105462,7 +103784,7 @@ func (m *Module) _js_function_bind(v0 int32, v1 int64, v2, v3 int32) int64 {
 						}
 					}
 					store32(m.memory, uint64(uint32(v10))+24, uint32(v8))
-					t15 := m.XJS_GetOwnProperty(v0, i32(0), v1, i32(50))
+					t15 := m._JS_GetOwnProperty(v0, i32(0), v1, i32(50))
 					v2 = t15
 					if v2 < i32(0) {
 						goto l2
@@ -106066,7 +104388,7 @@ func (m *Module) _js_create_iterator_helper(v0 int32, v1 int64, v2, v3, v4 int32
 					if v5&i64(-0x100000000) == i64(0x600000000) {
 						goto l0
 					}
-					t7 := m.XJS_ToFloat64(v0, v11, v5)
+					t7 := m._JS_ToFloat64(v0, v11, v5)
 					if t7 != 0 {
 						if uint64(v5) < uint64(i64(-0x900000000)) {
 							goto l0
@@ -107077,7 +105399,7 @@ func (m *Module) _js_iterator_proto_set_toStringTag(v0 int32, v1, v2 int64) int6
 	}
 	v4 = i64(0x600000000)
 	{
-		t5 := m.XJS_GetOwnProperty(v0, i32(0), v1, i32(237))
+		t5 := m._JS_GetOwnProperty(v0, i32(0), v1, i32(237))
 		v3 = t5
 		if v3 >= i32(0) {
 			if v3 != 0 {
@@ -108313,7 +106635,7 @@ func (m *Module) _js_parseInt(v0 int32, v1 int64, v2, v3 int32) int64 {
 	v4 = t0 - i32(16)
 	m.___stack_pointer = v4
 	t1 := int64(load64(m.memory, uint32(v3)))
-	t2 := m.XJS_ToCStringLen2(v0, i32(0), t1, i32(0))
+	t2 := m._JS_ToCStringLen2(v0, i32(0), t1, i32(0))
 	v2 = t2
 	if v2 != 0 {
 		{
@@ -108372,7 +106694,7 @@ func (m *Module) _js_parseInt(v0 int32, v1 int64, v2, v3 int32) int64 {
 func (m *Module) _js_parseFloat(v0 int32, v1 int64, v2, v3 int32) int64 {
 	var v4 int32
 	t0 := int64(load64(m.memory, uint32(v3)))
-	t1 := m.XJS_ToCStringLen2(v0, i32(0), t0, i32(0))
+	t1 := m._JS_ToCStringLen2(v0, i32(0), t0, i32(0))
 	v2 = t1
 	if v2 == 0 {
 		return i64(0x600000000)
@@ -108395,7 +106717,7 @@ func (m *Module) _js_global_isNaN(v0 int32, v1 int64, v2, v3 int32) int64 {
 	v2 = t0 - i32(16)
 	m.___stack_pointer = v2
 	t1 := int64(load64(m.memory, uint32(v3)))
-	t2 := m.XJS_ToFloat64(v0, v2+i32(8), t1)
+	t2 := m._JS_ToFloat64(v0, v2+i32(8), t1)
 	v0 = t2
 	t3 := math.Float64frombits(load64(m.memory, uint64(uint32(v2))+8))
 	v4 = t3
@@ -108415,7 +106737,7 @@ func (m *Module) _js_global_isFinite(v0 int32, v1 int64, v2, v3 int32) int64 {
 	v2 = t0 - i32(16)
 	m.___stack_pointer = v2
 	t1 := int64(load64(m.memory, uint32(v3)))
-	t2 := m.XJS_ToFloat64(v0, v2+i32(8), t1)
+	t2 := m._JS_ToFloat64(v0, v2+i32(8), t1)
 	var p3 int64
 	if t2 != 0 {
 		p3 = i64(0x600000000)
@@ -109198,7 +107520,7 @@ func (m *Module) _js_number_isNaN(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l0
 			}
 		}
-		t2 := m.XJS_ToFloat64(v0, v2+i32(8), v4)
+		t2 := m._JS_ToFloat64(v0, v2+i32(8), v4)
 		v0 = t2
 		t3 := math.Float64frombits(load64(m.memory, uint64(uint32(v2))+8))
 		v5 = t3
@@ -109230,7 +107552,7 @@ func (m *Module) _js_number_isFinite(v0 int32, v1 int64, v2, v3 int32) int64 {
 				goto l0
 			}
 		}
-		t2 := m.XJS_ToFloat64(v0, v2+i32(8), v4)
+		t2 := m._JS_ToFloat64(v0, v2+i32(8), v4)
 		var p3 int64
 		if t2 != 0 {
 			p3 = i64(0x600000000)
@@ -109277,7 +107599,7 @@ func (m *Module) _js_number_isSafeInteger(v0 int32, v1 int64, v2, v3 int32) int6
 				goto l0
 			}
 		}
-		t2 := m.XJS_ToFloat64(v0, v2+i32(8), v5)
+		t2 := m._JS_ToFloat64(v0, v2+i32(8), v5)
 		var p3 int64
 		if t2 != 0 {
 			p3 = i64(0x600000000)
@@ -109804,7 +108126,7 @@ func (m *Module) _js_string_fromCodePoint(v0 int32, v1 int64, v2, v3 int32) int6
 						t4 := int64(load64(m.memory, uint32(v3)))
 						v1 = t4
 						if uint64(v1) > uint64(i64(0xffffffff)) {
-							t5 := m.XJS_ToFloat64(v0, v4+i32(24), v1)
+							t5 := m._JS_ToFloat64(v0, v4+i32(24), v1)
 							if t5 != 0 {
 								goto l0
 							}
@@ -110504,7 +108826,7 @@ func (m *Module) _js_string_indexOf(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 								goto l0
 							}
 							t7 := int64(load64(m.memory, uint64(uint32(v3))+8))
-							t8 := m.XJS_ToFloat64(v0, v5, t7)
+							t8 := m._JS_ToFloat64(v0, v5, t7)
 							if t8 != 0 {
 								goto l1
 							}
@@ -112904,7 +111226,7 @@ func (m *Module) _js_math_min_max(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 				t3 := int64(load64(m.memory, uint32(v3)))
 				v1 = t3
 				if uint64(v1) > uint64(i64(0xffffffff)) {
-					t4 := m.XJS_ToFloat64(v0, v9+i32(8), v1)
+					t4 := m._JS_ToFloat64(v0, v9+i32(8), v1)
 					if t4 != 0 {
 						goto l0
 					}
@@ -112961,7 +111283,7 @@ func (m *Module) _js_math_min_max(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 				l5:
 					{
 						t12 := int64(load64(m.memory, uint32(v7)))
-						t13 := m.XJS_ToFloat64(v0, v9, t12)
+						t13 := m._JS_ToFloat64(v0, v9, t12)
 						if t13 != 0 {
 							goto l0
 						}
@@ -113107,7 +111429,7 @@ func (m *Module) _js_math_hypot(v0 int32, v1 int64, v2, v3 int32) int64 {
 			{
 				v1 = i64(0x600000000)
 				t1 := int64(load64(m.memory, uint32(v3)))
-				t2 := m.XJS_ToFloat64(v0, v5+i32(8), t1)
+				t2 := m._JS_ToFloat64(v0, v5+i32(8), t1)
 				if t2 != 0 {
 					goto l0
 				}
@@ -113122,7 +111444,7 @@ func (m *Module) _js_math_hypot(v0 int32, v1 int64, v2, v3 int32) int64 {
 			l2:
 				{
 					t4 := int64(load64(m.memory, uint32(v3)))
-					t5 := m.XJS_ToFloat64(v0, v5, t4)
+					t5 := m._JS_ToFloat64(v0, v5, t4)
 					if t5 != 0 {
 						goto l0
 					}
@@ -114193,7 +112515,7 @@ func (m *Module) _js_bigint_asUintN(v0 int32, v1 int64, v2, v3, v4 int32) int64 
 	v5 = i64(0x600000000)
 	{
 		t1 := int64(load64(m.memory, uint32(v3)))
-		t2 := m.XJS_ToIndex(v0, v11+i32(8), t1)
+		t2 := m._JS_ToIndex(v0, v11+i32(8), t1)
 		if t2 == 0 {
 			t3 := int64(load64(m.memory, uint64(uint32(v3))+8))
 			v1 = t3
@@ -114890,7 +113212,7 @@ func (m *Module) _js_array_buffer_transfer(v0 int32, v1 int64, v2, v3, v4 int32)
 					v9 = t5
 					if v9&i64(-0x100000000) != i64(0x300000000) {
 						v8 = i64(0x600000000)
-						t6 := m.XJS_ToIndex(v0, v6+i32(8), v9)
+						t6 := m._JS_ToIndex(v0, v6+i32(8), v9)
 						if t6 != 0 {
 							goto l2
 						}
@@ -116066,7 +114388,7 @@ func (m *Module) _js_typed_array_fill(v0 int32, v1 int64, v2, v3 int32) int64 {
 						goto l2
 					}
 					t12 := int64(load64(m.memory, uint32(v3)))
-					t13 := m.XJS_ToFloat64(v0, v4+i32(8), t12)
+					t13 := m._JS_ToFloat64(v0, v4+i32(8), t12)
 					if t13 != 0 {
 						goto l1
 					}
@@ -118375,7 +116697,7 @@ func (m *Module) _js_uint8array_from_base64(v0 int32, v1 int64, v2, v3 int32) in
 	if uint64(int64(uint64(v1)>>32)-i64(0xfffffffb)) > uint64(i64(-3)) {
 		{
 			v8 = i64(0x600000000)
-			t2 := m.XJS_ToCStringLen2(v0, v5+i32(12), v1, i32(0))
+			t2 := m._JS_ToCStringLen2(v0, v5+i32(12), v1, i32(0))
 			v4 = t2
 			if v4 == 0 {
 				goto l0
@@ -118521,7 +116843,7 @@ func (m *Module) _parse_alphabet_option(v0 int32, v1 int64) int32 {
 				_ = m.XJS_ThrowTypeError(v0, i32(4286), i32(0))
 				return i32(-1)
 			}
-			t4 := m.XJS_ToCStringLen2(v0, i32(0), v1, i32(0))
+			t4 := m._JS_ToCStringLen2(v0, i32(0), v1, i32(0))
 			v2 = t4
 			if uint64(v1) >= uint64(i64(-0x900000000)) {
 				{
@@ -118603,7 +116925,7 @@ func (m *Module) _parse_last_chunk_option(v0 int32, v1 int64) int32 {
 				_ = m.XJS_ThrowTypeError(v0, i32(10423), i32(0))
 				return i32(-1)
 			}
-			t4 := m.XJS_ToCStringLen2(v0, i32(0), v1, i32(0))
+			t4 := m._JS_ToCStringLen2(v0, i32(0), v1, i32(0))
 			v2 = t4
 			if uint64(v1) >= uint64(i64(-0x900000000)) {
 				{
@@ -118984,7 +117306,7 @@ func (m *Module) _js_uint8array_from_hex(v0 int32, v1 int64, v2, v3 int32) int64
 	if uint64(int64(uint64(v8)>>32)-i64(0xfffffffb)) > uint64(i64(-3)) {
 		{
 			v1 = i64(0x600000000)
-			t2 := m.XJS_ToCStringLen2(v0, v2+i32(12), v8, i32(0))
+			t2 := m._JS_ToCStringLen2(v0, v2+i32(12), v8, i32(0))
 			v3 = t2
 			if v3 == 0 {
 				goto l0
@@ -119375,7 +117697,7 @@ func (m *Module) _js_uint8array_set_from_base64(v0 int32, v1 int64, v2, v3 int32
 				goto l1
 			}
 			v1 = i64(0x600000000)
-			t4 := m.XJS_ToCStringLen2(v0, v5+i32(12), v7, i32(0))
+			t4 := m._JS_ToCStringLen2(v0, v5+i32(12), v7, i32(0))
 			v4 = t4
 			if v4 == 0 {
 				goto l1
@@ -119562,7 +117884,7 @@ func (m *Module) _js_uint8array_set_from_hex(v0 int32, v1 int64, v2, v3 int32) i
 				goto l1
 			}
 			v1 = i64(0x600000000)
-			t4 := m.XJS_ToCStringLen2(v0, v2+i32(12), v7, i32(0))
+			t4 := m._JS_ToCStringLen2(v0, v2+i32(12), v7, i32(0))
 			v3 = t4
 			if v3 == 0 {
 				goto l1
@@ -119774,7 +118096,7 @@ func (m *Module) _js_dataview_getValue(v0 int32, v1 int64, v2, v3, v4 int32) int
 			v8 = t3
 			v1 = i64(0x600000000)
 			t4 := int64(load64(m.memory, uint32(v3)))
-			t5 := m.XJS_ToIndex(v0, v7+i32(8), t4)
+			t5 := m._JS_ToIndex(v0, v7+i32(8), t4)
 			if t5 != 0 {
 				goto l1
 			}
@@ -119983,7 +118305,7 @@ func (m *Module) _js_dataview_setValue(v0 int32, v1 int64, v2, v3, v4 int32) int
 			v8 = t3
 			v1 = i64(0x600000000)
 			t4 := int64(load64(m.memory, uint32(v3)))
-			t5 := m.XJS_ToIndex(v0, v5+i32(8), t4)
+			t5 := m._JS_ToIndex(v0, v5+i32(8), t4)
 			if t5 != 0 {
 				goto l1
 			}
@@ -120005,7 +118327,7 @@ func (m *Module) _js_dataview_setValue(v0 int32, v1 int64, v2, v3, v4 int32) int
 						}
 						goto l2
 					}
-					t9 := m.XJS_ToFloat64(v0, v5, v9)
+					t9 := m._JS_ToFloat64(v0, v5, v9)
 					if t9 != 0 {
 						goto l1
 					}
@@ -132590,172 +130912,6 @@ func (m *Module) _exchange_bytes(v0, v1, v2 int32) {
 		}
 	}
 }
-func (m *Module) XJS_VALUE_GET_FLOAT64(v0 int64) float64 {
-	return math.Float64frombits(uint64(v0 + i64(0x7ff8000a00000000)))
-}
-func (m *Module) XJS_VALUE_GET_NORM_TAG(v0 int64) int32 {
-	var v1 int32
-	v1 = int32(int64(uint64(v0) >> 32))
-	p0 := v1
-	if uint32(v1-i32(8)) < uint32(i32(-17)) {
-		p0 = i32(8)
-	}
-	return p0
-}
-func (m *Module) XJS_VALUE_IS_NAN(v0 int64) int32 {
-	var p0 int32
-	if v0&i64(-0x100000000) == i64(-0xa00000000) {
-		p0 = 1
-	}
-	return p0
-}
-func (m *Module) XJS_AtomToCString(v0, v1 int32) int32 {
-	return m.XJS_AtomToCStringLen(v0, i32(0), v1)
-}
-func (m *Module) XJS_NewBool(v0, v1 int32) int64 {
-	var p0 int32
-	if v1 != i32(0) {
-		p0 = 1
-	}
-	return int64(uint32(p0)) | i64(0x100000000)
-}
-func (m *Module) XJS_NewInt32(v0, v1 int32) int64 {
-	return int64(uint32(v1))
-}
-func (m *Module) XJS_NewCatchOffset(v0, v1 int32) int64 {
-	return int64(uint32(v1)) | i64(0x500000000)
-}
-func (m *Module) XJS_NewInt64(v0 int32, v1 int64) int64 {
-	var p0 int64
-	if uint64(v1+i64(0x80000000)) > uint64(i64(0xffffffff)) {
-		v1 = int64(math.Float64bits(float64(v1)))
-		p1 := v1 - i64(0x7ff8000a00000000)
-		if uint64(v1&i64(0x7fffffffffffffff)) > uint64(i64(0x7ff0000000000000)) {
-			p1 = i64(-0xa00000000)
-		}
-		p0 = p1
-	} else {
-		p0 = v1 & i64(0xffffffff)
-	}
-	return p0
-}
-func (m *Module) XJS_NewUint32(v0, v1 int32) int64 {
-	var v2 int64
-	var p0 int64
-	if v1 < i32(0) {
-		v2 = int64(math.Float64bits(float64(uint32(v1))))
-		p1 := v2 - i64(0x7ff8000a00000000)
-		if uint64(v2) > uint64(i64(0x7ff0000000000000)) {
-			p1 = i64(-0xa00000000)
-		}
-		p0 = p1
-	} else {
-		p0 = int64(uint32(v1))
-	}
-	return p0
-}
-func (m *Module) XJS_NewFloat64(v0 int32, v1 float64) int64 {
-	var v2 int64
-	if v1 >= float64(-0x1p+31) {
-		if v1 <= float64(0x1.fffffffcp+30) {
-			v2 = int64(math.Float64bits(v1))
-			t0 := v2
-			v0 = i32_trunc_sat_f64_s(v1)
-			if t0 != int64(math.Float64bits(float64(v0))) {
-				goto l0
-			}
-			return int64(uint32(v0))
-		}
-	}
-	v2 = int64(math.Float64bits(v1))
-l0:
-	p1 := v2 - i64(0x7ff8000a00000000)
-	if uint64(int64(math.Float64bits(v1))&i64(0x7fffffffffffffff)) > uint64(i64(0x7ff0000000000000)) {
-		p1 = i64(-0xa00000000)
-	}
-	return p1
-}
-func (m *Module) XJS_IsNumber(v0 int64) int32 {
-	var p0 int32
-	if uint64(v0) < uint64(i64(0x100000000)) {
-		p0 = i32(1)
-	} else {
-		var p1 int32
-		if uint32(int32(int64(uint64(v0)>>32))-i32(8)) < uint32(i32(-17)) {
-			p1 = 1
-		}
-		p0 = p1
-	}
-	return p0
-}
-func (m *Module) XJS_IsBigInt(v0 int32, v1 int64) int32 {
-	v1 = int64(uint64(v1) >> 32)
-	var p0 int32
-	if v1 == i64(0xfffffff7) {
-		p0 = 1
-	}
-	var p1 int32
-	if v1 == i64(7) {
-		p1 = 1
-	}
-	return p0 | p1
-}
-func (m *Module) XJS_IsBool(v0 int64) int32 {
-	var p0 int32
-	if v0&i64(-0x100000000) == i64(0x100000000) {
-		p0 = 1
-	}
-	return p0
-}
-func (m *Module) XJS_IsNull(v0 int64) int32 {
-	var p0 int32
-	if v0&i64(-0x100000000) == i64(0x200000000) {
-		p0 = 1
-	}
-	return p0
-}
-func (m *Module) XJS_IsUndefined(v0 int64) int32 {
-	var p0 int32
-	if v0&i64(-0x100000000) == i64(0x300000000) {
-		p0 = 1
-	}
-	return p0
-}
-func (m *Module) XJS_IsException(v0 int64) int32 {
-	var p0 int32
-	if v0&i64(-0x100000000) == i64(0x600000000) {
-		p0 = 1
-	}
-	return p0
-}
-func (m *Module) XJS_IsUninitialized(v0 int64) int32 {
-	var p0 int32
-	if v0&i64(-0x100000000) == i64(0x400000000) {
-		p0 = 1
-	}
-	return p0
-}
-func (m *Module) XJS_IsString(v0 int64) int32 {
-	var p0 int32
-	if uint64(int64(uint64(v0)>>32)-i64(0xfffffff9)) < uint64(i64(2)) {
-		p0 = 1
-	}
-	return p0
-}
-func (m *Module) XJS_IsSymbol(v0 int64) int32 {
-	var p0 int32
-	if v0&i64(-0x100000000) == i64(-0x800000000) {
-		p0 = 1
-	}
-	return p0
-}
-func (m *Module) XJS_IsObject(v0 int64) int32 {
-	var p0 int32
-	if uint64(v0) > uint64(i64(-0x100000001)) {
-		p0 = 1
-	}
-	return p0
-}
 func (m *Module) XJS_FreeValue(v0 int32, v1 int64) {
 	var v2, v3 int32
 	if uint64(v1) >= uint64(i64(-0x900000000)) {
@@ -132789,215 +130945,1015 @@ func (m *Module) XJS_FreeValueRT(v0 int32, v1 int64) {
 	l0:
 	}
 }
-func (m *Module) XJS_ToUint32(v0, v1 int32, v2 int64) int32 {
-	return m.XJS_ToInt32(v0, v1, v2)
-}
-func (m *Module) XJS_NewString(v0, v1 int32) int64 {
-	t0 := m._strlen(v1)
-	return m.XJS_NewStringLen(v0, v1, t0)
-}
-func (m *Module) XJS_ToCStringLen(v0, v1 int32, v2 int64) int32 {
-	return m.XJS_ToCStringLen2(v0, v1, v2, i32(0))
-}
-func (m *Module) XJS_ToCString(v0 int32, v1 int64) int32 {
-	return m.XJS_ToCStringLen2(v0, i32(0), v1, i32(0))
-}
-func (m *Module) XJS_GetProperty(v0 int32, v1 int64, v2 int32) int64 {
-	return m.XJS_GetPropertyInternal(v0, v1, v2, v1, i32(0))
-}
-func (m *Module) XJS_SetProperty(v0 int32, v1 int64, v2 int32, v3 int64) int32 {
-	return m.XJS_SetPropertyInternal(v0, v1, v2, v3, v1, i32(0x4000))
-}
-func (m *Module) XJS_NewCFunction(v0, v1, v2, v3 int32) int64 {
-	return m.XJS_NewCFunction2(v0, v1, v2, v3, i32(0), i32(0))
-}
-func (m *Module) XJS_NewCFunctionMagic(v0, v1, v2, v3, v4, v5 int32) int64 {
-	return m.XJS_NewCFunction2(v0, v1, v2, v3, v4, v5)
-}
-func (m *Module) XJSPrintValueOptions_get_show_hidden(v0 int32) int32 {
-	t0 := int32(int8(m.memory[uint32(v0)]))
-	return t0
-}
-func (m *Module) XJSPrintValueOptions_set_show_hidden(v0, v1 int32) {
-	m.memory[uint32(v0)] = byte(v1)
-}
-func (m *Module) XJSPrintValueOptions_get_raw_dump(v0 int32) int32 {
-	t0 := int32(int8(m.memory[uint64(uint32(v0))+1]))
-	return t0
-}
-func (m *Module) XJSPrintValueOptions_set_raw_dump(v0, v1 int32) {
-	m.memory[uint64(uint32(v0))+1] = byte(v1)
-}
-func (m *Module) XJS_VALUE_GET_TAG(v0 int64) int32 {
-	return int32(int64(uint64(v0) >> 32))
-}
-func (m *Module) XJS_VALUE_GET_PTR(v0 int64) int32 {
-	return int32(v0)
-}
-func (m *Module) XJS_MKPTR(v0, v1 int32) int64 {
-	return int64(uint32(v1)) | int64(uint32(v0))<<32
-}
-func (m *Module) XJS_TAG_IS_FLOAT64(v0 int32) int32 {
-	var p0 int32
-	if uint32(v0-i32(8)) < uint32(i32(-17)) {
-		p0 = 1
-	}
-	return p0
-}
-func (m *Module) XJS_VALUE_IS_BOTH_INT(v0, v1 int64) int32 {
-	var p0 int32
-	if uint64(v0|v1) < uint64(i64(0x100000000)) {
-		p0 = 1
-	}
-	return p0
-}
-func (m *Module) XJS_VALUE_IS_BOTH_FLOAT(v0, v1 int64) int32 {
-	var p0 int32
-	if uint32(int32(int64(uint64(v0)>>32))-i32(8)) < uint32(i32(-17)) {
-		var p1 int32
-		if uint32(int32(int64(uint64(v1)>>32))-i32(8)) < uint32(i32(-17)) {
-			p1 = 1
+func (m *Module) XJS_ComputeMemoryUsage(v0 int32) (int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64) {
+	var v1, v2, v3, v4, v5, v6, v7, v8, v9 int32
+	var v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35 int64
+	var v36, v37, v38, v39, v40 float64
+	t0 := m.___stack_pointer
+	v1 = t0 - i32(208)
+	m.___stack_pointer = v1
+	memory_zero(m.memory, uint32(v1), uint32(i32(208)))
+	memory_zero(m.memory, uint32(v1), uint32(i32(208)))
+	t1 := v1
+	v7 = v0
+	t2 := int64(load32(m.memory, uint64(uint32(v7))+520))
+	store64(m.memory, uint64(uint32(t1))+24, uint64(t2))
+	t3 := int64(load32(m.memory, uint64(uint32(v0))+524))
+	store64(m.memory, uint32(v1), uint64(t3))
+	t4 := int64(load32(m.memory, uint64(uint32(v0))+528))
+	v10 = t4
+	v11 = i64(2)
+	store64(m.memory, uint64(uint32(v1))+32, uint64(i64(2)))
+	store64(m.memory, uint64(uint32(v1))+8, uint64(v10))
+	t5 := int32(load32(m.memory, uint64(uint32(v0))+568))
+	t6 := v1
+	v12 = int64(uint32(t5<<3 + i32(760)))
+	store64(m.memory, uint64(uint32(t6))+16, uint64(v12))
+	t7 := int32(load32(m.memory, uint64(uint32(v0))+580))
+	v3 = t7
+	t8 := v3
+	v9 = v0 + i32(576)
+	if t8 != v9 {
+	l5:
+		{
+			t9 := int32(load32(m.memory, uint64(uint32(v3))+16))
+			v2 = t9
+			t10 := v1
+			v11 = v11 + i64(2)
+			store64(m.memory, uint64(uint32(t10))+32, uint64(v11))
+			t11 := int32(load32(m.memory, uint64(uint32(v7))+568))
+			t12 := v1
+			v12 = v12 + int64(uint32(t11<<3+i32(248)))
+			store64(m.memory, uint64(uint32(t12))+16, uint64(v12))
+			t13 := int64(load16(m.memory, uint64(uint32(v3))+8))
+			t14 := v1
+			v14 = v14 + t13
+			store64(m.memory, uint64(uint32(t14))+192, uint64(v14))
+			t15 := int64(int32(load32(m.memory, uint64(uint32(v3))+12)))
+			t16 := v1
+			v13 = v13 + t15
+			store64(m.memory, uint64(uint32(t16))+200, uint64(v13))
+			if v2 != 0 {
+				{
+					t17 := int32(m.memory[uint64(uint32(v2))+8])
+					if t17 != 0 {
+						goto l0
+					}
+					t18 := int32(load32(m.memory, uint64(uint32(v2))+16))
+					v0 = t18
+					t19 := v1
+					v15 = v15 + i64(1)
+					store64(m.memory, uint64(uint32(t19))+104, uint64(v15))
+					t20 := int32(load32(m.memory, uint64(uint32(v2))+20))
+					t21 := v1
+					v16 = v16 + int64(uint32(v0<<2+t20<<3+i32(44)))
+					store64(m.memory, uint64(uint32(t21))+112, uint64(v16))
+				}
+			l0:
+			}
+			t22 := int32(load32(m.memory, uint64(uint32(v3))+220))
+			v2 = t22
+			t23 := v2
+			v5 = v3 + i32(216)
+			if t23 != v5 {
+			l4:
+				{
+					t24 := v1
+					v12 = v12 + i64(200)
+					store64(m.memory, uint64(uint32(t24))+16, uint64(v12))
+					t25 := v1
+					v10 = v11 + i64(1)
+					store64(m.memory, uint64(uint32(t25))+32, uint64(v10))
+					t26 := int32(load32(m.memory, uint64(uint32(v2))+8))
+					if t26 != 0 {
+						t27 := v1
+						v10 = v11 + i64(2)
+						store64(m.memory, uint64(uint32(t27))+32, uint64(v10))
+						t28 := int32(load32(m.memory, uint64(uint32(v2))+12))
+						t29 := v1
+						v12 = v12 + int64(uint32(t28<<4))
+						store64(m.memory, uint64(uint32(t29))+16, uint64(v12))
+					}
+					t30 := int32(load32(m.memory, uint64(uint32(v2))+20))
+					if t30 != 0 {
+						{
+							t31 := v1
+							v10 = v10 + i64(1)
+							store64(m.memory, uint64(uint32(t31))+32, uint64(v10))
+							t32 := int32(load32(m.memory, uint64(uint32(v2))+24))
+							t33 := v1
+							v12 = v12 + int64(uint32(t32*i32(20)))
+							store64(m.memory, uint64(uint32(t33))+16, uint64(v12))
+							t34 := int32(load32(m.memory, uint64(uint32(v2))+24))
+							if t34 <= i32(0) {
+								goto l1
+							}
+							v0 = i32(0)
+							v4 = i32(4)
+						l3:
+							{
+								t35 := int32(load32(m.memory, uint64(uint32(v2))+20))
+								v6 = t35 + v4
+								t36 := int32(load32(m.memory, uint64(uint32(v6))+4))
+								if t36 == 0 {
+									{
+										t37 := int32(load32(m.memory, uint32(v6)))
+										if t37 == 0 {
+											goto l2
+										}
+										t38 := v1
+										v10 = v10 + i64(1)
+										store64(m.memory, uint64(uint32(t38))+32, uint64(v10))
+										t39 := int32(load32(m.memory, uint32(v6)))
+										t40 := int64(load64(m.memory, uint64(uint32(t39))+16))
+										v11 = t40
+										if v11&i64(-0x100000000) != i64(-0x700000000) {
+											goto l2
+										}
+										v8 = int32(v11)
+										t41 := int32(load32(m.memory, uint64(uint32(v8))+4))
+										if uint32(t41) > uint32(i32(0x3fffffff)) {
+											goto l2
+										}
+										t42 := int32(load32(m.memory, uint32(v8)))
+										t43 := v38
+										v6 = t42
+										t44 := int32(load32(m.memory, uint32(v8-i32(4))))
+										t45 := float64(uint32(i32_shl(v6&i32(0x7fffffff), int32(uint32(v6)>>31)) + v6>>31 + i32(13)))
+										v36 = float64(t44)
+										v38 = float64(t43 + float64(t45/v36))
+										v37 = float64(v37 + float64(float64(1)/v36))
+									}
+								l2:
+								}
+								v4 = v4 + i32(20)
+								v0 = v0 + i32(1)
+								t46 := int32(load32(m.memory, uint64(uint32(v2))+24))
+								if v0 < t46 {
+									goto l3
+								}
+							}
+						}
+					l1:
+					}
+					t47 := int32(load32(m.memory, uint64(uint32(v2))+32))
+					if t47 != 0 {
+						t48 := v1
+						v10 = v10 + i64(1)
+						store64(m.memory, uint64(uint32(t48))+32, uint64(v10))
+						t49 := int32(load32(m.memory, uint64(uint32(v2))+36))
+						t50 := v1
+						v12 = v12 + int64(uint32(t49<<2))
+						store64(m.memory, uint64(uint32(t50))+16, uint64(v12))
+					}
+					t51 := int32(load32(m.memory, uint64(uint32(v2))+44))
+					if t51 != 0 {
+						t52 := v1
+						v11 = v10 + i64(1)
+						store64(m.memory, uint64(uint32(t52))+32, uint64(v11))
+						t53 := int32(load32(m.memory, uint64(uint32(v2))+48))
+						t54 := v1
+						v12 = v12 + int64(uint32(t53<<4))
+						store64(m.memory, uint64(uint32(t54))+16, uint64(v12))
+					} else {
+						v11 = v10
+					}
+					t55 := int64(load64(m.memory, uint64(uint32(v2))+60))
+					v10 = t55
+					if v10&i64(-0x100000000) == i64(-0x700000000) {
+						v6 = int32(v10)
+						t56 := int32(load32(m.memory, uint64(uint32(v6))+4))
+						if uint32(t56) <= uint32(i32(0x3fffffff)) {
+							t57 := int32(load32(m.memory, uint32(v6)))
+							t58 := v38
+							v0 = t57
+							t59 := int32(load32(m.memory, uint32(v6-i32(4))))
+							t60 := float64(uint32(i32_shl(v0&i32(0x7fffffff), int32(uint32(v0)>>31)) + v0>>31 + i32(13)))
+							v36 = float64(t59)
+							v38 = float64(t58 + float64(t60/v36))
+							v37 = float64(v37 + float64(float64(1)/v36))
+						}
+					}
+					t61 := int64(load64(m.memory, uint64(uint32(v2))+68))
+					v10 = t61
+					if v10&i64(-0x100000000) == i64(-0x700000000) {
+						v6 = int32(v10)
+						t62 := int32(load32(m.memory, uint64(uint32(v6))+4))
+						if uint32(t62) <= uint32(i32(0x3fffffff)) {
+							t63 := int32(load32(m.memory, uint32(v6)))
+							t64 := v38
+							v0 = t63
+							t65 := int32(load32(m.memory, uint32(v6-i32(4))))
+							t66 := float64(uint32(i32_shl(v0&i32(0x7fffffff), int32(uint32(v0)>>31)) + v0>>31 + i32(13)))
+							v36 = float64(t65)
+							v38 = float64(t64 + float64(t66/v36))
+							v37 = float64(v37 + float64(float64(1)/v36))
+						}
+					}
+					t67 := int32(load32(m.memory, uint64(uint32(v2))+4))
+					t68 := v5
+					v2 = t67
+					if t68 != v2 {
+						goto l4
+					}
+				}
+			}
+			t69 := int32(load32(m.memory, uint64(uint32(v3))+4))
+			t70 := v9
+			v3 = t69
+			if t70 != v3 {
+				goto l5
+			}
 		}
-		p0 = p1
+	}
+	t71 := int32(load32(m.memory, uint64(uint32(v7))+588))
+	v3 = t71
+	t72 := v3
+	v9 = v7 + i32(584)
+	if t72 != v9 {
+		v14 = i64(0)
+		v13 = i64(0)
+	l33:
+		{
+			{
+				t73 := int32(m.memory[uint32(v3-i32(5))])
+				switch t73 & i32(127) {
+				default:
+					goto l8
+				case 0:
+					t74 := int32(load32(m.memory, uint64(uint32(v3))+16))
+					v8 = t74
+					t75 := v1
+					v14 = v14 + i64(1)
+					store64(m.memory, uint64(uint32(t75))+72, uint64(v14))
+					t76 := int32(load32(m.memory, uint64(uint32(v3))+20))
+					if t76 != 0 {
+						{
+							t77 := v1
+							v11 = v11 + i64(1)
+							store64(m.memory, uint64(uint32(t77))+32, uint64(v11))
+							t78 := int32(load32(m.memory, uint64(uint32(v8))+20))
+							t79 := v1
+							v24 = v24 + int64(uint32(t78<<3))
+							store64(m.memory, uint64(uint32(t79))+96, uint64(v24))
+							t80 := int64(int32(load32(m.memory, uint64(uint32(v8))+24)))
+							t81 := v1
+							v17 = v17 + t80
+							store64(m.memory, uint64(uint32(t81))+88, uint64(v17))
+							t82 := int32(load32(m.memory, uint64(uint32(v8))+24))
+							v0 = t82
+							if v0 <= i32(0) {
+								goto l9
+							}
+							t83 := int32(load32(m.memory, uint64(uint32(v8))+16))
+							v4 = v8 + t83<<2 + i32(44)
+							t84 := int32(load32(m.memory, uint64(uint32(v3))+20))
+							v2 = t84
+						l11:
+							{
+								t85 := int32(load32(m.memory, uint64(uint32(v4))+4))
+								if t85 != 0 {
+									{
+										t86 := int32(load32(m.memory, uint32(v4)))
+										if uint32(t86) > uint32(i32(0x3fffffff)) {
+											goto l10
+										}
+										t87 := int64(load64(m.memory, uint32(v2)))
+										v10 = t87
+										if v10&i64(-0x100000000) != i64(-0x700000000) {
+											goto l10
+										}
+										v6 = int32(v10)
+										t88 := int32(load32(m.memory, uint64(uint32(v6))+4))
+										if uint32(t88) > uint32(i32(0x3fffffff)) {
+											goto l10
+										}
+										t89 := int32(load32(m.memory, uint32(v6)))
+										t90 := v38
+										v5 = t89
+										t91 := int32(load32(m.memory, uint32(v6-i32(4))))
+										t92 := float64(uint32(i32_shl(v5&i32(0x7fffffff), int32(uint32(v5)>>31)) + v5>>31 + i32(13)))
+										v36 = float64(t91)
+										v38 = float64(t90 + float64(t92/v36))
+										v37 = float64(v37 + float64(float64(1)/v36))
+									}
+								l10:
+								}
+								v2 = v2 + i32(8)
+								v4 = v4 + i32(8)
+								v0 = v0 - i32(1)
+								if v0 != 0 {
+									goto l11
+								}
+							}
+						}
+					l9:
+					}
+					t93 := int32(m.memory[uint64(uint32(v8))+8])
+					if t93 == 0 {
+						t94 := int32(load32(m.memory, uint64(uint32(v8))+16))
+						v0 = t94
+						t95 := v1
+						v15 = v15 + i64(1)
+						store64(m.memory, uint64(uint32(t95))+104, uint64(v15))
+						t96 := int32(load32(m.memory, uint64(uint32(v8))+20))
+						t97 := v1
+						v16 = v16 + int64(uint32(v0<<2+t96<<3+i32(44)))
+						store64(m.memory, uint64(uint32(t97))+112, uint64(v16))
+					}
+					{
+						t98 := int32(load16(m.memory, uint64(uint32(v3))+10))
+						switch t98 - i32(2) {
+						case 15:
+							t99 := int32(load32(m.memory, uint64(uint32(v3))+24))
+							v0 = t99
+							if v0 == 0 {
+								goto l8
+							}
+							t100 := int64(load64(m.memory, uint32(v0)))
+							v10 = t100
+							if v10&i64(-0x100000000) == i64(-0x700000000) {
+								v2 = int32(v10)
+								t101 := int32(load32(m.memory, uint64(uint32(v2))+4))
+								if uint32(t101) <= uint32(i32(0x3fffffff)) {
+									t102 := int32(load32(m.memory, uint32(v2)))
+									t103 := v38
+									v0 = t102
+									t104 := int32(load32(m.memory, uint32(v2-i32(4))))
+									t105 := float64(uint32(i32_shl(v0&i32(0x7fffffff), int32(uint32(v0)>>31)) + v0>>31 + i32(13)))
+									v36 = float64(t104)
+									v38 = float64(t103 + float64(t105/v36))
+									v37 = float64(v37 + float64(float64(1)/v36))
+								}
+							}
+							t106 := v1
+							v12 = v12 + i64(24)
+							store64(m.memory, uint64(uint32(t106))+16, uint64(v12))
+							goto l23
+						case 16:
+							t107 := int32(load32(m.memory, uint64(uint32(v3))+24))
+							v2 = t107
+							t108 := int32(load32(m.memory, uint64(uint32(v2))+4))
+							if uint32(t108) <= uint32(i32(0x3fffffff)) {
+								t109 := int32(load32(m.memory, uint32(v2)))
+								t110 := v38
+								v0 = t109
+								t111 := int32(load32(m.memory, uint32(v2-i32(4))))
+								t112 := float64(uint32(i32_shl(v0&i32(0x7fffffff), int32(uint32(v0)>>31)) + v0>>31 + i32(13)))
+								v36 = float64(t111)
+								v38 = float64(t110 + float64(t112/v36))
+								v37 = float64(v37 + float64(float64(1)/v36))
+							}
+							t113 := int32(load32(m.memory, uint64(uint32(v3))+28))
+							v2 = t113
+							t114 := int32(load32(m.memory, uint64(uint32(v2))+4))
+							if uint32(t114) > uint32(i32(0x3fffffff)) {
+								goto l8
+							}
+							t115 := int32(load32(m.memory, uint32(v2)))
+							t116 := v38
+							v0 = t115
+							t117 := int32(load32(m.memory, uint32(v2-i32(4))))
+							t118 := float64(uint32(i32_shl(v0&i32(0x7fffffff), int32(uint32(v0)>>31)) + v0>>31 + i32(13)))
+							v36 = float64(t117)
+							v38 = float64(t116 + float64(t118/v36))
+							v37 = float64(v37 + float64(float64(1)/v36))
+							goto l8
+						case 17, 18:
+							t119 := int32(load32(m.memory, uint64(uint32(v3))+24))
+							v0 = t119
+							if v0 == 0 {
+								goto l8
+							}
+							t120 := v1
+							v12 = v12 + i64(32)
+							store64(m.memory, uint64(uint32(t120))+16, uint64(v12))
+							t121 := v1
+							v10 = v11 + i64(1)
+							store64(m.memory, uint64(uint32(t121))+32, uint64(v10))
+							t122 := int32(load32(m.memory, uint64(uint32(v0))+12))
+							if t122 != 0 {
+								t123 := v1
+								v11 = v11 + i64(2)
+								store64(m.memory, uint64(uint32(t123))+32, uint64(v11))
+								t124 := int64(int32(load32(m.memory, uint32(v0))))
+								t125 := v1
+								v12 = v12 + t124
+								store64(m.memory, uint64(uint32(t125))+16, uint64(v12))
+							} else {
+								v11 = v10
+							}
+							goto l8
+						case 0, 6:
+							t126 := v1
+							v25 = v25 + i64(1)
+							store64(m.memory, uint64(uint32(t126))+168, uint64(v25))
+							t127 := int32(m.memory[uint64(uint32(v3))+8])
+							if t127&i32(16) == 0 {
+								goto l8
+							}
+							t128 := v1
+							v18 = v18 + i64(1)
+							store64(m.memory, uint64(uint32(t128))+176, uint64(v18))
+							t129 := int32(load32(m.memory, uint64(uint32(v3))+28))
+							if t129 == 0 {
+								goto l8
+							}
+							t130 := v1
+							v11 = v11 + i64(1)
+							store64(m.memory, uint64(uint32(t130))+32, uint64(v11))
+							t131 := int32(load32(m.memory, uint64(uint32(v3))+32))
+							t132 := v1
+							v12 = v12 + int64(uint32(t131<<3))
+							store64(m.memory, uint64(uint32(t132))+16, uint64(v12))
+							t133 := int64(load32(m.memory, uint64(uint32(v3))+32))
+							t134 := v1
+							v19 = v19 + t133
+							store64(m.memory, uint64(uint32(t134))+184, uint64(v19))
+							t135 := int32(load32(m.memory, uint64(uint32(v3))+32))
+							v2 = t135
+							if v2 == 0 {
+								goto l8
+							}
+							t136 := int32(load32(m.memory, uint64(uint32(v3))+28))
+							v4 = t136
+						l24:
+							{
+								t137 := int64(load64(m.memory, uint32(v4)))
+								v10 = t137
+								if v10&i64(-0x100000000) == i64(-0x700000000) {
+									v5 = int32(v10)
+									t138 := int32(load32(m.memory, uint64(uint32(v5))+4))
+									if uint32(t138) <= uint32(i32(0x3fffffff)) {
+										t139 := int32(load32(m.memory, uint32(v5)))
+										t140 := v38
+										v0 = t139
+										t141 := int32(load32(m.memory, uint32(v5-i32(4))))
+										t142 := float64(uint32(i32_shl(v0&i32(0x7fffffff), int32(uint32(v0)>>31)) + v0>>31 + i32(13)))
+										v36 = float64(t141)
+										v38 = float64(t140 + float64(t142/v36))
+										v37 = float64(v37 + float64(float64(1)/v36))
+									}
+								}
+								v4 = v4 + i32(8)
+								v2 = v2 - i32(1)
+								if v2 != 0 {
+									goto l24
+								}
+							}
+							goto l8
+						case 2, 3, 4, 5, 8, 32:
+							t143 := int64(load64(m.memory, uint64(uint32(v3))+24))
+							v10 = t143
+							if v10&i64(-0x100000000) != i64(-0x700000000) {
+								goto l8
+							}
+							v2 = int32(v10)
+							t144 := int32(load32(m.memory, uint64(uint32(v2))+4))
+							if uint32(t144) > uint32(i32(0x3fffffff)) {
+								goto l8
+							}
+							t145 := int32(load32(m.memory, uint32(v2)))
+							t146 := v38
+							v0 = t145
+							t147 := int32(load32(m.memory, uint32(v2-i32(4))))
+							t148 := float64(uint32(i32_shl(v0&i32(0x7fffffff), int32(uint32(v0)>>31)) + v0>>31 + i32(13)))
+							v36 = float64(t147)
+							v38 = float64(t146 + float64(t148/v36))
+							v37 = float64(v37 + float64(float64(1)/v36))
+							goto l8
+						case 7:
+							t149 := int32(m.memory[uint64(uint32(v3))+8])
+							if t149&i32(16) == 0 {
+								goto l8
+							}
+							t150 := v1
+							v18 = v18 + i64(1)
+							store64(m.memory, uint64(uint32(t150))+176, uint64(v18))
+							t151 := int32(load32(m.memory, uint64(uint32(v3))+28))
+							if t151 == 0 {
+								goto l8
+							}
+							t152 := v1
+							v11 = v11 + i64(1)
+							store64(m.memory, uint64(uint32(t152))+32, uint64(v11))
+							t153 := int32(load32(m.memory, uint64(uint32(v3))+32))
+							t154 := v1
+							v12 = v12 + int64(uint32(t153<<2))
+							store64(m.memory, uint64(uint32(t154))+16, uint64(v12))
+							t155 := int64(load32(m.memory, uint64(uint32(v3))+32))
+							t156 := v1
+							v19 = v19 + t155
+							store64(m.memory, uint64(uint32(t156))+184, uint64(v19))
+							t157 := int32(load32(m.memory, uint64(uint32(v3))+32))
+							v2 = t157
+							if v2 == 0 {
+								goto l8
+							}
+							t158 := int32(load32(m.memory, uint64(uint32(v3))+28))
+							v4 = t158
+						l25:
+							{
+								t159 := int32(load32(m.memory, uint32(v4)))
+								t160 := int32(load32(m.memory, uint64(uint32(t159))+12))
+								t161 := int64(load64(m.memory, uint32(t160)))
+								v10 = t161
+								if v10&i64(-0x100000000) == i64(-0x700000000) {
+									v5 = int32(v10)
+									t162 := int32(load32(m.memory, uint64(uint32(v5))+4))
+									if uint32(t162) <= uint32(i32(0x3fffffff)) {
+										t163 := int32(load32(m.memory, uint32(v5)))
+										t164 := v38
+										v0 = t163
+										t165 := int32(load32(m.memory, uint32(v5-i32(4))))
+										t166 := float64(uint32(i32_shl(v0&i32(0x7fffffff), int32(uint32(v0)>>31)) + v0>>31 + i32(13)))
+										v36 = float64(t165)
+										v38 = float64(t164 + float64(t166/v36))
+										v37 = float64(v37 + float64(float64(1)/v36))
+									}
+								}
+								v4 = v4 + i32(4)
+								v2 = v2 - i32(1)
+								if v2 != 0 {
+									goto l25
+								}
+							}
+							goto l8
+						case 10:
+							t167 := v1
+							v26 = v26 + i64(1)
+							store64(m.memory, uint64(uint32(t167))+160, uint64(v26))
+							goto l8
+						case 11:
+							t168 := int32(load32(m.memory, uint64(uint32(v3))+28))
+							v4 = t168
+							if v4 == 0 {
+								goto l8
+							}
+							t169 := int32(load32(m.memory, uint64(uint32(v3))+24))
+							v6 = t169
+							t170 := v1
+							v11 = v11 + i64(1)
+							store64(m.memory, uint64(uint32(t170))+32, uint64(v11))
+							t171 := int32(load32(m.memory, uint64(uint32(v6))+56))
+							t172 := v1
+							v20 = v20 + int64(uint32(t171<<2))
+							store64(m.memory, uint64(uint32(t172))+128, uint64(v20))
+							t173 := int32(load32(m.memory, uint64(uint32(v6))+56))
+							if t173 <= i32(0) {
+								goto l8
+							}
+							v2 = i32(0)
+						l27:
+							{
+								t174 := int32(load32(m.memory, uint32(v4)))
+								v0 = t174
+								if v0 != 0 {
+									{
+										t175 := int32(load32(m.memory, uint32(v0-i32(4))))
+										t176 := v1
+										v36 = float64(t175)
+										v20 = i64_trunc_sat_f64_s(float64(float64(float64(24)/v36) + float64(v20)))
+										store64(m.memory, uint64(uint32(t176))+128, uint64(v20))
+										t177 := v1
+										v11 = i64_trunc_sat_f64_s(float64(float64(float64(1)/v36) + float64(v11)))
+										store64(m.memory, uint64(uint32(t177))+32, uint64(v11))
+										t178 := int32(load32(m.memory, uint32(v4)))
+										v0 = t178
+										v5 = v0 + i32(16)
+										t179 := int32(load32(m.memory, uint64(uint32(v0))+12))
+										if v5 != t179 {
+											goto l26
+										}
+										t180 := int64(load64(m.memory, uint32(v5)))
+										v10 = t180
+										if v10&i64(-0x100000000) != i64(-0x700000000) {
+											goto l26
+										}
+										v5 = int32(v10)
+										t181 := int32(load32(m.memory, uint64(uint32(v5))+4))
+										if uint32(t181) > uint32(i32(0x3fffffff)) {
+											goto l26
+										}
+										t182 := int32(load32(m.memory, uint32(v5)))
+										t183 := v38
+										v0 = t182
+										t184 := int32(load32(m.memory, uint32(v5-i32(4))))
+										t185 := float64(uint32(i32_shl(v0&i32(0x7fffffff), int32(uint32(v0)>>31)) + v0>>31 + i32(13)))
+										v36 = float64(t184)
+										v38 = float64(t183 + float64(t185/v36))
+										v37 = float64(v37 + float64(float64(1)/v36))
+									}
+								l26:
+								}
+								v4 = v4 + i32(4)
+								v2 = v2 + i32(1)
+								t186 := int32(load32(m.memory, uint64(uint32(v6))+56))
+								if v2 < t186 {
+									goto l27
+								}
+							}
+							goto l8
+						case 12:
+							t187 := int32(load32(m.memory, uint64(uint32(v3))+24))
+							v6 = t187
+							t188 := int32(load32(m.memory, uint64(uint32(v6))+16))
+							v2 = t188
+							if v2 > i32(0) {
+								v4 = v6 + i32(24)
+							l28:
+								{
+									t189 := int64(load64(m.memory, uint32(v4)))
+									v10 = t189
+									if v10&i64(-0x100000000) == i64(-0x700000000) {
+										v5 = int32(v10)
+										t190 := int32(load32(m.memory, uint64(uint32(v5))+4))
+										if uint32(t190) <= uint32(i32(0x3fffffff)) {
+											t191 := int32(load32(m.memory, uint32(v5)))
+											t192 := v38
+											v0 = t191
+											t193 := int32(load32(m.memory, uint32(v5-i32(4))))
+											t194 := float64(uint32(i32_shl(v0&i32(0x7fffffff), int32(uint32(v0)>>31)) + v0>>31 + i32(13)))
+											v36 = float64(t193)
+											v38 = float64(t192 + float64(t194/v36))
+											v37 = float64(v37 + float64(float64(1)/v36))
+										}
+									}
+									v4 = v4 + i32(8)
+									v2 = v2 - i32(1)
+									if v2 != 0 {
+										goto l28
+									}
+								}
+							}
+							t195 := v1
+							v11 = v11 + i64(1)
+							store64(m.memory, uint64(uint32(t195))+32, uint64(v11))
+							t196 := int32(load32(m.memory, uint64(uint32(v6))+16))
+							t197 := v1
+							v12 = v12 + int64(uint32(t196<<3+i32(24)))
+							store64(m.memory, uint64(uint32(t197))+16, uint64(v12))
+							goto l8
+						case 13:
+							t198 := int32(load32(m.memory, uint64(uint32(v3))+24))
+							v6 = t198
+							if v6 == 0 {
+								goto l8
+							}
+							t199 := int32(m.memory[uint64(uint32(v6))+5])
+							v2 = t199
+							if v2 != 0 {
+								v4 = v6 + i32(8)
+							l29:
+								{
+									t200 := int64(load64(m.memory, uint32(v4)))
+									v10 = t200
+									if v10&i64(-0x100000000) == i64(-0x700000000) {
+										v5 = int32(v10)
+										t201 := int32(load32(m.memory, uint64(uint32(v5))+4))
+										if uint32(t201) <= uint32(i32(0x3fffffff)) {
+											t202 := int32(load32(m.memory, uint32(v5)))
+											t203 := v38
+											v0 = t202
+											t204 := int32(load32(m.memory, uint32(v5-i32(4))))
+											t205 := float64(uint32(i32_shl(v0&i32(0x7fffffff), int32(uint32(v0)>>31)) + v0>>31 + i32(13)))
+											v36 = float64(t204)
+											v38 = float64(t203 + float64(t205/v36))
+											v37 = float64(v37 + float64(float64(1)/v36))
+										}
+									}
+									v4 = v4 + i32(8)
+									v2 = v2 - i32(1)
+									if v2 != 0 {
+										goto l29
+									}
+								}
+							}
+							t206 := v1
+							v11 = v11 + i64(1)
+							store64(m.memory, uint64(uint32(t206))+32, uint64(v11))
+							t207 := int64(m.memory[uint64(uint32(v6))+5])
+							t208 := v1
+							v12 = v12 + t207<<3 + i64(8)
+							store64(m.memory, uint64(uint32(t208))+16, uint64(v12))
+							goto l8
+						default:
+							t209 := int32(load32(m.memory, uint64(uint32(v3))+24))
+							if t209 == 0 {
+								goto l8
+							}
+						}
+					}
+				l23:
+					t210 := v1
+					v11 = v11 + i64(1)
+					store64(m.memory, uint64(uint32(t210))+32, uint64(v11))
+					goto l8
+				case 1:
+					t211 := int32(load32(m.memory, uint64(uint32(v3))+24))
+					var p212 int32
+					if t211 != 0 {
+						t213 := int32(load16(m.memory, uint64(uint32(v3))+34))
+						t214 := int32(load16(m.memory, uint64(uint32(v3))+32))
+						p212 = (t213+t214)*i32(12) + i32(60)
+					} else {
+						p212 = i32(60)
+					}
+					v0 = p212
+					t215 := int32(load32(m.memory, uint64(uint32(v3))+48))
+					v4 = t215
+					if v4 != 0 {
+						{
+							t216 := int32(load32(m.memory, uint64(uint32(v3))+52))
+							v2 = t216
+							v0 = v2<<3 + v0
+							if v2 <= i32(0) {
+								goto l30
+							}
+						l31:
+							{
+								t217 := int64(load64(m.memory, uint32(v4)))
+								v10 = t217
+								if v10&i64(-0x100000000) == i64(-0x700000000) {
+									v6 = int32(v10)
+									t218 := int32(load32(m.memory, uint64(uint32(v6))+4))
+									if uint32(t218) <= uint32(i32(0x3fffffff)) {
+										t219 := int32(load32(m.memory, uint32(v6)))
+										t220 := v38
+										v5 = t219
+										t221 := int32(load32(m.memory, uint32(v6-i32(4))))
+										t222 := float64(uint32(i32_shl(v5&i32(0x7fffffff), int32(uint32(v5)>>31)) + v5>>31 + i32(13)))
+										v36 = float64(t221)
+										v38 = float64(t220 + float64(t222/v36))
+										v37 = float64(v37 + float64(float64(1)/v36))
+									}
+								}
+								v4 = v4 + i32(8)
+								v2 = v2 - i32(1)
+								if v2 != 0 {
+									goto l31
+								}
+							}
+						}
+					l30:
+					}
+					t223 := int32(load32(m.memory, uint64(uint32(v3))+28))
+					if t223 != 0 {
+						t224 := int32(load32(m.memory, uint64(uint32(v3))+56))
+						v0 = t224<<3 + v0
+					}
+					t225 := int32(load16(m.memory, uint64(uint32(v3))+9))
+					v2 = t225
+					if v2&i32(2048) == 0 {
+						t226 := int32(load32(m.memory, uint64(uint32(v3))+12))
+						if t226 != 0 {
+							t227 := int64(int32(load32(m.memory, uint64(uint32(v3))+16)))
+							v21 = v21 + t227
+						}
+					}
+					v13 = v13 + i64(1)
+					{
+						var p228 int32
+						if v2&i32(1024) != 0 {
+							t229 := int32(load32(m.memory, uint64(uint32(v3))+76))
+							var p230 int32
+							if t229 != 0 {
+								v2 = i32(1)
+								t231 := int32(load32(m.memory, uint64(uint32(v3))+64))
+								p230 = v0 + t231 + i32(21)
+							} else {
+								v2 = i32(0)
+								p230 = v0 + i32(20)
+							}
+							v0 = p230
+							t232 := int32(load32(m.memory, uint64(uint32(v3))+68))
+							v5 = t232
+							if v5 == 0 {
+								goto l32
+							}
+							v22 = v22 + i64(1)
+							v23 = v23 + int64(v5)
+							p228 = v2 + i32(1)
+						} else {
+							p228 = i32(0)
+						}
+						v2 = p228
+					}
+				l32:
+					v39 = float64(v39 + float64(uint32(v2)))
+					v40 = float64(v40 + float64(v0))
+				}
+			}
+		l8:
+			t233 := int32(load32(m.memory, uint64(uint32(v3))+4))
+			t234 := v9
+			v3 = t233
+			if t234 != v3 {
+				goto l33
+			}
+		}
+		v17 = v14 * i64(40)
 	} else {
-		p0 = i32(0)
+		v13 = i64(0)
 	}
-	return p0
-}
-func (m *Module) XJS_VALUE_HAS_REF_COUNT(v0 int64) int32 {
-	var p0 int32
-	if uint64(v0) > uint64(i64(-0x900000001)) {
-		p0 = 1
+	store64(m.memory, uint64(uint32(v1))+80, uint64(v17))
+	store64(m.memory, uint64(uint32(v1))+32, uint64(v11+i64(1)))
+	t235 := int32(load32(m.memory, uint64(uint32(v7))+740))
+	store64(m.memory, uint64(uint32(v1))+16, uint64(v12+int64(uint32(t235<<2))))
+	t236 := int32(load32(m.memory, uint64(uint32(v7))+740))
+	v2 = t236
+	if v2 > i32(0) {
+		v0 = i32(0)
+	l35:
+		{
+			t237 := int32(load32(m.memory, uint64(uint32(v7))+748))
+			t238 := int32(load32(m.memory, uint32(t237+v0<<2)))
+			v4 = t238
+			if v4 != 0 {
+			l34:
+				{
+					t239 := int32(load32(m.memory, uint64(uint32(v4))+16))
+					v2 = t239
+					t240 := v1
+					v15 = v15 + i64(1)
+					store64(m.memory, uint64(uint32(t240))+104, uint64(v15))
+					t241 := int32(load32(m.memory, uint64(uint32(v4))+20))
+					t242 := v1
+					v16 = v16 + int64(uint32(v2<<2+t241<<3+i32(44)))
+					store64(m.memory, uint64(uint32(t242))+112, uint64(v16))
+					t243 := int32(load32(m.memory, uint64(uint32(v4))+32))
+					v4 = t243
+					if v4 != 0 {
+						goto l34
+					}
+				}
+				t244 := int32(load32(m.memory, uint64(uint32(v7))+740))
+				v2 = t244
+			}
+			t245 := v2
+			v0 = v0 + i32(1)
+			if t245 > v0 {
+				goto l35
+			}
+		}
 	}
-	return p0
+	store64(m.memory, uint64(uint32(v1))+32, uint64(v11+i64(3)))
+	t246 := int64(int32(load32(m.memory, uint64(uint32(v7))+544)))
+	store64(m.memory, uint64(uint32(v1))+40, uint64(t246))
+	t247 := int32(load32(m.memory, uint64(uint32(v7))+540))
+	t248 := int32(load32(m.memory, uint64(uint32(v7))+548))
+	t249 := v1
+	v10 = int64(uint32((t247 + t248) << 2))
+	store64(m.memory, uint64(uint32(t249))+48, uint64(v10))
+	t250 := int32(load32(m.memory, uint64(uint32(v7))+548))
+	v0 = t250
+	if v0 > i32(0) {
+		v4 = i32(0)
+		v2 = i32(0)
+	l36:
+		{
+			t251 := int32(load32(m.memory, uint64(uint32(v7))+560))
+			t252 := int32(load32(m.memory, uint32(t251+v4)))
+			v5 = t252
+			if v5&i32(1) == 0 {
+				t253 := int32(load32(m.memory, uint32(v5)))
+				t254 := v1
+				t255 := v10
+				v0 = t253
+				v10 = t255 + int64(uint32(i32_shl(v0&i32(0x7fffffff), int32(uint32(v0)>>31))+v0>>31+i32(13)))
+				store64(m.memory, uint64(uint32(t254))+48, uint64(v10))
+				t256 := int32(load32(m.memory, uint64(uint32(v7))+548))
+				v0 = t256
+			}
+			v4 = v4 + i32(4)
+			v2 = v2 + i32(1)
+			if v2 < v0 {
+				goto l36
+			}
+		}
+	}
+	t257 := m._round(v37)
+	store64(m.memory, uint64(uint32(v1))+56, uint64(i64_trunc_sat_f64_s(t257)))
+	t258 := m._round(v38)
+	v36 = t258
+	store64(m.memory, uint64(uint32(v1))+120, uint64(v13))
+	store64(m.memory, uint64(uint32(v1))+64, uint64(i64_trunc_sat_f64_s(v36)))
+	t259 := m._round(v40)
+	v36 = t259
+	store64(m.memory, uint64(uint32(v1))+152, uint64(v23))
+	store64(m.memory, uint64(uint32(v1))+144, uint64(v22))
+	store64(m.memory, uint64(uint32(v1))+136, uint64(v21))
+	store64(m.memory, uint64(uint32(v1))+128, uint64(i64_trunc_sat_f64_s(v36)))
+	t260 := m._round(v39)
+	v36 = t260
+	t261 := int64(load64(m.memory, uint64(uint32(v1))+16))
+	t262 := int64(load64(m.memory, uint64(uint32(v1))+152))
+	t263 := int64(load64(m.memory, uint64(uint32(v1))+136))
+	t264 := int64(load64(m.memory, uint64(uint32(v1))+128))
+	t265 := int64(load64(m.memory, uint64(uint32(v1))+112))
+	t266 := int64(load64(m.memory, uint64(uint32(v1))+96))
+	t267 := int64(load64(m.memory, uint64(uint32(v1))+80))
+	t268 := int64(load64(m.memory, uint64(uint32(v1))+64))
+	t269 := int64(load64(m.memory, uint64(uint32(v1))+48))
+	store64(m.memory, uint64(uint32(v1))+16, uint64(t261+(t262+(t263+(t264+(t265+(t266+(t267+(t268+t269)))))))))
+	t270 := int64(load64(m.memory, uint64(uint32(v1))+40))
+	t271 := int64(load64(m.memory, uint64(uint32(v1))+56))
+	t272 := int64(load64(m.memory, uint64(uint32(v1))+72))
+	t273 := int64(load64(m.memory, uint64(uint32(v1))+104))
+	t274 := int64(load64(m.memory, uint64(uint32(v1))+120))
+	t275 := int64(load64(m.memory, uint64(uint32(v1))+144))
+	t276 := int64(load64(m.memory, uint64(uint32(v1))+32))
+	store64(m.memory, uint64(uint32(v1))+32, uint64(i64_trunc_sat_f64_s(float64(float64(float64(float64(float64(float64(float64(v36+float64(t270))+float64(t271))+float64(t272))+float64(t273))+float64(t274))+float64(t275))+float64(t276)))))
+	t277 := int64(load64(m.memory, uint64(uint32(v1))+200))
+	v27 = t277
+	t278 := int64(load64(m.memory, uint64(uint32(v1))+192))
+	v28 = t278
+	t279 := int64(load64(m.memory, uint64(uint32(v1))+184))
+	v29 = t279
+	t280 := int64(load64(m.memory, uint64(uint32(v1))+176))
+	v30 = t280
+	t281 := int64(load64(m.memory, uint64(uint32(v1))+168))
+	v31 = t281
+	t282 := int64(load64(m.memory, uint64(uint32(v1))+160))
+	v32 = t282
+	t283 := int64(load64(m.memory, uint64(uint32(v1))+152))
+	v33 = t283
+	t284 := int64(load64(m.memory, uint64(uint32(v1))+144))
+	v34 = t284
+	t285 := int64(load64(m.memory, uint64(uint32(v1))+136))
+	v35 = t285
+	t286 := int64(load64(m.memory, uint64(uint32(v1))+128))
+	v12 = t286
+	t287 := int64(load64(m.memory, uint64(uint32(v1))+120))
+	v13 = t287
+	t288 := int64(load64(m.memory, uint64(uint32(v1))+112))
+	v14 = t288
+	t289 := int64(load64(m.memory, uint64(uint32(v1))+104))
+	v15 = t289
+	t290 := int64(load64(m.memory, uint64(uint32(v1))+96))
+	v16 = t290
+	t291 := int64(load64(m.memory, uint64(uint32(v1))+88))
+	v17 = t291
+	t292 := int64(load64(m.memory, uint64(uint32(v1))+80))
+	v18 = t292
+	t293 := int64(load64(m.memory, uint64(uint32(v1))+72))
+	v19 = t293
+	t294 := int64(load64(m.memory, uint64(uint32(v1))+64))
+	v20 = t294
+	t295 := int64(load64(m.memory, uint64(uint32(v1))+56))
+	v21 = t295
+	t296 := int64(load64(m.memory, uint64(uint32(v1))+48))
+	v22 = t296
+	t297 := int64(load64(m.memory, uint64(uint32(v1))+40))
+	v23 = t297
+	t298 := int64(load64(m.memory, uint64(uint32(v1))+32))
+	v24 = t298
+	t299 := int64(load64(m.memory, uint64(uint32(v1))+24))
+	v25 = t299
+	t300 := int64(load64(m.memory, uint64(uint32(v1))+16))
+	v26 = t300
+	t301 := int64(load64(m.memory, uint64(uint32(v1))+8))
+	v10 = t301
+	t302 := int64(load64(m.memory, uint32(v1)))
+	m.___stack_pointer = v1 + i32(208)
+	return t302, v10, v26, v25, v24, v23, v22, v21, v20, v19, v18, v17, v16, v15, v14, v13, v12, v35, v34, v33, v32, v31, v30, v29, v28, v27
 }
-func (m *Module) XJS_FLOAT64_NAN() float64 {
-	return math.Float64frombits(0x7ff8000000000000)
-}
-func (m *Module) XJS_CFUNC_DEF(v0, v1, v2, v3 int32) {
-	store32(m.memory, uint64(uint32(v0))+12, uint32(v3))
-	m.memory[uint64(uint32(v0))+9] = byte(i32(0))
-	m.memory[uint64(uint32(v0))+8] = byte(v2)
-	store32(m.memory, uint64(uint32(v0))+4, uint32(i32(3)))
-	store32(m.memory, uint32(v0), uint32(v1))
-}
-func (m *Module) XJS_CFUNC_MAGIC_DEF(v0, v1, v2, v3, v4 int32) {
-	store32(m.memory, uint64(uint32(v0))+12, uint32(v3))
-	m.memory[uint64(uint32(v0))+9] = byte(i32(1))
-	m.memory[uint64(uint32(v0))+8] = byte(v2)
-	store16(m.memory, uint64(uint32(v0))+6, uint16(v4))
-	store16(m.memory, uint64(uint32(v0))+4, uint16(i32(3)))
-	store32(m.memory, uint32(v0), uint32(v1))
-}
-func (m *Module) XJS_CFUNC_SPECIAL_DEF(v0, v1, v2, v3, v4 int32) {
-	store32(m.memory, uint64(uint32(v0))+12, uint32(v4))
-	m.memory[uint64(uint32(v0))+9] = byte(v3)
-	m.memory[uint64(uint32(v0))+8] = byte(v2)
-	store32(m.memory, uint64(uint32(v0))+4, uint32(i32(3)))
-	store32(m.memory, uint32(v0), uint32(v1))
-}
-func (m *Module) XJS_ITERATOR_NEXT_DEF(v0, v1, v2, v3, v4 int32) {
-	store32(m.memory, uint64(uint32(v0))+12, uint32(v3))
-	m.memory[uint64(uint32(v0))+9] = byte(i32(12))
-	m.memory[uint64(uint32(v0))+8] = byte(v2)
-	store16(m.memory, uint64(uint32(v0))+6, uint16(v4))
-	store16(m.memory, uint64(uint32(v0))+4, uint16(i32(3)))
-	store32(m.memory, uint32(v0), uint32(v1))
-}
-func (m *Module) XJS_CGETSET_DEF(v0, v1, v2, v3 int32) {
-	store32(m.memory, uint64(uint32(v0))+12, uint32(v3))
-	store32(m.memory, uint64(uint32(v0))+8, uint32(v2))
-	store32(m.memory, uint64(uint32(v0))+4, uint32(i32(257)))
-	store32(m.memory, uint32(v0), uint32(v1))
-}
-func (m *Module) XJS_CGETSET_MAGIC_DEF(v0, v1, v2, v3, v4 int32) {
-	store32(m.memory, uint64(uint32(v0))+12, uint32(v3))
-	store32(m.memory, uint64(uint32(v0))+8, uint32(v2))
-	store16(m.memory, uint64(uint32(v0))+6, uint16(v4))
-	store16(m.memory, uint64(uint32(v0))+4, uint16(i32(513)))
-	store32(m.memory, uint32(v0), uint32(v1))
-}
-func (m *Module) XJS_PROP_STRING_DEF(v0, v1, v2, v3 int32) {
-	store32(m.memory, uint64(uint32(v0))+8, uint32(v2))
-	store16(m.memory, uint64(uint32(v0))+6, uint16(i32(0)))
-	m.memory[uint64(uint32(v0))+5] = byte(i32(3))
-	m.memory[uint64(uint32(v0))+4] = byte(v3)
-	store32(m.memory, uint32(v0), uint32(v1))
-}
-func (m *Module) XJS_PROP_INT32_DEF(v0, v1, v2, v3 int32) {
-	store32(m.memory, uint64(uint32(v0))+8, uint32(v2))
-	store16(m.memory, uint64(uint32(v0))+6, uint16(i32(0)))
-	m.memory[uint64(uint32(v0))+5] = byte(i32(4))
-	m.memory[uint64(uint32(v0))+4] = byte(v3)
-	store32(m.memory, uint32(v0), uint32(v1))
-}
-func (m *Module) XJS_PROP_INT64_DEF(v0, v1 int32, v2 int64, v3 int32) {
-	store64(m.memory, uint64(uint32(v0))+8, uint64(v2))
-	store16(m.memory, uint64(uint32(v0))+6, uint16(i32(0)))
-	m.memory[uint64(uint32(v0))+5] = byte(i32(5))
-	m.memory[uint64(uint32(v0))+4] = byte(v3)
-	store32(m.memory, uint32(v0), uint32(v1))
-}
-func (m *Module) XJS_PROP_DOUBLE_DEF(v0, v1 int32, v2 float64, v3 int32) {
-	store64(m.memory, uint64(uint32(v0))+8, math.Float64bits(v2))
-	store16(m.memory, uint64(uint32(v0))+6, uint16(i32(0)))
-	m.memory[uint64(uint32(v0))+5] = byte(i32(6))
-	m.memory[uint64(uint32(v0))+4] = byte(v3)
-	store32(m.memory, uint32(v0), uint32(v1))
-}
-func (m *Module) XJS_PROP_UNDEFINED_DEF(v0, v1, v2 int32) {
-	store32(m.memory, uint64(uint32(v0))+8, uint32(i32(0)))
-	store16(m.memory, uint64(uint32(v0))+6, uint16(i32(0)))
-	m.memory[uint64(uint32(v0))+5] = byte(i32(7))
-	m.memory[uint64(uint32(v0))+4] = byte(v2)
-	store32(m.memory, uint32(v0), uint32(v1))
-}
-func (m *Module) XJS_PROP_ATOM_DEF(v0, v1, v2, v3 int32) {
-	store32(m.memory, uint64(uint32(v0))+8, uint32(v2))
-	store16(m.memory, uint64(uint32(v0))+6, uint16(i32(0)))
-	m.memory[uint64(uint32(v0))+5] = byte(i32(10))
-	m.memory[uint64(uint32(v0))+4] = byte(v3)
-	store32(m.memory, uint32(v0), uint32(v1))
-}
-func (m *Module) XJS_PROP_BOOL_DEF(v0, v1, v2, v3 int32) {
-	store32(m.memory, uint64(uint32(v0))+8, uint32(v2))
-	store16(m.memory, uint64(uint32(v0))+6, uint16(i32(0)))
-	m.memory[uint64(uint32(v0))+5] = byte(i32(11))
-	m.memory[uint64(uint32(v0))+4] = byte(v3)
-	store32(m.memory, uint32(v0), uint32(v1))
-}
-func (m *Module) XJS_OBJECT_DEF(v0, v1, v2, v3, v4 int32) {
-	store32(m.memory, uint64(uint32(v0))+12, uint32(v3))
-	store32(m.memory, uint64(uint32(v0))+8, uint32(v2))
-	store16(m.memory, uint64(uint32(v0))+6, uint16(i32(0)))
-	m.memory[uint64(uint32(v0))+5] = byte(i32(8))
-	m.memory[uint64(uint32(v0))+4] = byte(v4)
-	store32(m.memory, uint32(v0), uint32(v1))
-}
-func (m *Module) XJS_ALIAS_DEF(v0, v1, v2 int32) {
-	store32(m.memory, uint64(uint32(v0))+12, uint32(i32(-1)))
-	store32(m.memory, uint64(uint32(v0))+8, uint32(v2))
-	store32(m.memory, uint64(uint32(v0))+4, uint32(i32(2307)))
-	store32(m.memory, uint32(v0), uint32(v1))
-}
-func (m *Module) XJS_ALIAS_BASE_DEF(v0, v1, v2, v3 int32) {
-	store32(m.memory, uint64(uint32(v0))+12, uint32(v3))
-	store32(m.memory, uint64(uint32(v0))+8, uint32(v2))
-	store32(m.memory, uint64(uint32(v0))+4, uint32(i32(2307)))
-	store32(m.memory, uint32(v0), uint32(v1))
-}
-func (m *Module) XJS_ToUint32MV(v0 int32, v1 int64) (int32, int32) {
-	var v2, _ int32
+func (m *Module) XJS_ToInt32(v0 int32, v1 int64) (int32, int32) {
+	var v2, v3, v4 int32
 	t0 := m.___stack_pointer
 	v2 = t0 - i32(16)
 	m.___stack_pointer = v2
 	store64(m.memory, uint64(uint32(v2))+8, uint64(i64(0)))
-	t1 := m.XJS_ToInt32(v0, v2+i32(8)|i32(4), v1)
-	t2 := int32(load32(m.memory, uint64(uint32(v2))+12))
+	v3 = v2 + i32(8) | i32(4)
+	if uint64(v1) >= uint64(i64(-0x900000000)) {
+		v4 = int32(v1) - i32(4)
+		t1 := int32(load32(m.memory, uint32(v4)))
+		store32(m.memory, uint32(v4), uint32(t1+i32(1)))
+	}
+	t2 := m._JS_ToInt32Free(v0, v3, v1)
+	t3 := int32(load32(m.memory, uint64(uint32(v2))+12))
 	m.___stack_pointer = v2 + i32(16)
-	return t1, t2
+	return t2, t3
 }
-func (m *Module) XJS_ToInt64MV(v0 int32, v1 int64) (int32, int64) {
+func (m *Module) XJS_ToInt64(v0 int32, v1 int64) (int32, int64) {
+	var v2, v3, v4 int32
+	t0 := m.___stack_pointer
+	v2 = t0 - i32(16)
+	m.___stack_pointer = v2
+	v3 = v2 + i32(8)
+	store64(m.memory, uint32(v3), uint64(i64(0)))
+	store64(m.memory, uint32(v2), uint64(i64(0)))
+	if uint64(v1) >= uint64(i64(-0x900000000)) {
+		v4 = int32(v1) - i32(4)
+		t1 := int32(load32(m.memory, uint32(v4)))
+		store32(m.memory, uint32(v4), uint32(t1+i32(1)))
+	}
+	t2 := m._JS_ToInt64Free(v0, v3, v1)
+	t3 := int64(load64(m.memory, uint32(v3)))
+	m.___stack_pointer = v2 + i32(16)
+	return t2, t3
+}
+func (m *Module) XJS_ToIndex(v0 int32, v1 int64) (int32, int64) {
 	var v2, v3 int32
 	t0 := m.___stack_pointer
 	v2 = t0 - i32(16)
@@ -133005,25 +131961,12 @@ func (m *Module) XJS_ToInt64MV(v0 int32, v1 int64) (int32, int64) {
 	v3 = v2 + i32(8)
 	store64(m.memory, uint32(v3), uint64(i64(0)))
 	store64(m.memory, uint32(v2), uint64(i64(0)))
-	t1 := m.XJS_ToInt64(v0, v3, v1)
+	t1 := m._JS_ToIndex(v0, v3, v1)
 	t2 := int64(load64(m.memory, uint32(v3)))
 	m.___stack_pointer = v2 + i32(16)
 	return t1, t2
 }
-func (m *Module) XJS_ToIndexMV(v0 int32, v1 int64) (int32, int64) {
-	var v2, v3 int32
-	t0 := m.___stack_pointer
-	v2 = t0 - i32(16)
-	m.___stack_pointer = v2
-	v3 = v2 + i32(8)
-	store64(m.memory, uint32(v3), uint64(i64(0)))
-	store64(m.memory, uint32(v2), uint64(i64(0)))
-	t1 := m.XJS_ToIndex(v0, v3, v1)
-	t2 := int64(load64(m.memory, uint32(v3)))
-	m.___stack_pointer = v2 + i32(16)
-	return t1, t2
-}
-func (m *Module) XJS_ToFloat64MV(v0 int32, v1 int64) (int32, float64) {
+func (m *Module) XJS_ToFloat64(v0 int32, v1 int64) (int32, float64) {
 	var v2, v3 int32
 	var _ float64
 	t0 := m.___stack_pointer
@@ -133032,115 +131975,222 @@ func (m *Module) XJS_ToFloat64MV(v0 int32, v1 int64) (int32, float64) {
 	v3 = v2 + i32(8)
 	store64(m.memory, uint32(v3), uint64(i64(0)))
 	store64(m.memory, uint32(v2), uint64(i64(0)))
-	t1 := m.XJS_ToFloat64(v0, v3, v1)
+	t1 := m._JS_ToFloat64(v0, v3, v1)
 	t2 := math.Float64frombits(load64(m.memory, uint32(v3)))
 	m.___stack_pointer = v2 + i32(16)
 	return t1, t2
 }
-func (m *Module) XJS_ToBigInt64MV(v0 int32, v1 int64) (int32, int64) {
-	var v2, v3 int32
+func (m *Module) XJS_ToBigInt64(v0 int32, v1 int64) (int32, int64) {
+	var v2, v3, v4 int32
 	t0 := m.___stack_pointer
 	v2 = t0 - i32(16)
 	m.___stack_pointer = v2
 	v3 = v2 + i32(8)
 	store64(m.memory, uint32(v3), uint64(i64(0)))
 	store64(m.memory, uint32(v2), uint64(i64(0)))
-	t1 := m.XJS_ToBigInt64(v0, v3, v1)
-	t2 := int64(load64(m.memory, uint32(v3)))
+	if uint64(v1) >= uint64(i64(-0x900000000)) {
+		v4 = int32(v1) - i32(4)
+		t1 := int32(load32(m.memory, uint32(v4)))
+		store32(m.memory, uint32(v4), uint32(t1+i32(1)))
+	}
+	t2 := m._JS_ToBigInt64Free(v0, v3, v1)
+	t3 := int64(load64(m.memory, uint32(v3)))
 	m.___stack_pointer = v2 + i32(16)
-	return t1, t2
+	return t2, t3
 }
-func (m *Module) XJS_ToInt64ExtMV(v0 int32, v1 int64) (int32, int64) {
-	var v2, v3 int32
-	t0 := m.___stack_pointer
-	v2 = t0 - i32(16)
-	m.___stack_pointer = v2
-	v3 = v2 + i32(8)
-	store64(m.memory, uint32(v3), uint64(i64(0)))
-	store64(m.memory, uint32(v2), uint64(i64(0)))
-	t1 := m.XJS_ToInt64Ext(v0, v3, v1)
-	t2 := int64(load64(m.memory, uint32(v3)))
-	m.___stack_pointer = v2 + i32(16)
-	return t1, t2
-}
-func (m *Module) XJS_ToCStringLen2MV(v0 int32, v1 int64, v2 int32) (int32, int32) {
-	var v3 int32
+func (m *Module) XJS_ToInt64Ext(v0 int32, v1 int64) (int32, int64) {
+	var v2, v3, v4 int32
 	t0 := m.___stack_pointer
 	v3 = t0 - i32(16)
 	m.___stack_pointer = v3
-	store64(m.memory, uint64(uint32(v3))+8, uint64(i64(0)))
-	t1 := m.XJS_ToCStringLen2(v0, v3+i32(8)|i32(4), v1, v2)
-	t2 := int32(load32(m.memory, uint64(uint32(v3))+12))
+	v4 = v3 + i32(8)
+	store64(m.memory, uint32(v4), uint64(i64(0)))
+	store64(m.memory, uint32(v3), uint64(i64(0)))
+	v2 = int32(int64(uint64(v1) >> 32))
+	var p1 int32
+	if v2 != i32(7) {
+		p1 = 1
+	}
+	var p2 int32
+	if v2 != i32(-9) {
+		p2 = 1
+	}
+	var p3 int32
+	if p1&p2 != 0 {
+		if uint64(v1) >= uint64(i64(-0x900000000)) {
+			v2 = int32(v1) - i32(4)
+			t4 := int32(load32(m.memory, uint32(v2)))
+			store32(m.memory, uint32(v2), uint32(t4+i32(1)))
+		}
+		t5 := m._JS_ToInt64Free(v0, v4, v1)
+		p3 = t5
+	} else {
+		if uint64(v1) >= uint64(i64(-0x900000000)) {
+			v2 = int32(v1) - i32(4)
+			t6 := int32(load32(m.memory, uint32(v2)))
+			store32(m.memory, uint32(v2), uint32(t6+i32(1)))
+		}
+		t7 := m._JS_ToBigInt64Free(v0, v4, v1)
+		p3 = t7
+	}
+	t8 := int64(load64(m.memory, uint32(v4)))
 	m.___stack_pointer = v3 + i32(16)
-	return t1, t2
+	return p3, t8
 }
-func (m *Module) XJS_ToCStringLenMV(v0 int32, v1 int64) (int32, int32) {
-	var v2, _ int32
-	t0 := m.___stack_pointer
-	v2 = t0 - i32(16)
-	m.___stack_pointer = v2
-	store64(m.memory, uint64(uint32(v2))+8, uint64(i64(0)))
-	t1 := m.XJS_ToCStringLen2(v0, v2+i32(8)|i32(4), v1, i32(0))
-	t2 := int32(load32(m.memory, uint64(uint32(v2))+12))
-	m.___stack_pointer = v2 + i32(16)
-	return t1, t2
-}
-func (m *Module) XJS_AtomToCStringLenMV(v0, v1 int32) (int32, int32) {
+func (m *Module) XJS_AtomToCStringLen(v0, v1 int32) (int32, int32) {
 	var v2 int32
 	t0 := m.___stack_pointer
 	v2 = t0 - i32(16)
 	m.___stack_pointer = v2
 	store64(m.memory, uint64(uint32(v2))+8, uint64(i64(0)))
-	t1 := m.XJS_AtomToCStringLen(v0, v2+i32(8)|i32(4), v1)
+	t1 := m._JS_AtomToCStringLen(v0, v2+i32(8)|i32(4), v1)
 	t2 := int32(load32(m.memory, uint64(uint32(v2))+12))
 	m.___stack_pointer = v2 + i32(16)
 	return t1, t2
 }
-func (m *Module) XJS_GetArrayBufferMV(v0 int32, v1 int64) (int32, int32) {
-	var v2, _ int32
+func (m *Module) XJS_ToCStringLen2(v0 int32, v1 int64, v2 int32) (int32, int32) {
+	var v3 int32
 	t0 := m.___stack_pointer
-	v2 = t0 - i32(16)
-	m.___stack_pointer = v2
-	store64(m.memory, uint64(uint32(v2))+8, uint64(i64(0)))
-	t1 := m.XJS_GetArrayBuffer(v0, v2+i32(8)|i32(4), v1)
-	t2 := int32(load32(m.memory, uint64(uint32(v2))+12))
-	m.___stack_pointer = v2 + i32(16)
+	v3 = t0 - i32(16)
+	m.___stack_pointer = v3
+	store64(m.memory, uint64(uint32(v3))+8, uint64(i64(0)))
+	t1 := m._JS_ToCStringLen2(v0, v3+i32(8)|i32(4), v1, v2)
+	t2 := int32(load32(m.memory, uint64(uint32(v3))+12))
+	m.___stack_pointer = v3 + i32(16)
 	return t1, t2
 }
-func (m *Module) XJS_GetTypedArrayBufferMV(v0 int32, v1 int64) (int64, int32, int32, int32) {
+func (m *Module) XJS_GetArrayBuffer(v0 int32, v1 int64) (int32, int32) {
 	var v2, v3, v4 int32
-	t0 := m.___stack_pointer
-	v2 = t0 - i32(32)
-	m.___stack_pointer = v2
-	v3 = v2 + i32(24)
-	store64(m.memory, uint32(v3), uint64(i64(0)))
-	v4 = v2 + i32(16)
-	store64(m.memory, uint32(v4), uint64(i64(0)))
-	store64(m.memory, uint64(uint32(v2))+8, uint64(i64(0)))
-	t1 := m.XJS_GetTypedArrayBuffer(v0, v1, v4, v2+i32(20), v3)
-	t2 := int32(load32(m.memory, uint32(v3)))
-	v0 = t2
-	t3 := int32(load32(m.memory, uint32(v4)))
-	t4 := int32(load32(m.memory, uint64(uint32(v2))+20))
-	m.___stack_pointer = v2 + i32(32)
-	return t1, t3, t4, v0
+	var p0 int32
+	{
+		t1 := m.___stack_pointer
+		v3 = t1 - i32(16)
+		m.___stack_pointer = v3
+		store64(m.memory, uint64(uint32(v3))+8, uint64(i64(0)))
+		v4 = v3 + i32(8) | i32(4)
+		if uint64(v1) >= uint64(i64(-0x100000000)) {
+			{
+				v2 = int32(v1)
+				t2 := int32(load16(m.memory, uint64(uint32(v2))+10))
+				if uint32((t2-i32(19))&i32(0xffff)) >= uint32(i32(2)) {
+					goto l0
+				}
+				t3 := int32(load32(m.memory, uint64(uint32(v2))+24))
+				v2 = t3
+				if v2 == 0 {
+					goto l1
+				}
+				t4 := int32(m.memory[uint64(uint32(v2))+8])
+				if t4 != 0 {
+					_ = m.XJS_ThrowTypeError(v0, i32(14485), i32(0))
+					goto l1
+				} else {
+					t6 := int32(load32(m.memory, uint32(v2)))
+					store32(m.memory, uint32(v4), uint32(t6))
+					t7 := int32(load32(m.memory, uint64(uint32(v2))+12))
+					p0 = t7
+					goto l2
+				}
+			}
+		l0:
+		}
+		m._JS_ThrowTypeErrorInvalidClass(v0, i32(19))
+	l1:
+		store32(m.memory, uint32(v4), uint32(i32(0)))
+		p0 = i32(0)
+	}
+l2:
+	t8 := int32(load32(m.memory, uint64(uint32(v3))+12))
+	m.___stack_pointer = v3 + i32(16)
+	return p0, t8
 }
-func (m *Module) XJS_GetOwnPropertyNamesMV(v0 int32, v1 int64, v2 int32) (int32, int32, int32) {
-	var v3, v4 int32
+func (m *Module) XJS_GetTypedArrayBuffer(v0 int32, v1 int64) (int64, int32, int32, int32) {
+	var v2, v3, v4, v5, v6 int32
+	var p0 int64
+	{
+		t1 := m.___stack_pointer
+		v2 = t1 - i32(32)
+		m.___stack_pointer = v2
+		v3 = v2 + i32(24)
+		store64(m.memory, uint32(v3), uint64(i64(0)))
+		v4 = v2 + i32(16)
+		store64(m.memory, uint32(v4), uint64(i64(0)))
+		store64(m.memory, uint64(uint32(v2))+8, uint64(i64(0)))
+		v6 = v2 + i32(20)
+		if uint64(v1) >= uint64(i64(-0x100000000)) {
+			{
+				v5 = int32(v1)
+				t2 := int32(load16(m.memory, uint64(uint32(v5))+10))
+				if uint32((t2-i32(21))&i32(0xffff)) >= uint32(i32(12)) {
+					goto l0
+				}
+				t3 := m._typed_array_is_oob(v5)
+				if t3 != 0 {
+					_ = m.XJS_ThrowTypeError(v0, i32(13674), i32(0))
+					p0 = i64(0x600000000)
+					goto l1
+				}
+				t5 := int32(load32(m.memory, uint64(uint32(v5))+24))
+				v0 = t5
+				if v4 != 0 {
+					t6 := int32(load32(m.memory, uint64(uint32(v0))+16))
+					store32(m.memory, uint32(v4), uint32(t6))
+				}
+				if v6 != 0 {
+					t7 := int32(load32(m.memory, uint64(uint32(v0))+20))
+					store32(m.memory, uint32(v6), uint32(t7))
+				}
+				if v3 != 0 {
+					t8 := int32(load16(m.memory, uint64(uint32(v5))+10))
+					t9 := int32(m.memory[uint32(t8+i32(17719))])
+					store32(m.memory, uint32(v3), uint32(i32_shl(i32(1), t9)))
+				}
+				t10 := int32(load32(m.memory, uint64(uint32(v0))+12))
+				v0 = t10
+				v5 = v0 - i32(4)
+				t11 := int32(load32(m.memory, uint32(v5)))
+				store32(m.memory, uint32(v5), uint32(t11+i32(1)))
+				t12 := int64(uint32(v0)) | i64(-0x100000000)
+				p0 = t12
+				goto l1
+			}
+		l0:
+		}
+		_ = m.XJS_ThrowTypeError(v0, i32(2620), i32(0))
+		p0 = i64(0x600000000)
+	}
+l1:
+	t14 := int32(load32(m.memory, uint32(v3)))
+	v0 = t14
+	t15 := int32(load32(m.memory, uint32(v4)))
+	t16 := int32(load32(m.memory, uint64(uint32(v2))+20))
+	m.___stack_pointer = v2 + i32(32)
+	return p0, t15, t16, v0
+}
+func (m *Module) XJS_GetOwnPropertyNames(v0 int32, v1 int64, v2 int32) (int32, int32, int32) {
+	var v3, v4, v5 int32
 	t0 := m.___stack_pointer
 	v3 = t0 - i32(16)
 	m.___stack_pointer = v3
 	v4 = v3 + i32(8)
 	store32(m.memory, uint32(v4), uint32(i32(0)))
 	store64(m.memory, uint32(v3), uint64(i64(0)))
-	t1 := m.XJS_GetOwnPropertyNames(v0, v3|i32(4), v4, v1, v2)
-	t2 := int32(load32(m.memory, uint32(v4)))
-	v2 = t2
-	t3 := int32(load32(m.memory, uint64(uint32(v3))+4))
+	v5 = v3 | i32(4)
+	var p1 int32
+	if uint64(v1) > uint64(i64(-0x100000001)) {
+		t2 := m._JS_GetOwnPropertyNamesInternal(v0, v5, v4, int32(v1), v2)
+		p1 = t2
+	} else {
+		_ = m.XJS_ThrowTypeError(v0, i32(4521), i32(0))
+		p1 = i32(-1)
+	}
+	t4 := int32(load32(m.memory, uint32(v4)))
+	v2 = t4
+	t5 := int32(load32(m.memory, uint64(uint32(v3))+4))
 	m.___stack_pointer = v3 + i32(16)
-	return t1, t3, v2
+	return p1, t5, v2
 }
-func (m *Module) XJS_GetOwnPropertyMV(v0 int32, v1 int64, v2 int32) (int32, int32, int64, int64, int64) {
+func (m *Module) XJS_GetOwnProperty(v0 int32, v1 int64, v2 int32) (int32, int32, int64, int64, int64) {
 	var v3 int32
 	var v4, v5 int64
 	t0 := m.___stack_pointer
@@ -133154,7 +132204,7 @@ func (m *Module) XJS_GetOwnPropertyMV(v0 int32, v1 int64, v2 int32) (int32, int3
 	store64(m.memory, uint64(uint32(v3))+8, uint64(t3))
 	t4 := int64(load64(m.memory, uint32(i32(77440))))
 	store64(m.memory, uint32(v3), uint64(t4))
-	t5 := m.XJS_GetOwnProperty(v0, v3, v1, v2)
+	t5 := m._JS_GetOwnProperty(v0, v3, v1, v2)
 	t6 := int64(load64(m.memory, uint64(uint32(v3))+24))
 	v1 = t6
 	t7 := int64(load64(m.memory, uint64(uint32(v3))+16))
@@ -133165,7 +132215,7 @@ func (m *Module) XJS_GetOwnPropertyMV(v0 int32, v1 int64, v2 int32) (int32, int3
 	m.___stack_pointer = v3 + i32(32)
 	return t5, t9, v5, v4, v1
 }
-func (m *Module) XJS_NewPromiseCapabilityMV(v0 int32) (int64, int64, int64) {
+func (m *Module) XJS_NewPromiseCapability(v0 int32) (int64, int64, int64) {
 	var v1 int32
 	var _, v3, _ int64
 	t0 := m.___stack_pointer
@@ -133182,57 +132232,289 @@ func (m *Module) XJS_NewPromiseCapabilityMV(v0 int32) (int64, int64, int64) {
 	m.___stack_pointer = v1 + i32(16)
 	return t3, t5, v3
 }
-func (m *Module) XJS_ExecutePendingJobMV(v0 int32) (int32, int32) {
-	var v1, _ int32
+func (m *Module) XJS_ExecutePendingJob(v0 int32) (int32, int32) {
+	var v1, v2, v3, v4, v5, v6, v7 int32
+	var v8, v9 int64
 	t0 := m.___stack_pointer
-	v1 = t0 - i32(16)
-	m.___stack_pointer = v1
-	store64(m.memory, uint64(uint32(v1))+8, uint64(i64(0)))
-	t1 := m.XJS_ExecutePendingJob(v0, v1+i32(8)|i32(4))
-	t2 := int32(load32(m.memory, uint64(uint32(v1))+12))
-	m.___stack_pointer = v1 + i32(16)
-	return t1, t2
+	v3 = t0 - i32(16)
+	m.___stack_pointer = v3
+	store64(m.memory, uint64(uint32(v3))+8, uint64(i64(0)))
+	v4 = v3 + i32(8) | i32(4)
+	t1 := int32(load32(m.memory, uint64(uint32(v0))+676))
+	v1 = t1
+	if v1 != v0+i32(672) {
+		t2 := int32(load32(m.memory, uint32(v1)))
+		v0 = t2
+		t3 := int32(load32(m.memory, uint64(uint32(v1))+4))
+		t4 := v0
+		v2 = t3
+		store32(m.memory, uint64(uint32(t4))+4, uint32(v2))
+		store32(m.memory, uint32(v2), uint32(v0))
+		store64(m.memory, uint32(v1), uint64(i64(0)))
+		t5 := int32(load32(m.memory, uint64(uint32(v1))+8))
+		v2 = t5
+		t6 := int32(load32(m.memory, uint64(uint32(v1))+16))
+		t7 := v2
+		v0 = v1 + i32(24)
+		t8 := int32(load32(m.memory, uint64(uint32(v1))+12))
+		t9 := m.t0[uint(t8)].(func(int32, int32, int32) int64)(t7, t6, v0)
+		v8 = t9
+		t10 := int32(load32(m.memory, uint64(uint32(v1))+16))
+		if t10 > i32(0) {
+		l1:
+			{
+				t11 := int64(load64(m.memory, uint32(v0)))
+				v9 = t11
+				if uint64(v9) >= uint64(i64(-0x900000000)) {
+					{
+						v6 = int32(v9) - i32(4)
+						t12 := int32(load32(m.memory, uint32(v6)))
+						v5 = t12
+						store32(m.memory, uint32(v6), uint32(v5-i32(1)))
+						if v5 > i32(1) {
+							goto l0
+						}
+						t13 := int32(load32(m.memory, uint64(uint32(v2))+8))
+						m.___JS_FreeValueRT(t13, v9)
+					}
+				l0:
+				}
+				v0 = v0 + i32(8)
+				v7 = v7 + i32(1)
+				t14 := int32(load32(m.memory, uint64(uint32(v1))+16))
+				if v7 < t14 {
+					goto l1
+				}
+			}
+		}
+		t15 := v8 & i64(-0x100000000)
+		if uint64(v8) >= uint64(i64(-0x900000000)) {
+			{
+				v5 = int32(v8) - i32(4)
+				t16 := int32(load32(m.memory, uint32(v5)))
+				v0 = t16
+				store32(m.memory, uint32(v5), uint32(v0-i32(1)))
+				if v0 > i32(1) {
+					goto l2
+				}
+				t17 := int32(load32(m.memory, uint64(uint32(v2))+8))
+				m.___JS_FreeValueRT(t17, v8)
+			}
+		l2:
+		}
+		var p18 int32
+		if t15 == i64(0x600000000) {
+			p18 = 1
+		}
+		v0 = p18
+		t19 := int32(load32(m.memory, uint64(uint32(v2))+8))
+		m.___js_free(t19, v1)
+		if v4 != 0 {
+			t20 := int32(load32(m.memory, uint32(v2-i32(4))))
+			t22 := v4
+			p21 := i32(0)
+			if t20 > i32(1) {
+				p21 = v2
+			}
+			store32(m.memory, uint32(t22), uint32(p21))
+		}
+		p23 := i32(1)
+		if v0 != 0 {
+			p23 = i32(-1)
+		}
+		v0 = p23
+		m.XJS_FreeContext(v2)
+	} else {
+		v0 = i32(0)
+		if v4 == 0 {
+			goto l3
+		}
+		store32(m.memory, uint32(v4), uint32(i32(0)))
+	l3:
+	}
+	t24 := int32(load32(m.memory, uint64(uint32(v3))+12))
+	v1 = t24
+	m.___stack_pointer = v3 + i32(16)
+	return v0, v1
 }
-func (m *Module) XJS_WriteObjectMV(v0 int32, v1 int64, v2 int32) (int32, int32) {
+func (m *Module) XJS_WriteObject2(v0 int32, v1 int64, v2 int32) (int32, int32, int32, int32) {
+	var v3, v4, v5, v6, v7, v8, v9, v10 int32
+	var p0 int32
+	{
+		t1 := m.___stack_pointer
+		v6 = t1 - i32(16)
+		m.___stack_pointer = v6
+		v7 = v6 + i32(8)
+		store64(m.memory, uint32(v7), uint64(i64(0)))
+		store64(m.memory, uint32(v6), uint64(i64(0)))
+		v9 = v6 | i32(4)
+		v8 = v6 + i32(12)
+		t2 := m.___stack_pointer
+		v3 = t2 - i32(112)
+		m.___stack_pointer = v3
+		v4 = v3 + i32(4)
+		memory_zero(m.memory, uint32(v4), uint32(i32(84)))
+		t3 := v3
+		v5 = v2 & i32(1)
+		p4 := i32(1)
+		if v5 != 0 {
+			p4 = i32(243)
+		}
+		store32(m.memory, uint64(uint32(t3))+32, uint32(p4))
+		store32(m.memory, uint32(v3), uint32(v0))
+		store32(m.memory, uint64(uint32(v3))+28, uint32(v2<<13&i32(65536)|v2<<6&i32(256)|v5))
+		t5 := int32(load32(m.memory, uint64(uint32(v0))+8))
+		v2 = t5
+		store64(m.memory, uint32(v4), uint64(i64(0)))
+		store32(m.memory, uint64(uint32(v4))+20, uint32(v2))
+		store64(m.memory, uint64(uint32(v4))+8, uint64(i64(0)))
+		store32(m.memory, uint64(uint32(v4))+16, uint32(i32(47)))
+		store32(m.memory, uint64(uint32(v3))+84, uint32(i32(0)))
+		store64(m.memory, uint64(uint32(v3))+76, uint64(i64(0)))
+		store64(m.memory, uint64(uint32(v3))+68, uint64(i64(0)))
+		t6 := m._JS_WriteObjectRec(v3, v1)
+		if t6 == 0 {
+			{
+				t7 := int32(load32(m.memory, uint32(v3)))
+				t8 := int32(load32(m.memory, uint64(uint32(t7))+8))
+				v5 = t8
+				t9 := int64(load64(m.memory, uint64(uint32(v4))+16))
+				store64(m.memory, uint64(uint32(v3))+104, uint64(t9))
+				t10 := int64(load64(m.memory, uint64(uint32(v4))+8))
+				store64(m.memory, uint64(uint32(v3))+96, uint64(t10))
+				t11 := int64(load64(m.memory, uint32(v4)))
+				store64(m.memory, uint64(uint32(v3))+88, uint64(t11))
+				store64(m.memory, uint32(v4), uint64(i64(0)))
+				store32(m.memory, uint64(uint32(v4))+20, uint32(v5))
+				store64(m.memory, uint64(uint32(v4))+8, uint64(i64(0)))
+				store32(m.memory, uint64(uint32(v4))+16, uint32(i32(47)))
+				t12 := int32(load32(m.memory, uint64(uint32(v3))+8))
+				v2 = t12
+				t13 := int32(load32(m.memory, uint64(uint32(v3))+12))
+				if v2 != t13 {
+					store32(m.memory, uint64(uint32(v3))+8, uint32(v2+i32(1)))
+					t14 := int32(load32(m.memory, uint64(uint32(v3))+4))
+					m.memory[uint32(t14+v2)] = byte(i32(5))
+				} else {
+					m.___dbuf_putc(v4, i32(5))
+				}
+				t15 := int32(load32(m.memory, uint64(uint32(v3))+48))
+				m._dbuf_put_leb128(v4, t15)
+				t16 := int32(load32(m.memory, uint64(uint32(v3))+48))
+				if t16 > i32(0) {
+					v2 = i32(0)
+				l0:
+					{
+						t17 := int32(load32(m.memory, uint64(uint32(v5))+560))
+						t18 := int32(load32(m.memory, uint64(uint32(v3))+44))
+						t19 := int32(load32(m.memory, uint32(t18+v2)))
+						t20 := int32(load32(m.memory, uint32(t17+t19<<2)))
+						m._JS_WriteString(v3, t20)
+						v2 = v2 + i32(4)
+						v10 = v10 + i32(1)
+						t21 := int32(load32(m.memory, uint64(uint32(v3))+48))
+						if v10 < t21 {
+							goto l0
+						}
+					}
+				}
+				v5 = v3 + i32(88)
+				t22 := int32(load32(m.memory, uint64(uint32(v3))+8))
+				t23 := v5
+				v2 = t22
+				t24 := m._dbuf_claim(t23, v2)
+				if t24 != 0 {
+					m._dbuf_free(v5)
+					goto l1
+				}
+				t25 := int32(load32(m.memory, uint64(uint32(v3))+88))
+				v5 = t25
+				t26 := int32(load32(m.memory, uint64(uint32(v3))+92))
+				memory_copy(m.memory, uint32(v5+v2), uint32(v5), uint32(t26))
+				t27 := int32(load32(m.memory, uint64(uint32(v3))+88))
+				t28 := int32(load32(m.memory, uint64(uint32(v3))+4))
+				memory_copy(m.memory, uint32(t27), uint32(t28), uint32(v2))
+				t29 := int32(load32(m.memory, uint64(uint32(v3))+92))
+				store32(m.memory, uint64(uint32(v3))+92, uint32(t29+v2))
+				m._dbuf_free(v4)
+				t30 := int64(load64(m.memory, uint64(uint32(v3))+104))
+				store64(m.memory, uint64(uint32(v4))+16, uint64(t30))
+				t31 := int64(load64(m.memory, uint64(uint32(v3))+96))
+				store64(m.memory, uint64(uint32(v4))+8, uint64(t31))
+				t32 := int64(load64(m.memory, uint64(uint32(v3))+88))
+				store64(m.memory, uint32(v4), uint64(t32))
+				t33 := int32(load32(m.memory, uint64(uint32(v0))+8))
+				t34 := int32(load32(m.memory, uint64(uint32(v3))+68))
+				m.___js_free(t33, t34)
+				t35 := int32(load32(m.memory, uint64(uint32(v0))+8))
+				t36 := int32(load32(m.memory, uint64(uint32(v3))+80))
+				m.___js_free(t35, t36)
+				t37 := int32(load32(m.memory, uint64(uint32(v0))+8))
+				t38 := int32(load32(m.memory, uint64(uint32(v3))+36))
+				m.___js_free(t37, t38)
+				t39 := int32(load32(m.memory, uint64(uint32(v0))+8))
+				t40 := int32(load32(m.memory, uint64(uint32(v3))+44))
+				m.___js_free(t39, t40)
+				t41 := int32(load32(m.memory, uint64(uint32(v3))+8))
+				store32(m.memory, uint32(v9), uint32(t41))
+				if v7 != 0 {
+					t42 := int32(load32(m.memory, uint64(uint32(v3))+56))
+					store32(m.memory, uint32(v7), uint32(t42))
+				}
+				if v8 != 0 {
+					t43 := int32(load32(m.memory, uint64(uint32(v3))+60))
+					store32(m.memory, uint32(v8), uint32(t43))
+				}
+				t44 := int32(load32(m.memory, uint64(uint32(v3))+4))
+				p0 = t44
+				goto l2
+			}
+		l1:
+		}
+		t45 := int32(load32(m.memory, uint64(uint32(v0))+8))
+		t46 := int32(load32(m.memory, uint64(uint32(v3))+68))
+		m.___js_free(t45, t46)
+		t47 := int32(load32(m.memory, uint64(uint32(v0))+8))
+		t48 := int32(load32(m.memory, uint64(uint32(v3))+80))
+		m.___js_free(t47, t48)
+		t49 := int32(load32(m.memory, uint64(uint32(v0))+8))
+		t50 := int32(load32(m.memory, uint64(uint32(v3))+36))
+		m.___js_free(t49, t50)
+		t51 := int32(load32(m.memory, uint64(uint32(v0))+8))
+		t52 := int32(load32(m.memory, uint64(uint32(v3))+44))
+		m.___js_free(t51, t52)
+		m._dbuf_free(v4)
+		store32(m.memory, uint32(v9), uint32(i32(0)))
+		if v7 != 0 {
+			store32(m.memory, uint32(v7), uint32(i32(0)))
+		}
+		if v8 != 0 {
+			store32(m.memory, uint32(v8), uint32(i32(0)))
+		}
+		p0 = i32(0)
+	}
+l2:
+	m.___stack_pointer = v3 + i32(112)
+	t53 := int32(load32(m.memory, uint32(v7)))
+	v2 = t53
+	t54 := int32(load32(m.memory, uint64(uint32(v6))+12))
+	v3 = t54
+	t55 := int32(load32(m.memory, uint64(uint32(v6))+4))
+	m.___stack_pointer = v6 + i32(16)
+	return p0, t55, v2, v3
+}
+func (m *Module) Xjs_realloc2(v0, v1, v2 int32) (int32, int32) {
 	var v3 int32
 	t0 := m.___stack_pointer
 	v3 = t0 - i32(16)
 	m.___stack_pointer = v3
 	store64(m.memory, uint64(uint32(v3))+8, uint64(i64(0)))
-	t1 := m.XJS_WriteObject2(v0, v3+i32(8)|i32(4), v1, v2, i32(0), i32(0))
+	t1 := m._js_realloc2(v0, v1, v2, v3+i32(8)|i32(4))
 	t2 := int32(load32(m.memory, uint64(uint32(v3))+12))
 	m.___stack_pointer = v3 + i32(16)
 	return t1, t2
 }
-func (m *Module) XJS_WriteObject2MV(v0 int32, v1 int64, v2 int32) (int32, int32, int32, int32) {
-	var v3, v4, _ int32
-	t0 := m.___stack_pointer
-	v3 = t0 - i32(16)
-	m.___stack_pointer = v3
-	v4 = v3 + i32(8)
-	store64(m.memory, uint32(v4), uint64(i64(0)))
-	store64(m.memory, uint32(v3), uint64(i64(0)))
-	t1 := m.XJS_WriteObject2(v0, v3|i32(4), v1, v2, v4, v3+i32(12))
-	t2 := int32(load32(m.memory, uint32(v4)))
-	v2 = t2
-	t3 := int32(load32(m.memory, uint64(uint32(v3))+12))
-	v4 = t3
-	t4 := int32(load32(m.memory, uint64(uint32(v3))+4))
-	m.___stack_pointer = v3 + i32(16)
-	return t1, t4, v2, v4
-}
-func (m *Module) Xjs_realloc2MV(v0, v1, v2 int32) (int32, int32) {
-	var v3 int32
-	t0 := m.___stack_pointer
-	v3 = t0 - i32(16)
-	m.___stack_pointer = v3
-	store64(m.memory, uint64(uint32(v3))+8, uint64(i64(0)))
-	t1 := m.Xjs_realloc2(v0, v1, v2, v3+i32(8)|i32(4))
-	t2 := int32(load32(m.memory, uint64(uint32(v3))+12))
-	m.___stack_pointer = v3 + i32(16)
-	return t1, t2
-}
-func (m *Module) XJS_GetAnyOpaqueMV(v0 int64) (int32, int32) {
+func (m *Module) XJS_GetAnyOpaque(v0 int64) (int32, int32) {
 	var v1, v2, _ int32
 	t0 := m.___stack_pointer
 	v2 = t0 - i32(16)
@@ -136840,21 +136122,6 @@ func (m *Module) _malloc_usable_size(v0 int32) int32 {
 }
 func (m *Module) XJS_DupValue(v0 int32, v1 int64) int64 {
 	return m.XJS_DupValueRT(v0, v1)
-}
-func (m *Module) XJS_MKVAL(v0, v1 int32) int64 {
-	return m.XJS_MKPTR(v0, v1)
-}
-func (m *Module) XJS_ToInt32MV(v0 int32, v1 int64) (int32, int32) {
-	return m.XJS_ToUint32MV(v0, v1)
-}
-func (m *Module) XJS_VALUE_GET_BOOL(v0 int64) int32 {
-	return m.XJS_VALUE_GET_PTR(v0)
-}
-func (m *Module) XJS_VALUE_GET_INT(v0 int64) int32 {
-	return m.XJS_VALUE_GET_PTR(v0)
-}
-func (m *Module) XJS_VALUE_GET_SHORT_BIG_INT(v0 int64) int32 {
-	return m.XJS_VALUE_GET_PTR(v0)
 }
 func (m *Module) X__indirect_function_table() *[]any {
 	return &m.t0

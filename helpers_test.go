@@ -1,98 +1,93 @@
 package quickjs_wasm_test
 
 import (
-	"bytes"
-	"encoding/binary"
 	"testing"
 
 	qjs "github.com/tosuke/go-quickjs-wasm"
 )
 
-func context(t *testing.T) (*qjs.Module, int32, int32) {
+type testModuleEnv struct {
+	*qjs.Module
+	memoryBase int32
+	tableBase  int32
+}
+
+func (e *testModuleEnv) X__memory_base() *int32 { return &e.memoryBase }
+func (e *testModuleEnv) X__table_base() *int32  { return &e.tableBase }
+
+func newTestModule(t testing.TB, main *qjs.Module) *Module {
+	t.Helper()
+	if memorySize, _, tableSize, _ := DylinkInfo(); memorySize != 0 || tableSize != 0 {
+		t.Fatalf("test shim requires memory size %d and table size %d", memorySize, tableSize)
+	}
+	return New(&testModuleEnv{Module: main})
+}
+
+func context(t *testing.T) (*qjs.Module, qjs.JSRuntimePtr, qjs.JSContextPtr) {
 	t.Helper()
 	m := qjs.New()
-	rt := m.XJS_NewRuntime()
+	rt := m.JS_NewRuntime()
 	if rt == 0 {
 		t.Fatal("JS_NewRuntime returned NULL")
 	}
-	t.Cleanup(func() { m.XJS_FreeRuntime(rt) })
-	ctx := m.XJS_NewContext(rt)
+	t.Cleanup(func() { m.JS_FreeRuntime(rt) })
+	ctx := m.JS_NewContext(rt)
 	if ctx == 0 {
 		t.Fatal("JS_NewContext returned NULL")
 	}
-	t.Cleanup(func() { m.XJS_FreeContext(ctx) })
+	t.Cleanup(func() { m.JS_FreeContext(ctx) })
 	return m, rt, ctx
 }
 
-func cstring(t *testing.T, m *qjs.Module, ctx int32, s string) int32 {
+func cstring(t *testing.T, m *qjs.Module, ctx qjs.JSContextPtr, s string) qjs.Ptr[byte] {
 	t.Helper()
-	p := m.Xjs_malloc(ctx, int32(len(s)+1))
+	p := m.JS_malloc(ctx, uint32(len(s)+1))
 	if p == 0 {
 		t.Fatal("malloc returned NULL")
 	}
-	mem := *m.Xmemory().Slice()
-	copy(mem[uint32(p):], s)
-	mem[uint32(p)+uint32(len(s))] = 0
-	t.Cleanup(func() { m.Xjs_free(ctx, p) })
+	m.StoreString(p, s)
+	t.Cleanup(func() { m.JS_free(ctx, p) })
 	return p
 }
 
-func valueString(t *testing.T, m *qjs.Module, ctx int32, v int64) string {
+func valueString(t *testing.T, m *qjs.Module, ctx qjs.JSContextPtr, v qjs.JSValue) string {
 	t.Helper()
-	p := m.XJS_ToCString(ctx, v)
+	p, n := m.JS_ToCStringLen(ctx, v)
 	if p == 0 {
 		t.Fatal("JS_ToCString returned NULL")
 	}
-	defer m.XJS_FreeCString(ctx, p)
-	b := (*m.Xmemory().Slice())[uint32(p):]
-	n := bytes.IndexByte(b, 0)
-	if n < 0 {
-		t.Fatal("unterminated C string")
-	}
-	return string(b[:n])
+	defer m.JS_FreeCString(ctx, p)
+	b := make([]byte, int(n))
+	m.LoadBytes(b, p, len(b))
+	return string(b)
 }
 
-func eval(t *testing.T, m *qjs.Module, ctx int32, source string) int64 {
+func eval(t *testing.T, m *qjs.Module, ctx qjs.JSContextPtr, source string) qjs.JSValue {
 	t.Helper()
-	v := m.XJS_Eval(ctx, cstring(t, m, ctx, source), int32(len(source)), cstring(t, m, ctx, "test.js"), 0)
-	if m.XJS_IsException(v) != 0 {
-		exc := m.XJS_GetException(ctx)
-		defer m.XJS_FreeValue(ctx, exc)
+	v := m.JS_Eval(ctx, cstring(t, m, ctx, source), int32(len(source)), cstring(t, m, ctx, "test.js"), 0)
+	if qjs.JS_IsException(v) {
+		exc := m.JS_GetException(ctx)
+		defer m.JS_FreeValue(ctx, exc)
 		t.Fatalf("JS_Eval: %s", valueString(t, m, ctx, exc))
 	}
 	return v
 }
 
-func alloc(t *testing.T, m *qjs.Module, ctx int32, n int32) int32 {
+func alloc(t *testing.T, m *qjs.Module, ctx qjs.JSContextPtr, n uint32) qjs.Ptr[[0]byte] {
 	t.Helper()
-	p := m.Xjs_mallocz(ctx, n)
+	p := m.JS_mallocz(ctx, n)
 	if p == 0 {
 		t.Fatal("allocation returned NULL")
 	}
-	t.Cleanup(func() { m.Xjs_free(ctx, p) })
+	t.Cleanup(func() { m.JS_free(ctx, p) })
 	return p
 }
 
-func read32(m *qjs.Module, p int32) int32 {
-	return int32(binary.LittleEndian.Uint32((*m.Xmemory().Slice())[uint32(p):]))
-}
-
-func write32(m *qjs.Module, p, value int32) {
-	binary.LittleEndian.PutUint32((*m.Xmemory().Slice())[uint32(p):], uint32(value))
-}
-
-func registerCallback(m *qjs.Module, fn any) int32 {
-	table := m.X__indirect_function_table()
-	pointer := int32(len(*table))
-	*table = append(*table, fn)
-	return pointer
-}
-
-func requireValue(t *testing.T, m *qjs.Module, ctx int32, v int64) int64 {
+func requireValue(t *testing.T, m *qjs.Module, ctx qjs.JSContextPtr, v qjs.JSValue) qjs.JSValue {
 	t.Helper()
-	if m.XJS_IsException(v) != 0 {
-		exc := m.XJS_GetException(ctx)
-		defer m.XJS_FreeValue(ctx, exc)
+	if qjs.JS_IsException(v) {
+		exc := m.JS_GetException(ctx)
+		defer m.JS_FreeValue(ctx, exc)
 		t.Fatalf("unexpected exception: %s", valueString(t, m, ctx, exc))
 	}
 	return v
