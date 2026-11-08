@@ -8,7 +8,7 @@ import (
 )
 
 func TestCallbackFunctionTypes(t *testing.T) {
-	m := qjs.New()
+	m := module(t)
 	c := newTestModule(t, m)
 	cases := []struct {
 		name      string

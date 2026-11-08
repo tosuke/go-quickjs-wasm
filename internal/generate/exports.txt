@@ -111,6 +111,7 @@ JS_PromiseState
 JS_PromiseResult
 JS_SetHostPromiseRejectionTracker
 JS_SetInterruptHandler
+JS_SetCanBlock
 JS_SetStripInfo
 JS_GetStripInfo
 JS_SetIsHTMLDDA

@@ -976,7 +976,11 @@ func (m *Module) JS_SetInterruptHandler(rt JSRuntimePtr, cb Ptr[JSInterruptHandl
 	m.XJS_SetInterruptHandler(int32(rt), int32(cb), int32(opaque))
 }
 
-// MEMO: JS_SetCanBlock is for SAB/Atomics, which is not supported in this binding.
+// JS_SetCanBlock enables blocking Atomics.wait calls for this runtime.
+// Blocking is disabled by default.
+func (m *Module) JS_SetCanBlock(rt JSRuntimePtr, can_block bool) {
+	m.XJS_SetCanBlock(rt, btoi(can_block))
+}
 
 // JS_SetStripInfo() flags
 const (

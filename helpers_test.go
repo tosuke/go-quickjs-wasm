@@ -14,6 +14,7 @@ type testModuleEnv struct {
 
 func (e *testModuleEnv) X__memory_base() *int32 { return &e.memoryBase }
 func (e *testModuleEnv) X__table_base() *int32  { return &e.tableBase }
+func (e *testModuleEnv) Xmemory() Memory        { return e.Module.Xmemory() }
 
 func newTestModule(t testing.TB, main *qjs.Module) *Module {
 	t.Helper()
@@ -23,9 +24,20 @@ func newTestModule(t testing.TB, main *qjs.Module) *Module {
 	return New(&testModuleEnv{Module: main})
 }
 
-func context(t *testing.T) (*qjs.Module, qjs.JSRuntimePtr, qjs.JSContextPtr) {
+func module(t testing.TB) *qjs.Module {
 	t.Helper()
 	m := qjs.New()
+	t.Cleanup(func() {
+		if err := m.Close(); err != nil {
+			t.Error(err)
+		}
+	})
+	return m
+}
+
+func context(t *testing.T) (*qjs.Module, qjs.JSRuntimePtr, qjs.JSContextPtr) {
+	t.Helper()
+	m := module(t)
 	rt := m.JS_NewRuntime()
 	if rt == 0 {
 		t.Fatal("JS_NewRuntime returned NULL")

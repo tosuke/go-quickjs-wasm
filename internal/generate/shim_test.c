@@ -1,6 +1,13 @@
 /* Test-only adapters for the Go implementations in quickjs.go. */
 #include "quickjs.h"
 
+/* Notify a JS waiter without reentering its QuickJS runtime. */
+__attribute__((export_name("test_atomic_notify")))
+int32_t test_atomic_notify(int32_t *ptr, uint32_t count)
+{
+    return __builtin_wasm_memory_atomic_notify(ptr, count);
+}
+
 _Static_assert(sizeof(void *) == 4 && sizeof(JSValue) == 8, "expected wasm32 QuickJS ABI");
 
 __attribute__((export_name("JS_NewBool")))

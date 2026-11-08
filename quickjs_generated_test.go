@@ -2,13 +2,19 @@
 
 package quickjs_wasm_test
 
-import "math"
+import (
+	"math"
+	"runtime"
+	"sync"
+	"unsafe"
+)
 
 type Module struct {
 	t0             *[]any
 	memory         *[]byte
 	memImp         Memory
 	maxMem         int64
+	waiters        *sync.Map
 	___memory_base int32
 	___table_base  int32
 	_env           Xenv
@@ -20,6 +26,7 @@ func New(v0 Xenv) *Module {
 	m.maxMem = 65536
 	m.memImp = v0.Xmemory()
 	m.memory = m.memImp.Slice()
+	m.waiters = m.memImp.Waiters()
 	m.t0 = v0.X__indirect_function_table()
 	m.___memory_base = *v0.X__memory_base()
 	m.___table_base = *v0.X__table_base()
@@ -40,11 +47,16 @@ type Xenv = interface {
 type Memory = interface {
 	Slice() *[]byte
 	Grow(delta, max int64) int64
+	Waiters() *sync.Map
 }
 
 func ___wasm_call_ctors() {
 }
 func (m *Module) X__wasm_apply_data_relocs() {
+}
+func (m *Module) Xtest_atomic_notify(v0, v1 int32) int32 {
+	t0 := atomic_notify(*m.memory, uint32(v0), v1, m.waiters)
+	return t0
 }
 func (m *Module) XJS_NewBool(v0, v1 int32) int64 {
 	var p0 int32
@@ -406,6 +418,68 @@ func (m *Module) Xtest_call_JSCFunctionIteratorNext(v0 int32) {
 }
 func DylinkInfo() (memorySize, memoryAlignment, tableSize, tableAlignment int64) {
 	return 0, 1, 0, 1
+}
+
+// Compiler error if endianess is unknown.
+var _ = map[bool]struct{}{big: {}, little: {}}
+
+// go.dev/src/cmd/compile/internal/ssa/config.go
+const (
+	big = false ||
+		runtime.GOARCH == "ppc64" || runtime.GOARCH == "s390x" ||
+		runtime.GOARCH == "mips" || runtime.GOARCH == "mips64"
+
+	little = false ||
+		runtime.GOARCH == "386" || runtime.GOARCH == "amd64" ||
+		runtime.GOARCH == "arm" || runtime.GOARCH == "arm64" ||
+		runtime.GOARCH == "riscv64" || runtime.GOARCH == "wasm" ||
+		runtime.GOARCH == "ppc64le" || runtime.GOARCH == "loong64" ||
+		runtime.GOARCH == "mipsle" || runtime.GOARCH == "mips64le"
+
+	unalignedOK = false ||
+		runtime.GOARCH == "386" || runtime.GOARCH == "amd64" ||
+		runtime.GOARCH == "arm64" || runtime.GOARCH == "loong64" ||
+		runtime.GOARCH == "ppc64" || runtime.GOARCH == "ppc64le" ||
+		runtime.GOARCH == "s390x" || runtime.GOARCH == "wasm"
+)
+
+func atomic_notify[T uint32 | uint64](mem []byte, addr T, count int32, waiters *sync.Map) int32 {
+	_ = atomic_ptr32(mem, addr)
+
+	if waiters == nil {
+		return 0
+	}
+	wa, ok := waiters.Load(int64(addr))
+	if !ok {
+		return 0
+	}
+
+	w := wa.(*atomic_waiters)
+	w.Lock()
+
+	var res uint32
+	for res < uint32(count) && w.N > 0 {
+		w.C <- struct{}{}
+		w.N--
+		res++
+	}
+
+	w.Unlock()
+	return int32(res)
+}
+
+//go:nosplit
+func atomic_ptr32[T uint32 | uint64](mem []byte, addr T) *uint32 {
+	if uint32(addr)&3 != 0 {
+		panic("unaligned atomic")
+	}
+	return (*uint32)(unsafe.Pointer(&mem[addr]))
+}
+
+type atomic_waiters = struct {
+	C chan struct{} // +checklocks:Mutex
+	N int           // +checklocks:Mutex
+	sync.Mutex
 }
 
 //go:nosplit

@@ -49,15 +49,15 @@ func (m *Module) _fmod(x, y float64) float64 { return math.Mod(x, y) }
 func (m *Module) _gettimeofday(arg, _ int32) int32 {
 	if arg != 0 {
 		now := time.Now()
-		store64(m.memory, uint32(arg)+0, uint64(now.Unix()))
-		store32(m.memory, uint32(arg)+8, uint32(now.Nanosecond()/1000))
+		store64((*m.memory), uint32(arg)+0, uint64(now.Unix()))
+		store32((*m.memory), uint32(arg)+8, uint32(now.Nanosecond()/1000))
 	}
 	return 0
 }
 func (m *Module) _hypot(x, y float64) float64 { return math.Hypot(x, y) }
 func (m *Module) _localtime_r(timer, buf int32) int32 {
-	t := load64(m.memory, uint32(timer))
-	m._storetime_r(m.memory[uint32(buf):], time.Unix(int64(t), 0))
+	t := load64((*m.memory), uint32(timer))
+	m._storetime_r((*m.memory)[uint32(buf):], time.Unix(int64(t), 0))
 	return buf
 }
 
@@ -66,7 +66,7 @@ func (m *Module) _log10(x float64) float64 { return math.Log10(x) }
 func (m *Module) _log1p(x float64) float64 { return math.Log1p(x) }
 func (m *Module) _log2(x float64) float64  { return math.Log2(x) }
 func (m *Module) _memchr(s int32, c int32, n int32) int32 {
-	b := m.memory[uint32(s):]
+	b := (*m.memory)[uint32(s):]
 	if uint64(uint32(n)) < uint64(len(b)) {
 		b = b[:uint32(n)]
 	}
@@ -81,9 +81,19 @@ func (m *Module) _memcmp(s1, s2, n int32) int32 {
 		return 0
 	}
 	e1, e2 := s1+n, s2+n
-	b1 := m.memory[uint32(s1):uint32(e1):len(m.memory)]
-	b2 := m.memory[uint32(s2):uint32(e2):len(m.memory)]
+	b1 := (*m.memory)[uint32(s1):uint32(e1):len((*m.memory))]
+	b2 := (*m.memory)[uint32(s2):uint32(e2):len((*m.memory))]
 	return int32(bytes.Compare(b1, b2))
+}
+
+func (m *Module) _modf(x float64, iptr int32) (f float64) {
+	if math.IsInf(x, 0) {
+		f = math.Copysign(0, x)
+	} else {
+		x, f = math.Modf(x)
+	}
+	store64((*m.memory), uint32(iptr), math.Float64bits(x))
+	return f
 }
 func (m *Module) _pow(x, y float64) float64 { return math.Pow(x, y) }
 
@@ -93,7 +103,7 @@ func (m *Module) _sinh(x float64) float64  { return math.Sinh(x) }
 
 func (m *Module) _strchr(s int32, c int32) int32 {
 	s = m._strchrnul(s, c)
-	if m.memory[uint32(s)] == byte(c) {
+	if (*m.memory)[uint32(s)] == byte(c) {
 		return s
 	}
 	return 0
@@ -103,8 +113,8 @@ func (m *Module) _strcmp(s1, s2 int32) int32 {
 	if s1 == s2 {
 		return 0
 	}
-	b1 := m.memory[uint32(s1):]
-	b2 := m.memory[uint32(s2):]
+	b1 := (*m.memory)[uint32(s1):]
+	b2 := (*m.memory)[uint32(s2):]
 	sz := min(len(b1), len(b2))
 	if i := bytes.IndexByte(b2[:sz], 0); i >= 0 {
 		sz = i + 1
@@ -112,11 +122,11 @@ func (m *Module) _strcmp(s1, s2 int32) int32 {
 	return int32(bytes.Compare(b1[:sz], b2[:sz]))
 }
 func (m *Module) _strlen(s int32) int32 {
-	return int32(bytes.IndexByte(m.memory[uint32(s):], 0))
+	return int32(bytes.IndexByte((*m.memory)[uint32(s):], 0))
 }
 
 func (m *Module) _strrchr(s int32, c int32) int32 {
-	b := m.memory[uint32(s):]
+	b := (*m.memory)[uint32(s):]
 	b = b[: bytes.IndexByte(b, 0)+1 : len(b)]
 	if i := bytes.LastIndexByte(b, byte(c)); i >= 0 {
 		return s + int32(i)
@@ -147,7 +157,7 @@ func (m *Module) _storetime_r(buf []byte, t time.Time) {
 }
 
 func (m *Module) _strchrnul(s int32, c int32) int32 {
-	for i, d := range m.memory[uint32(s):] {
+	for i, d := range (*m.memory)[uint32(s):] {
 		if d == 0 || d == byte(c) {
 			return s + int32(i)
 		}
