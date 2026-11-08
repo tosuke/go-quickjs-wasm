@@ -136802,8 +136802,25 @@ func (m *Module) _snprintf(v0, v1, v2, v3 int32) int32 {
 	m.___stack_pointer = v4 + i32(16)
 	return t1
 }
+func (m *Module) _lock_allocator() {
+	t0 := int32(atomic_xchg32(m.bytes(), uint64(uint32(i32(0)))+79380, uint32(i32(1))))
+	if t0 != 0 {
+	l0:
+		{
+			_ = atomic_wait32(m.bytes(), uint64(uint32(i32(0)))+79380, uint32(i32(1)), i64(-1), m.waiters)
+			t2 := int32(atomic_xchg32(m.bytes(), uint64(uint32(i32(0)))+79380, uint32(i32(1))))
+			if t2 != 0 {
+				goto l0
+			}
+		}
+	}
+	t3 := int32(load32(m.bytes(), uint32(i32(81088))))
+	if t3 == 0 {
+		m._tlsf_add_pool(i32(2178256), i32(0x400000))
+	}
+}
 func (m *Module) _tlsf_malloc(v0 int32) int32 {
-	var v1, v2, v3, v4 int32
+	var v1, v2, v3 int32
 	if v0 > i32(0) {
 		{
 			v2 = (v0 + i32(19)) & i32(-16)
@@ -136818,40 +136835,15 @@ func (m *Module) _tlsf_malloc(v0 int32) int32 {
 					} else {
 						p1 = v2
 					}
-					v3 = int32(uint32(p1+i32(65555)) >> 16)
-					t2 := int32(m.memImp.Grow(int64(v3), m.maxMem))
+					v1 = int32(uint32(p1+i32(65555)) >> 16)
+					t2 := int32(m.memImp.Grow(int64(v1), m.maxMem))
 					v0 = t2
 					if v0 == i32(-1) {
 						goto l0
 					}
-					v4 = v0 << 16
-					t3 := int32(load32(m.bytes(), uint32(i32(81088))))
-					var p4 int32
-					if v4 != t3 {
-						p4 = 1
-					}
-					v1 = p4
-					v3 = (v0 + v3) << 16
-					t5 := v3
-					v0 = v1<<4 | v4 - i32(4)
-					if t5-v0 >= i32(20) {
-						v4 = v3 - i32(4)
-						store32(m.bytes(), uint32(v4), uint32(i32(0)))
-						if v1 != 0 {
-							store32(m.bytes(), uint32(v0), uint32(i32(0)))
-						}
-						v1 = v4 - v0
-						if v1&i32(15) != 0 {
-							panic("unreachable")
-						} else {
-							t6 := int32(load32(m.bytes(), uint32(v0)))
-							store32(m.bytes(), uint32(v0), uint32(t6&i32(15)|v1))
-							m._tlsf_block_free(v0)
-							store32(m.bytes(), uint32(i32(81088)), uint32(v3))
-						}
-					}
-					t7 := m._tlsf_find_free_block(v2)
-					v1 = t7
+					m._tlsf_add_pool(v0<<16, (v0+v1)<<16)
+					t3 := m._tlsf_find_free_block(v2)
+					v1 = t3
 					if v1 != 0 {
 						goto l1
 					}
@@ -136860,15 +136852,15 @@ func (m *Module) _tlsf_malloc(v0 int32) int32 {
 			l1:
 			}
 			m._tlsf_remove_free_block(v1)
-			t8 := int32(load32(m.bytes(), uint32(v1)))
-			t9 := v1
-			v0 = t8
-			store32(m.bytes(), uint32(t9), uint32(v0&i32(-2)))
+			t4 := int32(load32(m.bytes(), uint32(v1)))
+			t5 := v1
+			v0 = t4
+			store32(m.bytes(), uint32(t5), uint32(v0&i32(-2)))
 			v0 = v1 + v0&i32(-16)
-			t10 := int32(load32(m.bytes(), uint32(v0)))
-			store32(m.bytes(), uint32(v0), uint32(t10&i32(-3)))
-			t11 := int32(load32(m.bytes(), uint32(v1)))
-			v0 = t11
+			t6 := int32(load32(m.bytes(), uint32(v0)))
+			store32(m.bytes(), uint32(v0), uint32(t6&i32(-3)))
+			t7 := int32(load32(m.bytes(), uint32(v1)))
+			v0 = t7
 			v3 = v0 & i32(-16)
 			if v3 != v2 {
 				store32(m.bytes(), uint32(v1), uint32(v0&i32(15)|v2))
@@ -136876,33 +136868,23 @@ func (m *Module) _tlsf_malloc(v0 int32) int32 {
 				store32(m.bytes(), uint32(v0), uint32(v3-v2))
 				m._tlsf_block_free(v0)
 			}
-			v4 = v1 + i32(4)
-			if v4&i32(15) == 0 {
+			v3 = v1 + i32(4)
+			if v3&i32(15) == 0 {
 				goto l0
 			}
 			panic("unreachable")
 		}
 	l0:
 	}
-	return v4
+	return v3
 }
 func (m *Module) Xmalloc(v0 int32) int32 {
 	defer runtime.KeepAlive(m)
-	t0 := int32(atomic_xchg32(m.bytes(), uint64(uint32(i32(0)))+79380, uint32(i32(1))))
-	if t0 != 0 {
-	l0:
-		{
-			_ = atomic_wait32(m.bytes(), uint64(uint32(i32(0)))+79380, uint32(i32(1)), i64(-1), m.waiters)
-			t2 := int32(atomic_xchg32(m.bytes(), uint64(uint32(i32(0)))+79380, uint32(i32(1))))
-			if t2 != 0 {
-				goto l0
-			}
-		}
-	}
-	t3 := m._tlsf_malloc(v0)
+	m._lock_allocator()
+	t0 := m._tlsf_malloc(v0)
 	atomic_store32(m.bytes(), uint32(i32(79380)), uint32(i32(0)))
 	_ = atomic_notify(m.bytes(), uint64(uint32(i32(0)))+79380, i32(1), m.waiters)
-	return t3
+	return t0
 }
 func (m *Module) _tlsf_block_free(v0 int32) {
 	var v1, v2, v3, v4 int32
@@ -137018,63 +137000,95 @@ l0:
 	store32(m.bytes(), uint64(uint32(v3))+4, uint32(v0))
 }
 func (m *Module) _tlsf_find_free_block(v0 int32) int32 {
-	var v1, v2, v3, v4, v5 int32
-	t0 := m.___stack_pointer
-	v1 = t0 - i32(16)
-	m.___stack_pointer = v1
-	if uint32(v0) <= uint32(i32(255)) {
-		if v0&i32(15) != 0 {
-			panic("unreachable")
-		} else {
-			store32(m.bytes(), uint64(uint32(v1))+12, uint32(i32(0)))
-			store32(m.bytes(), uint64(uint32(v1))+8, uint32(int32(uint32(v0)>>4)))
-		}
-	} else {
+	var v1, v2, v3, v4 int32
+	if uint32(v0) > uint32(i32(255)) {
 		{
-			t1 := v1
-			v2 = int32(bits.LeadingZeros32(uint32(v0)))
-			store32(m.bytes(), uint64(uint32(t1))+12, uint32(i32(24)-v2))
-			t2 := v1
-			t3 := v0
-			v3 = i32(27) - v2
-			v4 = i32_shr_u(t3, v3) & i32(15)
-			store32(m.bytes(), uint64(uint32(t2))+8, uint32(v4))
-			if (i32_shl(i32(-1), v3)^i32(-1))&v0 == 0 {
+			v3 = int32(bits.LeadingZeros32(uint32(v0)))
+			v1 = i32(24) - v3
+			t0 := v0
+			v4 = i32(27) - v3
+			v2 = i32_shr_u(t0, v4) & i32(15)
+			if (i32_shl(i32(-1), v4)^i32(-1))&v0 == 0 {
 				goto l0
 			}
-			t4 := v1
-			v0 = v4 + i32(1)
-			store32(m.bytes(), uint64(uint32(t4))+8, uint32(v0))
-			if v0 != i32(16) {
-				goto l0
+			v2 = v2 + i32(1)
+			var p1 int32
+			if v2 == i32(16) {
+				p1 = 1
 			}
-			store32(m.bytes(), uint64(uint32(v1))+8, uint32(i32(0)))
-			store32(m.bytes(), uint64(uint32(v1))+12, uint32(i32(25)-v2))
+			v0 = p1
+			p2 := v2
+			if v0 != 0 {
+				p2 = i32(0)
+			}
+			v2 = p2
+			p3 := v1
+			if v0 != 0 {
+				p3 = i32(25) - v3
+			}
+			v1 = p3
 		}
 	l0:
+	} else {
+		if v0&i32(15) != 0 {
+			panic("unreachable")
+		}
+		v2 = int32(uint32(v0) >> 4)
 	}
+	var p4 int32
 	{
-		t5 := int32(load32(m.bytes(), uint64(uint32(v1))+12))
-		v0 = t5
-		t6 := int32(load32(m.bytes(), uint32(v0<<2+i32(79388))))
-		t7 := int32(load32(m.bytes(), uint64(uint32(v1))+8))
-		v2 = t6 & i32_shl(i32(-1), t7)
-		if v2 == 0 {
-			t8 := int32(load32(m.bytes(), uint32(i32(79384))))
-			v0 = t8 & i32_shl(i32(-1), v0+i32(1))
-			if v0 == 0 {
+		t5 := int32(load32(m.bytes(), uint32(v1<<2+i32(79388))))
+		v0 = t5 & i32_shl(i32(-1), v2)
+		if v0 == 0 {
+			t6 := int32(load32(m.bytes(), uint32(i32(79384))))
+			v1 = t6 & i32_shl(i32(-2), v1)
+			if v1 == 0 {
+				p4 = i32(0)
 				goto l1
 			}
-			v0 = int32(bits.TrailingZeros32(uint32(v0)))
-			t9 := int32(load32(m.bytes(), uint32(v0<<2+i32(79388))))
-			v2 = t9
+			v1 = int32(bits.TrailingZeros32(uint32(v1)))
+			t7 := int32(load32(m.bytes(), uint32(v1<<2+i32(79388))))
+			v0 = t7
 		}
-		t10 := int32(load32(m.bytes(), uint32(v0<<6+int32(bits.TrailingZeros32(uint32(v2)))<<2+i32(79488))))
-		v5 = t10
+		t8 := int32(load32(m.bytes(), uint32(v1<<6+int32(bits.TrailingZeros32(uint32(v0)))<<2+i32(79488))))
+		p4 = t8
 	}
 l1:
-	m.___stack_pointer = v1 + i32(16)
-	return v5
+	return p4
+}
+func (m *Module) _tlsf_add_pool(v0, v1 int32) {
+	var v2, v3 int32
+	v1 = v1 & i32(-16)
+	t0 := int32(load32(m.bytes(), uint32(i32(81088))))
+	t1 := v1
+	t2 := v0
+	t3 := (v0 + i32(19)) & i32(-16)
+	var p4 int32
+	if t0 == v0 {
+		p4 = 1
+	}
+	v2 = p4
+	p5 := t3
+	if v2 != 0 {
+		p5 = t2
+	}
+	v0 = p5 - i32(4)
+	if t1-v0 >= i32(20) {
+		v3 = v1 - i32(4)
+		store32(m.bytes(), uint32(v3), uint32(i32(0)))
+		if v2 == 0 {
+			store32(m.bytes(), uint32(v0), uint32(i32(0)))
+		}
+		v2 = v3 - v0
+		if v2&i32(15) != 0 {
+			panic("unreachable")
+		} else {
+			t6 := int32(load32(m.bytes(), uint32(v0)))
+			store32(m.bytes(), uint32(v0), uint32(t6&i32(15)|v2))
+			m._tlsf_block_free(v0)
+			store32(m.bytes(), uint32(i32(81088)), uint32(v1))
+		}
+	}
 }
 func (m *Module) Xfree(v0 int32) {
 	defer runtime.KeepAlive(m)
@@ -137107,116 +137121,106 @@ func (m *Module) Xfree(v0 int32) {
 func (m *Module) Xrealloc(v0, v1 int32) int32 {
 	defer runtime.KeepAlive(m)
 	var v2, v3, v4, v5, v6, v7 int32
-	t0 := int32(atomic_xchg32(m.bytes(), uint64(uint32(i32(0)))+79380, uint32(i32(1))))
-	if t0 != 0 {
-	l0:
-		{
-			_ = atomic_wait32(m.bytes(), uint64(uint32(i32(0)))+79380, uint32(i32(1)), i64(-1), m.waiters)
-			t2 := int32(atomic_xchg32(m.bytes(), uint64(uint32(i32(0)))+79380, uint32(i32(1))))
-			if t2 != 0 {
-				goto l0
-			}
-		}
-	}
+	m._lock_allocator()
 	v3 = v1
 	v1 = i32(0)
 	{
-		var p3 int32
+		var p0 int32
 		if v0 != 0 {
 			if v3 != 0 {
 				{
 					if v3 < i32(0) {
-						goto l1
+						goto l0
 					}
 					if v0&i32(15) != 0 {
 						panic("unreachable")
 					}
 					v2 = v0 - i32(4)
-					t4 := int32(load32(m.bytes(), uint32(v2)))
-					v6 = t4
+					t1 := int32(load32(m.bytes(), uint32(v2)))
+					v6 = t1
 					if v6&i32(1) != 0 {
 						panic("unreachable")
 					}
 					v4 = (v3 + i32(19)) & i32(-16)
-					t5 := v4
+					t2 := v4
 					v5 = v6 & i32(-16)
-					if uint32(t5) <= uint32(v5) {
+					if uint32(t2) <= uint32(v5) {
 						if v4 == v5 {
-							goto l2
+							goto l1
 						}
 						store32(m.bytes(), uint32(v2), uint32(v6&i32(14)|v4))
 						v1 = v2 + v4
 						store32(m.bytes(), uint32(v1), uint32(v5-v4))
 						m._tlsf_block_free(v1)
-						goto l2
+						goto l1
 					}
 					v6 = v2 + v5
-					t6 := int32(load32(m.bytes(), uint32(v6)))
-					v7 = t6
-					t7 := v7 & i32(1)
-					var p8 int32
+					t3 := int32(load32(m.bytes(), uint32(v6)))
+					v7 = t3
+					t4 := v7 & i32(1)
+					var p5 int32
 					if uint32(v4) <= uint32(v7&i32(-16)+v5) {
-						p8 = 1
+						p5 = 1
 					}
-					if t7&p8 != 0 {
+					if t4&p5 != 0 {
 						m._tlsf_remove_free_block(v6)
-						t9 := int32(load32(m.bytes(), uint32(v6)))
-						t10 := v2
-						v1 = t9&i32(-16) + v5
-						t11 := int32(load32(m.bytes(), uint32(v2)))
-						store32(m.bytes(), uint32(t10), uint32(v1|t11&i32(15)))
+						t6 := int32(load32(m.bytes(), uint32(v6)))
+						t7 := v2
+						v1 = t6&i32(-16) + v5
+						t8 := int32(load32(m.bytes(), uint32(v2)))
+						store32(m.bytes(), uint32(t7), uint32(v1|t8&i32(15)))
 						v1 = v1 + v2
-						t12 := int32(load32(m.bytes(), uint32(v1)))
-						store32(m.bytes(), uint32(v1), uint32(t12&i32(-3)))
-						t13 := int32(load32(m.bytes(), uint32(v2)))
-						v1 = t13
+						t9 := int32(load32(m.bytes(), uint32(v1)))
+						store32(m.bytes(), uint32(v1), uint32(t9&i32(-3)))
+						t10 := int32(load32(m.bytes(), uint32(v2)))
+						v1 = t10
 						v3 = v1 & i32(-16)
 						if v3 == v4 {
-							goto l2
+							goto l1
 						}
 						store32(m.bytes(), uint32(v2), uint32(v1&i32(15)|v4))
 						v1 = v2 + v4
 						store32(m.bytes(), uint32(v1), uint32(v3-v4))
 						m._tlsf_block_free(v1)
-						goto l2
-					}
-					t14 := m._tlsf_malloc(v3)
-					v3 = t14
-					if v3 == 0 {
 						goto l1
 					}
+					t11 := m._tlsf_malloc(v3)
+					v3 = t11
+					if v3 == 0 {
+						goto l0
+					}
 					memory_copy(m.bytes(), uint32(v3), uint32(v0), uint32(v5-i32(4)))
-					t15 := int32((m.bytes())[uint32(v2)])
-					var p16 int32
-					if t15&i32(1) != 0 {
+					t12 := int32((m.bytes())[uint32(v2)])
+					var p13 int32
+					if t12&i32(1) != 0 {
 						panic("unreachable")
 					} else {
 						m._tlsf_block_free(v2)
-						p16 = v3
+						p13 = v3
 					}
-					v1 = p16
+					v1 = p13
 				}
-			l1:
+			l0:
 			} else {
 				if v0&i32(15) != 0 {
 					panic("unreachable")
 				}
 				v0 = v0 - i32(4)
-				t17 := int32((m.bytes())[uint32(v0)])
-				if t17&i32(1) != 0 {
+				t14 := int32((m.bytes())[uint32(v0)])
+				if t14&i32(1) != 0 {
 					panic("unreachable")
 				} else {
 					m._tlsf_block_free(v0)
 				}
 			}
-			p3 = v1
+			p0 = v1
 		} else {
-			t18 := m._tlsf_malloc(v3)
-			p3 = t18
+			t15 := m._tlsf_malloc(v3)
+			p0 = t15
 		}
-		v0 = p3
+		v0 = p0
 	}
-l2:
+l1:
 	atomic_store32(m.bytes(), uint32(i32(79380)), uint32(i32(0)))
 	_ = atomic_notify(m.bytes(), uint64(uint32(i32(0)))+79380, i32(1), m.waiters)
 	return v0

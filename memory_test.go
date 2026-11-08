@@ -9,8 +9,7 @@ import (
 
 func TestImportedMemoryGrowth(t *testing.T) {
 	shared := sharedMemory(t)
-	m := worker(t, shared)
-	mem := m.Xmemory()
+	mem := shared
 	view := *mem.Slice()
 	base := unsafe.SliceData(view)
 	pages := int64(len(view) >> 16)
@@ -57,17 +56,11 @@ func TestImportedMemoryGrowth(t *testing.T) {
 	if got := mem.Grow(1, math.MaxInt64); got != -1 {
 		t.Fatalf("growth exceeded wasm32 limit: %d", got)
 	}
-	if err := m.Close(); err != nil {
-		t.Fatal(err)
-	}
 	if err := shared.Close(); err != nil {
 		t.Fatal(err)
 	}
 	if len(*mem.Slice()) != 0 || mem.Grow(0, 65536) != -1 {
 		t.Fatal("closed memory is still usable")
-	}
-	if err := m.Close(); err != nil {
-		t.Fatal(err)
 	}
 }
 

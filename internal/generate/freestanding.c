@@ -27,9 +27,15 @@
 
 static pthread_mutex_t allocator_mutex = PTHREAD_MUTEX_INITIALIZER;
 
-void * malloc(size_t size)
+static void lock_allocator(void)
 {
     pthread_mutex_lock(&allocator_mutex);
+    if (!g_tlsf.pool_end) init_allocator();
+}
+
+void * malloc(size_t size)
+{
+    lock_allocator();
     void * result = tlsf_malloc(size);
     pthread_mutex_unlock(&allocator_mutex);
     return result;
@@ -44,7 +50,7 @@ void free(void *ptr)
 
 void * realloc(void *ptr, size_t size)
 {
-    pthread_mutex_lock(&allocator_mutex);
+    lock_allocator();
     void * result = tlsf_realloc(ptr, size);
     pthread_mutex_unlock(&allocator_mutex);
     return result;
@@ -52,7 +58,7 @@ void * realloc(void *ptr, size_t size)
 
 void * memalign(size_t align, size_t size)
 {
-    pthread_mutex_lock(&allocator_mutex);
+    lock_allocator();
     void * result = tlsf_memalign(align, size);
     pthread_mutex_unlock(&allocator_mutex);
     return result;
@@ -60,7 +66,7 @@ void * memalign(size_t align, size_t size)
 
 void * calloc(size_t count, size_t size)
 {
-    pthread_mutex_lock(&allocator_mutex);
+    lock_allocator();
     void * result = tlsf_calloc(count, size);
     pthread_mutex_unlock(&allocator_mutex);
     return result;
@@ -68,7 +74,7 @@ void * calloc(size_t count, size_t size)
 
 void * aligned_alloc(size_t align, size_t size)
 {
-    pthread_mutex_lock(&allocator_mutex);
+    lock_allocator();
     void * result = tlsf_aligned_alloc(align, size);
     pthread_mutex_unlock(&allocator_mutex);
     return result;
@@ -76,7 +82,7 @@ void * aligned_alloc(size_t align, size_t size)
 
 void * reallocarray(void *ptr, size_t count, size_t size)
 {
-    pthread_mutex_lock(&allocator_mutex);
+    lock_allocator();
     void * result = tlsf_reallocarray(ptr, count, size);
     pthread_mutex_unlock(&allocator_mutex);
     return result;
