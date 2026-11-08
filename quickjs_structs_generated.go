@@ -113,6 +113,25 @@ func JSClassDef_gc_mark(ptr Ptr[JSClassDef]) Ptr[Ptr[JSClassGCMark]]       { ret
 func JSClassDef_call(ptr Ptr[JSClassDef]) Ptr[Ptr[JSClassCall]]            { return ptr + 12 }
 func JSClassDef_exotic(ptr Ptr[JSClassDef]) Ptr[Ptr[JSClassExoticMethods]] { return ptr + 16 }
 
+type JSSharedArrayBufferFunctions struct {
+	opaque [JSSharedArrayBufferFunctionsSize]byte
+}
+
+const JSSharedArrayBufferFunctionsSize = 16
+
+func JSSharedArrayBufferFunctions_sab_alloc(ptr Ptr[JSSharedArrayBufferFunctions]) Ptr[Ptr[JSSharedArrayBufferAlloc]] {
+	return ptr + 0
+}
+func JSSharedArrayBufferFunctions_sab_free(ptr Ptr[JSSharedArrayBufferFunctions]) Ptr[Ptr[JSSharedArrayBufferFree]] {
+	return ptr + 4
+}
+func JSSharedArrayBufferFunctions_sab_dup(ptr Ptr[JSSharedArrayBufferFunctions]) Ptr[Ptr[JSSharedArrayBufferDup]] {
+	return ptr + 8
+}
+func JSSharedArrayBufferFunctions_sab_opaque(ptr Ptr[JSSharedArrayBufferFunctions]) Ptr[Ptr[[0]byte]] {
+	return ptr + 12
+}
+
 type JSCFunctionType struct{ opaque [JSCFunctionTypeSize]byte }
 
 const JSCFunctionTypeSize = 4

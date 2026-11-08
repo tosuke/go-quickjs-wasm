@@ -5,13 +5,11 @@ import (
 	"sync"
 	"testing"
 	"unsafe"
-
-	qjs "github.com/tosuke/go-quickjs-wasm"
 )
 
 func TestImportedMemoryGrowth(t *testing.T) {
-	m := qjs.New()
-	t.Cleanup(func() { _ = m.Close() })
+	shared := sharedMemory(t)
+	m := worker(t, shared)
 	mem := m.Xmemory()
 	view := *mem.Slice()
 	base := unsafe.SliceData(view)
@@ -40,6 +38,9 @@ func TestImportedMemoryGrowth(t *testing.T) {
 			t.Fatal("new pages are not zero initialized")
 		}
 	}
+	if grown[len(view)-1] != 123 {
+		t.Fatal("growth lost old data")
+	}
 	grown[len(view)-1] = 42
 	if view[len(view)-1] != 42 {
 		t.Fatal("host view no longer aliases Wasm memory")
@@ -59,6 +60,9 @@ func TestImportedMemoryGrowth(t *testing.T) {
 	if err := m.Close(); err != nil {
 		t.Fatal(err)
 	}
+	if err := shared.Close(); err != nil {
+		t.Fatal(err)
+	}
 	if len(*mem.Slice()) != 0 || mem.Grow(0, 65536) != -1 {
 		t.Fatal("closed memory is still usable")
 	}
@@ -68,7 +72,7 @@ func TestImportedMemoryGrowth(t *testing.T) {
 }
 
 func TestConcurrentMemoryGrowth(t *testing.T) {
-	m := qjs.New()
+	m := module(t)
 	defer m.Close()
 	mem := m.Xmemory()
 	start := mem.Grow(0, 65536)

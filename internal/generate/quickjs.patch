@@ -4,43 +4,22 @@
  #include <stdlib.h>
 +#include <malloc.h>
  #include <stdio.h>
-@@ -116,3 +117,5 @@
- #ifdef CONFIG_ATOMICS
-+#ifndef __wasm__
- #include <pthread.h>
-+#endif
- #include <stdatomic.h>
-@@ -3817,3 +3820,3 @@
-
--#ifdef CONFIG_ATOMICS
-+#if defined(CONFIG_ATOMICS) && !defined(__wasm__)
- static pthread_mutex_t js_class_id_mutex = PTHREAD_MUTEX_INITIALIZER;
-@@ -3825,3 +3828,3 @@
-     JSClassID class_id;
--#ifdef CONFIG_ATOMICS
-+#if defined(CONFIG_ATOMICS) && !defined(__wasm__)
-     pthread_mutex_lock(&js_class_id_mutex);
-@@ -3833,3 +3836,3 @@
-     }
--#ifdef CONFIG_ATOMICS
-+#if defined(CONFIG_ATOMICS) && !defined(__wasm__)
-     pthread_mutex_unlock(&js_class_id_mutex);
-@@ -60580,2 +60583,3 @@
+@@ -60580,2 +60581,3 @@
 
 +#ifndef __wasm__
  typedef struct JSAtomicsWaiter {
-@@ -60590,2 +60594,3 @@
+@@ -60590,2 +60592,3 @@
      LIST_HEAD_INIT(js_atomics_waiter_list);
 +#endif
 
-@@ -60644,4 +60649,6 @@
+@@ -60644,4 +60647,6 @@
      int64_t timeout;
 +#ifndef __wasm__
      struct timespec ts;
      JSAtomicsWaiter waiter_s, *waiter;
 +#endif
      int ret, size_log2, res;
-@@ -60676,2 +60683,14 @@
+@@ -60676,2 +60681,14 @@
 
 +#ifdef __wasm__
 +    /* Wasm wait/notify use the imported memory's host-managed waiter table.
@@ -55,28 +34,28 @@
 +                           ret == 1 ? JS_ATOM_not_equal : JS_ATOM_timed_out);
 +#else
      /* XXX: inefficient if large number of waiters, should hash on
-@@ -60720,2 +60739,3 @@
+@@ -60720,2 +60737,3 @@
      }
 +#endif
  }
-@@ -60726,3 +60746,6 @@
+@@ -60726,3 +60744,6 @@
  {
 +#ifndef __wasm__
      struct list_head *el, *el1, waiter_list;
 +    JSAtomicsWaiter *waiter;
 +#endif
      int32_t count, n;
-@@ -60731,3 +60754,2 @@
+@@ -60731,3 +60752,2 @@
      void *ptr;
 -    JSAtomicsWaiter *waiter;
      JSArrayBuffer *abuf;
-@@ -60752,2 +60774,5 @@
+@@ -60752,2 +60772,5 @@
          ptr = p->u.array.u.uint8_ptr + ((uintptr_t)idx << size_log2);
 +#ifdef __wasm__
 +        n = __builtin_wasm_memory_atomic_notify(ptr, count);
 +#else
          pthread_mutex_lock(&js_atomics_mutex);
-@@ -60770,2 +60795,3 @@
+@@ -60770,2 +60793,3 @@
          pthread_mutex_unlock(&js_atomics_mutex);
 +#endif
      }

@@ -942,6 +942,30 @@ func (m *Module) JS_GetTypedArrayBuffer(
 	return JSValue(buf), ofs, len, bpe
 }
 
+// JSSharedArrayBufferFunctions controls backing-store ownership across runtimes.
+type JSSharedArrayBufferAlloc = func(opaque Ptr[[0]byte], size Size_t) Ptr[[0]byte]
+type JSSharedArrayBufferFree = func(opaque, ptr Ptr[[0]byte])
+type JSSharedArrayBufferDup = func(opaque, ptr Ptr[[0]byte])
+
+type jsSharedArrayBufferFunctions struct {
+	sab_alloc  Ptr[JSSharedArrayBufferAlloc]
+	sab_free   Ptr[JSSharedArrayBufferFree]
+	sab_dup    Ptr[JSSharedArrayBufferDup]
+	sab_opaque Ptr[[0]byte]
+}
+
+func (m *Module) JS_SetSharedArrayBufferFunctions(rt JSRuntimePtr, functions Ptr[JSSharedArrayBufferFunctions]) {
+	m.XJS_SetSharedArrayBufferFunctions(rt, functions)
+}
+
+// JS_SetDefaultSharedArrayBufferFunctions installs backing stores with atomic
+// reference counts. Install it before creating or reading any SAB in this runtime.
+// All participating runtimes must share the same SharedMemory and use this policy.
+// Externally supplied SAB data must instead use a matching custom ownership policy.
+func (m *Module) JS_SetDefaultSharedArrayBufferFunctions(rt JSRuntimePtr) {
+	m.Xqjs_set_default_shared_array_buffer_functions(rt)
+}
+
 type JSPromiseStateEnum = int32
 
 const (

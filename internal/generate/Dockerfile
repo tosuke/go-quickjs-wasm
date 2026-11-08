@@ -42,6 +42,9 @@ RUN --mount=type=bind,source=internal/go.mod,target=go.mod \
     --mount=type=cache,target=/root/.cache/go-build \
     go tool libc-gen -c-out .build/libc
 
+RUN --mount=type=bind,source=internal/generate/libc.patch,target=/tmp/libc.patch \
+    patch --batch --fuzz=0 -d .build/libc -p1 < /tmp/libc.patch
+
 FROM generate-base AS generate
 ARG MEMORY_INITIAL_PAGES=64
 ARG MEMORY_MAX_PAGES=65536
@@ -50,13 +53,14 @@ ARG MEMORY_MAX_PAGES=65536
 # -g, which discards names/DWARF before our explicitly configured optimizer runs.
 RUN --mount=type=bind,source=internal/generate/shim.c,target=generate/shim.c \
     --mount=type=bind,source=internal/generate/freestanding.c,target=generate/freestanding.c \
+    --mount=type=bind,source=internal/generate/pthread.h,target=generate/pthread.h \
     src=".build/quickjs-${QUICKJS_VERSION}" \
     && clang --target=wasm32-unknown-unknown -ffreestanding -nostdlib \
         -mmutable-globals -mbulk-memory -mreference-types \
-        -mnontrapping-fptoint -msign-ext -mextended-const -mtail-call -matomics \
+        -mnontrapping-fptoint -msign-ext -mextended-const -mtail-call -pthread \
         -mmultivalue -Xclang -target-abi -Xclang experimental-mv \
         -Os -g -c -fno-strict-aliasing -ffunction-sections -fdata-sections \
-        -I.build/libc -I"$src" -DCONFIG_VERSION=\"${QUICKJS_VERSION}\" \
+        -Igenerate -I.build/libc -I"$src" -DCONFIG_VERSION=\"${QUICKJS_VERSION}\" \
         "$src/quickjs.c" "$src/dtoa.c" "$src/libregexp.c" \
         "$src/libunicode.c" "$src/cutils.c" \
         generate/shim.c generate/freestanding.c
@@ -67,6 +71,8 @@ RUN --mount=type=bind,source=internal/generate/exports.txt,target=generate/expor
 RUN wasm-ld --no-entry --allow-undefined --import-memory --export-memory \
         --shared-memory --initial-memory=$((MEMORY_INITIAL_PAGES * 65536)) \
         --max-memory=$((MEMORY_MAX_PAGES * 65536)) \
+        --export=__stack_pointer --export=__tls_base --export=__tls_size \
+        --export=__tls_align --export=__wasm_init_tls \
         -z stack-size=2097152 --export-table @.build/exports.txt \
         quickjs.o dtoa.o libregexp.o libunicode.o cutils.o shim.o freestanding.o \
         -o .build/quickjs-unoptimized.wasm
@@ -96,7 +102,7 @@ RUN --mount=type=bind,source=internal/generate/modulegen,target=generate/moduleg
     --mount=type=cache,target=/root/.cache/go-build \
     go tool wasm2go -embed -unsafe -provided /out/libc_generated.go -pkg quickjs_wasm \
         -o /out/quickjs_generated.go .build/quickjs.wasm \
-    && go run ./generate/modulegen -file /out/quickjs_generated.go
+    && go run ./generate/modulegen -file /out/quickjs_generated.go -libc /out/libc_generated.go
 
 # Keep New() as the public constructor; its imported memory uses these limits.
 RUN printf '%s\n' \
@@ -128,12 +134,14 @@ RUN --mount=type=bind,source=internal/generate/shim_test.c,target=generate/shim_
 RUN wasm-ld --shared --shared-memory --max-memory=4294967296 \
         --no-entry --import-undefined .build/test_shim.o -o .build/test_shim.wasm
 
-RUN --mount=type=bind,source=internal/go.mod,target=go.mod \
+RUN --mount=type=bind,source=internal/generate/modulegen,target=generate/modulegen \
+    --mount=type=bind,source=internal/go.mod,target=go.mod \
     --mount=type=bind,source=internal/go.sum,target=go.sum \
     --mount=type=cache,target=/go/pkg/mod \
     --mount=type=cache,target=/root/.cache/go-build \
     go tool wasm2go -unsafe -pkg quickjs_wasm_test \
-        -o /out/quickjs_generated_test.go .build/test_shim.wasm
+        -o /out/quickjs_generated_test.go .build/test_shim.wasm \
+    && go run ./generate/modulegen -file /out/quickjs_generated_test.go -constructor New
 
 FROM generate-base AS generate-structs
 

@@ -1,11 +1,9 @@
 malloc
 free
 realloc
-JS_NewRuntime
 JS_SetMemoryLimit
 JS_SetGCThreshold
 JS_SetMaxStackSize
-JS_NewRuntime2
 JS_FreeRuntime
 JS_MarkValue
 JS_RunGC
@@ -139,3 +137,7 @@ JS_GetModulePrivateValue
 JS_PrintValueSetDefaultOptions
 JS_PrintValueRT
 JS_PrintValue
+__errno_location
+JS_NewRuntime
+JS_NewRuntime2
+JS_SetSharedArrayBufferFunctions

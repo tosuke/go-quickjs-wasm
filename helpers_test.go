@@ -16,6 +16,8 @@ func (e *testModuleEnv) X__memory_base() *int32 { return &e.memoryBase }
 func (e *testModuleEnv) X__table_base() *int32  { return &e.tableBase }
 func (e *testModuleEnv) Xmemory() Memory        { return e.Module.Xmemory() }
 
+func (m *Module) bytes() []byte { return m.memImp.(*qjs.SharedMemory).Bytes() }
+
 func newTestModule(t testing.TB, main *qjs.Module) *Module {
 	t.Helper()
 	if memorySize, _, tableSize, _ := DylinkInfo(); memorySize != 0 || tableSize != 0 {
@@ -24,15 +26,34 @@ func newTestModule(t testing.TB, main *qjs.Module) *Module {
 	return New(&testModuleEnv{Module: main})
 }
 
-func module(t testing.TB) *qjs.Module {
+func sharedMemory(t testing.TB) *qjs.SharedMemory {
 	t.Helper()
-	m := qjs.New()
+	shared, err := qjs.NewSharedMemory()
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() {
+		if err := shared.Close(); err != nil {
+			t.Error(err)
+		}
+	})
+	return shared
+}
+
+func worker(t testing.TB, shared *qjs.SharedMemory) *qjs.Module {
+	t.Helper()
+	m := qjs.New(shared)
 	t.Cleanup(func() {
 		if err := m.Close(); err != nil {
 			t.Error(err)
 		}
 	})
 	return m
+}
+
+func module(t testing.TB) *qjs.Module {
+	t.Helper()
+	return worker(t, sharedMemory(t))
 }
 
 func context(t *testing.T) (*qjs.Module, qjs.JSRuntimePtr, qjs.JSContextPtr) {
