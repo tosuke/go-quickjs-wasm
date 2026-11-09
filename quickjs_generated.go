@@ -62,7 +62,6 @@ type Memory = interface {
 }
 
 func (m *Module) X__wasm_init_tls(v0 int32) {
-	defer runtime.KeepAlive(m)
 	m.___tls_base = v0
 	memory_init(*m.memory, data[0:4], uint32(v0), uint32(i32(0)), uint32(i32(4)))
 }
@@ -85,7 +84,6 @@ func (m *Module) ___wasm_init_memory() {
 	}
 }
 func (m *Module) Xjs_malloc_rt(v0, v1 int32) int32 {
-	defer runtime.KeepAlive(m)
 	return m.___js_malloc(v0, v1)
 }
 func (m *Module) ___js_malloc(v0, v1 int32) int32 {
@@ -211,7 +209,6 @@ func (m *Module) ___js_malloc(v0, v1 int32) int32 {
 	return v0 + i32(8)
 }
 func (m *Module) Xjs_free_rt(v0, v1 int32) {
-	defer runtime.KeepAlive(m)
 	m.___js_free(v0, v1)
 }
 func (m *Module) ___js_free(v0, v1 int32) {
@@ -286,7 +283,6 @@ func (m *Module) ___js_free(v0, v1 int32) {
 	}
 }
 func (m *Module) Xjs_realloc_rt(v0, v1, v2 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v3, v4, v5, v6, v7 int32
 	if v1 != 0 {
 		if v2 != 0 {
@@ -351,7 +347,6 @@ func (m *Module) Xjs_realloc_rt(v0, v1, v2 int32) int32 {
 	return t14
 }
 func (m *Module) Xjs_malloc_usable_size_rt(v0, v1 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v2, v3 int32
 	if v1 != 0 {
 		{
@@ -384,7 +379,6 @@ func (m *Module) Xjs_malloc_usable_size_rt(v0, v1 int32) int32 {
 	return v3
 }
 func (m *Module) Xjs_mallocz_rt(v0, v1 int32) int32 {
-	defer runtime.KeepAlive(m)
 	t0 := m.___js_malloc(v0, v1)
 	v0 = t0
 	if v0 != 0 {
@@ -393,7 +387,6 @@ func (m *Module) Xjs_mallocz_rt(v0, v1 int32) int32 {
 	return v0
 }
 func (m *Module) Xjs_malloc(v0, v1 int32) int32 {
-	defer runtime.KeepAlive(m)
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+8))
 	t1 := m.___js_malloc(t0, v1)
 	v1 = t1
@@ -403,7 +396,6 @@ func (m *Module) Xjs_malloc(v0, v1 int32) int32 {
 	return v1
 }
 func (m *Module) XJS_ThrowOutOfMemory(v0 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v1, v2 int32
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+8))
 	v1 = t0
@@ -418,7 +410,6 @@ func (m *Module) XJS_ThrowOutOfMemory(v0 int32) int64 {
 	return i64(0x600000000)
 }
 func (m *Module) XJS_ThrowInternalError(v0, v1, v2 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v3 int32
 	t0 := m.___stack_pointer
 	v3 = t0 - i32(16)
@@ -429,7 +420,6 @@ func (m *Module) XJS_ThrowInternalError(v0, v1, v2 int32) int64 {
 	return i64(0x600000000)
 }
 func (m *Module) Xjs_mallocz(v0, v1 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v2 int32
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+8))
 	t1 := m.___js_malloc(t0, v1)
@@ -442,12 +432,10 @@ func (m *Module) Xjs_mallocz(v0, v1 int32) int32 {
 	return v2
 }
 func (m *Module) Xjs_free(v0, v1 int32) {
-	defer runtime.KeepAlive(m)
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+8))
 	m.___js_free(t0, v1)
 }
 func (m *Module) Xjs_realloc(v0, v1, v2 int32) int32 {
-	defer runtime.KeepAlive(m)
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+8))
 	t1 := m.Xjs_realloc_rt(t0, v1, v2)
 	v1 = t1
@@ -487,12 +475,10 @@ func (m *Module) _js_realloc2(v0, v1, v2, v3 int32) int32 {
 	return v1
 }
 func (m *Module) Xjs_malloc_usable_size(v0, v1 int32) int32 {
-	defer runtime.KeepAlive(m)
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+8))
 	return m.Xjs_malloc_usable_size_rt(t0, v1)
 }
 func (m *Module) XJS_NewRuntime2(v0, v1 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v2, v3, v4, v5 int32
 	t0 := m.___stack_pointer
 	v3 = t0 - i32(16)
@@ -1166,7 +1152,6 @@ func (m *Module) _js_generator_function_call(v0 int32, v1, v2 int64, v3, v4, v5 
 	return i64(0x600000000)
 }
 func (m *Module) XJS_FreeRuntime(v0 int32) {
-	defer runtime.KeepAlive(m)
 	var v1, v2, v3, v4, v5, v6, v7, v8 int32
 	var v9 int64
 	t0 := m.___stack_pointer
@@ -1482,7 +1467,6 @@ l0:
 	return i64(0x600000000)
 }
 func (m *Module) XJS_ThrowTypeError(v0, v1, v2 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v3 int32
 	t0 := m.___stack_pointer
 	v3 = t0 - i32(16)
@@ -12044,7 +12028,6 @@ func (m *Module) _async_func_free(v0, v1 int32) {
 	}
 }
 func (m *Module) XJS_FreeContext(v0 int32) {
-	defer runtime.KeepAlive(m)
 	var v1, v2, v3, v4, v5 int32
 	var v6 int64
 	v2 = v0 - i32(4)
@@ -12767,7 +12750,6 @@ func (m *Module) _JS_RunGCInternal(v0, v1 int32) {
 	m.___stack_pointer = v7 + i32(16)
 }
 func (m *Module) XJS_FreeAtomRT(v0, v1 int32) {
-	defer runtime.KeepAlive(m)
 	var v2, v3 int32
 	if v1 >= i32(243) {
 		{
@@ -12787,44 +12769,35 @@ func (m *Module) XJS_FreeAtomRT(v0, v1 int32) {
 	}
 }
 func (m *Module) XJS_NewRuntime() int32 {
-	defer runtime.KeepAlive(m)
 	return m.XJS_NewRuntime2(i32(1772), i32(0))
 }
 func (m *Module) XJS_SetMemoryLimit(v0, v1 int32) {
-	defer runtime.KeepAlive(m)
 	store32(*m.memory, uint64(uint32(v0))+528, uint32(v1))
 }
 func (m *Module) XJS_SetGCThreshold(v0, v1 int32) {
-	defer runtime.KeepAlive(m)
 	store32(*m.memory, uint64(uint32(v0))+612, uint32(v1))
 }
 func (m *Module) XJS_SetInterruptHandler(v0, v1, v2 int32) {
-	defer runtime.KeepAlive(m)
 	store32(*m.memory, uint64(uint32(v0))+660, uint32(v2))
 	store32(*m.memory, uint64(uint32(v0))+656, uint32(v1))
 }
 func (m *Module) XJS_SetCanBlock(v0, v1 int32) {
-	defer runtime.KeepAlive(m)
 	(*m.memory)[uint64(uint32(v0))+712] = byte(v1)
 }
 func (m *Module) XJS_SetSharedArrayBufferFunctions(v0, v1 int32) {
-	defer runtime.KeepAlive(m)
 	t0 := int64(load64(*m.memory, uint32(v1)))
 	store64(*m.memory, uint64(uint32(v0))+716, uint64(t0))
 	t1 := int64(load64(*m.memory, uint64(uint32(v1))+8))
 	store64(*m.memory, uint64(uint32(v0))+724, uint64(t1))
 }
 func (m *Module) XJS_SetStripInfo(v0, v1 int32) {
-	defer runtime.KeepAlive(m)
 	(*m.memory)[uint64(uint32(v0))+732] = byte(v1)
 }
 func (m *Module) XJS_GetStripInfo(v0 int32) int32 {
-	defer runtime.KeepAlive(m)
 	t0 := int32((*m.memory)[uint64(uint32(v0))+732])
 	return t0
 }
 func (m *Module) XJS_EnqueueJob(v0, v1, v2, v3 int32) int32 {
-	defer runtime.KeepAlive(m)
 	return m._JS_EnqueueJob2(v0, v1, v2, v3, i32(0))
 }
 func (m *Module) _JS_EnqueueJob2(v0, v1, v2, v3, v4 int32) int32 {
@@ -12880,7 +12853,6 @@ func (m *Module) _JS_EnqueueJob2(v0, v1, v2, v3, v4 int32) int32 {
 	return i32(0)
 }
 func (m *Module) XJS_IsJobPending(v0 int32) int32 {
-	defer runtime.KeepAlive(m)
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+676))
 	var p1 int32
 	if t0 != v0+i32(672) {
@@ -14923,7 +14895,6 @@ func (m *Module) _JS_AtomGetStrRT(v0, v1, v2 int32) int32 {
 	return v1
 }
 func (m *Module) XJS_GetPropertyInternal(v0 int32, v1 int64, v2 int32, v3 int64, v4 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v5, v6, v7, v8, v9, v10 int32
 	var v11, v12 int64
 	t0 := m.___stack_pointer
@@ -15583,7 +15554,6 @@ l2:
 	return p11
 }
 func (m *Module) XJS_NewContext(v0 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v1, v2, v3 int64
 	var v4, v5, v6, v7, v8, v9 int32
 	t0 := m.___stack_pointer
@@ -17433,7 +17403,6 @@ l1:
 	return v15
 }
 func (m *Module) XJS_SetPropertyFunctionList(v0 int32, v1 int64, v2, v3 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v4, v5 int64
 	var v6, v7, v8, v9, v10, v11 int32
 	t0 := m.___stack_pointer
@@ -17715,7 +17684,6 @@ l4:
 	return p0
 }
 func (m *Module) XJS_DefineProperty(v0 int32, v1 int64, v2 int32, v3, v4, v5 int64, v6 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v7, v8, v9, v10, v11, v12, v13, v14, v15, v16, v17, v18 int32
 	var v19 int64
 	t0 := m.___stack_pointer
@@ -18866,7 +18834,6 @@ func (m *Module) _js_iterator_constructor_getset(v0 int32, v1 int64, v2, v3, v4,
 	return v1
 }
 func (m *Module) XJS_NewCFunctionData(v0, v1, v2, v3, v4, v5 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v6, v7 int64
 	var v8 int32
 	t0 := int64(load64(*m.memory, uint64(uint32(v0))+56))
@@ -19315,7 +19282,6 @@ func (m *Module) _JS_SetConstructor2(v0 int32, v1, v2 int64, v3, v4 int32) int32
 	return t3 >> 31
 }
 func (m *Module) XJS_DefinePropertyValue(v0 int32, v1 int64, v2 int32, v3 int64, v4 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v5 int32
 	t0 := m.XJS_DefineProperty(v0, v1, v2, v3, i64(0x300000000), i64(0x300000000), v4|i32(9984))
 	if uint64(v3) >= uint64(i64(-0x900000000)) {
@@ -20505,7 +20471,6 @@ func (m *Module) _js_proxy_constructor(v0 int32, v1 int64, v2, v3 int32) int64 {
 	return i64(0x600000000)
 }
 func (m *Module) XJS_DefinePropertyValueStr(v0 int32, v1 int64, v2 int32, v3 int64, v4 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v5 int32
 	t0 := m._strlen(v2)
 	t1 := m.XJS_NewAtomLen(v0, v2, t0)
@@ -22028,7 +21993,6 @@ func (m *Module) _js_finrec_constructor(v0 int32, v1 int64, v2, v3 int32) int64 
 	return i64(0x600000000)
 }
 func (m *Module) XJS_SetClassProto(v0, v1 int32, v2 int64) {
-	defer runtime.KeepAlive(m)
 	var v3 int64
 	var v4 int32
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+8))
@@ -22077,7 +22041,6 @@ func (m *Module) _set_value(v0, v1 int32, v2 int64) {
 	}
 }
 func (m *Module) XJS_GetClassProto(v0, v1 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v2 int64
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+8))
 	t1 := int32(load32(*m.memory, uint64(uint32(t0))+568))
@@ -22095,7 +22058,6 @@ func (m *Module) XJS_GetClassProto(v0, v1 int32) int64 {
 	return v2
 }
 func (m *Module) XJS_DupContext(v0 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v1 int32
 	v1 = v0 - i32(4)
 	t0 := int32(load32(*m.memory, uint32(v1)))
@@ -22103,12 +22065,10 @@ func (m *Module) XJS_DupContext(v0 int32) int32 {
 	return v0
 }
 func (m *Module) XJS_GetRuntime(v0 int32) int32 {
-	defer runtime.KeepAlive(m)
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+8))
 	return t0
 }
 func (m *Module) XJS_SetMaxStackSize(v0, v1 int32) {
-	defer runtime.KeepAlive(m)
 	store32(*m.memory, uint64(uint32(v0))+624, uint32(v1))
 	t1 := v0
 	var p0 int32
@@ -22121,7 +22081,6 @@ func (m *Module) XJS_SetMaxStackSize(v0, v1 int32) {
 	store32(*m.memory, uint64(uint32(t1))+632, uint32(p0))
 }
 func (m *Module) XJS_DupAtom(v0, v1 int32) int32 {
-	defer runtime.KeepAlive(m)
 	if v1 >= i32(243) {
 		t0 := int32(load32(*m.memory, uint64(uint32(v0))+8))
 		t1 := int32(load32(*m.memory, uint64(uint32(t0))+560))
@@ -22133,7 +22092,6 @@ func (m *Module) XJS_DupAtom(v0, v1 int32) int32 {
 	return v1
 }
 func (m *Module) XJS_NewAtomLen(v0, v1, v2 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v3, v4 int32
 	var v5 int64
 	{
@@ -22265,7 +22223,6 @@ l5:
 	return v3
 }
 func (m *Module) XJS_NewStringLen(v0, v1, v2 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v3, v4, v5, v6 int32
 	var _ int64
 	t0 := m.___stack_pointer
@@ -22963,12 +22920,10 @@ l0:
 	return v4
 }
 func (m *Module) XJS_NewAtom(v0, v1 int32) int32 {
-	defer runtime.KeepAlive(m)
 	t0 := m._strlen(v1)
 	return m.XJS_NewAtomLen(v0, v1, t0)
 }
 func (m *Module) XJS_NewAtomUInt32(v0, v1 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v2, v3, v4 int32
 	var v5 int64
 	t0 := m.___stack_pointer
@@ -23159,15 +23114,12 @@ l3:
 	return v5
 }
 func (m *Module) XJS_AtomToValue(v0, v1 int32) int64 {
-	defer runtime.KeepAlive(m)
 	return m.___JS_AtomToValue(v0, v1, i32(0))
 }
 func (m *Module) XJS_AtomToString(v0, v1 int32) int64 {
-	defer runtime.KeepAlive(m)
 	return m.___JS_AtomToValue(v0, v1, i32(1))
 }
 func (m *Module) XJS_FreeAtom(v0, v1 int32) {
-	defer runtime.KeepAlive(m)
 	var v2, v3 int32
 	if v1 >= i32(243) {
 		{
@@ -23388,7 +23340,6 @@ l8:
 	return v4
 }
 func (m *Module) XJS_NewClassID(v0 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v1 int32
 	t0 := int32(atomic_xchg32(*m.memory, uint64(uint32(i32(0)))+79376, uint32(i32(1))))
 	if t0 != 0 {
@@ -23414,7 +23365,6 @@ func (m *Module) XJS_NewClassID(v0 int32) int32 {
 	return v1
 }
 func (m *Module) XJS_GetClassID(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if uint64(v0) >= uint64(i64(-0x100000000)) {
 		t1 := int32(load16(*m.memory, uint64(uint32(int32(v0)))+10))
@@ -23425,7 +23375,6 @@ func (m *Module) XJS_GetClassID(v0 int64) int32 {
 	return p0
 }
 func (m *Module) XJS_IsRegisteredClass(v0, v1 int32) int32 {
-	defer runtime.KeepAlive(m)
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+568))
 	var p1 int32
 	if uint32(v1) < uint32(t0) {
@@ -23442,7 +23391,6 @@ func (m *Module) XJS_IsRegisteredClass(v0, v1 int32) int32 {
 	return p1
 }
 func (m *Module) XJS_NewClass(v0, v1, v2 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v3, v4 int32
 	t0 := int32(load32(*m.memory, uint32(v2)))
 	t1 := m._strlen(t0)
@@ -23590,7 +23538,6 @@ l1:
 	return p0
 }
 func (m *Module) XJS_NewAtomString(v0, v1 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v2 int64
 	t0 := m._strlen(v1)
 	t1 := m.XJS_NewAtomLen(v0, v1, t0)
@@ -23898,11 +23845,9 @@ l11:
 	return v8
 }
 func (m *Module) XJS_ToString(v0 int32, v1 int64) int64 {
-	defer runtime.KeepAlive(m)
 	return m._JS_ToStringInternal(v0, v1, i32(0))
 }
 func (m *Module) XJS_FreeCString(v0, v1 int32) {
-	defer runtime.KeepAlive(m)
 	var v2, v3 int32
 	if v1 != 0 {
 		{
@@ -23920,7 +23865,6 @@ func (m *Module) XJS_FreeCString(v0, v1 int32) {
 	}
 }
 func (m *Module) XJS_NewObjectProtoClass(v0 int32, v1 int64, v2 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v3, v4, v5 int32
 	{
 		t0 := int32(load32(*m.memory, uint64(uint32(v0))+8))
@@ -24421,17 +24365,14 @@ l7:
 	return i32(0)
 }
 func (m *Module) XJS_NewObjectClass(v0, v1 int32) int64 {
-	defer runtime.KeepAlive(m)
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+48))
 	t1 := int64(load64(*m.memory, uint32(t0+v1<<3)))
 	return m.XJS_NewObjectProtoClass(v0, t1, v1)
 }
 func (m *Module) XJS_NewObjectProto(v0 int32, v1 int64) int64 {
-	defer runtime.KeepAlive(m)
 	return m.XJS_NewObjectProtoClass(v0, v1, i32(1))
 }
 func (m *Module) XJS_NewArray(v0 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v1, v2 int32
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+28))
 	v1 = t0
@@ -24441,13 +24382,11 @@ func (m *Module) XJS_NewArray(v0 int32) int64 {
 	return m._JS_NewObjectFromShape(v0, v1, i32(2), i32(0))
 }
 func (m *Module) XJS_NewObject(v0 int32) int64 {
-	defer runtime.KeepAlive(m)
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+48))
 	t1 := int64(load64(*m.memory, uint64(uint32(t0))+8))
 	return m.XJS_NewObjectProtoClass(v0, t1, i32(1))
 }
 func (m *Module) XJS_NewCFunction2(v0, v1, v2, v3, v4, v5 int32) int64 {
-	defer runtime.KeepAlive(m)
 	t0 := int64(load64(*m.memory, uint64(uint32(v0))+56))
 	return m._JS_NewCFunction3(v0, v1, v2, v3, v4, v5, t0, i32(0))
 }
@@ -24457,17 +24396,14 @@ func (m *Module) _js_function_set_properties(v0 int32, v1 int64, v2, v3 int32) {
 	_ = m.XJS_DefinePropertyValue(v0, v1, i32(58), t1, i32(1))
 }
 func (m *Module) XJS_MarkValue(v0 int32, v1 int64, v2 int32) {
-	defer runtime.KeepAlive(m)
 	if uint64(v1) >= uint64(i64(-0x300000000)) {
 		m.t0[uint(v2)].(func(int32, int32))(v0, int32(v1))
 	}
 }
 func (m *Module) XJS_RunGC(v0 int32) {
-	defer runtime.KeepAlive(m)
 	m._JS_RunGCInternal(v0, i32(1))
 }
 func (m *Module) XJS_IsLiveObject(v0 int32, v1 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if uint64(v1) >= uint64(i64(-0x100000000)) {
 		t1 := int32((*m.memory)[uint64(uint32(int32(v1)))+8])
@@ -24482,7 +24418,6 @@ func (m *Module) XJS_IsLiveObject(v0 int32, v1 int64) int32 {
 	return p2
 }
 func (m *Module) XJS_GetGlobalObject(v0 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v1 int64
 	t0 := int64(load64(*m.memory, uint64(uint32(v0))+200))
 	v1 = t0
@@ -24494,7 +24429,6 @@ func (m *Module) XJS_GetGlobalObject(v0 int32) int64 {
 	return v1
 }
 func (m *Module) XJS_Throw(v0 int32, v1 int64) int64 {
-	defer runtime.KeepAlive(m)
 	var v2, v3, v4 int32
 	var v5 int64
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+8))
@@ -24521,7 +24455,6 @@ func (m *Module) XJS_Throw(v0 int32, v1 int64) int64 {
 	return i64(0x600000000)
 }
 func (m *Module) XJS_GetException(v0 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var _ int64
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+8))
 	v0 = t0
@@ -24530,7 +24463,6 @@ func (m *Module) XJS_GetException(v0 int32) int64 {
 	return t1
 }
 func (m *Module) XJS_HasException(v0 int32) int32 {
-	defer runtime.KeepAlive(m)
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+8))
 	t1 := int64(load32(*m.memory, uint64(uint32(t0))+644))
 	var p2 int32
@@ -24540,13 +24472,11 @@ func (m *Module) XJS_HasException(v0 int32) int32 {
 	return p2
 }
 func (m *Module) XJS_NewError(v0 int32) int64 {
-	defer runtime.KeepAlive(m)
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+48))
 	t1 := int64(load64(*m.memory, uint64(uint32(t0))+24))
 	return m.XJS_NewObjectProtoClass(v0, t1, i32(3))
 }
 func (m *Module) XJS_ThrowSyntaxError(v0, v1, v2 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v3 int32
 	t0 := m.___stack_pointer
 	v3 = t0 - i32(16)
@@ -24601,7 +24531,6 @@ func (m *Module) _JS_ThrowError2(v0, v1, v2, v3, v4 int32) {
 	m.___stack_pointer = v5 + i32(256)
 }
 func (m *Module) XJS_ThrowReferenceError(v0, v1, v2 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v3 int32
 	t0 := m.___stack_pointer
 	v3 = t0 - i32(16)
@@ -24612,7 +24541,6 @@ func (m *Module) XJS_ThrowReferenceError(v0, v1, v2 int32) int64 {
 	return i64(0x600000000)
 }
 func (m *Module) XJS_ThrowRangeError(v0, v1, v2 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v3 int32
 	t0 := m.___stack_pointer
 	v3 = t0 - i32(16)
@@ -24623,7 +24551,6 @@ func (m *Module) XJS_ThrowRangeError(v0, v1, v2 int32) int64 {
 	return i64(0x600000000)
 }
 func (m *Module) XJS_SetPrototype(v0 int32, v1, v2 int64) int32 {
-	defer runtime.KeepAlive(m)
 	return m._JS_SetPrototypeInternal(v0, v1, v2, i32(1))
 }
 func (m *Module) _JS_SetPrototypeInternal(v0 int32, v1, v2 int64, v3 int32) int32 {
@@ -24848,7 +24775,6 @@ func (m *Module) _js_shape_prepare_update(v0, v1, v2 int32) int32 {
 	return i32(0)
 }
 func (m *Module) XJS_GetPrototype(v0 int32, v1 int64) int64 {
-	defer runtime.KeepAlive(m)
 	var v2, v3 int32
 	if uint64(v1) < uint64(i64(-0x100000000)) {
 		t0 := m._JS_GetPrototypePrimitive(v0, v1)
@@ -24921,7 +24847,6 @@ l0:
 	return v3
 }
 func (m *Module) XJS_IsInstanceOf(v0 int32, v1, v2 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var v3, v4, v5 int32
 	var v6, v7 int64
 	var p0 int32
@@ -25287,7 +25212,6 @@ func (m *Module) _JS_OrdinaryIsInstanceOf(v0 int32, v1, v2 int64) int32 {
 	return v5
 }
 func (m *Module) XJS_IsFunction(v0 int32, v1 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var v2, v3 int32
 	if uint64(v1) < uint64(i64(-0x100000000)) {
 		return i32(0)
@@ -25808,7 +25732,6 @@ func (m *Module) _js_create_var_ref(v0, v1 int32) int32 {
 	return v2
 }
 func (m *Module) XJS_GetPropertyUint32(v0 int32, v1 int64, v2 int32) int64 {
-	defer runtime.KeepAlive(m)
 	if v2 < i32(0) {
 		t0 := v0
 		t1 := v1
@@ -25940,7 +25863,6 @@ func (m *Module) _JS_AtomIsNumericIndex1(v0, v1 int32) int64 {
 	return i64(0x300000000)
 }
 func (m *Module) XJS_FreePropertyEnum(v0, v1, v2 int32) {
-	defer runtime.KeepAlive(m)
 	var v3 int32
 	if v1 != 0 {
 		if v2 != 0 {
@@ -26787,7 +26709,6 @@ func (m *Module) _JS_GetOwnProperty(v0, v1 int32, v2 int64, v3 int32) int32 {
 	return p0
 }
 func (m *Module) XJS_IsExtensible(v0 int32, v1 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var v2, v3 int32
 	if uint64(v1) < uint64(i64(-0x100000000)) {
 		return i32(0)
@@ -26818,7 +26739,6 @@ func (m *Module) XJS_IsExtensible(v0 int32, v1 int64) int32 {
 	return int32(uint32(v3)>>1) & i32(1)
 }
 func (m *Module) XJS_PreventExtensions(v0 int32, v1 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var v2, v3, v4, v5 int32
 	if uint64(v1) >= uint64(i64(-0x100000000)) {
 		{
@@ -26875,7 +26795,6 @@ func (m *Module) XJS_PreventExtensions(v0 int32, v1 int64) int32 {
 	return v5
 }
 func (m *Module) XJS_HasProperty(v0 int32, v1 int64, v2 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v3, v4, v5 int32
 	if uint64(v1) >= uint64(i64(-0x100000000)) {
 		v3 = int32(v1)
@@ -26953,7 +26872,6 @@ l1:
 	return v4
 }
 func (m *Module) XJS_ValueToAtom(v0 int32, v1 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var v2 int32
 	var v3 int64
 	v2 = int32(v1)
@@ -26994,7 +26912,6 @@ func (m *Module) XJS_ValueToAtom(v0 int32, v1 int64) int32 {
 	return v2
 }
 func (m *Module) XJS_ToPropertyKey(v0 int32, v1 int64) int64 {
-	defer runtime.KeepAlive(m)
 	return m._JS_ToStringInternal(v0, v1, i32(1))
 }
 func (m *Module) _js_bigint_new_si64(v0 int32, v1 int64) int32 {
@@ -27022,7 +26939,6 @@ l0:
 	return i32(0)
 }
 func (m *Module) XJS_NewBigUint64(v0 int32, v1 int64) int64 {
-	defer runtime.KeepAlive(m)
 	if uint64(v1) <= uint64(i64(0x7fffffff)) {
 		return v1 | i64(0x700000000)
 	}
@@ -27048,7 +26964,6 @@ func (m *Module) XJS_NewBigUint64(v0 int32, v1 int64) int64 {
 	return p2
 }
 func (m *Module) XJS_GetPropertyStr(v0 int32, v1 int64, v2 int32) int64 {
-	defer runtime.KeepAlive(m)
 	t0 := m._strlen(v2)
 	t1 := m.XJS_NewAtomLen(v0, v2, t0)
 	v2 = t1
@@ -27062,7 +26977,6 @@ func (m *Module) XJS_GetPropertyStr(v0 int32, v1 int64, v2 int32) int64 {
 	return v1
 }
 func (m *Module) XJS_SetPropertyInternal(v0 int32, v1 int64, v2 int32, v3, v4 int64, v5 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v6, v7, v8, v9, v10, v11, v12 int32
 	var v13 int64
 	{
@@ -30291,7 +30205,6 @@ func (m *Module) _js_clone_shape(v0, v1 int32) int32 {
 	return v2
 }
 func (m *Module) XJS_SetPropertyUint32(v0 int32, v1 int64, v2 int32, v3 int64) int32 {
-	defer runtime.KeepAlive(m)
 	t1 := v0
 	t2 := v1
 	var p0 int64
@@ -30308,7 +30221,6 @@ func (m *Module) XJS_SetPropertyUint32(v0 int32, v1 int64, v2 int32, v3 int64) i
 	return m._JS_SetPropertyValue(t1, t2, p0, v3, i32(0x4000))
 }
 func (m *Module) XJS_SetPropertyInt64(v0 int32, v1, v2, v3 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var v4, v5, v6 int32
 	if uint64(v2) <= uint64(i64(0x7fffffff)) {
 		t0 := m._JS_SetPropertyValue(v0, v1, v2, v3, i32(0x4000))
@@ -30380,7 +30292,6 @@ l0:
 	return v0
 }
 func (m *Module) XJS_SetPropertyStr(v0 int32, v1 int64, v2 int32, v3 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var v4, v5 int32
 	t0 := m._strlen(v2)
 	t1 := m.XJS_NewAtomLen(v0, v2, t0)
@@ -30812,7 +30723,6 @@ func (m *Module) _JS_DefinePropertyValueValue(v0 int32, v1, v2, v3 int64, v4 int
 	return v4
 }
 func (m *Module) XJS_DefinePropertyValueUint32(v0 int32, v1 int64, v2 int32, v3 int64, v4 int32) int32 {
-	defer runtime.KeepAlive(m)
 	if v2 < i32(0) {
 		t0 := v0
 		t1 := v1
@@ -30841,7 +30751,6 @@ func (m *Module) _JS_DefinePropertyValueInt64(v0 int32, v1, v2, v3 int64) int32 
 	}
 }
 func (m *Module) XJS_DefinePropertyGetSet(v0 int32, v1 int64, v2 int32, v3, v4 int64, v5 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v6 int32
 	t0 := m.XJS_DefineProperty(v0, v1, v2, i64(0x300000000), v3, v4, v5|i32(7424))
 	if uint64(v3) >= uint64(i64(-0x900000000)) {
@@ -30875,7 +30784,6 @@ func (m *Module) XJS_DefinePropertyGetSet(v0 int32, v1 int64, v2 int32, v3, v4 i
 	return t0
 }
 func (m *Module) XJS_DeleteProperty(v0 int32, v1 int64, v2, v3 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v4, v5 int32
 	v4 = i32(-1)
 	{
@@ -31040,7 +30948,6 @@ func (m *Module) _JS_DeletePropertyInt64(v0 int32, v1, v2 int64) int32 {
 	return v4
 }
 func (m *Module) XJS_IsConstructor(v0 int32, v1 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if uint64(v1) >= uint64(i64(-0x100000000)) {
 		t1 := int32(load16(*m.memory, uint64(uint32(int32(v1)))+8))
@@ -31051,7 +30958,6 @@ func (m *Module) XJS_IsConstructor(v0 int32, v1 int64) int32 {
 	return p0
 }
 func (m *Module) XJS_SetConstructorBit(v0 int32, v1 int64, v2 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if uint64(v1) >= uint64(i64(-0x100000000)) {
 		v0 = int32(v1)
@@ -31064,7 +30970,6 @@ func (m *Module) XJS_SetConstructorBit(v0 int32, v1 int64, v2 int32) int32 {
 	return p0
 }
 func (m *Module) XJS_IsError(v0 int32, v1 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if uint64(v1) >= uint64(i64(-0x100000000)) {
 		t1 := int32(load16(*m.memory, uint64(uint32(int32(v1)))+10))
@@ -31079,7 +30984,6 @@ func (m *Module) XJS_IsError(v0 int32, v1 int64) int32 {
 	return p0
 }
 func (m *Module) XJS_SetUncatchableException(v0, v1 int32) {
-	defer runtime.KeepAlive(m)
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+8))
 	(*m.memory)[uint64(uint32(t0))+648] = byte(v1)
 }
@@ -31099,7 +31003,6 @@ func (m *Module) _JS_ThrowTypeErrorInvalidClass(v0, v1 int32) {
 	m.___stack_pointer = v2 + i32(80)
 }
 func (m *Module) XJS_SetIsHTMLDDA(v0 int32, v1 int64) {
-	defer runtime.KeepAlive(m)
 	if uint64(v1) >= uint64(i64(-0x100000000)) {
 		v0 = int32(v1)
 		t0 := int32(load16(*m.memory, uint64(uint32(v0))+8))
@@ -31107,7 +31010,6 @@ func (m *Module) XJS_SetIsHTMLDDA(v0 int32, v1 int64) {
 	}
 }
 func (m *Module) XJS_ToBool(v0 int32, v1 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var v2 int32
 	if uint64(v1) >= uint64(i64(-0x900000000)) {
 		v2 = int32(v1) - i32(4)
@@ -32079,12 +31981,10 @@ l1:
 	return v1
 }
 func (m *Module) XJS_PrintValueSetDefaultOptions(v0 int32) {
-	defer runtime.KeepAlive(m)
 	store64(*m.memory, uint64(uint32(v0))+8, uint64(i64(0x64000003e8)))
 	store64(*m.memory, uint32(v0), uint64(i64(0x200000000)))
 }
 func (m *Module) XJS_PrintValueRT(v0, v1, v2 int32, v3 int64, v4 int32) {
-	defer runtime.KeepAlive(m)
 	m._JS_PrintValueInternal(v0, i32(0), v1, v2, v3, v4)
 }
 func (m *Module) _JS_PrintValueInternal(v0, v1, v2, v3 int32, v4 int64, v5 int32) {
@@ -33470,12 +33370,10 @@ l15:
 	m.___stack_pointer = v7 + i32(496)
 }
 func (m *Module) XJS_PrintValue(v0, v1, v2 int32, v3 int64, v4 int32) {
-	defer runtime.KeepAlive(m)
 	t0 := int32(load32(*m.memory, uint64(uint32(v0))+8))
 	m._JS_PrintValueInternal(t0, v0, v1, v2, v3, v4)
 }
 func (m *Module) XJS_IsArray(v0 int32, v1 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var v2, v3, v4, v5 int32
 	if uint64(v1) >= uint64(i64(-0x100000000)) {
 		v3 = i32(1002)
@@ -33518,7 +33416,6 @@ func (m *Module) XJS_IsArray(v0 int32, v1 int64) int32 {
 	return v5
 }
 func (m *Module) XJS_NewBigInt64(v0 int32, v1 int64) int64 {
-	defer runtime.KeepAlive(m)
 	var p0 int64
 	if uint64(v1+i64(0x80000000)) > uint64(i64(0xffffffff)) {
 		t1 := m._js_bigint_new_si64(v0, v1)
@@ -33534,7 +33431,6 @@ func (m *Module) XJS_NewBigInt64(v0 int32, v1 int64) int64 {
 	return p0
 }
 func (m *Module) XJS_StrictEq(v0 int32, v1, v2 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var v3 int32
 	if uint64(v1) >= uint64(i64(-0x900000000)) {
 		v3 = int32(v1) - i32(4)
@@ -33549,11 +33445,9 @@ func (m *Module) XJS_StrictEq(v0 int32, v1, v2 int64) int32 {
 	return m._js_strict_eq2(v0, v1, v2, i32(0))
 }
 func (m *Module) XJS_SameValue(v0 int32, v1, v2 int64) int32 {
-	defer runtime.KeepAlive(m)
 	return m._js_same_value(v0, v1, v2)
 }
 func (m *Module) XJS_SameValueZero(v0 int32, v1, v2 int64) int32 {
-	defer runtime.KeepAlive(m)
 	return m._js_same_value_zero(v0, v1, v2)
 }
 func (m *Module) _js_same_value_zero(v0 int32, v1, v2 int64) int32 {
@@ -33571,7 +33465,6 @@ func (m *Module) _js_same_value_zero(v0 int32, v1, v2 int64) int32 {
 	return m._js_strict_eq2(v0, v1, v2, i32(2))
 }
 func (m *Module) XJS_Call(v0 int32, v1, v2 int64, v3, v4 int32) int64 {
-	defer runtime.KeepAlive(m)
 	return m._JS_CallInternal(v0, v1, v2, i64(0x300000000), v3, v4, i32(2))
 }
 func (m *Module) _build_backtrace(v0 int32, v1 int64, v2, v3, v4, v5 int32) {
@@ -34084,7 +33977,6 @@ func (m *Module) _JS_GetScriptOrModuleName(v0 int32) int32 {
 	return i32(0)
 }
 func (m *Module) XJS_GetImportMeta(v0, v1 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v2 int64
 	var p0 int64
 	{
@@ -38902,7 +38794,6 @@ func (m *Module) _close_var_refs(v0, v1, v2 int32) {
 	}
 }
 func (m *Module) XJS_CallConstructor2(v0 int32, v1, v2 int64, v3, v4 int32) int64 {
-	defer runtime.KeepAlive(m)
 	return m._JS_CallConstructorInternal(v0, v1, v2, v3, v4, i32(2))
 }
 func (m *Module) _JS_ThrowTypeErrorNotAConstructor(v0 int32, v1 int64) {
@@ -38960,11 +38851,9 @@ l1:
 	m.___stack_pointer = v4 + i32(16)
 }
 func (m *Module) XJS_CallConstructor(v0 int32, v1 int64, v2, v3 int32) int64 {
-	defer runtime.KeepAlive(m)
 	return m._JS_CallConstructorInternal(v0, v1, v1, v2, v3, i32(2))
 }
 func (m *Module) XJS_Invoke(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v5 int64
 	t0 := m.XJS_GetPropertyInternal(v0, v1, v2, v1, i32(0))
 	v5 = t0
@@ -38975,7 +38864,6 @@ func (m *Module) XJS_Invoke(v0 int32, v1 int64, v2, v3, v4 int32) int64 {
 	return v5
 }
 func (m *Module) XJS_DetectModule(v0, v1 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v2, v3 int32
 	t0 := m.___stack_pointer
 	v2 = t0 - i32(16)
@@ -39376,7 +39264,6 @@ l2:
 	return p1
 }
 func (m *Module) XJS_NewCModule(v0, v1, v2 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v3 int32
 	t0 := m._strlen(v1)
 	t1 := m.XJS_NewAtomLen(v0, v1, t0)
@@ -39429,7 +39316,6 @@ func (m *Module) _js_new_module_def(v0, v1 int32) int32 {
 	return v2
 }
 func (m *Module) XJS_AddModuleExport(v0, v1, v2 int32) int32 {
-	defer runtime.KeepAlive(m)
 	t0 := m._strlen(v2)
 	t1 := m.XJS_NewAtomLen(v0, v2, t0)
 	v2 = t1
@@ -39570,7 +39456,6 @@ func (m *Module) _js_realloc_array(v0, v1, v2, v3, v4 int32) int32 {
 	return p7
 }
 func (m *Module) XJS_SetModuleExport(v0, v1, v2 int32, v3 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var v4, v5 int32
 	var v6 int64
 	{
@@ -39644,7 +39529,6 @@ l3:
 	return v2
 }
 func (m *Module) XJS_SetModulePrivateValue(v0, v1 int32, v2 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var v3 int64
 	var v4 int32
 	t0 := int64(load64(*m.memory, uint64(uint32(v1))+192))
@@ -39667,7 +39551,6 @@ func (m *Module) XJS_SetModulePrivateValue(v0, v1 int32, v2 int64) int32 {
 	return i32(0)
 }
 func (m *Module) XJS_GetModulePrivateValue(v0, v1 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v2 int64
 	t0 := int64(load64(*m.memory, uint64(uint32(v1))+192))
 	v2 = t0
@@ -39679,7 +39562,6 @@ func (m *Module) XJS_GetModulePrivateValue(v0, v1 int32) int64 {
 	return v2
 }
 func (m *Module) XJS_SetModuleLoaderFunc(v0, v1, v2, v3 int32) {
-	defer runtime.KeepAlive(m)
 	store32(*m.memory, uint64(uint32(v0))+696, uint32(v3))
 	store32(*m.memory, uint64(uint32(v0))+692, uint32(i32(0)))
 	store32(*m.memory, uint64(uint32(v0))+688, uint32(v2))
@@ -39687,7 +39569,6 @@ func (m *Module) XJS_SetModuleLoaderFunc(v0, v1, v2, v3 int32) {
 	store32(*m.memory, uint64(uint32(v0))+680, uint32(v1))
 }
 func (m *Module) XJS_SetModuleLoaderFunc2(v0, v1, v2, v3, v4 int32) {
-	defer runtime.KeepAlive(m)
 	store32(*m.memory, uint64(uint32(v0))+696, uint32(v4))
 	store32(*m.memory, uint64(uint32(v0))+692, uint32(v3))
 	store32(*m.memory, uint64(uint32(v0))+688, uint32(v2))
@@ -39695,7 +39576,6 @@ func (m *Module) XJS_SetModuleLoaderFunc2(v0, v1, v2, v3, v4 int32) {
 	store32(*m.memory, uint64(uint32(v0))+680, uint32(v1))
 }
 func (m *Module) XJS_GetModuleNamespace(v0, v1 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v2, v3, v4, v5, v6, v7, v8, v9, v10 int32
 	var v11, v12 int64
 	t0 := m.___stack_pointer
@@ -40179,7 +40059,6 @@ l0:
 	m.___stack_pointer = v4 + i32(144)
 }
 func (m *Module) XJS_GetModuleName(v0, v1 int32) int32 {
-	defer runtime.KeepAlive(m)
 	t0 := int32(load32(*m.memory, uint64(uint32(v1))+8))
 	v1 = t0
 	if v1 >= i32(243) {
@@ -40940,7 +40819,6 @@ l1:
 	return v4
 }
 func (m *Module) XJS_EvalFunction(v0 int32, v1 int64) int64 {
-	defer runtime.KeepAlive(m)
 	t0 := int64(load64(*m.memory, uint64(uint32(v0))+200))
 	return m._JS_EvalFunctionInternal(v0, v1, t0, i32(0), i32(0))
 }
@@ -41584,7 +41462,6 @@ l11:
 	return v2
 }
 func (m *Module) XJS_EvalThis(v0 int32, v1 int64, v2, v3, v4, v5 int32) int64 {
-	defer runtime.KeepAlive(m)
 	if v5&i32(2) != 0 {
 		panic("unreachable")
 	} else {
@@ -41624,7 +41501,6 @@ func (m *Module) _JS_EvalInternal(v0 int32, v1 int64, v2, v3, v4, v5, v6 int32) 
 	return t8
 }
 func (m *Module) XJS_Eval(v0, v1, v2, v3, v4 int32) int64 {
-	defer runtime.KeepAlive(m)
 	if v4&i32(2) != 0 {
 		panic("unreachable")
 	} else {
@@ -41633,7 +41509,6 @@ func (m *Module) XJS_Eval(v0, v1, v2, v3, v4 int32) int64 {
 	}
 }
 func (m *Module) XJS_ResolveModule(v0 int32, v1 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var v2 int32
 	if v1&i64(-0x100000000) == i64(-0x300000000) {
 		t0 := m._js_resolve_module(v0, int32(v1))
@@ -43103,7 +42978,6 @@ func (m *Module) _bc_put_u8(v0, v1 int32) {
 	}
 }
 func (m *Module) XJS_ReadObject(v0, v1, v2, v3 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v4, v5 int32
 	var v6 int64
 	t0 := m.___stack_pointer
@@ -44984,7 +44858,6 @@ func (m *Module) _find_atom(v0, v1 int32) int32 {
 	return v2
 }
 func (m *Module) XJS_AddModuleExportList(v0, v1, v2, v3 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v4 int32
 	if v3 > i32(0) {
 	l0:
@@ -45006,7 +44879,6 @@ func (m *Module) XJS_AddModuleExportList(v0, v1, v2, v3 int32) int32 {
 	return v4
 }
 func (m *Module) XJS_SetModuleExportList(v0, v1, v2, v3 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v4 int64
 	var v5 int32
 	if v3 > i32(0) {
@@ -45095,7 +44967,6 @@ func (m *Module) XJS_SetModuleExportList(v0, v1, v2, v3 int32) int32 {
 	return i32(0)
 }
 func (m *Module) XJS_SetConstructor(v0 int32, v1, v2 int64) int32 {
-	defer runtime.KeepAlive(m)
 	return m._JS_SetConstructor2(v0, v1, v2, i32(0), i32(3))
 }
 func (m *Module) _lre_realloc(v0, v1, v2 int32) int32 {
@@ -46778,15 +46649,12 @@ func (m *Module) _js_parse_error_v(v0, v1, v2, v3 int32) {
 	m._build_backtrace(v5, t9, t10, v1, v4, i32(0))
 }
 func (m *Module) XJS_ParseJSON2(v0, v1, v2, v3, v4 int32) int64 {
-	defer runtime.KeepAlive(m)
 	return m._JS_ParseJSON3(v0, v1, v2, v3, v4, i32(0))
 }
 func (m *Module) XJS_ParseJSON(v0, v1, v2, v3 int32) int64 {
-	defer runtime.KeepAlive(m)
 	return m._JS_ParseJSON3(v0, v1, v2, v3, i32(0), i32(0))
 }
 func (m *Module) XJS_JSONStringify(v0 int32, v1, v2, v3 int64) int64 {
-	defer runtime.KeepAlive(m)
 	var v4, v5, v6, v7 int32
 	var v8, v9, v10, v11, v12, v13, v14, v15, v16 int64
 	t0 := m.___stack_pointer
@@ -49260,7 +49128,6 @@ l0:
 	return p5
 }
 func (m *Module) XJS_PromiseState(v0 int32, v1 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var v2 int32
 	v0 = i32(-1)
 	if uint64(v1) >= uint64(i64(-0x100000000)) {
@@ -49281,7 +49148,6 @@ l0:
 	return v0
 }
 func (m *Module) XJS_PromiseResult(v0 int32, v1 int64) int64 {
-	defer runtime.KeepAlive(m)
 	var v2 int64
 	v2 = i64(0x300000000)
 	if uint64(v1) >= uint64(i64(-0x100000000)) {
@@ -49310,7 +49176,6 @@ func (m *Module) XJS_PromiseResult(v0 int32, v1 int64) int64 {
 	return v2
 }
 func (m *Module) XJS_SetHostPromiseRejectionTracker(v0, v1, v2 int32) {
-	defer runtime.KeepAlive(m)
 	store32(*m.memory, uint64(uint32(v0))+668, uint32(v2))
 	store32(*m.memory, uint64(uint32(v0))+664, uint32(v1))
 }
@@ -50072,7 +49937,6 @@ func (m *Module) _JS_GetFunctionRealm(v0 int32, v1 int64) int32 {
 	return v0
 }
 func (m *Module) XJS_NewDate(v0 int32, v1 float64) int64 {
-	defer runtime.KeepAlive(m)
 	var v2 int64
 	var v3 float64
 	t0 := m._js_create_from_ctor(v0, i64(0x300000000), i32(10))
@@ -59120,7 +58984,6 @@ l1:
 	return v1
 }
 func (m *Module) XJS_NewArrayBuffer(v0, v1, v2, v3, v4, v5 int32) int64 {
-	defer runtime.KeepAlive(m)
 	t1 := v0
 	t2 := int64(uint32(v2))
 	p0 := i32(19)
@@ -59306,11 +59169,9 @@ func (m *Module) _js_array_buffer_free(v0, v1, v2 int32) {
 	m.___js_free(v0, v2)
 }
 func (m *Module) XJS_NewArrayBufferCopy(v0, v1, v2 int32) int64 {
-	defer runtime.KeepAlive(m)
 	return m._js_array_buffer_constructor3(v0, i64(0x300000000), int64(uint32(v2)), i32(0), i32(19), v1, i32(44), i32(0), i32(1))
 }
 func (m *Module) XJS_DetachArrayBuffer(v0 int32, v1 int64) {
-	defer runtime.KeepAlive(m)
 	var v2, v3 int32
 	if uint64(v1) >= uint64(i64(-0x100000000)) {
 		{
@@ -59414,7 +59275,6 @@ func (m *Module) _js_array_buffer_update_typed_arrays(v0 int32) {
 	}
 }
 func (m *Module) XJS_NewTypedArray(v0, v1, v2, v3 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var p0 int64
 	if uint32(v3) < uint32(i32(12)) {
 		t1 := m._js_typed_array_constructor(v0, i64(0x300000000), v3, v2, v3+i32(21))
@@ -68213,7 +68073,6 @@ l0:
 	return p0
 }
 func (m *Module) XJS_DupValueRT(v0 int32, v1 int64) int64 {
-	defer runtime.KeepAlive(m)
 	if uint64(v1) >= uint64(i64(-0x900000000)) {
 		v0 = int32(v1) - i32(4)
 		t0 := int32(load32(*m.memory, uint32(v0)))
@@ -131933,7 +131792,6 @@ func (m *Module) _exchange_bytes(v0, v1, v2 int32) {
 	}
 }
 func (m *Module) Xqjs_set_default_shared_array_buffer_functions(v0 int32) {
-	defer runtime.KeepAlive(m)
 	var v1 int32
 	t0 := m.___stack_pointer
 	v1 = t0 - i32(16)
@@ -131971,7 +131829,6 @@ func (m *Module) _shared_buffer_dup(v0, v1 int32) {
 	_ = int32(atomic_add32(*m.memory, uint32(v1-i32(16)), uint32(i32(1))))
 }
 func (m *Module) XJS_FreeValue(v0 int32, v1 int64) {
-	defer runtime.KeepAlive(m)
 	var v2, v3 int32
 	if uint64(v1) >= uint64(i64(-0x900000000)) {
 		{
@@ -131989,7 +131846,6 @@ func (m *Module) XJS_FreeValue(v0 int32, v1 int64) {
 	}
 }
 func (m *Module) XJS_FreeValueRT(v0 int32, v1 int64) {
-	defer runtime.KeepAlive(m)
 	var v2, v3 int32
 	if uint64(v1) >= uint64(i64(-0x900000000)) {
 		{
@@ -132006,7 +131862,6 @@ func (m *Module) XJS_FreeValueRT(v0 int32, v1 int64) {
 	}
 }
 func (m *Module) XJS_ComputeMemoryUsage(v0 int32) (int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64, int64) {
-	defer runtime.KeepAlive(m)
 	var v1, v2, v3, v4, v5, v6, v7, v8, v9 int32
 	var v10, v11, v12, v13, v14, v15, v16, v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, _ int64
 	var v36, v37, v38, v39, v40 float64
@@ -132980,7 +132835,6 @@ func (m *Module) XJS_ComputeMemoryUsage(v0 int32) (int64, int64, int64, int64, i
 	return t302, v34, v33, v32, v31, v30, v29, v28, v27, v26, v25, v24, v23, v22, v21, v20, v19, v18, v17, v16, v15, v14, v13, v12, v10, v11
 }
 func (m *Module) XJS_ToInt32(v0 int32, v1 int64) (int32, int32) {
-	defer runtime.KeepAlive(m)
 	var v2, v3, v4 int32
 	t0 := m.___stack_pointer
 	v2 = t0 - i32(16)
@@ -132998,7 +132852,6 @@ func (m *Module) XJS_ToInt32(v0 int32, v1 int64) (int32, int32) {
 	return t2, t3
 }
 func (m *Module) XJS_ToInt64(v0 int32, v1 int64) (int32, int64) {
-	defer runtime.KeepAlive(m)
 	var v2, v3, v4 int32
 	t0 := m.___stack_pointer
 	v2 = t0 - i32(16)
@@ -133017,7 +132870,6 @@ func (m *Module) XJS_ToInt64(v0 int32, v1 int64) (int32, int64) {
 	return t2, t3
 }
 func (m *Module) XJS_ToIndex(v0 int32, v1 int64) (int32, int64) {
-	defer runtime.KeepAlive(m)
 	var v2, v3 int32
 	t0 := m.___stack_pointer
 	v2 = t0 - i32(16)
@@ -133031,7 +132883,6 @@ func (m *Module) XJS_ToIndex(v0 int32, v1 int64) (int32, int64) {
 	return t1, t2
 }
 func (m *Module) XJS_ToFloat64(v0 int32, v1 int64) (int32, float64) {
-	defer runtime.KeepAlive(m)
 	var v2, v3 int32
 	var _ float64
 	t0 := m.___stack_pointer
@@ -133046,7 +132897,6 @@ func (m *Module) XJS_ToFloat64(v0 int32, v1 int64) (int32, float64) {
 	return t1, t2
 }
 func (m *Module) XJS_ToBigInt64(v0 int32, v1 int64) (int32, int64) {
-	defer runtime.KeepAlive(m)
 	var v2, v3, v4 int32
 	t0 := m.___stack_pointer
 	v2 = t0 - i32(16)
@@ -133065,7 +132915,6 @@ func (m *Module) XJS_ToBigInt64(v0 int32, v1 int64) (int32, int64) {
 	return t2, t3
 }
 func (m *Module) XJS_ToInt64Ext(v0 int32, v1 int64) (int32, int64) {
-	defer runtime.KeepAlive(m)
 	var v2, v3, v4 int32
 	t0 := m.___stack_pointer
 	v3 = t0 - i32(16)
@@ -133105,7 +132954,6 @@ func (m *Module) XJS_ToInt64Ext(v0 int32, v1 int64) (int32, int64) {
 	return p3, t8
 }
 func (m *Module) XJS_AtomToCStringLen(v0, v1 int32) (int32, int32) {
-	defer runtime.KeepAlive(m)
 	var v2 int32
 	t0 := m.___stack_pointer
 	v2 = t0 - i32(16)
@@ -133117,7 +132965,6 @@ func (m *Module) XJS_AtomToCStringLen(v0, v1 int32) (int32, int32) {
 	return t1, t2
 }
 func (m *Module) XJS_ToCStringLen2(v0 int32, v1 int64, v2 int32) (int32, int32) {
-	defer runtime.KeepAlive(m)
 	var v3 int32
 	t0 := m.___stack_pointer
 	v3 = t0 - i32(16)
@@ -133129,7 +132976,6 @@ func (m *Module) XJS_ToCStringLen2(v0 int32, v1 int64, v2 int32) (int32, int32) 
 	return t1, t2
 }
 func (m *Module) XJS_GetArrayBuffer(v0 int32, v1 int64) (int32, int32) {
-	defer runtime.KeepAlive(m)
 	var v2, v3, v4 int32
 	var p0 int32
 	{
@@ -133175,7 +133021,6 @@ l2:
 	return p0, t8
 }
 func (m *Module) XJS_GetTypedArrayBuffer(v0 int32, v1 int64) (int64, int32, int32, int32) {
-	defer runtime.KeepAlive(m)
 	var v2, v3, v4, v5, v6 int32
 	var p0 int64
 	{
@@ -133239,7 +133084,6 @@ l1:
 	return p0, t15, t16, v0
 }
 func (m *Module) XJS_GetOwnPropertyNames(v0 int32, v1 int64, v2 int32) (int32, int32, int32) {
-	defer runtime.KeepAlive(m)
 	var v3, v4, v5 int32
 	t0 := m.___stack_pointer
 	v3 = t0 - i32(16)
@@ -133263,7 +133107,6 @@ func (m *Module) XJS_GetOwnPropertyNames(v0 int32, v1 int64, v2 int32) (int32, i
 	return p1, t5, v2
 }
 func (m *Module) XJS_GetOwnProperty(v0 int32, v1 int64, v2 int32) (int32, int32, int64, int64, int64) {
-	defer runtime.KeepAlive(m)
 	var v3 int32
 	var v4, v5 int64
 	t0 := m.___stack_pointer
@@ -133289,7 +133132,6 @@ func (m *Module) XJS_GetOwnProperty(v0 int32, v1 int64, v2 int32) (int32, int32,
 	return t5, t9, v5, v4, v1
 }
 func (m *Module) XJS_NewPromiseCapability(v0 int32) (int64, int64, int64) {
-	defer runtime.KeepAlive(m)
 	var v1 int32
 	var _, v3, _ int64
 	t0 := m.___stack_pointer
@@ -133307,7 +133149,6 @@ func (m *Module) XJS_NewPromiseCapability(v0 int32) (int64, int64, int64) {
 	return t3, t5, v3
 }
 func (m *Module) XJS_ExecutePendingJob(v0 int32) (int32, int32) {
-	defer runtime.KeepAlive(m)
 	var v1, v2, v3, v4, v5, v6, v7 int32
 	var v8, v9 int64
 	t0 := m.___stack_pointer
@@ -133413,7 +133254,6 @@ func (m *Module) XJS_ExecutePendingJob(v0 int32) (int32, int32) {
 	return v0, v1
 }
 func (m *Module) XJS_WriteObject2(v0 int32, v1 int64, v2 int32) (int32, int32, int32, int32) {
-	defer runtime.KeepAlive(m)
 	var v3, v4, v5, v6, v7, v8, v9, v10 int32
 	var p0 int32
 	{
@@ -133580,7 +133420,6 @@ l2:
 	return p0, t55, v2, v3
 }
 func (m *Module) Xjs_realloc2(v0, v1, v2 int32) (int32, int32) {
-	defer runtime.KeepAlive(m)
 	var v3 int32
 	t0 := m.___stack_pointer
 	v3 = t0 - i32(16)
@@ -133592,7 +133431,6 @@ func (m *Module) Xjs_realloc2(v0, v1, v2 int32) (int32, int32) {
 	return t1, t2
 }
 func (m *Module) XJS_GetAnyOpaque(v0 int64) (int32, int32) {
-	defer runtime.KeepAlive(m)
 	var v1, v2, _ int32
 	t0 := m.___stack_pointer
 	v2 = t0 - i32(16)
@@ -136824,7 +136662,6 @@ func (m *Module) _snprintf(v0, v1, v2, v3 int32) int32 {
 	return t1
 }
 func (m *Module) Xmalloc(v0 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v1, v2, v3, v4, v5, v6, v7, v8, v9 int32
 	t0 := int32(load32(*m.memory, uint32(i32(79380))))
 	if t0 == 0 {
@@ -138593,7 +138430,6 @@ func (m *Module) _init_mparams() {
 	_ = atomic_notify(*m.memory, uint64(uint32(i32(0)))+79880, i32(1), m.waiters)
 }
 func (m *Module) Xfree(v0 int32) {
-	defer runtime.KeepAlive(m)
 	var v1, v2, v3, v4, v5, v6, v7, v8 int32
 	if v0 != 0 {
 		{
@@ -139205,7 +139041,6 @@ func (m *Module) Xfree(v0 int32) {
 	}
 }
 func (m *Module) Xrealloc(v0, v1 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var v2, v3, v4, v5, v6, v7, v8, v9, v10, v11 int32
 	if v0 == 0 {
 		t0 := m.Xmalloc(v1)
@@ -140133,7 +139968,6 @@ func (m *Module) _malloc_usable_size(v0 int32) int32 {
 	return i32(0)
 }
 func (m *Module) Xqjs_init_allocator() {
-	defer runtime.KeepAlive(m)
 	var v0, v1 int32
 	t0 := int32(load32(*m.memory, uint32(i32(79380))))
 	if t0 == 0 {
@@ -140166,36 +140000,28 @@ l0:
 	store32(*m.memory, uint32(i32(2177052)), uint32(i32(2017201)))
 }
 func (m *Module) X__errno_location() int32 {
-	defer runtime.KeepAlive(m)
 	t0 := m.___tls_base
 	return t0
 }
 func (m *Module) XJS_DupValue(v0 int32, v1 int64) int64 {
-	defer runtime.KeepAlive(m)
 	return m.XJS_DupValueRT(v0, v1)
 }
 func (m *Module) X__indirect_function_table() *[]any {
-	defer runtime.KeepAlive(m)
 	return &m.t0
 }
 func (m *Module) X__stack_pointer() *int32 {
-	defer runtime.KeepAlive(m)
 	return &m.___stack_pointer
 }
 func (m *Module) X__tls_align() *int32 {
-	defer runtime.KeepAlive(m)
 	return &m.___tls_align
 }
 func (m *Module) X__tls_base() *int32 {
-	defer runtime.KeepAlive(m)
 	return &m.___tls_base
 }
 func (m *Module) X__tls_size() *int32 {
-	defer runtime.KeepAlive(m)
 	return &m.___tls_size
 }
 func (m *Module) Xmemory() Memory {
-	defer runtime.KeepAlive(m)
 	return m.memImp
 }
 

@@ -99,18 +99,16 @@ calling `Module.Close()`. On the mmap backend that releases the worker's private
 C stack and TLS; other workers remain usable. On the Go backend it relinquishes
 the initial C stack/TLS for reuse by the next Module. Then call
 `SharedMemory.Close()` to release the backing memory.
-Closing a memory with live workers returns an error. Go cleanups also reclaim
-unreachable worker stacks and mappings. Explicit Close returns worker allocations
-and unmaps mmap-backed memory promptly; Go arrays are reclaimed by Go garbage
-collection once their views become unreachable.
+Closing a memory with live workers returns an error. Worker stack allocations
+and mmap reservations require explicit Close calls; they are not released by GC.
+Go backing arrays are reclaimed by Go garbage collection once their views become
+unreachable.
 
 `SharedMemory.Bytes()` returns a snapshot of the currently accessible memory.
 Mmap-backed views remain valid across growth; obtain a new snapshot to access
 added pages. Go-backed views may become obsolete when Grow reallocates the slice;
-reacquire them after calls that may allocate. Keep the owner or a Module reachable
-while using raw views; call
-`runtime.KeepAlive` after their last use if necessary. Closing the memory
-invalidates every view and requires that no raw access remains in progress.
+reacquire them after calls that may allocate. Closing the memory invalidates every
+view and requires that no raw access remains in progress.
 `Xmemory().Slice()` exposes the full reservation for mmap-backed memory and its
 header remains fixed across Grow. Use `Bytes()` for a snapshot of the accessible
 prefix. Go-backed Grow updates its slice header, so Go-backed access must remain

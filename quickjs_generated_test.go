@@ -55,15 +55,12 @@ type Memory = interface {
 func ___wasm_call_ctors() {
 }
 func (m *Module) X__wasm_apply_data_relocs() {
-	defer runtime.KeepAlive(m)
 }
 func (m *Module) Xtest_atomic_notify(v0, v1 int32) int32 {
-	defer runtime.KeepAlive(m)
 	t0 := atomic_notify(*m.memory, uint32(v0), v1, m.waiters)
 	return t0
 }
 func (m *Module) Xtest_store_after_grow(v0, v1 int32) int32 {
-	defer runtime.KeepAlive(m)
 	t0 := (*m.t0)[uint(v1)].(func() int32)()
 	t1 := v0
 	v1 = t0
@@ -71,7 +68,6 @@ func (m *Module) Xtest_store_after_grow(v0, v1 int32) int32 {
 	return v1
 }
 func (m *Module) XJS_NewBool(v0, v1 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if v1 != i32(0) {
 		p0 = 1
@@ -79,11 +75,9 @@ func (m *Module) XJS_NewBool(v0, v1 int32) int64 {
 	return int64(uint32(p0)) | i64(0x100000000)
 }
 func (m *Module) XJS_NewInt32(v0, v1 int32) int64 {
-	defer runtime.KeepAlive(m)
 	return int64(uint32(v1))
 }
 func (m *Module) XJS_NewInt64(v0 int32, v1 int64) int64 {
-	defer runtime.KeepAlive(m)
 	if uint64(v1+i64(0x80000000)) > uint64(i64(0xffffffff)) {
 		v1 = int64(math.Float64bits(float64(v1)))
 		p0 := v1 + i64(-0x7ff8000a00000000)
@@ -95,7 +89,6 @@ func (m *Module) XJS_NewInt64(v0 int32, v1 int64) int64 {
 	return v1 & i64(0xffffffff)
 }
 func (m *Module) XJS_NewUint32(v0, v1 int32) int64 {
-	defer runtime.KeepAlive(m)
 	var v2 int64
 	if v1 < i32(0) {
 		v2 = int64(math.Float64bits(float64(uint32(v1))))
@@ -108,7 +101,6 @@ func (m *Module) XJS_NewUint32(v0, v1 int32) int64 {
 	return int64(uint32(v1))
 }
 func (m *Module) XJS_NewFloat64(v0 int32, v1 float64) int64 {
-	defer runtime.KeepAlive(m)
 	var v2 int64
 	var v3 int32
 	if !(v1 >= float64(-0x1p+31)) {
@@ -143,23 +135,18 @@ l2:
 	return p1
 }
 func (m *Module) XJS_NewCatchOffset(v0, v1 int32) int64 {
-	defer runtime.KeepAlive(m)
 	return int64(uint32(v1)) | i64(0x500000000)
 }
 func (m *Module) XJS_VALUE_GET_TAG(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	return int32(int64(uint64(v0) >> 32))
 }
 func (m *Module) XJS_VALUE_GET_PTR(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	return int32(v0)
 }
 func (m *Module) XJS_VALUE_GET_FLOAT64(v0 int64) float64 {
-	defer runtime.KeepAlive(m)
 	return math.Float64frombits(uint64(v0 + i64(0x7ff8000a00000000)))
 }
 func (m *Module) XJS_VALUE_GET_NORM_TAG(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var v1 int32
 	v1 = int32(int64(uint64(v0) >> 32))
 	p0 := v1
@@ -169,7 +156,6 @@ func (m *Module) XJS_VALUE_GET_NORM_TAG(v0 int64) int32 {
 	return p0
 }
 func (m *Module) XJS_TAG_IS_FLOAT64(v0 int32) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if uint32(v0+i32(-8)) < uint32(i32(-17)) {
 		p0 = 1
@@ -177,7 +163,6 @@ func (m *Module) XJS_TAG_IS_FLOAT64(v0 int32) int32 {
 	return p0
 }
 func (m *Module) XJS_VALUE_HAS_REF_COUNT(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if uint64(v0) > uint64(i64(-0x900000001)) {
 		p0 = 1
@@ -185,15 +170,12 @@ func (m *Module) XJS_VALUE_HAS_REF_COUNT(v0 int64) int32 {
 	return p0
 }
 func (m *Module) XJS_MKVAL(v0, v1 int32) int64 {
-	defer runtime.KeepAlive(m)
 	return int64(uint32(v0))<<32 | int64(uint32(v1))
 }
 func (m *Module) XJS_MKPTR(v0, v1 int32) int64 {
-	defer runtime.KeepAlive(m)
 	return int64(uint32(v0))<<32 | int64(uint32(v1))
 }
 func (m *Module) XJS_IsNumber(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if uint64(v0) < uint64(i64(0x100000000)) {
 		p0 = 1
@@ -205,7 +187,6 @@ func (m *Module) XJS_IsNumber(v0 int64) int32 {
 	return p0 | p1
 }
 func (m *Module) XJS_IsBigInt(v0 int32, v1 int64) int32 {
-	defer runtime.KeepAlive(m)
 	v1 = int64(uint64(v1) >> 32)
 	var p0 int32
 	if v1 == i64(0xfffffff7) {
@@ -218,7 +199,6 @@ func (m *Module) XJS_IsBigInt(v0 int32, v1 int64) int32 {
 	return p0 | p1
 }
 func (m *Module) XJS_IsBool(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if v0&i64(-0x100000000) == i64(0x100000000) {
 		p0 = 1
@@ -226,7 +206,6 @@ func (m *Module) XJS_IsBool(v0 int64) int32 {
 	return p0
 }
 func (m *Module) XJS_IsNull(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if v0&i64(-0x100000000) == i64(0x200000000) {
 		p0 = 1
@@ -234,7 +213,6 @@ func (m *Module) XJS_IsNull(v0 int64) int32 {
 	return p0
 }
 func (m *Module) XJS_IsUndefined(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if v0&i64(-0x100000000) == i64(0x300000000) {
 		p0 = 1
@@ -242,7 +220,6 @@ func (m *Module) XJS_IsUndefined(v0 int64) int32 {
 	return p0
 }
 func (m *Module) XJS_IsException(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if v0&i64(-0x100000000) == i64(0x600000000) {
 		p0 = 1
@@ -250,7 +227,6 @@ func (m *Module) XJS_IsException(v0 int64) int32 {
 	return p0
 }
 func (m *Module) XJS_IsUninitialized(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if v0&i64(-0x100000000) == i64(0x400000000) {
 		p0 = 1
@@ -258,7 +234,6 @@ func (m *Module) XJS_IsUninitialized(v0 int64) int32 {
 	return p0
 }
 func (m *Module) XJS_IsString(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if uint64(int64(uint64(v0)>>32)+i64(-0xfffffff9)) < uint64(i64(2)) {
 		p0 = 1
@@ -266,7 +241,6 @@ func (m *Module) XJS_IsString(v0 int64) int32 {
 	return p0
 }
 func (m *Module) XJS_IsSymbol(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if v0&i64(-0x100000000) == i64(-0x800000000) {
 		p0 = 1
@@ -274,7 +248,6 @@ func (m *Module) XJS_IsSymbol(v0 int64) int32 {
 	return p0
 }
 func (m *Module) XJS_IsObject(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if uint64(v0) > uint64(i64(-0x100000001)) {
 		p0 = 1
@@ -282,7 +255,6 @@ func (m *Module) XJS_IsObject(v0 int64) int32 {
 	return p0
 }
 func (m *Module) XJS_VALUE_IS_NAN(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if v0&i64(-0x100000000) == i64(-0xa00000000) {
 		p0 = 1
@@ -290,7 +262,6 @@ func (m *Module) XJS_VALUE_IS_NAN(v0 int64) int32 {
 	return p0
 }
 func (m *Module) XJS_VALUE_IS_BOTH_INT(v0, v1 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if uint64(v1|v0) < uint64(i64(0x100000000)) {
 		p0 = 1
@@ -298,7 +269,6 @@ func (m *Module) XJS_VALUE_IS_BOTH_INT(v0, v1 int64) int32 {
 	return p0
 }
 func (m *Module) XJS_VALUE_IS_BOTH_FLOAT(v0, v1 int64) int32 {
-	defer runtime.KeepAlive(m)
 	var p0 int32
 	if uint32(int32(int64(uint64(v0)>>32))+i32(-8)) < uint32(i32(-17)) {
 		p0 = 1
@@ -310,197 +280,149 @@ func (m *Module) XJS_VALUE_IS_BOTH_FLOAT(v0, v1 int64) int32 {
 	return p0 & p1
 }
 func (m *Module) XJS_VALUE_GET_INT(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	return int32(v0)
 }
 func (m *Module) XJS_VALUE_GET_BOOL(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	return int32(v0)
 }
 func (m *Module) XJS_VALUE_GET_SHORT_BIG_INT(v0 int64) int32 {
-	defer runtime.KeepAlive(m)
 	return int32(v0)
 }
 func (m *Module) XJSPrintValueOptions_show_hidden_read(v0 int32) int32 {
-	defer runtime.KeepAlive(m)
 	t0 := int32(int8((*m.memory)[uint32(v0)]))
 	return t0
 }
 func (m *Module) XJSPrintValueOptions_show_hidden_write(v0, v1 int32) {
-	defer runtime.KeepAlive(m)
 	(*m.memory)[uint32(v0)] = byte(v1)
 }
 func (m *Module) XJSPrintValueOptions_raw_dump_read(v0 int32) int32 {
-	defer runtime.KeepAlive(m)
 	t0 := int32(int8((*m.memory)[uint64(uint32(v0))+1]))
 	return t0
 }
 func (m *Module) XJSPrintValueOptions_raw_dump_write(v0, v1 int32) {
-	defer runtime.KeepAlive(m)
 	(*m.memory)[uint32(v0+i32(1))] = byte(v1)
 }
 func (m *Module) Xtest_call_JSCFunction(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64, int32, int32) int64)(i32(0), i64(0), i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JSCFunctionMagic(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64, int32, int32, int32) int64)(i32(0), i64(0), i32(0), i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JSCFunctionData(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64, int32, int32, int32, int32) int64)(i32(0), i64(0), i32(0), i32(0), i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JS_MarkFunc(v0 int32) {
-	defer runtime.KeepAlive(m)
 	(*m.t0)[uint(v0)].(func(int32, int32))(i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JSClassFinalizer(v0 int32) {
-	defer runtime.KeepAlive(m)
 	(*m.t0)[uint(v0)].(func(int32, int64))(i32(0), i64(0))
 }
 func (m *Module) Xtest_call_JSClassGCMark(v0 int32) {
-	defer runtime.KeepAlive(m)
 	(*m.t0)[uint(v0)].(func(int32, int64, int32))(i32(0), i64(0), i32(0))
 }
 func (m *Module) Xtest_call_JSClassCall(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64, int64, int32, int32, int32) int64)(i32(0), i64(0), i64(0), i32(0), i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JSFreeArrayBufferDataFunc(v0 int32) {
-	defer runtime.KeepAlive(m)
 	(*m.t0)[uint(v0)].(func(int32, int32, int32))(i32(0), i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JSHostPromiseRejectionTracker(v0 int32) {
-	defer runtime.KeepAlive(m)
 	(*m.t0)[uint(v0)].(func(int32, int64, int64, int32, int32))(i32(0), i64(0), i64(0), i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JSInterruptHandler(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int32) int32)(i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JSModuleNormalizeFunc(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int32, int32, int32) int32)(i32(0), i32(0), i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JSModuleLoaderFunc(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int32, int32) int32)(i32(0), i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JSModuleLoaderFunc2(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int32, int32, int64) int32)(i32(0), i32(0), i32(0), i64(0))
 }
 func (m *Module) Xtest_call_JSModuleCheckSupportedImportAttributes(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int32, int64) int32)(i32(0), i32(0), i64(0))
 }
 func (m *Module) Xtest_call_JSJobFunc(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int32, int32) int64)(i32(0), i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JSModuleInitFunc(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int32) int32)(i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JSPrintValueWrite(v0 int32) {
-	defer runtime.KeepAlive(m)
 	(*m.t0)[uint(v0)].(func(int32, int32, int32))(i32(0), i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JSMallocFunctionsMalloc(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int32) int32)(i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JSMallocFunctionsFree(v0 int32) {
-	defer runtime.KeepAlive(m)
 	(*m.t0)[uint(v0)].(func(int32, int32))(i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JSMallocFunctionsRealloc(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int32, int32) int32)(i32(0), i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JSMallocFunctionsMallocUsableSize(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32) int32)(i32(0))
 }
 func (m *Module) Xtest_call_JSClassExoticMethodGetOwnProperty(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int32, int64, int32) int32)(i32(0), i32(0), i64(0), i32(0))
 }
 func (m *Module) Xtest_call_JSClassExoticMethodGetOwnPropertyNames(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int32, int32, int64) int32)(i32(0), i32(0), i32(0), i64(0))
 }
 func (m *Module) Xtest_call_JSClassExoticMethodDeleteProperty(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64, int32) int32)(i32(0), i64(0), i32(0))
 }
 func (m *Module) Xtest_call_JSClassExoticMethodDefineOwnProperty(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64, int32, int64, int64, int64, int32) int32)(i32(0), i64(0), i32(0), i64(0), i64(0), i64(0), i32(0))
 }
 func (m *Module) Xtest_call_JSClassExoticMethodHasProperty(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64, int32) int32)(i32(0), i64(0), i32(0))
 }
 func (m *Module) Xtest_call_JSClassExoticMethodGetProperty(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64, int32, int64) int64)(i32(0), i64(0), i32(0), i64(0))
 }
 func (m *Module) Xtest_call_JSClassExoticMethodSetProperty(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64, int32, int64, int64, int32) int32)(i32(0), i64(0), i32(0), i64(0), i64(0), i32(0))
 }
 func (m *Module) Xtest_call_JSClassExoticMethodGetPrototype(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64) int64)(i32(0), i64(0))
 }
 func (m *Module) Xtest_call_JSClassExoticMethodSetPrototype(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64, int64) int32)(i32(0), i64(0), i64(0))
 }
 func (m *Module) Xtest_call_JSClassExoticMethodIsExtensible(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64) int32)(i32(0), i64(0))
 }
 func (m *Module) Xtest_call_JSClassExoticMethodPreventExtensions(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64) int32)(i32(0), i64(0))
 }
 func (m *Module) Xtest_call_JSCFunctionGenericMagic(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64, int32, int32, int32) int64)(i32(0), i64(0), i32(0), i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JSCFunctionConstructorMagic(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64, int32, int32, int32) int64)(i32(0), i64(0), i32(0), i32(0), i32(0))
 }
 func (m *Module) Xtest_call_JSCFunctionFF(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(float64) float64)(float64(0))
 }
 func (m *Module) Xtest_call_JSCFunctionFFF(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(float64, float64) float64)(float64(0), float64(0))
 }
 func (m *Module) Xtest_call_JSCFunctionGetter(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64) int64)(i32(0), i64(0))
 }
 func (m *Module) Xtest_call_JSCFunctionSetter(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64, int64) int64)(i32(0), i64(0), i64(0))
 }
 func (m *Module) Xtest_call_JSCFunctionGetterMagic(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64, int32) int64)(i32(0), i64(0), i32(0))
 }
 func (m *Module) Xtest_call_JSCFunctionSetterMagic(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64, int64, int32) int64)(i32(0), i64(0), i64(0), i32(0))
 }
 func (m *Module) Xtest_call_JSCFunctionIteratorNext(v0 int32) {
-	defer runtime.KeepAlive(m)
 	_ = (*m.t0)[uint(v0)].(func(int32, int64, int32, int32, int32, int32) int64)(i32(0), i64(0), i32(0), i32(0), i32(0), i32(0))
 }
 func DylinkInfo() (memorySize, memoryAlignment, tableSize, tableAlignment int64) {

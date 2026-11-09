@@ -1,4 +1,4 @@
-// modulegen adapts wasm2go to worker-local modules over shared, growing memory.
+// modulegen renames wasm2go's constructor for caller-owned worker setup.
 package main
 
 import (
@@ -13,18 +13,10 @@ import (
 
 func main() {
 	path := flag.String("file", "", "generated module to adapt")
-	libc := flag.String("libc", "", "generated libc to adapt")
-	constructor := flag.String("constructor", "newModule", "name for the translated constructor")
 	flag.Parse()
-	rewrite(*path, *constructor)
-	if *libc != "" {
-		rewrite(*libc, "")
-	}
-}
 
-func rewrite(path, constructor string) {
 	fset := token.NewFileSet()
-	f, err := parser.ParseFile(fset, path, nil, parser.ParseComments)
+	f, err := parser.ParseFile(fset, *path, nil, parser.ParseComments)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -34,22 +26,15 @@ func rewrite(path, constructor string) {
 		if !ok {
 			continue
 		}
-		if fn.Recv == nil && fn.Name.Name == "New" && constructor != "" {
-			fn.Name.Name = constructor
+		if fn.Recv == nil && fn.Name.Name == "New" {
+			fn.Name.Name = "newModule"
 			renamed = true
 		}
-		if fn.Recv == nil || !ast.IsExported(fn.Name.Name) || fn.Body == nil {
-			continue
-		}
-		fn.Body.List = append([]ast.Stmt{&ast.DeferStmt{Call: &ast.CallExpr{
-			Fun:  &ast.SelectorExpr{X: ast.NewIdent("runtime"), Sel: ast.NewIdent("KeepAlive")},
-			Args: []ast.Expr{fn.Recv.List[0].Names[0]},
-		}}}, fn.Body.List...)
 	}
-	if constructor != "" && !renamed {
+	if !renamed {
 		log.Fatal("wasm2go constructor was not found")
 	}
-	out, err := os.Create(path)
+	out, err := os.Create(*path)
 	if err != nil {
 		log.Fatal(err)
 	}

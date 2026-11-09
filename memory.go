@@ -2,7 +2,6 @@ package quickjs_wasm
 
 import (
 	"fmt"
-	"runtime"
 	"sync"
 	"sync/atomic"
 )
@@ -22,7 +21,6 @@ type SharedMemory struct {
 	region               *memoryRegion
 	mu                   sync.Mutex
 	waiters              sync.Map
-	cleanup              runtime.Cleanup
 	modulesMu            sync.Mutex
 	workers              int
 	bootstrapTLS         int32
@@ -75,9 +73,6 @@ func newLinearMemory(initial, maximum int64, mapped bool) (*SharedMemory, error)
 	}
 	m := &SharedMemory{view: region.data, region: region, maximumPages: maximum}
 	m.size.Store(initial * wasmPageSize)
-	if mapped {
-		m.cleanup = runtime.AddCleanup(m, func(r *memoryRegion) { _ = r.close() }, region)
-	}
 	return m, nil
 }
 
@@ -127,15 +122,14 @@ func New(memory *SharedMemory) *Module {
 		m.X__wasm_init_tls(memory.bootstrapTLS)
 	}
 	memory.workers++
-	env.allocation = &workerAllocation{memory: memory, ptr: ptr}
-	env.cleanup = runtime.AddCleanup(env, func(a *workerAllocation) { a.close() }, env.allocation)
+	env.stackAllocation = ptr
 	return m
 }
 
 type moduleEnv struct {
-	shared     *SharedMemory
-	allocation *workerAllocation
-	cleanup    runtime.Cleanup
+	shared          *SharedMemory
+	stackAllocation int32
+	closed          bool
 }
 
 func (e *moduleEnv) Xmemory() Memory { return e.shared }
@@ -143,10 +137,8 @@ func (e *moduleEnv) Xmemory() Memory { return e.shared }
 // Bytes returns the accessible memory. Mmap-backed addresses remain stable across
 // growth. Go-backed views must be reacquired after any Grow or Module call that
 // may allocate. Go-backed Bytes/Grow and Module calls must be serialized on one
-// worker. Keep the owner or Module reachable while using raw views, with
-// runtime.KeepAlive after the last access if necessary. Close invalidates all views.
+// worker. Close invalidates all views; finish every access before calling it.
 func (m *SharedMemory) Bytes() []byte {
-	defer runtime.KeepAlive(m)
 	size := m.size.Load()
 	return m.region.data[:size:size]
 }
@@ -204,30 +196,7 @@ func (m *SharedMemory) Close() error {
 	}
 	m.view = nil
 	m.size.Store(0)
-	m.cleanup.Stop()
 	return nil
-}
-
-type workerAllocation struct {
-	memory *SharedMemory
-	ptr    int32
-	closed bool
-}
-
-func (a *workerAllocation) close() {
-	a.memory.modulesMu.Lock()
-	defer a.memory.modulesMu.Unlock()
-	if a.closed {
-		return
-	}
-	// Free from the serialized bootstrap stack, not the stack being released.
-	if a.ptr != 0 {
-		bootstrap := newModule(&moduleEnv{shared: a.memory})
-		bootstrap.Xfree(a.ptr)
-	}
-	a.ptr = 0
-	a.closed = true
-	a.memory.workers--
 }
 
 // Close releases a shared worker's private C stack/TLS, or relinquishes a
@@ -235,7 +204,19 @@ func (a *workerAllocation) close() {
 // The memory owner remains usable. Calls are idempotent.
 func (m *Module) Close() error {
 	env := m._env.(*moduleEnv)
-	env.allocation.close()
-	env.cleanup.Stop()
+	memory := env.shared
+	memory.modulesMu.Lock()
+	defer memory.modulesMu.Unlock()
+	if env.closed {
+		return nil
+	}
+	// Free from the serialized bootstrap stack, not the stack being released.
+	if env.stackAllocation != 0 {
+		bootstrap := newModule(&moduleEnv{shared: memory})
+		bootstrap.Xfree(env.stackAllocation)
+	}
+	env.stackAllocation = 0
+	env.closed = true
+	memory.workers--
 	return nil
 }
