@@ -9,8 +9,6 @@ import (
 	"go/token"
 	"log"
 	"os"
-
-	"golang.org/x/tools/go/ast/astutil"
 )
 
 func main() {
@@ -51,25 +49,6 @@ func rewrite(path, constructor string) {
 	if constructor != "" && !renamed {
 		log.Fatal("wasm2go constructor was not found")
 	}
-	// Reading a shared slice header while another worker changes its length is
-	// not an atomic snapshot. Rebuild each memory view from immutable mapping
-	// metadata and an atomic length, including accesses in provided libc code.
-	astutil.Apply(f, func(c *astutil.Cursor) bool {
-		p, ok := c.Node().(*ast.StarExpr)
-		if !ok {
-			return true
-		}
-		sel, ok := p.X.(*ast.SelectorExpr)
-		if !ok || sel.Sel.Name != "memory" {
-			return true
-		}
-		recv, ok := sel.X.(*ast.Ident)
-		if !ok || recv.Name != "m" {
-			return true
-		}
-		c.Replace(&ast.CallExpr{Fun: &ast.SelectorExpr{X: ast.NewIdent("m"), Sel: ast.NewIdent("bytes")}})
-		return false
-	}, nil)
 	out, err := os.Create(path)
 	if err != nil {
 		log.Fatal(err)

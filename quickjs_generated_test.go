@@ -59,7 +59,7 @@ func (m *Module) X__wasm_apply_data_relocs() {
 }
 func (m *Module) Xtest_atomic_notify(v0, v1 int32) int32 {
 	defer runtime.KeepAlive(m)
-	t0 := atomic_notify(m.bytes(), uint32(v0), v1, m.waiters)
+	t0 := atomic_notify(*m.memory, uint32(v0), v1, m.waiters)
 	return t0
 }
 func (m *Module) Xtest_store_after_grow(v0, v1 int32) int32 {
@@ -67,7 +67,7 @@ func (m *Module) Xtest_store_after_grow(v0, v1 int32) int32 {
 	t0 := (*m.t0)[uint(v1)].(func() int32)()
 	t1 := v0
 	v1 = t0
-	store32(m.bytes(), uint32(t1), uint32(v1))
+	store32(*m.memory, uint32(t1), uint32(v1))
 	return v1
 }
 func (m *Module) XJS_NewBool(v0, v1 int32) int64 {
@@ -323,21 +323,21 @@ func (m *Module) XJS_VALUE_GET_SHORT_BIG_INT(v0 int64) int32 {
 }
 func (m *Module) XJSPrintValueOptions_show_hidden_read(v0 int32) int32 {
 	defer runtime.KeepAlive(m)
-	t0 := int32(int8((m.bytes())[uint32(v0)]))
+	t0 := int32(int8((*m.memory)[uint32(v0)]))
 	return t0
 }
 func (m *Module) XJSPrintValueOptions_show_hidden_write(v0, v1 int32) {
 	defer runtime.KeepAlive(m)
-	(m.bytes())[uint32(v0)] = byte(v1)
+	(*m.memory)[uint32(v0)] = byte(v1)
 }
 func (m *Module) XJSPrintValueOptions_raw_dump_read(v0 int32) int32 {
 	defer runtime.KeepAlive(m)
-	t0 := int32(int8((m.bytes())[uint64(uint32(v0))+1]))
+	t0 := int32(int8((*m.memory)[uint64(uint32(v0))+1]))
 	return t0
 }
 func (m *Module) XJSPrintValueOptions_raw_dump_write(v0, v1 int32) {
 	defer runtime.KeepAlive(m)
-	(m.bytes())[uint32(v0+i32(1))] = byte(v1)
+	(*m.memory)[uint32(v0+i32(1))] = byte(v1)
 }
 func (m *Module) Xtest_call_JSCFunction(v0 int32) {
 	defer runtime.KeepAlive(m)

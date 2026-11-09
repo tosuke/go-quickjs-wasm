@@ -58,8 +58,9 @@ defer second.Close()
 initializes C TLS for each worker. The shared dlmalloc allocator uses its built-in
 locking boundaries with Wasm atomic wait/notify mutexes (`USE_LOCKS=2`). QuickJS
 class-ID allocation uses the same mutex primitive. Module initialization preserves
-the shared heap when subsequent workers are created. Translated memory accesses obtain atomic size snapshots so another
-worker can grow memory while they execute.
+the shared heap when subsequent workers are created. The mmap slice header stays
+fixed at the maximum reserved size; Grow enables additional pages and updates the
+logical page count without changing that header.
 
 `NewSharedMemory(maximumPages)` accepts a smaller maximum for mmap-backed workers;
 omitting the argument retains the generated maximum of 65536 pages (4 GiB).
@@ -110,10 +111,12 @@ reacquire them after calls that may allocate. Keep the owner or a Module reachab
 while using raw views; call
 `runtime.KeepAlive` after their last use if necessary. Closing the memory
 invalidates every view and requires that no raw access remains in progress.
-The legacy `Xmemory().Slice()` header must not be read or changed concurrently
-with Grow. `Bytes()` supports concurrent snapshots for mmap-backed memory;
-Go-backed access must remain on the single worker. Synchronize conflicting accesses
-to shared bytes with the corresponding atomic operations.
+`Xmemory().Slice()` exposes the full reservation for mmap-backed memory and its
+header remains fixed across Grow. Use `Bytes()` for a snapshot of the accessible
+prefix. Go-backed Grow updates its slice header, so Go-backed access must remain
+on the single worker. Callers must not modify either backend's slice header.
+Synchronize conflicting accesses to shared bytes with the corresponding atomic
+operations.
 
 ## License
 

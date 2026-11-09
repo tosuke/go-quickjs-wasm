@@ -11,11 +11,11 @@ import (
 
 func TestMemoryGrowthAndIsolation(t *testing.T) {
 	m, _, ctx := context(t)
-	before := len(*m.Xmemory().Slice())
+	before := m.Xmemory().Grow(0, 65536)
 	base := unsafe.SliceData(*m.Xmemory().Slice())
 	v := eval(t, m, ctx, "globalThis.privateValue = 7; new Uint8Array(4 * 1024 * 1024).fill(123).at(-1)")
 	defer m.JS_FreeValue(ctx, v)
-	if len(*m.Xmemory().Slice()) <= before {
+	if m.Xmemory().Grow(0, 65536) <= before {
 		t.Fatal("expected linear memory to grow")
 	}
 	if unsafe.SliceData(*m.Xmemory().Slice()) != base {

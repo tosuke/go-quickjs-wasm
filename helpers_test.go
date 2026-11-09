@@ -16,8 +16,6 @@ func (e *testModuleEnv) X__memory_base() *int32 { return &e.memoryBase }
 func (e *testModuleEnv) X__table_base() *int32  { return &e.tableBase }
 func (e *testModuleEnv) Xmemory() Memory        { return e.Module.Xmemory() }
 
-func (m *Module) bytes() []byte { return m.memImp.(*qjs.SharedMemory).Bytes() }
-
 func newTestModule(t testing.TB, main *qjs.Module) *Module {
 	t.Helper()
 	if memorySize, _, tableSize, _ := DylinkInfo(); memorySize != 0 || tableSize != 0 {

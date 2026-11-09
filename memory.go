@@ -73,7 +73,7 @@ func newLinearMemory(initial, maximum int64, mapped bool) (*SharedMemory, error)
 	} else {
 		region = &memoryRegion{data: make([]byte, int(initial*wasmPageSize))}
 	}
-	m := &SharedMemory{view: region.data[:int(initial*wasmPageSize)], region: region, maximumPages: maximum}
+	m := &SharedMemory{view: region.data, region: region, maximumPages: maximum}
 	m.size.Store(initial * wasmPageSize)
 	if mapped {
 		m.cleanup = runtime.AddCleanup(m, func(r *memoryRegion) { _ = r.close() }, region)
@@ -139,7 +139,6 @@ type moduleEnv struct {
 }
 
 func (e *moduleEnv) Xmemory() Memory { return e.shared }
-func (m *Module) bytes() []byte      { return m.memImp.(*SharedMemory).Bytes() }
 
 // Bytes returns the accessible memory. Mmap-backed addresses remain stable across
 // growth. Go-backed views must be reacquired after any Grow or Module call that
@@ -152,9 +151,11 @@ func (m *SharedMemory) Bytes() []byte {
 	return m.region.data[:size:size]
 }
 
-// Slice implements wasm2go's legacy memory interface. Do not read or mutate this
-// slice header concurrently with Grow; use Bytes for memory views. Go-backed
-// memory still requires all accesses to be serialized on its single worker.
+// Slice implements wasm2go's memory interface. The mmap-backed header spans the
+// entire reservation and stays fixed across Grow; only the accessible prefix is
+// enabled. Go-backed Grow updates the header, with all accesses serialized on its
+// single worker. Callers must not mutate the header. Bytes returns the current
+// accessible prefix for either backend.
 func (m *SharedMemory) Slice() *[]byte     { return &m.view }
 func (m *SharedMemory) Waiters() *sync.Map { return &m.waiters }
 
@@ -181,8 +182,8 @@ func (m *SharedMemory) Grow(delta, maximum int64) int64 {
 		// C pointers are Wasm offsets. Copy the entire prefix, including the
 		// allocator state, C stack and TLS, and zero-initialize added pages.
 		m.region.data = append(m.region.data, make([]byte, int(next)-len(m.region.data))...)
+		m.view = m.region.data
 	}
-	m.view = m.region.data[:next]
 	m.size.Store(next)
 	return old
 }

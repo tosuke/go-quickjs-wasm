@@ -10,8 +10,12 @@ import (
 func TestImportedMemoryGrowth(t *testing.T) {
 	shared := sharedMemory(t)
 	mem := shared
-	view := *mem.Slice()
+	view := mem.Bytes()
 	base := unsafe.SliceData(view)
+	reserved := *mem.Slice()
+	if uint64(len(reserved)) != uint64(65536)*65536 {
+		t.Fatal("mmap header does not span the maximum reservation")
+	}
 	pages := int64(len(view) >> 16)
 	view[len(view)-1] = 123
 	for _, delta := range []int64{-1, math.MinInt64, math.MaxInt64, 65536} {
@@ -28,9 +32,12 @@ func TestImportedMemoryGrowth(t *testing.T) {
 	if got := mem.Grow(2, pages+2); got != pages {
 		t.Fatalf("Grow(2) = %d, want %d", got, pages)
 	}
-	grown := *mem.Slice()
+	grown := mem.Bytes()
 	if len(grown) != len(view)+2*65536 || unsafe.SliceData(grown) != base {
 		t.Fatal("growth did not preserve base and extend length by two pages")
+	}
+	if len(*mem.Slice()) != len(reserved) || unsafe.SliceData(*mem.Slice()) != base {
+		t.Fatal("Grow changed the mmap slice header")
 	}
 	for _, b := range grown[len(view):] {
 		if b != 0 {
