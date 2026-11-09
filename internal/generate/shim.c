@@ -1,6 +1,46 @@
 /* Raw wasm32 adapters for quickjs.h inline functions and macros. */
 #include "quickjs.h"
 #include <math.h>
+#include <stdlib.h>
+#include <stdatomic.h>
+
+/* SAB payloads can outlive the runtime that created them. Only this refcount
+   and the backing bytes are shared; JS objects remain runtime-local. */
+typedef struct {
+    _Atomic(uint32_t) refs;
+    uint32_t padding[3];
+} SharedBufferHeader;
+
+static void *shared_buffer_alloc(void *opaque, size_t size)
+{
+    if (size > SIZE_MAX - sizeof(SharedBufferHeader)) return NULL;
+    SharedBufferHeader *h = malloc(sizeof(*h) + size);
+    if (!h) return NULL;
+    atomic_init(&h->refs, 1);
+    return h + 1;
+}
+
+static void shared_buffer_dup(void *opaque, void *ptr)
+{
+    SharedBufferHeader *h = (SharedBufferHeader *)ptr - 1;
+    atomic_fetch_add_explicit(&h->refs, 1, memory_order_relaxed);
+}
+
+static void shared_buffer_free(void *opaque, void *ptr)
+{
+    SharedBufferHeader *h = (SharedBufferHeader *)ptr - 1;
+    if (atomic_fetch_sub_explicit(&h->refs, 1, memory_order_acq_rel) == 1)
+        free(h);
+}
+
+__attribute__((export_name("qjs_set_default_shared_array_buffer_functions")))
+void qjs_set_default_shared_array_buffer_functions(JSRuntime *rt)
+{
+    const JSSharedArrayBufferFunctions functions = {
+        shared_buffer_alloc, shared_buffer_free, shared_buffer_dup, NULL
+    };
+    JS_SetSharedArrayBufferFunctions(rt, &functions);
+}
 
 __attribute__((export_name("JS_FreeValue")))
 void qjs_api_JS_FreeValue(JSContext * ctx, JSValue v) { JS_FreeValue(ctx, v); }

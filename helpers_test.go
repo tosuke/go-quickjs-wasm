@@ -14,6 +14,7 @@ type testModuleEnv struct {
 
 func (e *testModuleEnv) X__memory_base() *int32 { return &e.memoryBase }
 func (e *testModuleEnv) X__table_base() *int32  { return &e.tableBase }
+func (e *testModuleEnv) Xmemory() Memory        { return e.Module.Xmemory() }
 
 func newTestModule(t testing.TB, main *qjs.Module) *Module {
 	t.Helper()
@@ -23,9 +24,39 @@ func newTestModule(t testing.TB, main *qjs.Module) *Module {
 	return New(&testModuleEnv{Module: main})
 }
 
+func sharedMemory(t testing.TB) *qjs.SharedMemory {
+	t.Helper()
+	shared, err := qjs.NewSharedMemory()
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() {
+		if err := shared.Close(); err != nil {
+			t.Error(err)
+		}
+	})
+	return shared
+}
+
+func worker(t testing.TB, shared *qjs.SharedMemory) *qjs.Module {
+	t.Helper()
+	m := qjs.New(shared)
+	t.Cleanup(func() {
+		if err := m.Close(); err != nil {
+			t.Error(err)
+		}
+	})
+	return m
+}
+
+func module(t testing.TB) *qjs.Module {
+	t.Helper()
+	return worker(t, sharedMemory(t))
+}
+
 func context(t *testing.T) (*qjs.Module, qjs.JSRuntimePtr, qjs.JSContextPtr) {
 	t.Helper()
-	m := qjs.New()
+	m := module(t)
 	rt := m.JS_NewRuntime()
 	if rt == 0 {
 		t.Fatal("JS_NewRuntime returned NULL")

@@ -9,7 +9,7 @@ import (
 )
 
 func TestHeaderNewBool(t *testing.T) {
-	m := newTestModule(t, qjs.New())
+	m := newTestModule(t, module(t))
 	for _, tc := range []struct {
 		value bool
 		c     int32
@@ -21,7 +21,7 @@ func TestHeaderNewBool(t *testing.T) {
 }
 
 func TestHeaderValueGetters(t *testing.T) {
-	m := newTestModule(t, qjs.New())
+	m := newTestModule(t, module(t))
 	for _, payload := range []int32{math.MinInt32, -1, 0, 1, math.MaxInt32} {
 		v := qjs.JS_MKVAL(qjs.JS_TAG_INT, payload)
 		if got, want := qjs.JS_VALUE_GET_INT(v), m.XJS_VALUE_GET_INT(int64(v)); got != want {
@@ -39,7 +39,7 @@ func TestHeaderValueGetters(t *testing.T) {
 }
 
 func TestHeaderPredicates(t *testing.T) {
-	m := newTestModule(t, qjs.New())
+	m := newTestModule(t, module(t))
 	values := []qjs.JSValue{qjs.JS_NAN, qjs.JS_NewFloat64(1.5), qjs.JS_NewFloat64(-1.5)}
 	for tag := int32(-10); tag <= 9; tag++ {
 		values = append(values, qjs.JS_MKVAL(tag, 0), qjs.JS_MKVAL(tag, -1))
@@ -93,7 +93,7 @@ func FuzzHeaderIntegerConstructors(f *testing.F) {
 	}
 
 	// These header functions do not use the context argument.
-	m := newTestModule(f, qjs.New())
+	m := newTestModule(f, module(f))
 	f.Fuzz(func(t *testing.T, v int64) {
 		if got, want := qjs.JS_NewInt64(v), qjs.JSValue(m.XJS_NewInt64(0, v)); got != want {
 			t.Errorf("JS_NewInt64(%d) = %#x, QuickJS = %#x", v, uint64(got), uint64(want))
@@ -125,7 +125,7 @@ func FuzzHeaderFloat64(f *testing.F) {
 		f.Add(bits)
 	}
 
-	m := newTestModule(f, qjs.New())
+	m := newTestModule(f, module(f))
 	f.Fuzz(func(t *testing.T, bits uint64) {
 		d := math.Float64frombits(bits)
 		got, want := qjs.JS_NewFloat64(d), qjs.JSValue(m.XJS_NewFloat64(0, d))
@@ -153,7 +153,7 @@ func FuzzHeaderValueEncoding(f *testing.F) {
 		}
 	}
 
-	m := newTestModule(f, qjs.New())
+	m := newTestModule(f, module(f))
 	f.Fuzz(func(t *testing.T, tag, payload int32) {
 		v := qjs.JS_MKVAL(tag, payload)
 		if want := qjs.JSValue(m.XJS_MKVAL(tag, payload)); v != want {
@@ -192,7 +192,7 @@ func FuzzPrintValueOptionsBitfields(f *testing.F) {
 	f.Add([]byte{}, int8(0), int8(0))
 	f.Add([]byte{0xff}, int8(-1), int8(-128))
 
-	m := qjs.New()
+	m := module(f)
 	c := newTestModule(f, m)
 	const guard = 8
 	const blockSize = guard + qjs.JSPrintValueOptionsSize + guard
