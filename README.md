@@ -54,7 +54,8 @@ defer second.Close()
 // Use first and second from separate goroutines, with one runtime per worker.
 ```
 
-`New(memory)` on mmap-backed memory allocates a private 2 MiB C stack and
+`New(memory)` uses wasm2go's standard constructor and its imported environment's
+`Init` hook. On mmap-backed memory the hook allocates a private 2 MiB C stack and
 initializes C TLS for each worker. The shared dlmalloc allocator uses its built-in
 locking boundaries with Wasm atomic wait/notify mutexes (`USE_LOCKS=2`). QuickJS
 class-ID allocation uses the same mutex primitive. Module initialization preserves

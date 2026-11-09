@@ -76,12 +76,15 @@ func newLinearMemory(initial, maximum int64, mapped bool) (*SharedMemory, error)
 	return m, nil
 }
 
-// New creates a Module over caller-owned memory. Mmap workers get private C
-// stacks/TLS and can execute concurrently on different Modules. Go-backed memory
-// uses the initial C stack/TLS and permits one active Module. Calls on a Module
-// must be serialized. It panics on a closed memory, a second Go-backed worker,
-// or failure to allocate a shared worker's stack/TLS.
-func New(memory *SharedMemory) *Module {
+// Xmemory supplies the imported memory to wasm2go's New constructor.
+func (memory *SharedMemory) Xmemory() Memory { return memory }
+
+// Init is wasm2go's construction hook, called by New(memory). It initializes
+// shared data and the allocator, then assigns this worker its C stack/TLS.
+// Go-backed memory permits only one active worker. It panics on closed memory,
+// a second Go-backed worker, or failure to allocate a shared worker's stack/TLS.
+func (memory *SharedMemory) Init(instance any) {
+	m := instance.(*Module)
 	memory.modulesMu.Lock()
 	defer memory.modulesMu.Unlock()
 	if memory.region.data == nil {
@@ -91,7 +94,11 @@ func New(memory *SharedMemory) *Module {
 		panic("quickjs_wasm: Go memory allows only one active worker")
 	}
 	env := &moduleEnv{shared: memory}
-	m := newModule(env)
+	m._env = env
+	// The construction hook runs before the Wasm start function. Initialize
+	// shared data now so allocator and TLS setup can use it. The start function
+	// will observe completed initialization when New resumes.
+	m.___wasm_init_memory()
 	if !memory.allocatorInitialized {
 		// Data and dlmalloc's initial heap must be initialized before any worker
 		// allocates. modulesMu also protects construction against live workers.
@@ -123,7 +130,6 @@ func New(memory *SharedMemory) *Module {
 	}
 	memory.workers++
 	env.stackAllocation = ptr
-	return m
 }
 
 type moduleEnv struct {
@@ -212,7 +218,7 @@ func (m *Module) Close() error {
 	}
 	// Free from the serialized bootstrap stack, not the stack being released.
 	if env.stackAllocation != 0 {
-		bootstrap := newModule(&moduleEnv{shared: memory})
+		bootstrap := New(&moduleEnv{shared: memory})
 		bootstrap.Xfree(env.stackAllocation)
 	}
 	env.stackAllocation = 0

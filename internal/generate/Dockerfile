@@ -95,14 +95,12 @@ RUN --mount=type=bind,source=internal/go.mod,target=go.mod \
     --mount=type=cache,target=/root/.cache/go-build \
     go tool libc-gen -deref-mem -wasm .build/quickjs.wasm -pkg quickjs_wasm -o /out/libc_generated.go
 
-RUN --mount=type=bind,source=internal/generate/modulegen,target=generate/modulegen \
-    --mount=type=bind,source=internal/go.mod,target=go.mod \
+RUN --mount=type=bind,source=internal/go.mod,target=go.mod \
     --mount=type=bind,source=internal/go.sum,target=go.sum \
     --mount=type=cache,target=/go/pkg/mod \
     --mount=type=cache,target=/root/.cache/go-build \
     go tool wasm2go -embed -unsafe -provided /out/libc_generated.go -pkg quickjs_wasm \
-        -o /out/quickjs_generated.go .build/quickjs.wasm \
-    && go run ./generate/modulegen -file /out/quickjs_generated.go
+        -o /out/quickjs_generated.go .build/quickjs.wasm
 
 # Record the limits of the imported Wasm memory.
 RUN printf '%s\n' \

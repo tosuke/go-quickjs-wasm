@@ -28,7 +28,7 @@ type Module struct {
 	_env             Xenv
 }
 
-func newModule(v0 Xenv) *Module {
+func New(v0 Xenv) *Module {
 	m := new(Module)
 	m._env = v0
 	m.t0 = make([]any, 471)
@@ -141002,6 +141002,5 @@ func table_init[T1, T2, T3 int | int32 | int64](tab, elems []any, dest T1, src T
 	w := z + uint64(n)
 	copy(tab[x:y:len(tab)], elems[z:w:len(elems)])
 }
-
 //go:embed quickjs_generated.dat
 var data string
