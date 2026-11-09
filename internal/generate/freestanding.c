@@ -4,105 +4,24 @@
 #include "stb_sprintf.h"
 #include "libc.c"
 
-/* Rename internal calls too: realloc/calloc must not acquire the lock twice. */
-#define malloc tlsf_malloc
-#define free tlsf_free
-#define realloc tlsf_realloc
-#define memalign tlsf_memalign
-#define calloc tlsf_calloc
-#define aligned_alloc tlsf_aligned_alloc
-#define reallocarray tlsf_reallocarray
-#define malloc_usable_size tlsf_malloc_usable_size
-#define malloc_good_size tlsf_malloc_good_size
-#include "malloc_tlsf.c"
-#undef malloc
-#undef free
-#undef realloc
-#undef memalign
-#undef calloc
-#undef aligned_alloc
-#undef reallocarray
-#undef malloc_usable_size
-#undef malloc_good_size
+/* Enable dlmalloc's locking boundaries with Wasm wait/notify mutexes. The
+   supported custom-lock interface avoids spinning while another worker runs. */
+#define USE_LOCKS 2
+#define MLOCK_T pthread_mutex_t
+#define INITIAL_LOCK(lk) (atomic_init((lk), 0), 0)
+#define DESTROY_LOCK(lk) ((void)(lk), 0)
+#define ACQUIRE_LOCK(lk) pthread_mutex_lock(lk)
+#define RELEASE_LOCK(lk) pthread_mutex_unlock(lk)
+#define TRY_LOCK(lk) (!pthread_mutex_trylock(lk))
+static MLOCK_T malloc_global_mutex = PTHREAD_MUTEX_INITIALIZER;
 
-static pthread_mutex_t allocator_mutex = PTHREAD_MUTEX_INITIALIZER;
+#define malloc_getpagesize ((size_t)65536)
+#define DEFAULT_GRANULARITY ((size_t)65536)
+#include "malloc_sbrk.c"
 
-static void lock_allocator(void)
-{
-    pthread_mutex_lock(&allocator_mutex);
-    if (!g_tlsf.pool_end) init_allocator();
-}
-
-void * malloc(size_t size)
-{
-    lock_allocator();
-    void * result = tlsf_malloc(size);
-    pthread_mutex_unlock(&allocator_mutex);
-    return result;
-}
-
-void free(void *ptr)
-{
-    pthread_mutex_lock(&allocator_mutex);
-    tlsf_free(ptr);
-    pthread_mutex_unlock(&allocator_mutex);
-}
-
-void * realloc(void *ptr, size_t size)
-{
-    lock_allocator();
-    void * result = tlsf_realloc(ptr, size);
-    pthread_mutex_unlock(&allocator_mutex);
-    return result;
-}
-
-void * memalign(size_t align, size_t size)
-{
-    lock_allocator();
-    void * result = tlsf_memalign(align, size);
-    pthread_mutex_unlock(&allocator_mutex);
-    return result;
-}
-
-void * calloc(size_t count, size_t size)
-{
-    lock_allocator();
-    void * result = tlsf_calloc(count, size);
-    pthread_mutex_unlock(&allocator_mutex);
-    return result;
-}
-
-void * aligned_alloc(size_t align, size_t size)
-{
-    lock_allocator();
-    void * result = tlsf_aligned_alloc(align, size);
-    pthread_mutex_unlock(&allocator_mutex);
-    return result;
-}
-
-void * reallocarray(void *ptr, size_t count, size_t size)
-{
-    lock_allocator();
-    void * result = tlsf_reallocarray(ptr, count, size);
-    pthread_mutex_unlock(&allocator_mutex);
-    return result;
-}
-
-size_t malloc_usable_size(void *ptr)
-{
-    pthread_mutex_lock(&allocator_mutex);
-    size_t result = tlsf_malloc_usable_size(ptr);
-    pthread_mutex_unlock(&allocator_mutex);
-    return result;
-}
-
-size_t malloc_good_size(size_t size)
-{
-    pthread_mutex_lock(&allocator_mutex);
-    size_t result = tlsf_malloc_good_size(size);
-    pthread_mutex_unlock(&allocator_mutex);
-    return result;
-}
+/* New calls this once per memory, before publishing the first worker. */
+__attribute__((export_name("qjs_init_allocator")))
+void qjs_init_allocator(void) { init_allocator(); }
 
 /* Expose the C TLS address for embedders using errno. */
 int *__errno_location(void) { return &errno; }

@@ -19,3 +19,13 @@
 -  static char* p;
 +  static _Thread_local char* p;
    if (!s && !(s = p)) return NULL;
+--- a/malloc_sbrk.c
++++ b/malloc_sbrk.c
+@@ -26,5 +26,7 @@
+ #define NO_MALLOC_STATS 1
+ #define USE_BUILTIN_FFS 1
++#ifndef USE_LOCKS
+ #define USE_LOCKS 0
++#endif
+
+ #pragma clang diagnostic ignored "-Weverything"

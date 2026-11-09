@@ -55,9 +55,10 @@ defer second.Close()
 ```
 
 `New(memory)` on mmap-backed memory allocates a private 2 MiB C stack and
-initializes C TLS for each worker. The shared TLSF allocator and QuickJS class-ID allocation use Wasm atomic
-mutexes. Module initialization preserves the shared heap when subsequent workers
-are created. Translated memory accesses obtain atomic size snapshots so another
+initializes C TLS for each worker. The shared dlmalloc allocator uses its built-in
+locking boundaries with Wasm atomic wait/notify mutexes (`USE_LOCKS=2`). QuickJS
+class-ID allocation uses the same mutex primitive. Module initialization preserves
+the shared heap when subsequent workers are created. Translated memory accesses obtain atomic size snapshots so another
 worker can grow memory while they execute.
 
 `NewSharedMemory(maximumPages)` accepts a smaller maximum for mmap-backed workers;

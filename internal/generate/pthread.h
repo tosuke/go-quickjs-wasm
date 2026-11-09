@@ -13,6 +13,14 @@ static inline int pthread_mutex_lock(pthread_mutex_t *m)
     return 0;
 }
 
+static inline int pthread_mutex_trylock(pthread_mutex_t *m)
+{
+    uint32_t expected = 0;
+    return atomic_compare_exchange_strong_explicit(m, &expected, 1,
+                                                  memory_order_acquire,
+                                                  memory_order_relaxed) ? 0 : 1;
+}
+
 static inline int pthread_mutex_unlock(pthread_mutex_t *m)
 {
     atomic_store_explicit(m, 0, memory_order_release);

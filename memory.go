@@ -16,15 +16,16 @@ const workerStackSize = 2 * 1024 * 1024
 // its own Module and QuickJS runtime. Calls on a Module must be serialized.
 // SharedArrayBuffer data can be shared between runtimes using this owner.
 type SharedMemory struct {
-	view         []byte
-	size         atomic.Int64
-	region       *memoryRegion
-	mu           sync.Mutex
-	waiters      sync.Map
-	cleanup      runtime.Cleanup
-	modulesMu    sync.Mutex
-	workers      int
-	bootstrapTLS int32
+	view                 []byte
+	size                 atomic.Int64
+	region               *memoryRegion
+	mu                   sync.Mutex
+	waiters              sync.Map
+	cleanup              runtime.Cleanup
+	modulesMu            sync.Mutex
+	workers              int
+	bootstrapTLS         int32
+	allocatorInitialized bool
 }
 
 // NewSharedMemory reserves fixed-address mmap memory for concurrent workers.
@@ -95,6 +96,12 @@ func New(memory *SharedMemory) *Module {
 	}
 	env := &moduleEnv{shared: memory}
 	m := newModule(env)
+	if !memory.allocatorInitialized {
+		// Data and dlmalloc's initial heap must be initialized before any worker
+		// allocates. modulesMu also protects construction against live workers.
+		m.Xqjs_init_allocator()
+		memory.allocatorInitialized = true
+	}
 	var ptr int32
 	if memory.region.mapped {
 		tlsSize := uint32(*m.X__tls_size())
