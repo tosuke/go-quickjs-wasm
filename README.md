@@ -4,11 +4,12 @@
 
 ## Single-thread startup
 
-Use `NewMemory(maximumPages)` for an ordinary Go backing array and a single active
-Module. Memory sizes are in Wasm pages of 64 KiB; 1024 pages is 64 MiB.
+Use `NewMemory()` for a single active Module backed by a resizable Go slice.
+Only the generated initial size (currently 64 Wasm pages / 4 MiB) is allocated.
+Grow extends the slice on demand and reallocates/copies it when necessary.
 
 ```go
-memory, err := quickjs_wasm.NewMemory(1024) // maximum 64 MiB
+memory, err := quickjs_wasm.NewMemory()
 if err != nil {
     panic(err)
 }
@@ -19,18 +20,17 @@ defer module.Close()
 // Create the QuickJS runtime and context on module; free them before module.Close.
 ```
 
-The Go array is allocated at its maximum capacity up front, so grow never moves
-atomic addresses or existing views. The accessible prefix initially has 64 pages
-(4 MiB), the minimum size supported by the generated module. This path uses the
-initial C stack/TLS and the initial heap; it can start a runtime with a maximum of
-64 pages, without an additional worker stack allocation or mmap. Creating a second
-active Module on the same Go memory panics. A new Module can reuse it after the
-previous one is closed.
+There is no per-instance maximum setting or maximum-capacity reservation for the
+Go backend. It grows as needed within the generated Wasm address range (normally
+4 GiB) and host address space. Grow uses 64 KiB Wasm pages.
 
-The Go backend does not require the platform's mmap implementation. The configured
-capacity must fit the host's address space and cannot exceed the generated Wasm
-maximum (normally 65536 pages). Both backends enforce their configured maximum on
-Wasm allocations and explicit `Grow` calls.
+The Go backend requires no mmap and uses the initial C stack/TLS and initial heap.
+It can start a runtime using the initial 64 pages (4 MiB), without an additional
+worker stack allocation. Creating a second active Module on the same
+Go memory panics. After closing that Module, a replacement can reuse the memory.
+All Go-backed accesses, including Bytes/Grow and Module calls, must be serialized
+on the same worker. Raw Go-backed views must be reacquired after Grow or any
+Module call that may allocate; Wasm pointer offsets remain valid across relocation.
 
 ## Shared-memory workers
 
@@ -104,12 +104,15 @@ and unmaps mmap-backed memory promptly; Go arrays are reclaimed by Go garbage
 collection once their views become unreachable.
 
 `SharedMemory.Bytes()` returns a snapshot of the currently accessible memory.
-Existing views remain valid across growth; obtain a new snapshot to access added
-pages. Keep the owner or a Module reachable while using raw views; call
+Mmap-backed views remain valid across growth; obtain a new snapshot to access
+added pages. Go-backed views may become obsolete when Grow reallocates the slice;
+reacquire them after calls that may allocate. Keep the owner or a Module reachable
+while using raw views; call
 `runtime.KeepAlive` after their last use if necessary. Closing the memory
 invalidates every view and requires that no raw access remains in progress.
 The legacy `Xmemory().Slice()` header must not be read or changed concurrently
-with Grow; use `Bytes()` for concurrent access. Synchronize conflicting accesses
+with Grow. `Bytes()` supports concurrent snapshots for mmap-backed memory;
+Go-backed access must remain on the single worker. Synchronize conflicting accesses
 to shared bytes with the corresponding atomic operations.
 
 ## License

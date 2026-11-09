@@ -17,6 +17,7 @@ const workerStackSize = 2 * 1024 * 1024
 // SharedArrayBuffer data can be shared between runtimes using this owner.
 type SharedMemory struct {
 	view                 []byte
+	maximumPages         int64
 	size                 atomic.Int64
 	region               *memoryRegion
 	mu                   sync.Mutex
@@ -42,12 +43,12 @@ func NewSharedMemory(maximumPages ...uint32) (*SharedMemory, error) {
 	return newLinearMemory(memoryInitialPages, maximum, true)
 }
 
-// NewMemory allocates ordinary Go memory for a single active Module. maximumPages
-// is a required maximum in 64 KiB Wasm pages, at least the generated initial size.
-// The backing array is allocated at its maximum capacity to keep atomic addresses
-// and raw views stable. Only the accessible prefix grows. It does not use mmap.
-func NewMemory(maximumPages uint32) (*SharedMemory, error) {
-	return newLinearMemory(memoryInitialPages, int64(maximumPages), false)
+// NewMemory creates Go-backed memory for one active Module, initially allocating
+// only the generated minimum size. Grow resizes the slice and may relocate it.
+// No maximum-capacity reservation or per-instance limit is configured. Growth is
+// bounded by the Wasm address range and host address space. No mmap is required.
+func NewMemory() (*SharedMemory, error) {
+	return newLinearMemory(memoryInitialPages, memoryMaxPages, false)
 }
 
 func newLinearMemory(initial, maximum int64, mapped bool) (*SharedMemory, error) {
@@ -55,7 +56,7 @@ func newLinearMemory(initial, maximum int64, mapped bool) (*SharedMemory, error)
 		return nil, fmt.Errorf("invalid Wasm memory limits: %d, %d", initial, maximum)
 	}
 	capacity := maximum * wasmPageSize
-	if capacity > int64(^uint(0)>>1) {
+	if initial*wasmPageSize > int64(^uint(0)>>1) || mapped && capacity > int64(^uint(0)>>1) {
 		return nil, fmt.Errorf("quickjs_wasm: memory capacity exceeds the host address space")
 	}
 	var region *memoryRegion
@@ -70,9 +71,9 @@ func newLinearMemory(initial, maximum int64, mapped bool) (*SharedMemory, error)
 			return nil, err
 		}
 	} else {
-		region = &memoryRegion{data: make([]byte, int(capacity))}
+		region = &memoryRegion{data: make([]byte, int(initial*wasmPageSize))}
 	}
-	m := &SharedMemory{view: region.data[:int(initial*wasmPageSize)], region: region}
+	m := &SharedMemory{view: region.data[:int(initial*wasmPageSize)], region: region, maximumPages: maximum}
 	m.size.Store(initial * wasmPageSize)
 	if mapped {
 		m.cleanup = runtime.AddCleanup(m, func(r *memoryRegion) { _ = r.close() }, region)
@@ -140,10 +141,11 @@ type moduleEnv struct {
 func (e *moduleEnv) Xmemory() Memory { return e.shared }
 func (m *Module) bytes() []byte      { return m.memImp.(*SharedMemory).Bytes() }
 
-// Bytes returns an atomic snapshot of the accessible memory. The backing address
-// is stable across growth. Keep this owner or a worker reachable while using raw
-// views (runtime.KeepAlive after the last access if necessary). Close invalidates
-// every view. Reacquire a view to access pages added after the snapshot.
+// Bytes returns the accessible memory. Mmap-backed addresses remain stable across
+// growth. Go-backed views must be reacquired after any Grow or Module call that
+// may allocate. Go-backed Bytes/Grow and Module calls must be serialized on one
+// worker. Keep the owner or Module reachable while using raw views, with
+// runtime.KeepAlive after the last access if necessary. Close invalidates all views.
 func (m *SharedMemory) Bytes() []byte {
 	defer runtime.KeepAlive(m)
 	size := m.size.Load()
@@ -151,7 +153,8 @@ func (m *SharedMemory) Bytes() []byte {
 }
 
 // Slice implements wasm2go's legacy memory interface. Do not read or mutate this
-// slice header concurrently with Grow; use Bytes for concurrent memory views.
+// slice header concurrently with Grow; use Bytes for memory views. Go-backed
+// memory still requires all accesses to be serialized on its single worker.
 func (m *SharedMemory) Slice() *[]byte     { return &m.view }
 func (m *SharedMemory) Waiters() *sync.Map { return &m.waiters }
 
@@ -162,7 +165,7 @@ func (m *SharedMemory) Grow(delta, maximum int64) int64 {
 		return -1
 	}
 	old := m.size.Load() / wasmPageSize
-	maximum = min(maximum, int64(len(m.region.data))/wasmPageSize)
+	maximum = min(maximum, m.maximumPages, int64(^uint(0)>>1)/wasmPageSize)
 	if delta < 0 || maximum < old || delta > maximum-old {
 		return -1
 	}
@@ -170,8 +173,14 @@ func (m *SharedMemory) Grow(delta, maximum int64) int64 {
 		return old
 	}
 	next := (old + delta) * wasmPageSize
-	if err := m.region.enable(int(old*wasmPageSize), int(next)); err != nil {
-		return -1
+	if m.region.mapped {
+		if err := m.region.enable(int(old*wasmPageSize), int(next)); err != nil {
+			return -1
+		}
+	} else {
+		// C pointers are Wasm offsets. Copy the entire prefix, including the
+		// allocator state, C stack and TLS, and zero-initialize added pages.
+		m.region.data = append(m.region.data, make([]byte, int(next)-len(m.region.data))...)
 	}
 	m.view = m.region.data[:next]
 	m.size.Store(next)

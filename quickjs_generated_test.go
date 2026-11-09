@@ -3,7 +3,9 @@
 package quickjs_wasm_test
 
 import (
+	"encoding/binary"
 	"math"
+	"math/bits"
 	"runtime"
 	"sync"
 	"unsafe"
@@ -59,6 +61,14 @@ func (m *Module) Xtest_atomic_notify(v0, v1 int32) int32 {
 	defer runtime.KeepAlive(m)
 	t0 := atomic_notify(m.bytes(), uint32(v0), v1, m.waiters)
 	return t0
+}
+func (m *Module) Xtest_store_after_grow(v0, v1 int32) int32 {
+	defer runtime.KeepAlive(m)
+	t0 := (*m.t0)[uint(v1)].(func() int32)()
+	t1 := v0
+	v1 = t0
+	store32(m.bytes(), uint32(t1), uint32(v1))
+	return v1
 }
 func (m *Module) XJS_NewBool(v0, v1 int32) int64 {
 	defer runtime.KeepAlive(m)
@@ -519,6 +529,20 @@ const (
 		runtime.GOARCH == "ppc64" || runtime.GOARCH == "ppc64le" ||
 		runtime.GOARCH == "s390x" || runtime.GOARCH == "wasm"
 )
+
+//go:nosplit
+func store32[T uint32 | uint64](mem []byte, addr T, val uint32) {
+	if !unalignedOK {
+		a := uint64(addr)
+		binary.LittleEndian.PutUint32(mem[:0:len(mem)][a:a+4:a+4], val)
+		return
+	}
+	if big {
+		val = bits.ReverseBytes32(val)
+	}
+	_ = mem[uint64(addr)+3]
+	*(*uint32)(unsafe.Add(unsafe.Pointer(unsafe.SliceData(mem)), uintptr(addr))) = val
+}
 
 func atomic_notify[T uint32 | uint64](mem []byte, addr T, count int32, waiters *sync.Map) int32 {
 	_ = atomic_ptr32(mem, addr)
